@@ -1,4 +1,4 @@
-import { VStack } from "@chakra-ui/react";
+import { Box, VStack } from "@chakra-ui/react";
 import MainVisual from "../components/layouts/MainVisual";
 import SectionTitle from "../components/layouts/SectionTitle";
 import Footer from "../components/layouts/Footer";
@@ -9,6 +9,7 @@ const Company = () => {
       <MainVisual />
       <VStack w="60%" spacing="8">
         <SectionTitle title="企業の方へ" />
+        <Box h="400px" />
       </VStack>
       <Footer />
     </VStack>
