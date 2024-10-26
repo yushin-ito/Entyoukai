@@ -6,6 +6,7 @@ const Footer = () => {
     <VStack
       as="footer"
       w="100%"
+      mt="12"
       pt="8"
       pb="6"
       spacing="8"
