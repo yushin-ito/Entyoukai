@@ -1,14 +1,22 @@
-import { Box, VStack, Text, Button, HStack } from "@chakra-ui/react";
+import { VStack, Text, Button, HStack } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import MotionBox from "../elements/MotionBox";
 
 const MainVisual = () => {
   return (
-    <Box
+    <MotionBox
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 1.2 } }}
       bgImage="url('/background_image.png')"
       bgPosition="center"
       bgSize="cover"
       w="100vw"
+      h="100vh"
       pos="relative"
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
     >
       {/* ナビゲーションバー */}
       <HStack
@@ -22,7 +30,6 @@ const MainVisual = () => {
         rounded="full"
         bg="brand"
         opacity="0.8"
-        alignItems="center"
       >
         <Button as={Link} to="/" variant="link" color="white">
           トップ
@@ -40,30 +47,27 @@ const MainVisual = () => {
           お問い合わせ
         </Button>
       </HStack>
+
       {/* メインビジュアル */}
       <VStack
-        h="calc(100vh - 50px)"
+        px="20"
+        py="16"
+        spacing="2"
+        rounded="md"
+        bg="brand"
+        opacity="0.8"
         alignItems="center"
         justifyContent="center"
       >
-        <VStack
-          mt="24"
-          px="20"
-          py="16"
-          spacing="2"
-          rounded="md"
-          bg="brand"
-          opacity="0.8"
-        >
-          <Text fontSize="4xl" fontWeight="bold" color="white">
-            令和7年度
-          </Text>
-          <Text fontSize="5xl" fontWeight="bold" color="white">
-            二十歳のつどい
-          </Text>
-        </VStack>
+        <Text fontSize="4xl" fontWeight="bold" color="white">
+          令和7年度
+        </Text>
+        <Text fontSize="5xl" fontWeight="bold" color="white">
+          二十歳のつどい
+        </Text>
       </VStack>
-    </Box>
+    </MotionBox>
   );
 };
+
 export default MainVisual;
