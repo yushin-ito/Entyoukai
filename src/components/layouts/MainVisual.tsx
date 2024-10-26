@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const MainVisual = () => {
   return (
     <Box
-      bgImage="url('/src/assets/background_image.png')"
+      bgImage="url('/background_image.png')"
       bgPosition="center"
       bgSize="cover"
       w="100vw"
