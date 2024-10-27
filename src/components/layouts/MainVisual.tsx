@@ -1,8 +1,20 @@
-import { VStack, Text, Button, HStack } from "@chakra-ui/react";
+import { VStack, Text, Button, HStack, Box } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import MotionBox from "../elements/MotionBox";
+import { useRef, useLayoutEffect } from "react";
 
 const MainVisual = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { pathname } = window.location;
+
+  useLayoutEffect(() => {
+    if (pathname !== "/") {
+      setTimeout(() => {
+        ref.current?.scrollIntoView({ behavior: "smooth" });
+      }, 300);
+    }
+  }, [pathname]);
+
   return (
     <MotionBox
       initial={{ opacity: 0 }}
@@ -66,6 +78,7 @@ const MainVisual = () => {
           二十歳のつどい
         </Text>
       </VStack>
+      <Box ref={ref} pos="absolute" bottom="20" />
     </MotionBox>
   );
 };

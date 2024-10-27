@@ -11,7 +11,6 @@ const Member = () => {
         <SectionTitle title="メンバー紹介" />
         <Box h="400px" />
       </VStack>
-
       <Footer />
     </VStack>
   );
