@@ -50,7 +50,7 @@ const MainVisual = () => {
           活動について
         </Button>
         <Button as={Link} to="/company" variant="link" color="white">
-          協賛企業について
+          協賛企業
         </Button>
         <Button as={Link} to="/memory" variant="link" color="white">
           おもいで
