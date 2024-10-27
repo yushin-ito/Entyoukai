@@ -78,7 +78,7 @@ const VerticalTimeline = ({ events }: VerticalTimelineProps) => {
     [heights]
   );
 
-  const handleMeasure = useCallback((height: number, index: number) => {
+  const onMeasure = useCallback((height: number, index: number) => {
     setHeights((prev) => {
       const heights = [...prev];
       heights[index] = height;
@@ -136,7 +136,7 @@ const VerticalTimeline = ({ events }: VerticalTimelineProps) => {
           key={index}
           title={event.title}
           description={event.description}
-          onMeasure={handleMeasure}
+          onMeasure={onMeasure}
           index={index}
         />
       ))}
