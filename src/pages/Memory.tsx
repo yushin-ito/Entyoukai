@@ -2,7 +2,7 @@ import { VStack } from "@chakra-ui/react";
 import MainVisual from "../components/layouts/MainVisual";
 import SectionTitle from "../components/layouts/SectionTitle";
 import Footer from "../components/layouts/Footer";
-import VerticalTimeline from "../components/layouts/Timeline";
+import VerticalTimeline from "../components/layouts/VerticalTimeline";
 
 const Memory = () => {
   const events = [
