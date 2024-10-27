@@ -14,7 +14,7 @@ const SectionTitle = ({ title }: SectionTitleProps) => {
   return (
     <MotionBox
       ref={ref}
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y: 5 }}
       animate={
         isInView ? { opacity: 1, y: 0, transition: { duration: 0.8 } } : {}
       }
