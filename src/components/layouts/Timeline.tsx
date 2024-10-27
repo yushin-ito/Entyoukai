@@ -1,5 +1,13 @@
 import { useRef, useEffect, useState, useMemo, useCallback } from "react";
-import { Box, VStack, Text, HStack, Circle } from "@chakra-ui/react";
+import { format } from "date-fns";
+import {
+  Box,
+  VStack,
+  Text,
+  HStack,
+  Circle,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 import { useInView } from "framer-motion";
 import MotionBox from "../elements/MotionBox";
 
@@ -39,13 +47,13 @@ const TimelineItem = ({
           transition: { duration: 0.8 },
         }}
         p="4"
-        ml="180px"
+        ml={{ base: "80px", sm: "180px" }}
         borderRadius="md"
       >
-        <Text fontWeight="semibold" fontSize="2xl">
+        <Text fontWeight="semibold" fontSize={{ base: "md", sm: "2xl" }}>
           {title}
         </Text>
-        <Text mt="1" fontSize="lg">
+        <Text mt="1" fontSize={{ base: "sm", sm: "lg" }}>
           {description}
         </Text>
       </MotionBox>
@@ -62,9 +70,11 @@ type VerticalTimelineProps = {
 };
 
 const VerticalTimeline = ({ events }: VerticalTimelineProps) => {
-  const space = 64;
+  const space = { base: 24, sm: 64 };
   const [resize, setResize] = useState(false);
   const [heights, setHeights] = useState<number[]>([]);
+
+  const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
 
   const middles = useMemo(
     () =>
@@ -75,11 +85,11 @@ const VerticalTimeline = ({ events }: VerticalTimelineProps) => {
           prev +
             height / 2 +
             (heights[index - 1] || 0) / 2 +
-            (index > 0 ? space : 0)
+            (index > 0 ? (breakpoint === "base" ? space.base : space.sm) : 0)
         );
         return acc;
       }, []),
-    [heights]
+    [heights, breakpoint, space.base, space.sm]
   );
 
   const onMeasure = useCallback((height: number, index: number) => {
@@ -102,15 +112,25 @@ const VerticalTimeline = ({ events }: VerticalTimelineProps) => {
   }, [resize]);
 
   return (
-    <VStack pos="relative" spacing={`${space}px`}>
+    <VStack
+      pos="relative"
+      spacing={`${breakpoint === "base" ? space.base : space.sm}px`}
+    >
       {/* 縦のライン */}
       <Box
         pos="absolute"
-        left="140px"
+        left={{
+          base: "65px",
+          sm: "140px",
+        }}
         top="0"
         bottom="0"
-        width="2.5px"
+        width={{
+          base: "1.8px",
+          sm: "2.5px",
+        }}
         bg="brand"
+        transform="translateX(-50%)"
       />
 
       {/* 日付 */}
@@ -122,9 +142,11 @@ const VerticalTimeline = ({ events }: VerticalTimelineProps) => {
           top={`${middles[index]}px`}
           transform="translateY(-50%)"
         >
-          {event.dates.map((date, index) => (
-            <Text key={index} fontSize="xl" fontWeight="semibold">
-              {date}
+          {event.dates.map((date) => (
+            <Text fontSize={{ base: "xs", sm: "lg" }} fontWeight="semibold">
+              {breakpoint === "base"
+                ? format(date, "yy.M.d")
+                : format(date, "yyyy.M.d")}
             </Text>
           ))}
         </VStack>
@@ -134,13 +156,22 @@ const VerticalTimeline = ({ events }: VerticalTimelineProps) => {
       {middles.map((position, index) => (
         <Circle
           key={index}
-          size="24px"
+          size={{
+            base: "12px",
+            sm: "24px",
+          }}
           bg="white"
           pos="absolute"
-          left="140px"
+          left={{
+            base: "65px",
+            sm: "140px",
+          }}
           top={`${position}px`}
           transform="translate(-50%, -50%)"
-          borderWidth="2.5px"
+          borderWidth={{
+            base: "2px",
+            sm: "3px",
+          }}
           borderColor="brand"
         />
       ))}
