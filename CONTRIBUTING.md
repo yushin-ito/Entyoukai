@@ -7,8 +7,8 @@
     <p><pre><code>git checkout dev</code></pre></p>
     <li>開発するブランチを作成する</li>
     <p><pre><code>git branch feature/開発するブランチ名</code></pre></p>
-    <p>例: yushin-ito が NavBar を開発: <code>yushin-ito-feature-nav-bar</code></p>
-    <p>例: yushin-ito が NavBar を修正: <code>yushin-ito-fix-nav-bar</code></p>
+    <p>例: NavBar を開発: <code>feat/nav-bar</code></p>
+    <p>例: NavBar を修正: <code>fix/nav-bar</code></p>
     <li>開発するブランチに移動する</li>
     <p><pre><code>git checkout 開発するブランチ名</code></pre></p>
     <li>リモートに反映する</li>
