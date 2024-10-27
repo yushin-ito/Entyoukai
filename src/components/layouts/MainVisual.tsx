@@ -46,14 +46,14 @@ const MainVisual = () => {
         <Button as={Link} to="/" variant="link" color="white">
           トップ
         </Button>
-        <Button as={Link} to="/participant" variant="link" color="white">
-          参加する方へ
+        <Button as={Link} to="/activity" variant="link" color="white">
+          活動について
         </Button>
         <Button as={Link} to="/company" variant="link" color="white">
-          企業の方へ
+          協賛企業について
         </Button>
-        <Button as={Link} to="/member" variant="link" color="white">
-          メンバー紹介
+        <Button as={Link} to="/memory" variant="link" color="white">
+          おもいで
         </Button>
         <Button as={Link} to="/contact" variant="link" color="white">
           お問い合わせ

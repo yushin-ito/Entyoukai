@@ -1,10 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Participant from "./pages/Participant";
-import Contact from "./pages/Contact";
-import Top from "./pages/Top";
 import { Box } from "@chakra-ui/react";
-import Member from "./pages/Member";
-import Company from "./pages/Companty";
+
+import Top from "./pages/Top";
+import Activity from "./pages/Activity";
+import Company from "./pages/Company";
+import Memory from "./pages/Memory";
+import Contact from "./pages/Contact";
 
 const Router = () => {
   return (
@@ -12,9 +13,9 @@ const Router = () => {
       <Box flex="1" p="0">
         <Routes>
           <Route path="/" element={<Top />} />
-          <Route path="/participant" element={<Participant />} />
+          <Route path="/activity" element={<Activity />} />
           <Route path="/company" element={<Company />} />
-          <Route path="/member" element={<Member />} />
+          <Route path="/memory" element={<Memory />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </Box>

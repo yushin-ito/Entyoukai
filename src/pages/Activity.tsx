@@ -3,12 +3,12 @@ import MainVisual from "../components/layouts/MainVisual";
 import SectionTitle from "../components/layouts/SectionTitle";
 import Footer from "../components/layouts/Footer";
 
-const Participant = () => {
+const Activity = () => {
   return (
     <VStack flex="1" alignItems="center" spacing="20" overflowX="hidden">
       <MainVisual />
       <VStack w="60%" spacing="8">
-        <SectionTitle title="参加する方へ" />
+        <SectionTitle title="活動について" />
         <Box h="400px" />
       </VStack>
       <Footer />
@@ -16,4 +16,4 @@ const Participant = () => {
   );
 };
 
-export default Participant;
+export default Activity;
