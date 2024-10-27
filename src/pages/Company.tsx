@@ -3,12 +3,12 @@ import MainVisual from "../components/layouts/MainVisual";
 import SectionTitle from "../components/layouts/SectionTitle";
 import Footer from "../components/layouts/Footer";
 
-const Member = () => {
+const Company = () => {
   return (
     <VStack flex="1" alignItems="center" spacing="20" overflowX="hidden">
       <MainVisual />
       <VStack w="60%" spacing="8">
-        <SectionTitle title="メンバー紹介" />
+        <SectionTitle title="協賛企業について" />
         <Box h="400px" />
       </VStack>
       <Footer />
@@ -16,4 +16,4 @@ const Member = () => {
   );
 };
 
-export default Member;
+export default Company;
