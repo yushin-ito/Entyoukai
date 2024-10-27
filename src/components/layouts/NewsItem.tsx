@@ -1,16 +1,23 @@
-import { Box, Text, VStack, HStack, Image } from "@chakra-ui/react";
+import { Box, Text, VStack, Flex, Image, HStack } from "@chakra-ui/react";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import MotionBox from "../elements/MotionBox";
 
-interface NewsItemProps {
+type NewsItemProps = {
   date: string;
   src: string;
   location: string;
+  author: string;
   description: string;
-}
+};
 
-const NewsItem = ({ date, src, location, description }: NewsItemProps) => {
+const NewsItem = ({
+  date,
+  src,
+  location,
+  author,
+  description,
+}: NewsItemProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
@@ -22,18 +29,26 @@ const NewsItem = ({ date, src, location, description }: NewsItemProps) => {
         isInView ? { opacity: 1, x: 0, transition: { duration: 1 } } : {}
       }
       w="100%"
+      h={{ base: "450", sm: "auto" }}
     >
-      <HStack w="100%" spacing="4">
+      <Flex
+        w="100%"
+        flexDirection={{ base: "column", sm: "row" }}
+        alignItems={{ base: "center", sm: "start" }}
+        rounded={{ base: "none", sm: "md" }}
+        gap={{ base: "2", sm: "8" }}
+      >
         {/* タイトル画像 */}
         <Box pos="relative">
           <Image
             src={src}
             alt={location}
-            w="44"
-            h="44"
+            w={{ base: "100%", sm: "44" }}
+            h={{ base: "52", sm: "44" }}
+            rounded={{ base: "none", sm: "xl" }}
             shadow="4"
-            rounded="xl"
           />
+          {/* ロケーション */}
           <Box
             pos="absolute"
             top="2"
@@ -49,23 +64,41 @@ const NewsItem = ({ date, src, location, description }: NewsItemProps) => {
           </Box>
         </Box>
         {/* 内容 */}
-        <VStack align="start" spacing="2" w="70%">
-          <Box
-            px="8px"
-            py="1px"
-            borderWidth="2px"
-            borderColor="brand"
-            rounded="full"
+        <VStack
+          w={{ base: "100%", sm: "70%" }}
+          px="6px"
+          spacing="2"
+          alignItems="start"
+        >
+          <HStack
+            w="100%"
+            alignItems="center"
+            justifyContent={{ base: "space-between", sm: "flex-start" }}
           >
-            <Text fontSize="sm" fontWeight="extrabold">
-              {date}
+            <Box
+              px={{ base: "6px", sm: "8px" }}
+              py="1px"
+              borderWidth={{ base: "1.5px", sm: "2px" }}
+              borderColor="brand"
+              rounded="full"
+            >
+              <Text fontSize={{ base: "2xs", sm: "md" }} fontWeight="bold">
+                {date}
+              </Text>
+            </Box>
+            <Text fontSize={{ base: "2xs", sm: "xs" }} fontWeight="semibold">
+              by {author}
             </Text>
-          </Box>
-          <Text fontSize="md" fontWeight="bold" lineHeight="1.5" color="brand">
+          </HStack>
+          <Text
+            fontSize={{ base: "xs", sm: "md" }}
+            fontWeight={{ base: "normal", sm: "bold" }}
+            color="brand"
+          >
             {description}
           </Text>
         </VStack>
-      </HStack>
+      </Flex>
     </MotionBox>
   );
 };

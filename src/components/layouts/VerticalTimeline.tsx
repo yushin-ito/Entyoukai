@@ -11,7 +11,7 @@ import {
 import { useInView } from "framer-motion";
 import MotionBox from "../elements/MotionBox";
 
-interface TimelineItemProps {
+type TimelineItemProps = {
   index: number;
   resize?: boolean;
   title: string;

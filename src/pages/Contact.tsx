@@ -6,9 +6,14 @@ import ContactForm from "../components/layouts/ContactForm";
 
 const Contact = () => {
   return (
-    <VStack flex="1" alignItems="center" spacing="20" overflowX="hidden">
+    <VStack
+      flex="1"
+      alignItems="center"
+      spacing={{ base: "10", sm: "20" }}
+      overflowX="hidden"
+    >
       <MainVisual />
-      <VStack w="60%" spacing="8">
+      <VStack w={{ base: "80%", sm: "60%" }} spacing="8">
         <SectionTitle title="お問い合わせ" />
         <ContactForm />
       </VStack>
