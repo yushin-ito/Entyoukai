@@ -29,22 +29,22 @@ const NewsItem = ({
         isInView ? { opacity: 1, x: 0, transition: { duration: 1 } } : {}
       }
       w="100%"
-      h={{ base: "450", sm: "auto" }}
+      h={{ base: "480px", sm: "auto" }}
     >
       <Flex
         w="100%"
         flexDirection={{ base: "column", sm: "row" }}
         alignItems={{ base: "center", sm: "start" }}
         rounded={{ base: "none", sm: "md" }}
-        gap={{ base: "2", sm: "8" }}
+        gap={{ base: "6", sm: "8" }}
       >
         {/* タイトル画像 */}
-        <Box pos="relative">
+        <Box w={{ base: "100%", sm: "auto" }} pos="relative">
           <Image
             src={src}
             alt={location}
             w={{ base: "100%", sm: "44" }}
-            h={{ base: "52", sm: "44" }}
+            h={{ base: "56", sm: "44" }}
             rounded={{ base: "none", sm: "xl" }}
             shadow="4"
           />

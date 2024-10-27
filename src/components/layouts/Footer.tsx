@@ -13,12 +13,12 @@ const Footer = () => {
       alignItems="center"
       bg="brand"
     >
-      <HStack spacing="8">
+      <HStack spacing={{ base: "4", sm: "8" }}>
         <Button
           as={Link}
           to="/"
           variant="link"
-          fontSize="sm"
+          fontSize={{ base: "2xs", sm: "sm" }}
           fontWeight="extrabold"
           color="white"
         >
@@ -28,7 +28,7 @@ const Footer = () => {
           as={Link}
           to="/"
           variant="link"
-          fontSize="sm"
+          fontSize={{ base: "2xs", sm: "sm" }}
           fontWeight="extrabold"
           color="white"
         >
@@ -38,7 +38,7 @@ const Footer = () => {
           as={Link}
           to="/"
           variant="link"
-          fontSize="sm"
+          fontSize={{ base: "2xs", sm: "sm" }}
           fontWeight="extrabold"
           color="white"
         >
