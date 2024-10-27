@@ -18,6 +18,26 @@ import { FiMenu } from "react-icons/fi";
 import MotionBox from "../elements/MotionBox";
 import { useRef, useLayoutEffect } from "react";
 
+const scrollToElement = (element: HTMLDivElement, duration: number) => {
+  const start = window.scrollY;
+  const targetPosition = element.getBoundingClientRect().top;
+  const startTime = performance.now();
+
+  const animateScroll = (currentTime: number) => {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const easing = 1 - Math.pow(1 - progress, 3); // イージング関数（cubic easing）
+
+    window.scrollTo(0, start + targetPosition * easing);
+
+    if (progress < 1) {
+      requestAnimationFrame(animateScroll);
+    }
+  };
+
+  requestAnimationFrame(animateScroll);
+};
+
 const MainVisual = () => {
   const { pathname } = window.location;
 
@@ -28,15 +48,17 @@ const MainVisual = () => {
   useLayoutEffect(() => {
     if (pathname !== "/") {
       setTimeout(() => {
-        ref.current?.scrollIntoView({ behavior: "smooth" });
-      }, 200);
+        if (ref.current) {
+          scrollToElement(ref.current, 600);
+        }
+      }, 100);
     }
   }, [pathname]);
 
   return (
     <MotionBox
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 1.2 } }}
+      initial={{ opacity: 0.4 }}
+      animate={{ opacity: 1, transition: { duration: 1.5 } }}
       bgImage="url('/background_image.png')"
       bgPosition="center"
       bgSize="cover"
