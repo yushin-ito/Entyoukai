@@ -1,17 +1,35 @@
-import { VStack, Text, Button, HStack, Box } from "@chakra-ui/react";
+import {
+  VStack,
+  Text,
+  Button,
+  HStack,
+  Box,
+  useBreakpointValue,
+  IconButton,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  DrawerBody,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { FiMenu } from "react-icons/fi";
 import MotionBox from "../elements/MotionBox";
 import { useRef, useLayoutEffect } from "react";
 
 const MainVisual = () => {
-  const ref = useRef<HTMLDivElement>(null);
   const { pathname } = window.location;
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const ref = useRef<HTMLDivElement>(null);
+  const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
 
   useLayoutEffect(() => {
     if (pathname !== "/") {
       setTimeout(() => {
         ref.current?.scrollIntoView({ behavior: "smooth" });
-      }, 300);
+      }, 200);
     }
   }, [pathname]);
 
@@ -23,7 +41,7 @@ const MainVisual = () => {
       bgPosition="center"
       bgSize="cover"
       w="100vw"
-      h="100vh"
+      h={{ base: "calc(100vh * 0.8)", sm: "100vh" }}
       pos="relative"
       display="flex"
       flexDirection="column"
@@ -31,50 +49,171 @@ const MainVisual = () => {
       justifyContent="center"
     >
       {/* ナビゲーションバー */}
-      <HStack
-        as="nav"
-        pos="absolute"
-        top="6"
-        right="6"
-        px="10"
-        py="3"
-        spacing="8"
-        rounded="full"
-        bg="brand"
-        opacity="0.8"
-      >
-        <Button as={Link} to="/" variant="link" color="white">
-          トップ
-        </Button>
-        <Button as={Link} to="/activity" variant="link" color="white">
-          活動について
-        </Button>
-        <Button as={Link} to="/company" variant="link" color="white">
-          協賛企業について
-        </Button>
-        <Button as={Link} to="/memory" variant="link" color="white">
-          おもいで
-        </Button>
-        <Button as={Link} to="/contact" variant="link" color="white">
-          お問い合わせ
-        </Button>
-      </HStack>
+      {breakpoint === "base" ? (
+        <IconButton
+          icon={<FiMenu size="20px" />}
+          aria-label="menu"
+          pos="absolute"
+          top="6"
+          right="6"
+          p="2"
+          minW="0"
+          minH="0"
+          h="auto"
+          w="auto"
+          onClick={onOpen}
+          rounded="lg"
+          color="white"
+          bg="brand"
+          opacity="0.8"
+          _hover={{ bg: "brand", opacity: 1 }}
+        />
+      ) : (
+        <HStack
+          as="nav"
+          pos="absolute"
+          top="6"
+          right="6"
+          px="10"
+          py="3"
+          spacing="8"
+          rounded="full"
+          bg="brand"
+          opacity="0.8"
+        >
+          <Button
+            as={Link}
+            to="/"
+            variant="link"
+            color="white"
+            _active={{ opacity: 0.6 }}
+          >
+            トップ
+          </Button>
+          <Button
+            as={Link}
+            to="/activity"
+            variant="link"
+            color="white"
+            _active={{ opacity: 0.6 }}
+          >
+            活動について
+          </Button>
+          <Button
+            as={Link}
+            to="/company"
+            variant="link"
+            color="white"
+            _active={{ opacity: 0.6 }}
+          >
+            協賛企業
+          </Button>
+          <Button
+            as={Link}
+            to="/memory"
+            variant="link"
+            color="white"
+            _active={{ opacity: 0.6 }}
+          >
+            おもいで
+          </Button>
+          <Button
+            as={Link}
+            to="/contact"
+            variant="link"
+            color="white"
+            _active={{ opacity: 0.6 }}
+          >
+            お問い合わせ
+          </Button>
+        </HStack>
+      )}
+
+      {/* ドロワー */}
+      <Drawer placement="left" isOpen={isOpen} onClose={onClose}>
+        <DrawerOverlay />
+        <DrawerContent maxW="50%" bg="brand" opacity="0.8">
+          <DrawerCloseButton mt="2" color="white" />
+          <DrawerBody>
+            <VStack mt="16" spacing="8">
+              <Button
+                as={Link}
+                to="/"
+                variant="link"
+                color="white"
+                _active={{ opacity: 0.6 }}
+                onClick={onClose}
+              >
+                トップ
+              </Button>
+              <Button
+                as={Link}
+                to="/activity"
+                color="white"
+                variant="link"
+                _active={{ opacity: 0.6 }}
+                onClick={onClose}
+              >
+                活動について
+              </Button>
+              <Button
+                as={Link}
+                to="/company"
+                variant="link"
+                color="white"
+                _active={{ opacity: 0.6 }}
+                onClick={onClose}
+              >
+                協賛企業
+              </Button>
+              <Button
+                as={Link}
+                to="/memory"
+                variant="link"
+                color="white"
+                _active={{ opacity: 0.6 }}
+                onClick={onClose}
+              >
+                おもいで
+              </Button>
+              <Button
+                as={Link}
+                to="/contact"
+                variant="link"
+                color="white"
+                _active={{ opacity: 0.6 }}
+                onClick={onClose}
+              >
+                お問い合わせ
+              </Button>
+            </VStack>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
 
       {/* メインビジュアル */}
       <VStack
-        px="20"
-        py="16"
+        px={{ base: "10", sm: "20" }}
+        py={{ base: "8", sm: "16" }}
         spacing="2"
-        rounded="md"
+        rounded="lg"
         bg="brand"
         opacity="0.8"
         alignItems="center"
         justifyContent="center"
       >
-        <Text fontSize="4xl" fontWeight="bold" color="white">
+        <Text
+          fontSize={{ base: "2xl", sm: "4xl" }}
+          fontWeight="bold"
+          color="white"
+        >
           令和7年度
         </Text>
-        <Text fontSize="5xl" fontWeight="bold" color="white">
+        <Text
+          fontSize={{ base: "3xl", sm: "5xl" }}
+          fontWeight="bold"
+          color="white"
+        >
           二十歳のつどい
         </Text>
       </VStack>
