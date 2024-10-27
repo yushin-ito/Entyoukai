@@ -4,17 +4,19 @@ import { useInView } from "framer-motion";
 import MotionBox from "../elements/MotionBox";
 
 interface TimelineItemProps {
+  index: number;
+  resize?: boolean;
   title: string;
   description: string;
   onMeasure: (height: number, index: number) => void;
-  index: number;
 }
 
 const TimelineItem = ({
+  index,
+  resize,
   title,
   description,
   onMeasure,
-  index,
 }: TimelineItemProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true });
@@ -24,7 +26,7 @@ const TimelineItem = ({
       const height = ref.current.offsetHeight;
       onMeasure(height, index);
     }
-  }, [ref, onMeasure, index]);
+  }, [ref, resize, index, onMeasure]);
 
   return (
     <HStack ref={ref} w="100%">
@@ -61,12 +63,14 @@ type VerticalTimelineProps = {
 
 const VerticalTimeline = ({ events }: VerticalTimelineProps) => {
   const space = 64;
+  const [resize, setResize] = useState(false);
   const [heights, setHeights] = useState<number[]>([]);
 
   const middles = useMemo(
     () =>
       heights.reduce<number[]>((acc, height, index) => {
-        const prev = acc[index - 1] || 0;
+        const prev = acc[index - 1] || 0; // 1つ前の位置
+        // 現在の位置 = 1つ前の位置 + 現在の高さ / 2 + 1つ前の高さ / 2 + 余白
         acc.push(
           prev +
             height / 2 +
@@ -85,6 +89,17 @@ const VerticalTimeline = ({ events }: VerticalTimelineProps) => {
       return heights;
     });
   }, []);
+
+  useEffect(() => {
+    const onEvent = () => {
+      setResize(!resize);
+    };
+    window.addEventListener("resize", onEvent);
+
+    return () => {
+      window.removeEventListener("resize", onEvent);
+    };
+  }, [resize]);
 
   return (
     <VStack pos="relative" spacing={`${space}px`}>
@@ -138,6 +153,7 @@ const VerticalTimeline = ({ events }: VerticalTimelineProps) => {
           description={event.description}
           onMeasure={onMeasure}
           index={index}
+          resize={resize}
         />
       ))}
     </VStack>
