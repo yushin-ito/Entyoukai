@@ -89,7 +89,7 @@ const NewsList = ({ children }: NewsListProps) => {
       </HStack>
     </VStack>
   ) : (
-    <VStack w="100%" spacing="6">
+    <VStack w="100%" spacing="12">
       {children}
     </VStack>
   );
