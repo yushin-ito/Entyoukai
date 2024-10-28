@@ -7,7 +7,7 @@ import Access from "../components/layouts/Access";
 import NewsList from "../components/layouts/NewsList";
 
 const Top = () => {
-  const articles = [
+  const news = [
     {
       date: "2024.10.12",
       src: "/news_image1.png",
@@ -56,7 +56,7 @@ const Top = () => {
         <VStack w="100%" spacing={{ base: "4", sm: "6" }}>
           <SectionTitle title="ニュース" />
           <NewsList>
-            {articles.map((article, index) => (
+            {news.map((article, index) => (
               <NewsItem
                 key={index}
                 date={article.date}

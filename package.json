@@ -13,7 +13,6 @@
     "@chakra-ui/react": "2.x",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
-    "@fontsource/inter": "^5.1.0",
     "date-fns": "^4.1.0",
     "framer-motion": "^11.11.10",
     "next-themes": "^0.3.0",

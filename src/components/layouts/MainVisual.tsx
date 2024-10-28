@@ -57,7 +57,7 @@ const MainVisual = () => {
 
   return (
     <MotionBox
-      initial={{ opacity: 0.4 }}
+      initial={{ opacity: 0.8 }}
       animate={{ opacity: 1, transition: { duration: 1.5 } }}
       bgImage="url('/background_image.png')"
       bgPosition="center"
