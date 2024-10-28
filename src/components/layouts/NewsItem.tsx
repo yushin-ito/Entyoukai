@@ -58,7 +58,11 @@ const NewsItem = ({
             rounded="full"
             bg="white"
           >
-            <Text fontSize="2xs" fontWeight="extrabold" color="brand">
+            <Text
+              fontSize="2xs"
+              fontWeight={{ base: "medium", sm: "extrabold" }}
+              color="brand"
+            >
               {location}
             </Text>
           </Box>
