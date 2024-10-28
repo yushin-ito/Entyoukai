@@ -30,10 +30,10 @@ const ContactForm = () => {
 
   return (
     <VStack as="form" onSubmit={handleSubmit(onSubmit)} w="100%" spacing="8">
-      <Text fontSize="xl" fontWeight="bold" color="brand">
+      <Text fontSize={{ base: "md", sm: "xl" }} fontWeight="bold" color="brand">
         下記のフォームをお問い合わせ内容を入力して送信してください。
       </Text>
-      <VStack w="60%" spacing="12">
+      <VStack w={{ base: "100%", sm: "60%" }} spacing={{ base: "8", sm: "12" }}>
         {/* お名前 */}
         <FormControl isInvalid={!!errors.name}>
           <FormLabel fontWeight="bold" color="brand">
@@ -112,8 +112,8 @@ const ContactForm = () => {
         colorScheme="brand"
         bg="brand"
         color="white"
-        w="40%"
-        mt="12"
+        w={{ base: "80%", sm: "40%" }}
+        mt={{ base: "6", sm: "12" }}
         isLoading={isSubmitting}
       >
         送信する

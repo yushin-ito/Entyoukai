@@ -54,6 +54,7 @@ const NewsList = ({ children }: NewsListProps) => {
 
   return breakpoint === "base" ? (
     <VStack w="100%" spacing="0">
+      {/* 横スクロール可能なリスト */}
       <Box
         ref={ref}
         overflowX="auto"

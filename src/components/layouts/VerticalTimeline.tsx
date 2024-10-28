@@ -13,7 +13,7 @@ import MotionBox from "../elements/MotionBox";
 
 type TimelineItemProps = {
   index: number;
-  resize?: boolean;
+  resize: boolean;
   title: string;
   description: string;
   onMeasure: (height: number, index: number) => void;
@@ -48,7 +48,7 @@ const TimelineItem = ({
         }}
         p="4"
         ml={{ base: "80px", sm: "180px" }}
-        borderRadius="md"
+        rounded="md"
       >
         <Text fontWeight="semibold" fontSize={{ base: "md", sm: "2xl" }}>
           {title}
@@ -120,7 +120,7 @@ const VerticalTimeline = ({ events }: VerticalTimelineProps) => {
       <Box
         pos="absolute"
         left={{
-          base: "65px",
+          base: "70px",
           sm: "140px",
         }}
         top="0"
@@ -143,7 +143,7 @@ const VerticalTimeline = ({ events }: VerticalTimelineProps) => {
           transform="translateY(-50%)"
         >
           {event.dates.map((date) => (
-            <Text fontSize={{ base: "xs", sm: "lg" }} fontWeight="semibold">
+            <Text fontSize={{ base: "sm", sm: "lg" }} fontWeight="semibold">
               {breakpoint === "base"
                 ? format(date, "yy.M.d")
                 : format(date, "yyyy.M.d")}
@@ -163,7 +163,7 @@ const VerticalTimeline = ({ events }: VerticalTimelineProps) => {
           bg="white"
           pos="absolute"
           left={{
-            base: "65px",
+            base: "70px",
             sm: "140px",
           }}
           top={`${position}px`}

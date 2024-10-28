@@ -84,7 +84,7 @@ const MainVisual = () => {
           h="auto"
           w="auto"
           onClick={onOpen}
-          rounded="lg"
+          rounded="md"
           color="white"
           bg="brand"
           opacity="0.8"
@@ -154,15 +154,16 @@ const MainVisual = () => {
       {/* ドロワー */}
       <Drawer placement="left" isOpen={isOpen} onClose={onClose}>
         <DrawerOverlay />
-        <DrawerContent maxW="50%" bg="brand" opacity="0.8">
-          <DrawerCloseButton mt="2" color="white" />
+        <DrawerContent w="60%" bg="brand" opacity="0.8">
+          <DrawerCloseButton mt="2" color="white" size="lg"/>
           <DrawerBody>
-            <VStack mt="16" spacing="8">
+            <VStack mt="20" spacing="10">
               <Button
                 as={Link}
                 to="/"
                 variant="link"
                 color="white"
+                fontSize="xl"
                 _active={{ opacity: 0.6 }}
                 onClick={onClose}
               >
@@ -171,8 +172,9 @@ const MainVisual = () => {
               <Button
                 as={Link}
                 to="/activity"
-                color="white"
                 variant="link"
+                color="white"
+                fontSize="xl"
                 _active={{ opacity: 0.6 }}
                 onClick={onClose}
               >
@@ -183,6 +185,7 @@ const MainVisual = () => {
                 to="/company"
                 variant="link"
                 color="white"
+                fontSize="xl"
                 _active={{ opacity: 0.6 }}
                 onClick={onClose}
               >
@@ -193,6 +196,7 @@ const MainVisual = () => {
                 to="/memory"
                 variant="link"
                 color="white"
+                fontSize="xl"
                 _active={{ opacity: 0.6 }}
                 onClick={onClose}
               >
@@ -203,6 +207,7 @@ const MainVisual = () => {
                 to="/contact"
                 variant="link"
                 color="white"
+                fontSize="xl"
                 _active={{ opacity: 0.6 }}
                 onClick={onClose}
               >
