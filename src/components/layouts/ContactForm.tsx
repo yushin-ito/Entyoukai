@@ -30,7 +30,7 @@ const ContactForm = () => {
 
   return (
     <VStack as="form" onSubmit={handleSubmit(onSubmit)} w="100%" spacing="8">
-      <Text fontSize={{ base: "md", sm: "xl" }} fontWeight="bold" color="brand">
+      <Text fontSize={{ base: "md", sm: "lg" }} fontWeight="bold" color="brand">
         下記のフォームをお問い合わせ内容を入力して送信してください。
       </Text>
       <VStack w={{ base: "100%", sm: "60%" }} spacing={{ base: "8", sm: "12" }}>
@@ -41,7 +41,7 @@ const ContactForm = () => {
           </FormLabel>
           <Input
             placeholder="お名前"
-            {...register("name", { required: "お名前は必須項目です" })}
+            {...register("name", { required: "お名前を入力してください" })}
           />
           <FormErrorMessage>
             {errors.name && errors.name.message}
@@ -57,7 +57,7 @@ const ContactForm = () => {
             type="email"
             placeholder="メールアドレス"
             {...register("email", {
-              required: "メールアドレスは必須項目です",
+              required: "メールアドレスを入力してください",
               pattern: {
                 value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
                 message: "有効なメールアドレスを入力してください",
@@ -78,11 +78,7 @@ const ContactForm = () => {
             type="tel"
             placeholder="電話番号"
             {...register("phone", {
-              required: "電話番号は必須項目です",
-              pattern: {
-                value: /^[0-9]{10,11}$/,
-                message: "有効な電話番号を入力してください（10〜11桁）",
-              },
+              required: "電話番号を入力してください",
             })}
           />
           <FormErrorMessage>
@@ -98,7 +94,7 @@ const ContactForm = () => {
           <Textarea
             placeholder="お問い合わせ内容"
             {...register("message", {
-              required: "お問い合わせ内容は必須項目です",
+              required: "お問い合わせ内容を入力してください",
             })}
           />
           <FormErrorMessage>
@@ -110,10 +106,12 @@ const ContactForm = () => {
       <Button
         type="submit"
         colorScheme="brand"
-        bg="brand"
-        color="white"
         w={{ base: "80%", sm: "40%" }}
         mt={{ base: "6", sm: "12" }}
+        rounded="lg"
+        bg="brand"
+        color="white"
+        shadow="sm"
         isLoading={isSubmitting}
       >
         送信する
