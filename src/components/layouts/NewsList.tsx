@@ -19,22 +19,6 @@ const NewsList = ({ children }: NewsListProps) => {
 
   useEffect(() => {
     const current = ref.current;
-    const onWheel = (event: WheelEvent) => {
-      event.preventDefault();
-
-      if (current) {
-        const left = ref.current.scrollLeft;
-        const delta =
-          (event.deltaY / Math.abs(event.deltaY)) * window.innerWidth;
-
-        const target =
-          delta > 0
-            ? Math.floor((delta + left) / window.innerWidth) * window.innerWidth
-            : Math.ceil((delta + left) / window.innerWidth) * window.innerWidth;
-
-        current.scrollLeft = target;
-      }
-    };
 
     const onScroll = () => {
       if (current) {
@@ -43,11 +27,9 @@ const NewsList = ({ children }: NewsListProps) => {
       }
     };
 
-    current?.addEventListener("wheel", onWheel);
     current?.addEventListener("scroll", onScroll);
 
     return () => {
-      current?.removeEventListener("wheel", onWheel);
       current?.removeEventListener("scroll", onScroll);
     };
   }, [ref, count]);
@@ -58,10 +40,19 @@ const NewsList = ({ children }: NewsListProps) => {
       <Box
         ref={ref}
         overflowX="auto"
+        overflowY="hidden" // 縦方向のスクロールを完全に無効化
         w="calc(100vw * 0.8)"
         scrollBehavior="smooth"
         scrollSnapType="x mandatory"
-        style={{ scrollbarWidth: "none" }}
+        sx={{
+          "::-webkit-scrollbar": {
+            display: "none",
+          },
+        }}
+        css={{
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+        }}
       >
         <HStack
           w={`calc(${count * 100}vw * 0.8 + ${24 * count}px )`}

@@ -75,6 +75,7 @@ const NewsItem = ({
             alignItems="center"
             justifyContent={{ base: "space-between", sm: "flex-start" }}
           >
+            {/* 日付と作者 */}
             <Box
               px={{ base: "6px", sm: "8px" }}
               py="1px"
@@ -90,6 +91,7 @@ const NewsItem = ({
               by {author}
             </Text>
           </HStack>
+          {/* 内容 */}
           <Text
             fontSize={{ base: "xs", sm: "md" }}
             fontWeight={{ base: "semibold", sm: "bold" }}

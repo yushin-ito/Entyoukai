@@ -154,8 +154,8 @@ const MainVisual = () => {
       {/* ドロワー */}
       <Drawer placement="left" isOpen={isOpen} onClose={onClose}>
         <DrawerOverlay />
-        <DrawerContent w="60%" bg="brand" opacity="0.8">
-          <DrawerCloseButton mt="2" color="white" size="lg"/>
+        <DrawerContent maxW="60%" bg="brand" opacity="0.8">
+          <DrawerCloseButton mt="2" color="white" size="lg" />
           <DrawerBody>
             <VStack mt="20" spacing="10">
               <Button
@@ -163,7 +163,7 @@ const MainVisual = () => {
                 to="/"
                 variant="link"
                 color="white"
-                fontSize="xl"
+                fontSize="lg"
                 _active={{ opacity: 0.6 }}
                 onClick={onClose}
               >
@@ -174,7 +174,7 @@ const MainVisual = () => {
                 to="/activity"
                 variant="link"
                 color="white"
-                fontSize="xl"
+                fontSize="lg"
                 _active={{ opacity: 0.6 }}
                 onClick={onClose}
               >
@@ -185,7 +185,7 @@ const MainVisual = () => {
                 to="/company"
                 variant="link"
                 color="white"
-                fontSize="xl"
+                fontSize="lg"
                 _active={{ opacity: 0.6 }}
                 onClick={onClose}
               >
@@ -196,7 +196,7 @@ const MainVisual = () => {
                 to="/memory"
                 variant="link"
                 color="white"
-                fontSize="xl"
+                fontSize="lg"
                 _active={{ opacity: 0.6 }}
                 onClick={onClose}
               >
@@ -207,7 +207,7 @@ const MainVisual = () => {
                 to="/contact"
                 variant="link"
                 color="white"
-                fontSize="xl"
+                fontSize="lg"
                 _active={{ opacity: 0.6 }}
                 onClick={onClose}
               >
@@ -221,9 +221,9 @@ const MainVisual = () => {
       {/* メインビジュアル */}
       <VStack
         px={{ base: "10", sm: "20" }}
-        py={{ base: "8", sm: "16" }}
+        py={{ base: "12", sm: "16" }}
         spacing="2"
-        rounded="lg"
+        rounded={{ base: "xl", sm: "lg" }}
         bg="brand"
         opacity="0.8"
         alignItems="center"
