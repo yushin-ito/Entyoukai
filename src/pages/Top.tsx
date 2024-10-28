@@ -53,7 +53,7 @@ const Top = () => {
         </Text>
       </VStack>
       <VStack w={{ base: "80%", sm: "60%" }} spacing={{ base: "10", sm: "20" }}>
-        <VStack w="100%" spacing="6">
+        <VStack w="100%" spacing={{ base: "4", sm: "6" }}>
           <SectionTitle title="ニュース" />
           <NewsList>
             {articles.map((article, index) => (
@@ -68,7 +68,7 @@ const Top = () => {
             ))}
           </NewsList>
         </VStack>
-        <VStack w="100%" spacing="6">
+        <VStack w="100%" spacing={{ base: "4", sm: "6" }}>
           <SectionTitle title="アクセス" />
           <Access />
         </VStack>
