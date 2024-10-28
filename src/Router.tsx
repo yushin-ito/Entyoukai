@@ -6,6 +6,7 @@ import Activity from "./pages/Activity";
 import Company from "./pages/Company";
 import Memory from "./pages/Memory";
 import Contact from "./pages/Contact";
+import NotFound from "./pages/NotFound";
 
 const Router = () => {
   return (
@@ -17,6 +18,7 @@ const Router = () => {
           <Route path="/company" element={<Company />} />
           <Route path="/memory" element={<Memory />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Box>
     </BrowserRouter>
