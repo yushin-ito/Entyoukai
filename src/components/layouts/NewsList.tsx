@@ -62,7 +62,10 @@ const NewsList = ({ children }: NewsListProps) => {
         scrollSnapType="x mandatory"
         style={{ scrollbarWidth: "none" }}
       >
-        <HStack w={`calc(${count * 100 + 24}vw * 0.8)`} spacing="0">
+        <HStack
+          w={`calc(${count * 100}vw * 0.8 + ${24 * count}px )`}
+          spacing="0"
+        >
           {Children.map(children, (child, index) => (
             <Box
               key={index}

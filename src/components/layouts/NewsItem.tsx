@@ -51,8 +51,8 @@ const NewsItem = ({
           {/* ロケーション */}
           <Box
             pos="absolute"
-            top="2"
-            right="2"
+            top={{ base: "4", sm: "2" }}
+            right={{ base: "4", sm: "2" }}
             px="6px"
             py="2px"
             rounded="full"
@@ -67,7 +67,7 @@ const NewsItem = ({
         <VStack
           w={{ base: "100%", sm: "70%" }}
           px="6px"
-          spacing="2"
+          spacing="10px"
           alignItems="start"
         >
           <HStack
@@ -92,7 +92,7 @@ const NewsItem = ({
           </HStack>
           <Text
             fontSize={{ base: "xs", sm: "md" }}
-            fontWeight={{ base: "normal", sm: "bold" }}
+            fontWeight={{ base: "semibold", sm: "bold" }}
             color="brand"
           >
             {description}

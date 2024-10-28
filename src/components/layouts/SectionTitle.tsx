@@ -29,7 +29,7 @@ const SectionTitle = ({ title }: SectionTitleProps) => {
     >
       {breakpoint === "base" ? (
         <HStack w="100%" spacing="2" alignItems="center">
-          <Box w="3px" h="8"  bg="brand"/>
+          <Box w="3px" h="8" bg="brand" />
           <Text fontSize="xl" fontWeight="bold">
             {title}
           </Text>
