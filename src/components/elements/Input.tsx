@@ -2,10 +2,12 @@ import {
   Input as ChakraInput,
   InputProps as ChakraInputProps,
 } from "@chakra-ui/react";
+import { forwardRef } from "react";
 
-const Input = (props: ChakraInputProps) => {
+const Input = forwardRef<HTMLInputElement, ChakraInputProps>((props, ref) => {
   return (
     <ChakraInput
+      ref={ref}
       borderWidth="1.2px"
       borderColor="gray.300"
       focusBorderColor="brand"
@@ -13,6 +15,6 @@ const Input = (props: ChakraInputProps) => {
       {...props}
     />
   );
-};
+});
 
 export default Input;

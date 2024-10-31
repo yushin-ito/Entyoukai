@@ -18,12 +18,13 @@ const NotFound = () => {
           </VStack>
         </VStack>
         <Button
-          colorScheme="brand"
           w={{ base: "60%", sm: "20%" }}
           py="6"
           fontSize="sm"
           rounded="full"
           bg="brand"
+          _hover={{ bg: "brand", opacity: 0.8 }}
+          _active={{ transform: "scale(0.98)" }}
           color="white"
           shadow="sm"
           onClick={() => window.location.replace("/")}

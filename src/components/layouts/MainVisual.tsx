@@ -5,7 +5,6 @@ import {
   HStack,
   Box,
   useBreakpointValue,
-  IconButton,
   Drawer,
   DrawerOverlay,
   DrawerContent,
@@ -17,6 +16,7 @@ import { Link } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import MotionBox from "../elements/MotionBox";
 import { useRef, useLayoutEffect } from "react";
+import IconButton from "../elements/IconButton";
 
 const scrollToElement = (element: HTMLDivElement, duration: number) => {
   const start = window.scrollY;
@@ -26,7 +26,7 @@ const scrollToElement = (element: HTMLDivElement, duration: number) => {
   const animateScroll = (currentTime: number) => {
     const elapsed = currentTime - startTime;
     const progress = Math.min(elapsed / duration, 1);
-    const easing = 1 - Math.pow(1 - progress, 3); // イージング関数（cubic easing）
+    const easing = 1 - Math.pow(1 - progress, 3);
 
     window.scrollTo(0, start + targetPosition * easing);
 
@@ -79,16 +79,12 @@ const MainVisual = () => {
           top="6"
           right="6"
           p="2"
-          minW="0"
-          minH="0"
-          h="auto"
-          w="auto"
-          onClick={onOpen}
           rounded="md"
           color="white"
           bg="brand"
           opacity="0.8"
           _hover={{ bg: "brand", opacity: 1 }}
+          onClick={onOpen}
         />
       ) : (
         <HStack
@@ -129,6 +125,15 @@ const MainVisual = () => {
             _active={{ opacity: 0.6 }}
           >
             協賛企業
+          </Button>
+          <Button
+            as={Link}
+            to="/event"
+            variant="link"
+            color="white"
+            _active={{ opacity: 0.6 }}
+          >
+            イベント
           </Button>
           <Button
             as={Link}
@@ -190,6 +195,17 @@ const MainVisual = () => {
                 onClick={onClose}
               >
                 協賛企業
+              </Button>
+              <Button
+                as={Link}
+                to="/event"
+                variant="link"
+                color="white"
+                fontSize="lg"
+                _active={{ opacity: 0.6 }}
+                onClick={onClose}
+              >
+                イベント
               </Button>
               <Button
                 as={Link}
