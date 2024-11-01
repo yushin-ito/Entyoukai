@@ -128,15 +128,6 @@ const MainVisual = () => {
           </Button>
           <Button
             as={Link}
-            to="/event"
-            variant="link"
-            color="white"
-            _active={{ opacity: 0.6 }}
-          >
-            イベント
-          </Button>
-          <Button
-            as={Link}
             to="/memory"
             variant="link"
             color="white"
@@ -195,17 +186,6 @@ const MainVisual = () => {
                 onClick={onClose}
               >
                 協賛企業
-              </Button>
-              <Button
-                as={Link}
-                to="/event"
-                variant="link"
-                color="white"
-                fontSize="lg"
-                _active={{ opacity: 0.6 }}
-                onClick={onClose}
-              >
-                イベント
               </Button>
               <Button
                 as={Link}
