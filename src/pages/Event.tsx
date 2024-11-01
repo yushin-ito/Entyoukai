@@ -14,7 +14,7 @@ const Event = () => {
     >
       <MainVisual />
       <VStack w={{ base: "80%", sm: "60%" }} spacing={{ base: "4", sm: "6" }}>
-        <SectionTitle title="みんなで創るモザイクアート" />
+        <SectionTitle title="イベント" />
         <ImageForm />
       </VStack>
       <Footer />
