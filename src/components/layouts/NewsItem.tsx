@@ -45,8 +45,9 @@ const NewsItem = ({
             alt={location}
             w={{ base: "100%", sm: "44" }}
             h={{ base: "56", sm: "44" }}
+            objectFit="cover"
             rounded={{ base: "none", sm: "xl" }}
-            shadow="4"
+            shadow="sm"
           />
           {/* ロケーション */}
           <Box

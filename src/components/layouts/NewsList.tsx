@@ -40,7 +40,7 @@ const NewsList = ({ children }: NewsListProps) => {
       <Box
         ref={ref}
         overflowX="auto"
-        overflowY="hidden" // 縦方向のスクロールを完全に無効化
+        overflowY="hidden"
         w="calc(100vw * 0.8)"
         scrollBehavior="smooth"
         scrollSnapType="x mandatory"
