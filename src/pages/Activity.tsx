@@ -12,7 +12,7 @@ const Activity = () => {
       overflowX="hidden"
     >
       <MainVisual />
-      <VStack w={{ base: "80%", sm: "60%" }} spacing={{ base: "4", sm: "6" }}>
+      <VStack w={{ base: "80%", sm: "60%" }} spacing={{ base: "6", sm: "8" }}>
         <Title title="活動について" />
         <Box h="400px" />
       </VStack>

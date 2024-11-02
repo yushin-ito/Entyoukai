@@ -29,11 +29,11 @@ const Top = () => {
         </Text>
       </VStack>
       <VStack w={{ base: "80%", sm: "60%" }} spacing={{ base: "10", sm: "20" }}>
-        <VStack w="100%" spacing={{ base: "4", sm: "6" }}>
+        <VStack w="100%" spacing={{ base: "6", sm: "8" }}>
           <Title title="活動報告" />
           {articles && <ArticleList articles={articles} />}
         </VStack>
-        <VStack w="100%" spacing={{ base: "4", sm: "6" }}>
+        <VStack w="100%" spacing={{ base: "6", sm: "8" }}>
           <Title title="アクセス" />
           <Access />
         </VStack>
