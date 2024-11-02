@@ -1,6 +1,6 @@
 import { VStack } from "@chakra-ui/react";
 import MainVisual from "../components/layouts/MainVisual";
-import SectionTitle from "../components/layouts/SectionTitle";
+import Title from "../components/elements/Title";
 import Footer from "../components/layouts/Footer";
 import ContactForm from "../components/layouts/ContactForm";
 
@@ -14,7 +14,7 @@ const Contact = () => {
     >
       <MainVisual />
       <VStack w={{ base: "80%", sm: "60%" }} spacing={{ base: "4", sm: "6" }}>
-        <SectionTitle title="お問い合わせ" />
+        <Title title="お問い合わせ" />
         <ContactForm />
       </VStack>
       <Footer />

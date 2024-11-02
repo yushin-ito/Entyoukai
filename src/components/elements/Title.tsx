@@ -9,11 +9,11 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import MotionBox from "../elements/MotionBox";
 
-type SectionTitleProps = {
+type TitleProps = {
   title: string;
 };
 
-const SectionTitle = ({ title }: SectionTitleProps) => {
+const Title = ({ title }: TitleProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
@@ -46,4 +46,4 @@ const SectionTitle = ({ title }: SectionTitleProps) => {
   );
 };
 
-export default SectionTitle;
+export default Title;

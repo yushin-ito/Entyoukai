@@ -1,4 +1,4 @@
-import { Children, ReactNode, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Box,
   HStack,
@@ -6,14 +6,15 @@ import {
   VStack,
   useBreakpointValue,
 } from "@chakra-ui/react";
+import { Article } from "../../types";
+import ArticleListItem from "../elements/ArticleListItem";
 
-type ArticlesListProps = {
-  children: ReactNode;
+type ArticleListProps = {
+  articles: Article[];
 };
 
-const ArticlesList = ({ children }: ArticlesListProps) => {
+const ArticleList = ({ articles }: ArticleListProps) => {
   const ref = useRef<HTMLDivElement>(null);
-  const count = Children.count(children);
   const [currentIndex, setCurrentIndex] = useState(0);
   const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
 
@@ -32,7 +33,7 @@ const ArticlesList = ({ children }: ArticlesListProps) => {
     return () => {
       current?.removeEventListener("scroll", onScroll);
     };
-  }, [ref, count]);
+  }, [ref]);
 
   return breakpoint === "base" ? (
     <VStack w="100%" spacing="0">
@@ -55,10 +56,10 @@ const ArticlesList = ({ children }: ArticlesListProps) => {
         }}
       >
         <HStack
-          w={`calc(${count * 100}vw * 0.8 + ${24 * count}px )`}
+          w={`calc(${articles.length * 100}vw * 0.8 + ${24 * articles.length}px )`}
           spacing="0"
         >
-          {Children.map(children, (child, index) => (
+          {articles.map((item, index) => (
             <Box
               key={index}
               w="100%"
@@ -66,14 +67,14 @@ const ArticlesList = ({ children }: ArticlesListProps) => {
               scrollSnapAlign="start"
               overflow="clip"
             >
-              {child}
+              <ArticleListItem article={item} />
             </Box>
           ))}
         </HStack>
       </Box>
       {/* ドットインジケーター */}
       <HStack spacing="2">
-        {Array.from({ length: count }).map((_, index) => (
+        {Array.from({ length: articles.length }).map((_, index) => (
           <Circle
             key={index}
             size="6px"
@@ -85,9 +86,11 @@ const ArticlesList = ({ children }: ArticlesListProps) => {
     </VStack>
   ) : (
     <VStack w="100%" spacing="12">
-      {children}
+      {articles.map((item, index) => (
+        <ArticleListItem key={index} article={item} />
+      ))}
     </VStack>
   );
 };
 
-export default ArticlesList;
+export default ArticleList;

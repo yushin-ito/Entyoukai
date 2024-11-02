@@ -1,9 +1,8 @@
 import { Text, VStack } from "@chakra-ui/react";
 import { useQueryArticles } from "../hooks/articles";
 import MainVisual from "../components/layouts/MainVisual";
-import SectionTitle from "../components/layouts/SectionTitle";
-import ArticlesList from "../components/layouts/ArticlesList";
-import ArticlesItem from "../components/layouts/ArticlesItem";
+import Title from "../components/elements/Title";
+import ArticleList from "../components/layouts/ArticleList";
 import Access from "../components/layouts/Access";
 import Footer from "../components/layouts/Footer";
 
@@ -31,23 +30,11 @@ const Top = () => {
       </VStack>
       <VStack w={{ base: "80%", sm: "60%" }} spacing={{ base: "10", sm: "20" }}>
         <VStack w="100%" spacing={{ base: "4", sm: "6" }}>
-          <SectionTitle title="活動報告" />
-          <ArticlesList>
-            {articles?.map((article, index) => (
-              <ArticlesItem
-                key={index}
-                id={article.id}
-                date={article.date}
-                src={article.src}
-                location={article.location}
-                author={article.author}
-                description={article.description}
-              />
-            ))}
-          </ArticlesList>
+          <Title title="活動報告" />
+          {articles && <ArticleList articles={articles} />}
         </VStack>
         <VStack w="100%" spacing={{ base: "4", sm: "6" }}>
-          <SectionTitle title="アクセス" />
+          <Title title="アクセス" />
           <Access />
         </VStack>
       </VStack>

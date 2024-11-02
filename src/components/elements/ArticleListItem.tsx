@@ -4,25 +4,20 @@ import { useInView } from "framer-motion";
 import MotionBox from "../elements/MotionBox";
 import { Article } from "../../types";
 
-const ArticlesItem = ({
-  date,
-  src,
-  location,
-  author,
-  description,
-}: Article) => {
+type ArticleListItemProps = {
+  article: Article;
+};
+
+const ArticleListItem = ({ article }: ArticleListItemProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
   return (
     <MotionBox
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={
-        isInView ? { opacity: 1, x: 0, transition: { duration: 1 } } : {}
-      }
+      initial={{ opacity: 0 }}
+      animate={isInView ? { opacity: 1, transition: { duration: 1 } } : {}}
       w="100%"
-      h={{ base: "480px", sm: "auto" }}
     >
       <Flex
         w="100%"
@@ -34,8 +29,8 @@ const ArticlesItem = ({
         {/* タイトル画像 */}
         <Box w={{ base: "100%", sm: "auto" }} pos="relative">
           <Image
-            src={src}
-            alt={location}
+            src={article.src}
+            alt={article.location}
             w={{ base: "100%", sm: "44" }}
             h={{ base: "56", sm: "44" }}
             objectFit="cover"
@@ -57,7 +52,7 @@ const ArticlesItem = ({
               fontWeight={{ base: "medium", sm: "extrabold" }}
               color="brand"
             >
-              {location}
+              {article.location}
             </Text>
           </Box>
         </Box>
@@ -82,11 +77,11 @@ const ArticlesItem = ({
               rounded="full"
             >
               <Text fontSize={{ base: "2xs", sm: "md" }} fontWeight="bold">
-                {date}
+                {article.date}
               </Text>
             </Box>
             <Text fontSize={{ base: "2xs", sm: "xs" }} fontWeight="semibold">
-              by {author}
+              by {article.author}
             </Text>
           </HStack>
           {/* 内容 */}
@@ -95,7 +90,7 @@ const ArticlesItem = ({
             fontWeight={{ base: "semibold", sm: "bold" }}
             color="brand"
           >
-            {description}
+            {article.description}
           </Text>
         </VStack>
       </Flex>
@@ -103,4 +98,4 @@ const ArticlesItem = ({
   );
 };
 
-export default ArticlesItem;
+export default ArticleListItem;
