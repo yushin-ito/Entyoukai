@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { useInView } from "framer-motion";
 import MotionBox from "../elements/MotionBox";
+import { Event } from "../../types";
 
 type TimelineItemProps = {
   index: number;
@@ -17,7 +18,7 @@ type TimelineItemProps = {
   title: string;
   description: string;
   onMeasure: (height: number, index: number) => void;
-}
+};
 
 const TimelineItem = ({
   index,
@@ -62,11 +63,7 @@ const TimelineItem = ({
 };
 
 type VerticalTimelineProps = {
-  events: {
-    title: string;
-    description: string;
-    dates: string[];
-  }[];
+  events: Event[];
 };
 
 const VerticalTimeline = ({ events }: VerticalTimelineProps) => {

@@ -2,22 +2,15 @@ import { Box, Text, VStack, Flex, Image, HStack } from "@chakra-ui/react";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import MotionBox from "../elements/MotionBox";
+import { Article } from "../../types";
 
-type NewsItemProps = {
-  date: string;
-  src: string;
-  location: string;
-  author: string;
-  description: string;
-};
-
-const NewsItem = ({
+const ArticlesItem = ({
   date,
   src,
   location,
   author,
   description,
-}: NewsItemProps) => {
+}: Article) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
@@ -110,4 +103,4 @@ const NewsItem = ({
   );
 };
 
-export default NewsItem;
+export default ArticlesItem;

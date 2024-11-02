@@ -7,11 +7,11 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 
-type NewsListProps = {
+type ArticlesListProps = {
   children: ReactNode;
 };
 
-const NewsList = ({ children }: NewsListProps) => {
+const ArticlesList = ({ children }: ArticlesListProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const count = Children.count(children);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -90,4 +90,4 @@ const NewsList = ({ children }: NewsListProps) => {
   );
 };
 
-export default NewsList;
+export default ArticlesList;
