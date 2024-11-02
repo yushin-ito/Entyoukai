@@ -20,7 +20,6 @@ const Access = () => {
       <Flex
         w="100%"
         flexDir={{ base: "column", sm: "row" }}
-        alignItems={{ base: "center", sm: "flex-start" }}
         gap={{ base: "4", sm: "6" }}
       >
         <iframe
@@ -30,7 +29,7 @@ const Access = () => {
           loading="lazy"
           style={{ border: 0 }}
         />
-        <VStack w="100%" spacing="8" alignItems="flex-start">
+        <VStack spacing="8" alignItems="flex-start">
           <VStack spacing="2" alignItems="flex-start">
             <Text fontSize={{ base: "sm", sm: "lg" }} fontWeight="bold">
               保健福祉センター（さわやか村）

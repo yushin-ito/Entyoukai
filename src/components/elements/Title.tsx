@@ -21,10 +21,8 @@ const Title = ({ title }: TitleProps) => {
   return (
     <MotionBox
       ref={ref}
-      initial={{ opacity: 0, y: 5 }}
-      animate={
-        isInView ? { opacity: 1, y: 0, transition: { duration: 0.8 } } : {}
-      }
+      initial={{ opacity: 0 }}
+      animate={isInView ? { opacity: 1, transition: { duration: 0.8 } } : {}}
       w="100%"
     >
       {breakpoint === "base" ? (
