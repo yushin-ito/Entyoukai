@@ -2,13 +2,22 @@ import { Box, Text, VStack, Flex, Image, HStack } from "@chakra-ui/react";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import MotionBox from "../elements/MotionBox";
-import { Article } from "../../types";
 
 type ArticleListItemProps = {
-  article: Article;
+  date: string;
+  src: string;
+  location: string;
+  author: string;
+  description: string;
 };
 
-const ArticleListItem = ({ article }: ArticleListItemProps) => {
+const ArticleListItem = ({
+  date,
+  src,
+  location,
+  author,
+  description,
+}: ArticleListItemProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
@@ -21,18 +30,19 @@ const ArticleListItem = ({ article }: ArticleListItemProps) => {
     >
       <Flex
         w="100%"
-        flexDirection={{ base: "column", sm: "row" }}
-        alignItems={{ base: "center", sm: "start" }}
+        flexDir={{ base: "column", sm: "row" }}
+        alignItems={{ base: "center", sm: "flex-start" }}
         rounded={{ base: "none", sm: "md" }}
         gap={{ base: "6", sm: "8" }}
+        pb={{ base: "4", sm: "0" }}
       >
         {/* タイトル画像 */}
         <Box w={{ base: "100%", sm: "auto" }} pos="relative">
           <Image
-            src={article.src}
-            alt={article.location}
-            w={{ base: "100%", sm: "44" }}
-            h={{ base: "56", sm: "44" }}
+            src={src}
+            alt={location}
+            w={{ base: "100%", sm: "140px" }}
+            h={{ base: "220px", sm: "140px" }}
             objectFit="cover"
             rounded={{ base: "none", sm: "xl" }}
             shadow="sm"
@@ -40,8 +50,8 @@ const ArticleListItem = ({ article }: ArticleListItemProps) => {
           {/* ロケーション */}
           <Box
             pos="absolute"
-            top={{ base: "4", sm: "2" }}
-            right={{ base: "4", sm: "2" }}
+            top={{ base: "3", sm: "2" }}
+            right={{ base: "3", sm: "2" }}
             px="6px"
             py="2px"
             rounded="full"
@@ -49,10 +59,10 @@ const ArticleListItem = ({ article }: ArticleListItemProps) => {
           >
             <Text
               fontSize="2xs"
-              fontWeight={{ base: "medium", sm: "extrabold" }}
+              fontWeight="bold"
               color="brand"
             >
-              {article.location}
+              {location}
             </Text>
           </Box>
         </Box>
@@ -70,27 +80,27 @@ const ArticleListItem = ({ article }: ArticleListItemProps) => {
           >
             {/* 日付と作者 */}
             <Box
-              px={{ base: "6px", sm: "8px" }}
+              px="6px"
               py="1px"
               borderWidth={{ base: "1.5px", sm: "2px" }}
               borderColor="brand"
               rounded="full"
             >
-              <Text fontSize={{ base: "2xs", sm: "md" }} fontWeight="bold">
-                {article.date}
+              <Text fontSize={{ base: "2xs", sm: "xs" }} fontWeight="bold">
+                {date}
               </Text>
             </Box>
             <Text fontSize={{ base: "2xs", sm: "xs" }} fontWeight="semibold">
-              by {article.author}
+              by {author}
             </Text>
           </HStack>
           {/* 内容 */}
           <Text
-            fontSize={{ base: "xs", sm: "md" }}
-            fontWeight={{ base: "semibold", sm: "bold" }}
+            fontSize={{ base: "xs", sm: "sm" }}
+            fontWeight="semibold"
             color="brand"
           >
-            {article.description}
+            {description}
           </Text>
         </VStack>
       </Flex>

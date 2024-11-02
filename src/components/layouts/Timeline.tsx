@@ -21,7 +21,7 @@ const Timeline = ({ events }: TimelineProps) => {
 
   const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
 
-  const middles = useMemo(
+  const positions = useMemo(
     () =>
       heights.reduce<number[]>((acc, height, index) => {
         const prev = acc[index - 1] || 0; // 1つ前の位置
@@ -59,7 +59,7 @@ const Timeline = ({ events }: TimelineProps) => {
   return (
     <VStack
       pos="relative"
-      spacing={`${breakpoint === "base" ? space.base : space.sm}px`}
+      spacing={{ base: `${space.base}px`, sm: `${space.sm}px` }}
     >
       {/* 縦のライン */}
       <Box
@@ -84,11 +84,15 @@ const Timeline = ({ events }: TimelineProps) => {
           key={index}
           pos="absolute"
           left="0"
-          top={`${middles[index]}px`}
+          top={`${positions[index]}px`}
           transform="translateY(-50%)"
         >
-          {event.dates.map((date) => (
-            <Text fontSize={{ base: "sm", sm: "lg" }} fontWeight="semibold">
+          {event.dates.map((date, index) => (
+            <Text
+              key={index}
+              fontSize={{ base: "sm", sm: "lg" }}
+              fontWeight="semibold"
+            >
               {breakpoint === "base"
                 ? format(date, "yy.M.d")
                 : format(date, "yyyy.M.d")}
@@ -98,7 +102,7 @@ const Timeline = ({ events }: TimelineProps) => {
       ))}
 
       {/* 円 */}
-      {middles.map((position, index) => (
+      {positions.map((position, index) => (
         <Circle
           key={index}
           size={{

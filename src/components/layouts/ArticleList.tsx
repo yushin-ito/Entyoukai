@@ -59,7 +59,7 @@ const ArticleList = ({ articles }: ArticleListProps) => {
           w={`calc(${articles.length * 100}vw * 0.8 + ${24 * articles.length}px )`}
           spacing="0"
         >
-          {articles.map((item, index) => (
+          {articles.map((article, index) => (
             <Box
               key={index}
               w="100%"
@@ -67,7 +67,13 @@ const ArticleList = ({ articles }: ArticleListProps) => {
               scrollSnapAlign="start"
               overflow="clip"
             >
-              <ArticleListItem article={item} />
+              <ArticleListItem
+                date={article.date}
+                src={article.src}
+                location={article.location}
+                author={article.author}
+                description={article.description}
+              />
             </Box>
           ))}
         </HStack>
@@ -86,8 +92,15 @@ const ArticleList = ({ articles }: ArticleListProps) => {
     </VStack>
   ) : (
     <VStack w="100%" spacing="12">
-      {articles.map((item, index) => (
-        <ArticleListItem key={index} article={item} />
+      {articles.map((article, index) => (
+        <ArticleListItem
+          key={index}
+          date={article.date}
+          src={article.src}
+          location={article.location}
+          author={article.author}
+          description={article.description}
+        />
       ))}
     </VStack>
   );

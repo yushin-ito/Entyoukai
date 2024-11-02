@@ -18,14 +18,14 @@ const Top = () => {
     >
       <MainVisual />
       <VStack spacing="1">
-        <Text fontSize={{ base: "md", sm: "4xl" }} fontWeight="bold">
+        <Text fontSize={{ base: "md", sm: "3xl" }} fontWeight="bold">
           令和7年1月12日 13時30分から
         </Text>
-        <Text fontSize={{ base: "md", sm: "4xl" }} fontWeight="bold">
+        <Text fontSize={{ base: "md", sm: "3xl" }} fontWeight="bold">
           保健福祉センター（さわやか村）にて
         </Text>
-        <Text fontSize={{ base: "md", sm: "4xl" }} fontWeight="bold">
-          令和7年度 二十歳のつどいを開催します！
+        <Text fontSize={{ base: "md", sm: "3xl" }} fontWeight="bold">
+          令和7年度 二十歳のつどいを開催します
         </Text>
       </VStack>
       <VStack w={{ base: "80%", sm: "60%" }} spacing={{ base: "10", sm: "20" }}>
