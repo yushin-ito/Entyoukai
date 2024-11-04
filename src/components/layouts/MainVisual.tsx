@@ -11,9 +11,11 @@ import {
   DrawerCloseButton,
   DrawerBody,
   useDisclosure,
+  Icon,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
+import { IoMdPin } from "react-icons/io";
 import MotionBox from "../elements/MotionBox";
 import { useRef, useLayoutEffect } from "react";
 import IconButton from "../elements/IconButton";
@@ -218,7 +220,7 @@ const MainVisual = () => {
       <VStack
         px={{ base: "10", sm: "20" }}
         py={{ base: "12", sm: "16" }}
-        spacing="2"
+        spacing="4"
         rounded={{ base: "xl", sm: "lg" }}
         bg="brand"
         opacity="0.8"
@@ -226,19 +228,32 @@ const MainVisual = () => {
         justifyContent="center"
       >
         <Text
-          fontSize={{ base: "2xl", sm: "4xl" }}
-          fontWeight="bold"
-          color="white"
-        >
-          令和7年度
-        </Text>
-        <Text
           fontSize={{ base: "3xl", sm: "5xl" }}
           fontWeight="bold"
           color="white"
         >
           二十歳のつどい
         </Text>
+        <VStack spacing="2">
+          <Text
+            fontSize={{ base: "lg", sm: "xl" }}
+            fontWeight="bold"
+            color="white"
+          >
+            2025年1月12日（月）13時30分から
+          </Text>
+
+          <HStack alignItems="center" spacing="1">
+            <Icon as={IoMdPin} boxSize="24px" color="white" />
+            <Text
+              fontSize={{ base: "lg", sm: "xl" }}
+              fontWeight="bold"
+              color="white"
+            >
+              保健福祉センター １階ホール
+            </Text>
+          </HStack>
+        </VStack>
       </VStack>
       <Box ref={ref} pos="absolute" bottom="20" />
     </MotionBox>
