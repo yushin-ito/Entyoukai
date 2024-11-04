@@ -9,23 +9,21 @@ import {
 import { useForm } from "react-hook-form";
 import Input from "../elements/Input";
 import Textarea from "../elements/Textarea";
+import { ContactFormData } from "../../types";
 
-type FormData = {
-  name: string;
-  email: string;
-  phone: string;
-  message: string;
+type ContactFormProps = {
+  postContact: (contact: ContactFormData) => Promise<void>;
 };
 
-const ContactForm = () => {
+const ContactForm = ({ postContact }: ContactFormProps) => {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<FormData>();
+  } = useForm<ContactFormData>();
 
-  const onSubmit = (data: FormData) => {
-    console.log(data);
+  const onSubmit = async (data: ContactFormData) => {
+    await postContact(data);
   };
 
   return (
@@ -81,7 +79,7 @@ const ContactForm = () => {
               required: "電話番号を入力してください",
               pattern: {
                 value: /^[0-9]{10,11}$/,
-                message: "有効な電話番号を入力してください（10〜11桁）",
+                message: "有効な電話番号を入力してください",
               },
             })}
           />
@@ -96,6 +94,7 @@ const ContactForm = () => {
             お問い合わせ内容 <span style={{ color: "red" }}>*</span>
           </FormLabel>
           <Textarea
+            h="180px"
             placeholder="お問い合わせ内容"
             {...register("message", {
               required: "お問い合わせ内容を入力してください",

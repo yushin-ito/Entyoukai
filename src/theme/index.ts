@@ -10,6 +10,9 @@ const theme = extendTheme({
   },
   colors: {
     brand: "#010158",
+    info: "#3182ce",
+    success: "#38a169",
+    error: "#e53e3e",
   },
   components: {
     Text: {
