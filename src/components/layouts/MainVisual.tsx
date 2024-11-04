@@ -151,7 +151,7 @@ const MainVisual = () => {
       <Drawer placement="left" isOpen={isOpen} onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent maxW="60%" bg="brand" opacity="0.8">
-          <DrawerCloseButton mt="2" color="white" size="lg" />
+          <DrawerCloseButton mt="2" color="white" size="md" />
           <DrawerBody>
             <VStack mt="20" spacing="10">
               <Button
