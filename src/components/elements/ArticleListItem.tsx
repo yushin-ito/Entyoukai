@@ -1,4 +1,4 @@
-import { Box, Text, VStack, Flex, Image, HStack } from "@chakra-ui/react";
+import { Box, Text, VStack, Stack, Image, HStack } from "@chakra-ui/react";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import MotionBox from "../elements/MotionBox";
@@ -28,7 +28,7 @@ const ArticleListItem = ({
       animate={isInView ? { opacity: 1, transition: { duration: 1 } } : {}}
       w="100%"
     >
-      <Flex
+      <Stack
         w="100%"
         flexDir={{ base: "column", sm: "row" }}
         alignItems={{ base: "center", sm: "flex-start" }}
@@ -57,11 +57,7 @@ const ArticleListItem = ({
             rounded="full"
             bg="white"
           >
-            <Text
-              fontSize="2xs"
-              fontWeight="bold"
-              color="brand"
-            >
+            <Text fontSize="2xs" fontWeight="bold" color="brand">
               {location}
             </Text>
           </Box>
@@ -103,7 +99,7 @@ const ArticleListItem = ({
             {description}
           </Text>
         </VStack>
-      </Flex>
+      </Stack>
     </MotionBox>
   );
 };

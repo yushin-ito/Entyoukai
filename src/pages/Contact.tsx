@@ -1,6 +1,6 @@
 import { VStack, useToast } from "@chakra-ui/react";
 import MainVisual from "../components/layouts/MainVisual";
-import Title from "../components/elements/Title";
+import SectionTitle from "../components/elements/SectionTitle";
 import Footer from "../components/layouts/Footer";
 import ContactForm from "../components/layouts/ContactForm";
 import { usePostContact } from "../hooks/contact";
@@ -55,8 +55,8 @@ const Contact = () => {
       overflowX="hidden"
     >
       <MainVisual />
-      <VStack w={{ base: "80%", sm: "60%" }} spacing={{ base: "6", sm: "8" }}>
-        <Title title="お問い合わせ" />
+      <VStack w={{ base: "70%", sm: "60%" }} spacing={{ base: "6", sm: "8" }}>
+        <SectionTitle id="contact" title="お問い合わせ" />
         <ContactForm postContact={postContact} />
       </VStack>
       <Footer />

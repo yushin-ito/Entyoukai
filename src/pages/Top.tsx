@@ -1,40 +1,37 @@
-import { Text, VStack } from "@chakra-ui/react";
-import { useQueryArticles } from "../hooks/articles";
+import { VStack } from "@chakra-ui/react";
 import MainVisual from "../components/layouts/MainVisual";
-import Title from "../components/elements/Title";
-import ArticleList from "../components/layouts/ArticleList";
+import SectionTitle from "../components/elements/SectionTitle";
 import Access from "../components/layouts/Access";
 import Footer from "../components/layouts/Footer";
+import Countdown from "../components/layouts/Countdown";
+import ScrollToTopButton from "../components/elements/ScrollTopButton";
+import TableOfContents from "../components/layouts/TableOfContents";
 
 const Top = () => {
-  const { data: articles } = useQueryArticles();
-
   return (
     <VStack
       flex="1"
       alignItems="center"
       spacing={{ base: "10", sm: "20" }}
       overflowX="hidden"
+      pos="relative"
     >
+      <ScrollToTopButton />
       <MainVisual />
-      <VStack spacing="1">
-        <Text fontSize={{ base: "md", sm: "3xl" }} fontWeight="bold">
-          令和7年1月12日 13時30分から
-        </Text>
-        <Text fontSize={{ base: "md", sm: "3xl" }} fontWeight="bold">
-          保健福祉センター（さわやか村）にて
-        </Text>
-        <Text fontSize={{ base: "md", sm: "3xl" }} fontWeight="bold">
-          令和7年度 二十歳のつどいを開催します
-        </Text>
-      </VStack>
-      <VStack w={{ base: "80%", sm: "60%" }} spacing={{ base: "10", sm: "20" }}>
+      <TableOfContents
+        sections={[
+          { id: "countdown", title: "カウントダウン" },
+          { id: "overview", title: "概要" },
+          { id: "access", title: "アクセス" },
+        ]}
+      />
+      <VStack w={{ base: "70%", sm: "60%" }} spacing={{ base: "10", sm: "20" }}>
+        <Countdown />
         <VStack w="100%" spacing={{ base: "6", sm: "8" }}>
-          <Title title="活動報告" />
-          {articles && <ArticleList articles={articles} />}
+          <SectionTitle id="overview" title="概要" />
         </VStack>
         <VStack w="100%" spacing={{ base: "6", sm: "8" }}>
-          <Title title="アクセス" />
+          <SectionTitle id="access" title="アクセス" />
           <Access />
         </VStack>
       </VStack>

@@ -1,4 +1,4 @@
-import { VStack, Text, Flex } from "@chakra-ui/react";
+import { VStack, Text, Stack } from "@chakra-ui/react";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import MotionBox from "../elements/MotionBox";
@@ -17,7 +17,7 @@ const Access = () => {
       animate={isInView ? { opacity: 1, transition: { duration: 1 } } : {}}
       w="100%"
     >
-      <Flex
+      <Stack
         w="100%"
         flexDir={{ base: "column", sm: "row" }}
         gap={{ base: "4", sm: "6" }}
@@ -47,7 +47,7 @@ const Access = () => {
             </Text>
           </VStack>
         </VStack>
-      </Flex>
+      </Stack>
     </MotionBox>
   );
 };

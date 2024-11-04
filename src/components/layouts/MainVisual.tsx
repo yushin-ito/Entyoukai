@@ -4,6 +4,7 @@ import {
   Button,
   HStack,
   Box,
+  Icon,
   useBreakpointValue,
   Drawer,
   DrawerOverlay,
@@ -11,34 +12,13 @@ import {
   DrawerCloseButton,
   DrawerBody,
   useDisclosure,
-  Icon,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import { IoMdPin } from "react-icons/io";
 import MotionBox from "../elements/MotionBox";
-import { useRef, useLayoutEffect } from "react";
+import { useRef, useLayoutEffect, useCallback } from "react";
 import IconButton from "../elements/IconButton";
-
-const scrollToElement = (element: HTMLDivElement, duration: number) => {
-  const start = window.scrollY;
-  const targetPosition = element.getBoundingClientRect().top;
-  const startTime = performance.now();
-
-  const animateScroll = (currentTime: number) => {
-    const elapsed = currentTime - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    const easing = 1 - Math.pow(1 - progress, 3);
-
-    window.scrollTo(0, start + targetPosition * easing);
-
-    if (progress < 1) {
-      requestAnimationFrame(animateScroll);
-    }
-  };
-
-  requestAnimationFrame(animateScroll);
-};
 
 const MainVisual = () => {
   const { pathname } = window.location;
@@ -47,15 +27,38 @@ const MainVisual = () => {
   const ref = useRef<HTMLDivElement>(null);
   const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
 
+  const scrollToElement = useCallback(
+    (element: HTMLDivElement, duration: number) => {
+      const start = window.scrollY;
+      const target = element.getBoundingClientRect().top;
+      const now = performance.now();
+
+      const scroll = (time: number) => {
+        const elapsed = time - now;
+        const progress = Math.min(elapsed / duration, 1);
+        const easing = 1 - Math.pow(1 - progress, 3);
+
+        window.scrollTo(0, start + target * easing);
+
+        if (progress < 1) {
+          requestAnimationFrame(scroll);
+        }
+      };
+
+      requestAnimationFrame(scroll);
+    },
+    []
+  );
+
   useLayoutEffect(() => {
     if (pathname !== "/") {
       setTimeout(() => {
         if (ref.current) {
-          scrollToElement(ref.current, 600);
+          scrollToElement(ref.current, 800);
         }
       }, 100);
     }
-  }, [pathname]);
+  }, [pathname, scrollToElement]);
 
   return (
     <MotionBox
@@ -68,7 +71,7 @@ const MainVisual = () => {
       h={{ base: "calc(100vh * 0.8)", sm: "100vh" }}
       pos="relative"
       display="flex"
-      flexDirection="column"
+      flexDir="column"
       alignItems="center"
       justifyContent="center"
     >

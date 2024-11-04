@@ -1,6 +1,6 @@
 import { Box, VStack } from "@chakra-ui/react";
 import MainVisual from "../components/layouts/MainVisual";
-import Title from "../components/elements/Title";
+import SectionTitle from "../components/elements/SectionTitle";
 import Footer from "../components/layouts/Footer";
 
 const Activity = () => {
@@ -12,8 +12,8 @@ const Activity = () => {
       overflowX="hidden"
     >
       <MainVisual />
-      <VStack w={{ base: "80%", sm: "60%" }} spacing={{ base: "6", sm: "8" }}>
-        <Title title="活動について" />
+      <VStack w={{ base: "70%", sm: "60%" }} spacing={{ base: "6", sm: "8" }}>
+        <SectionTitle id="activity" title="活動について" />
         <Box h="400px" />
       </VStack>
       <Footer />

@@ -1,7 +1,7 @@
 import { VStack } from "@chakra-ui/react";
 import { useQueryEvents } from "../hooks/events";
 import MainVisual from "../components/layouts/MainVisual";
-import Title from "../components/elements/Title";
+import SectionTitle from "../components/elements/SectionTitle";
 import Footer from "../components/layouts/Footer";
 import Timeline from "../components/layouts/Timeline";
 
@@ -16,8 +16,8 @@ const Memory = () => {
       overflowX="hidden"
     >
       <MainVisual />
-      <VStack w={{ base: "80%", sm: "60%" }} spacing={{ base: "10", sm: "16" }}>
-        <Title title="おもいで" />
+      <VStack w={{ base: "70%", sm: "60%" }} spacing={{ base: "10", sm: "16" }}>
+        <SectionTitle id="memory" title="おもいで" />
         {events && <Timeline events={events} />}
       </VStack>
       <Footer />
