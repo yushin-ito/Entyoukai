@@ -33,7 +33,7 @@ const ArticleListItem = ({
         flexDir={{ base: "column", sm: "row" }}
         alignItems={{ base: "center", sm: "flex-start" }}
         rounded={{ base: "none", sm: "md" }}
-        gap={{ base: "6", sm: "8" }}
+        spacing={{ base: "6", sm: "8" }}
         pb={{ base: "4", sm: "0" }}
       >
         {/* タイトル画像 */}

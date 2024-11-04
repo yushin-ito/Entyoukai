@@ -19,7 +19,7 @@ const Memory = () => {
     >
       <ScrollToTopButton />
       <MainVisual />
-      <VStack w={{ base: "70%", sm: "60%" }} spacing={{ base: "10", sm: "16" }}>
+      <VStack w={{ base: "75%", sm: "60%" }} spacing={{ base: "10", sm: "16" }}>
         <SectionTitle id="memory" title="おもいで" />
         {events && <Timeline events={events} />}
       </VStack>
