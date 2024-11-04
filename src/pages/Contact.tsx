@@ -52,13 +52,13 @@ const Contact = () => {
     <VStack
       flex="1"
       alignItems="center"
-      spacing={{ base: "10", sm: "20" }}
+      spacing={{ base: "10", sm: "24" }}
       overflowX="hidden"
       pos="relative"
     >
       <ScrollToTopButton />
       <MainVisual />
-      <VStack w="60%" spacing={{ base: "6", sm: "8" }}>
+      <VStack w={{ base: "70%", sm: "50%" }} spacing={{ base: "6", sm: "8" }}>
         <SectionTitle id="contact" title="お問い合わせ" />
         <ContactForm postContact={postContact} />
       </VStack>

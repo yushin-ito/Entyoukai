@@ -1,4 +1,11 @@
-import { VStack, Text, Button, HStack, Box } from "@chakra-ui/react";
+import {
+  VStack,
+  Text,
+  Button,
+  HStack,
+  Box,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 type ScrollToSectionButtonProps = {
@@ -52,7 +59,7 @@ const ScrollToSectionButton = ({
       }}
     >
       <HStack spacing="4">
-        <Box w="2.5px" h="42px" bg={active ? "brand" : "gray.500"} />
+        <Box w="3px" h="42px" bg={active ? "brand" : "gray.500"} />
         <Text
           color={active ? "brand" : "gray.500"}
           fontWeight="bold"
@@ -72,6 +79,7 @@ type TableOfContentsProps = {
 const TableOfContents = ({ sections }: TableOfContentsProps) => {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [fixed, setFixed] = useState(false);
+  const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
 
   useEffect(() => {
     const onScroll = () => {
@@ -95,7 +103,7 @@ const TableOfContents = ({ sections }: TableOfContentsProps) => {
     return () => window.removeEventListener("scroll", onScroll);
   }, [sections]);
 
-  return (
+  return breakpoint === "base" ? null : (
     <VStack
       position={fixed ? "fixed" : "absolute"}
       top={fixed ? "96px" : "calc(100vh + 96px)"}

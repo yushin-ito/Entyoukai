@@ -62,8 +62,8 @@ const MainVisual = () => {
 
   return (
     <MotionBox
-      initial={{ opacity: 0.8 }}
-      animate={{ opacity: 1, transition: { duration: 1.5 } }}
+      initial={{ opacity: 0.2 }}
+      animate={{ opacity: 1, transition: { duration: 0.8 } }}
       bgImage="url('/assets/images/background.png')"
       bgPosition="center"
       bgSize="cover"
@@ -221,7 +221,7 @@ const MainVisual = () => {
 
       {/* メインビジュアル */}
       <VStack
-        px={{ base: "10", sm: "20" }}
+        px={{ base: "10", sm: "24" }}
         py={{ base: "12", sm: "16" }}
         spacing="4"
         rounded={{ base: "xl", sm: "lg" }}
@@ -239,7 +239,7 @@ const MainVisual = () => {
         </Text>
         <VStack spacing="2">
           <Text
-            fontSize={{ base: "lg", sm: "xl" }}
+            fontSize={{ base: "md", sm: "xl" }}
             fontWeight="bold"
             color="white"
           >
@@ -247,13 +247,17 @@ const MainVisual = () => {
           </Text>
 
           <HStack alignItems="center" spacing="1">
-            <Icon as={IoMdPin} boxSize="24px" color="white" />
+            <Icon
+              as={IoMdPin}
+              boxSize={{ base: "18px", sm: "24px" }}
+              color="white"
+            />
             <Text
-              fontSize={{ base: "lg", sm: "xl" }}
+              fontSize={{ base: "md", sm: "xl" }}
               fontWeight="bold"
               color="white"
             >
-              保健福祉センター １階ホール
+              保健福祉センター１階ホール
             </Text>
           </HStack>
         </VStack>

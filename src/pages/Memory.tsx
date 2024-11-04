@@ -13,13 +13,13 @@ const Memory = () => {
     <VStack
       flex="1"
       alignItems="center"
-      spacing={{ base: "10", sm: "20" }}
+      spacing={{ base: "10", sm: "24" }}
       overflowX="hidden"
       pos="relative"
     >
       <ScrollToTopButton />
       <MainVisual />
-      <VStack w="60%" spacing={{ base: "10", sm: "16" }}>
+      <VStack w={{ base: "70%", sm: "60%" }} spacing={{ base: "10", sm: "16" }}>
         <SectionTitle id="memory" title="おもいで" />
         {events && <Timeline events={events} />}
       </VStack>

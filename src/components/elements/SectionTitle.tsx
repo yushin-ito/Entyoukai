@@ -24,7 +24,7 @@ const SectionTitle = ({ id, title }: SectionTitleProps) => {
       id={id}
       ref={ref}
       initial={{ opacity: 0 }}
-      animate={isInView ? { opacity: 1, transition: { duration: 0.8 } } : {}}
+      animate={isInView ? { opacity: 1, transition: { duration: 1.5 } } : {}}
       w="100%"
     >
       {breakpoint === "base" ? (

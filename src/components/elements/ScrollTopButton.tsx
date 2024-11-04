@@ -52,8 +52,8 @@ const ScrollToTopButton = () => {
             transition: { duration: 0.3, ease: "easeOut" },
           }}
           position="fixed"
-          bottom="48px"
-          right="48px"
+          bottom={{ base: "24px", sm: "48px" }}
+          right={{ base: "24px", sm: "48px" }}
           zIndex={999}
         >
           <IconButton

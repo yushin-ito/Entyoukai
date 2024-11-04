@@ -12,7 +12,7 @@ const Top = () => {
     <VStack
       flex="1"
       alignItems="center"
-      spacing={{ base: "10", sm: "20" }}
+      spacing={{ base: "10", sm: "24" }}
       overflowX="hidden"
       pos="relative"
     >
@@ -25,7 +25,7 @@ const Top = () => {
           { id: "access", title: "アクセス" },
         ]}
       />
-      <VStack w="60%" spacing={{ base: "10", sm: "20" }}>
+      <VStack w={{ base: "70%", sm: "50%" }} spacing={{ base: "10", sm: "24" }}>
         <Countdown />
         <VStack w="100%" spacing={{ base: "6", sm: "8" }}>
           <SectionTitle id="overview" title="概要" />

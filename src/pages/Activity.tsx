@@ -9,13 +9,13 @@ const Activity = () => {
     <VStack
       flex="1"
       alignItems="center"
-      spacing={{ base: "10", sm: "20" }}
+      spacing={{ base: "10", sm: "24" }}
       overflowX="hidden"
       pos="relative"
     >
       <ScrollToTopButton />
       <MainVisual />
-      <VStack w="60%" spacing={{ base: "6", sm: "8" }}>
+      <VStack w={{ base: "70%", sm: "50%" }} spacing={{ base: "6", sm: "8" }}>
         <SectionTitle id="activity" title="活動について" />
         <Box h="400px" />
       </VStack>

@@ -40,10 +40,10 @@ const Countdown = () => {
 
   return (
     <VStack id="countdown" ref={ref} spacing="5" rounded="lg">
-      <Text fontSize="2xl" fontWeight="bold">
-        二十歳のつどい まであと
+      <Text fontSize={{ base: "lg", sm: "2xl" }} fontWeight="bold">
+        二十歳のつどいまであと
       </Text>
-      <HStack spacing="4" alignItems="flex-end">
+      <HStack spacing="0" alignItems="flex-end">
         {Object.entries(timer).map(([unit, value]) => (
           <MotionBox
             key={unit}
@@ -57,14 +57,22 @@ const Countdown = () => {
                   }
                 : {}
             }
+            w={{ base: "64px", sm: "96px" }}
             bg="white"
             rounded="md"
-            w="84px"
           >
-            <Text textAlign="center" fontSize="4xl" fontWeight="bold">
+            <Text
+              textAlign="center"
+              fontSize={{ base: "3xl", sm: "5xl" }}
+              fontWeight="bold"
+            >
               {String(value).padStart(2, "0")}
             </Text>
-            <Text textAlign="center" fontSize="lg" fontWeight="bold">
+            <Text
+              textAlign="center"
+              fontSize={{ base: "lg", sm: "xl" }}
+              fontWeight="bold"
+            >
               {labels[unit]}
             </Text>
           </MotionBox>
