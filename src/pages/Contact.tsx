@@ -7,6 +7,7 @@ import { usePostContact } from "../hooks/contact";
 import { useCallback } from "react";
 import { ContactFormData } from "../types";
 import Toast from "../components/elements/Toast";
+import ScrollToTopButton from "../components/elements/ScrollTopButton";
 
 const Contact = () => {
   const toast = useToast();
@@ -53,9 +54,11 @@ const Contact = () => {
       alignItems="center"
       spacing={{ base: "10", sm: "20" }}
       overflowX="hidden"
+      pos="relative"
     >
+      <ScrollToTopButton />
       <MainVisual />
-      <VStack w={{ base: "70%", sm: "60%" }} spacing={{ base: "6", sm: "8" }}>
+      <VStack w="60%" spacing={{ base: "6", sm: "8" }}>
         <SectionTitle id="contact" title="お問い合わせ" />
         <ContactForm postContact={postContact} />
       </VStack>

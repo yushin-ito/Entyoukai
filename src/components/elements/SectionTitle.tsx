@@ -36,7 +36,7 @@ const SectionTitle = ({ id, title }: SectionTitleProps) => {
         </HStack>
       ) : (
         <VStack w="100%" spacing="2" alignItems="flex-start">
-          <Text fontSize="3xl" fontWeight="bold">
+          <Text fontSize="2xl" fontWeight="bold">
             {title}
           </Text>
           <Box w="100%" h="1" bg="brand" />

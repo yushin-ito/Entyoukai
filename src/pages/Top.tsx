@@ -25,7 +25,7 @@ const Top = () => {
           { id: "access", title: "アクセス" },
         ]}
       />
-      <VStack w={{ base: "70%", sm: "60%" }} spacing={{ base: "10", sm: "20" }}>
+      <VStack w="60%" spacing={{ base: "10", sm: "20" }}>
         <Countdown />
         <VStack w="100%" spacing={{ base: "6", sm: "8" }}>
           <SectionTitle id="overview" title="概要" />

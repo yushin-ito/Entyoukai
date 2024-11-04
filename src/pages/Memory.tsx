@@ -4,6 +4,7 @@ import MainVisual from "../components/layouts/MainVisual";
 import SectionTitle from "../components/elements/SectionTitle";
 import Footer from "../components/layouts/Footer";
 import Timeline from "../components/layouts/Timeline";
+import ScrollToTopButton from "../components/elements/ScrollTopButton";
 
 const Memory = () => {
   const { data: events } = useQueryEvents();
@@ -14,9 +15,11 @@ const Memory = () => {
       alignItems="center"
       spacing={{ base: "10", sm: "20" }}
       overflowX="hidden"
+      pos="relative"
     >
+      <ScrollToTopButton />
       <MainVisual />
-      <VStack w={{ base: "70%", sm: "60%" }} spacing={{ base: "10", sm: "16" }}>
+      <VStack w="60%" spacing={{ base: "10", sm: "16" }}>
         <SectionTitle id="memory" title="おもいで" />
         {events && <Timeline events={events} />}
       </VStack>
