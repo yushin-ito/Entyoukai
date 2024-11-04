@@ -52,6 +52,7 @@ const ArticleList = ({ articles }: ArticleListProps) => {
         }}
         css={{
           scrollbarWidth: "none",
+          scrollbarHeight: "none",
           msOverflowStyle: "none",
         }}
       >

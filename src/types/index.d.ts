@@ -22,6 +22,12 @@ export type Event = {
   dates: string[];
 };
 
+export type News = {
+  title: string;
+  date: string;
+  category: "news" | "release" | "system";
+}
+
 export type ContactFormData = {
   name: string;
   email: string;
