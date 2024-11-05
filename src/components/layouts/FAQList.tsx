@@ -27,6 +27,7 @@ const FAQList = ({ faq }: FAQListProps) => {
             justifyContent="space-between"
             bg="white"
             _hover={{ bg: "gray.50" }}
+            _active={{ bg: "gray.50" }}
             _expanded={{ bg: "white" }}
           >
             <HStack
