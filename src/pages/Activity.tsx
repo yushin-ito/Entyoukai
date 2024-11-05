@@ -5,6 +5,7 @@ import Footer from "../components/layouts/Footer";
 import ScrollToTopButton from "../components/elements/ScrollTopButton";
 import ArticleList from "../components/layouts/ArticleList";
 import { useQueryArticles } from "../hooks/articles";
+import TableOfContents from "../components/layouts/TableOfContents";
 
 const Activity = () => {
   const { data: articles } = useQueryArticles();
@@ -19,8 +20,13 @@ const Activity = () => {
     >
       <ScrollToTopButton />
       <MainVisual />
-
-      <VStack w={{ base: "75%", sm: "50%" }} spacing={{ base: "10", sm: "24" }}>
+      <TableOfContents
+        sections={[
+          { id: "activity", title: "活動について" },
+          { id: "article", title: "活動報告" },
+        ]}
+      />
+      <VStack w={{ base: "75%", sm: "55%" }} spacing={{ base: "10", sm: "24" }}>
         <VStack id="activity" w="100%" spacing={{ base: "6", sm: "8" }}>
           <SectionTitle title="活動について" />
           <Box h="240px" />

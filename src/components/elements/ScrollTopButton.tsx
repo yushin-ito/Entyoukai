@@ -63,7 +63,7 @@ const ScrollToTopButton = () => {
             icon={
               <FiChevronUp size={breakpoint === "base" ? "24px" : "30px"} />
             }
-            onClick={() => scrollToTop(800)}
+            onClick={() => scrollToTop(500)}
             p="10px"
             bg="brand"
             color="white"

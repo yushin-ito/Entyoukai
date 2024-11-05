@@ -5,6 +5,7 @@ import {
   Circle,
   VStack,
   useBreakpointValue,
+  SimpleGrid,
 } from "@chakra-ui/react";
 import { Article } from "../../types";
 import ArticleListItem from "../elements/ArticleListItem";
@@ -17,13 +18,14 @@ const ArticleList = ({ articles }: ArticleListProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
-
   useEffect(() => {
     const current = ref.current;
 
     const onScroll = () => {
       if (current) {
-        const index = Math.round(current.scrollLeft / window.innerWidth);
+        const index = Math.round(
+          current.scrollLeft / (window.innerWidth * 0.75 + 24)
+        );
         setCurrentIndex(index);
       }
     };
@@ -36,13 +38,13 @@ const ArticleList = ({ articles }: ArticleListProps) => {
   }, [ref]);
 
   return breakpoint === "base" ? (
-    <VStack w="100%" spacing="0">
+    <VStack w="100%" spacing="2">
       {/* 横スクロール可能なリスト */}
       <Box
         ref={ref}
         overflowX="auto"
         overflowY="hidden"
-        w="calc(100vw * 0.8)"
+        w="calc(100vw * 0.75)"
         scrollBehavior="smooth"
         scrollSnapType="x mandatory"
         sx={{
@@ -52,13 +54,13 @@ const ArticleList = ({ articles }: ArticleListProps) => {
         }}
         css={{
           scrollbarWidth: "none",
-          scrollbarHeight: "none",
           msOverflowStyle: "none",
         }}
       >
         <HStack
-          w={`calc(${articles.length * 100}vw * 0.8 + ${24 * articles.length}px )`}
+          w={`calc(${articles.length * 100}vw * 0.75 + ${24 * articles.length}px )`}
           spacing="0"
+          alignItems="flex-start"
         >
           {articles.map((article, index) => (
             <Box
@@ -69,11 +71,14 @@ const ArticleList = ({ articles }: ArticleListProps) => {
               overflow="clip"
             >
               <ArticleListItem
+                id={article.id}
+                title={article.title}
+                description={article.description}
                 date={article.date}
-                src={article.src}
+                images={article.images}
+                avatar={article.avatar}
                 location={article.location}
                 author={article.author}
-                description={article.description}
               />
             </Box>
           ))}
@@ -92,18 +97,21 @@ const ArticleList = ({ articles }: ArticleListProps) => {
       </HStack>
     </VStack>
   ) : (
-    <VStack w="100%" spacing="12">
+    <SimpleGrid w="100%" px="4" columns={3} spacingX="10" spacingY="12">
       {articles.map((article, index) => (
         <ArticleListItem
           key={index}
+          id={article.id}
+          title={article.title}
+          description={article.description}
           date={article.date}
-          src={article.src}
+          images={article.images}
+          avatar={article.avatar}
           location={article.location}
           author={article.author}
-          description={article.description}
         />
       ))}
-    </VStack>
+    </SimpleGrid>
   );
 };
 

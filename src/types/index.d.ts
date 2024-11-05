@@ -9,11 +9,13 @@ export type Contact = Database["public"]["Tables"]["contact"];
 
 export type Article = {
   id: number;
+  title: string;
+  description: string;
   date: string;
-  src: string;
+  images: string[];
+  avatar: string;
   location: string;
   author: string;
-  description: string;
 };
 
 export type Event = {

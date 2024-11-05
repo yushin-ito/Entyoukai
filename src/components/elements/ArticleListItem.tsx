@@ -1,25 +1,43 @@
-import { Box, Text, VStack, Stack, Image, HStack } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  VStack,
+  Image,
+  HStack,
+  useBreakpointValue,
+  Avatar,
+} from "@chakra-ui/react";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import MotionBox from "../elements/MotionBox";
+import { format, formatDistanceToNow, parseISO } from "date-fns";
+import { ja } from "date-fns/locale";
+import { Link } from "react-router-dom";
 
 type ArticleListItemProps = {
+  id: number;
+  title: string;
+  description: string;
   date: string;
-  src: string;
+  images: string[];
+  avatar: string;
   location: string;
   author: string;
-  description: string;
 };
 
 const ArticleListItem = ({
+  id,
+  title,
+  description,
   date,
-  src,
+  images,
+  avatar,
   location,
   author,
-  description,
 }: ArticleListItemProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+  const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
 
   return (
     <MotionBox
@@ -28,78 +46,114 @@ const ArticleListItem = ({
       animate={isInView ? { opacity: 1, transition: { duration: 1 } } : {}}
       w="100%"
     >
-      <Stack
+      <VStack
+        as={Link}
+        to={`/article/${id}`}
         w="100%"
-        flexDir={{ base: "column", sm: "row" }}
-        alignItems={{ base: "center", sm: "flex-start" }}
         rounded={{ base: "none", sm: "md" }}
-        spacing={{ base: "6", sm: "8" }}
+        spacing={{ base: "6", sm: "2" }}
         pb={{ base: "4", sm: "0" }}
+        _hover={
+          breakpoint === "base"
+            ? {}
+            : { transform: "scale(1.02)", opacity: 0.8 }
+        }
+        _active={breakpoint === "base" ? {} : { transform: "scale(1.00)" }}
       >
-        {/* タイトル画像 */}
-        <Box w={{ base: "100%", sm: "auto" }} pos="relative">
+        <Box w="100%" pos="relative">
+          {/* 画像 */}
           <Image
-            src={src}
+            src={images[0]}
             alt={location}
-            w={{ base: "100%", sm: "140px" }}
-            h={{ base: "220px", sm: "140px" }}
+            w="100%"
+            h={{ base: "220px", sm: "175px" }}
             objectFit="cover"
             rounded={{ base: "none", sm: "xl" }}
             shadow="sm"
+            draggable="false"
           />
           {/* ロケーション */}
           <Box
             pos="absolute"
-            top={{ base: "3", sm: "2" }}
+            bottom={{ base: "3", sm: "2" }}
             right={{ base: "3", sm: "2" }}
             px="6px"
-            py="2px"
+            py="2.5px"
             rounded="full"
-            bg="white"
+            bg="rgba(0, 0, 0, 0.6)"
           >
-            <Text fontSize="2xs" fontWeight="bold" color="brand">
+            <Text fontSize="2xs" color="white">
               {location}
             </Text>
           </Box>
         </Box>
-        {/* 内容 */}
         <VStack
-          w={{ base: "100%", sm: "70%" }}
-          px="6px"
-          spacing="10px"
-          alignItems="start"
+          w="100%"
+          px={{ base: "6px", sm: "2px" }}
+          spacing={{ base: "10px", sm: "2px" }}
+          alignItems="flex-start"
         >
-          <HStack
-            w="100%"
-            alignItems="center"
-            justifyContent={{ base: "space-between", sm: "flex-start" }}
-          >
-            {/* 日付と作者 */}
-            <Box
-              px="6px"
-              py="1px"
-              borderWidth={{ base: "1.5px", sm: "2px" }}
-              borderColor="brand"
-              rounded="full"
-            >
-              <Text fontSize={{ base: "2xs", sm: "xs" }} fontWeight="bold">
-                {date}
-              </Text>
-            </Box>
-            <Text fontSize={{ base: "2xs", sm: "xs" }} fontWeight="semibold">
-              by {author}
+          {/* タイトル */}
+          {breakpoint === "sm" && (
+            <Text fontSize="md" fontWeight="bold" noOfLines={1}>
+              {title}
             </Text>
-          </HStack>
+          )}
+          {/* 日付と作者 */}
+          {breakpoint === "base" && (
+            <HStack w="100%" alignItems="center" justifyContent="space-between">
+              <Box
+                px="6px"
+                py="1px"
+                borderWidth="1.5px"
+                borderColor="brand"
+                rounded="full"
+              >
+                <Text fontSize="2xs" fontWeight="bold">
+                  {format(date, "yyyy.M.d")}
+                </Text>
+              </Box>
+              <HStack spacing="2">
+                <Avatar size="xs" src={avatar} />
+                <Text fontSize="2xs" fontWeight="bold">
+                  {author}
+                </Text>
+              </HStack>
+            </HStack>
+          )}
           {/* 内容 */}
           <Text
-            fontSize={{ base: "xs", sm: "sm" }}
-            fontWeight="semibold"
-            color="brand"
+            fontSize="xs"
+            fontWeight={{ base: "bold", sm: "normal" }}
+            color={{ base: "brand", sm: "gray.600" }}
+            noOfLines={{ base: 10, sm: 2 }}
           >
             {description}
           </Text>
+          {/* 日付と作者 */}
+          {breakpoint === "sm" && (
+            <HStack
+              w="100%"
+              mt="4"
+              alignItems="center"
+              justifyContent="space-between"
+            >
+              <HStack spacing="6px">
+                <Avatar size="xs" src={avatar} />
+                <Text fontSize="2xs" fontWeight="bold" color="gray.900">
+                  {author}
+                </Text>
+              </HStack>
+              <Text fontSize="2xs" color="gray.600">
+                {formatDistanceToNow(parseISO(date), {
+                  addSuffix: true,
+                  locale: ja,
+                })}
+              </Text>
+            </HStack>
+          )}
         </VStack>
-      </Stack>
+      </VStack>
     </MotionBox>
   );
 };

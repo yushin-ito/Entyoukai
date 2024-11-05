@@ -109,7 +109,7 @@ const TableOfContents = ({ sections }: TableOfContentsProps) => {
       top={fixed ? "96px" : "calc(100vh + 96px)"}
       left="64px"
       spacing="0"
-      alignItems="start"
+      alignItems="flex-start"
       zIndex={999}
     >
       {sections.map((section) => (
@@ -117,7 +117,7 @@ const TableOfContents = ({ sections }: TableOfContentsProps) => {
           key={section.id}
           id={section.id}
           title={section.title}
-          duration={800}
+          duration={500}
           active={activeId === section.id}
           onClick={() => setActiveId(section.id)}
         />
