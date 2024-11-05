@@ -51,19 +51,19 @@ const NewsList = ({ news }: NewsListProps) => {
           msOverflowStyle: "none",
         }}
       >
-        {Object.keys(categories).map((key) => (
-          <Box key={key}>
+        {Object.keys(categories).map((id) => (
+          <Box key={id}>
             <Button
               h={{ base: "24px", sm: "28px" }}
               px={{ base: "8px", sm: "12px" }}
               rounded="full"
-              bg={activeId === key ? "brand" : "gray.300"}
+              bg={activeId === id ? "brand" : "gray.300"}
               _hover={{ transform: "scale(0.98)" }}
               _active={{ transform: "scale(0.96)" }}
-              onClick={() => setActiveId(key)}
+              onClick={() => setActiveId(id)}
             >
               <Text fontSize={{ base: "xs", sm: "sm" }} color="white">
-                {categories[key]}
+                {categories[id]}
               </Text>
             </Button>
           </Box>
