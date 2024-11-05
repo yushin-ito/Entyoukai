@@ -63,7 +63,7 @@ const ScrollToSectionButton = ({
         <Text
           color={active ? "brand" : "gray.500"}
           fontWeight="bold"
-          fontSize="lg"
+          fontSize="md"
         >
           {title}
         </Text>

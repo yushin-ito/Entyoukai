@@ -61,7 +61,7 @@ const ScrollToTopButton = () => {
           <IconButton
             aria-label="top"
             icon={
-              <FiChevronUp size={breakpoint === "base" ? "24px" : "36px"} />
+              <FiChevronUp size={breakpoint === "base" ? "24px" : "30px"} />
             }
             onClick={() => scrollToTop(800)}
             p="10px"
