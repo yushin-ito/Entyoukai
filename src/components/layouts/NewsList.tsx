@@ -57,7 +57,7 @@ const NewsList = ({ news }: NewsListProps) => {
               h={{ base: "24px", sm: "28px" }}
               px={{ base: "8px", sm: "12px" }}
               rounded="full"
-              bg={activeId === key ? "brand" : "gray.450"}
+              bg={activeId === key ? "brand" : "gray.300"}
               _hover={{ transform: "scale(0.98)" }}
               _active={{ transform: "scale(0.96)" }}
               onClick={() => setActiveId(key)}
@@ -100,19 +100,18 @@ const NewsList = ({ news }: NewsListProps) => {
           <VStack key={index} w="100%" alignItems="start" spacing="2">
             <Stack
               w="100%"
-              flexDir={{ base: "column", sm: "row" }}
+              direction={{ base: "column", sm: "row" }}
               alignItems={{ base: "flex-start", sm: "center" }}
               px={{ base: "4px", sm: "8px" }}
-              py={{ base: "12px", sm: "20px" }}
+              py={{ base: "10px", sm: "20px" }}
               spacing={{ base: "4", sm: "6" }}
             >
               <HStack spacing={{ base: "2", sm: "4" }} alignItems="center">
-                <Text fontSize={{ base: "sm", sm: "sm" }} color="gray.600">
+                <Text fontSize={{ base: "xs", sm: "sm" }} color="gray.600">
                   {format(item.date, "yyyy.MM.dd")}
                 </Text>
                 <Box
                   bg="brand"
-                  fontSize={{ base: "xs", sm: "sm" }}
                   px={{ base: "6px", sm: "8px" }}
                   py={{ base: "2px", sm: "4px" }}
                   rounded="full"

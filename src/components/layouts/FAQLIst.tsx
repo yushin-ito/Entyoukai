@@ -23,9 +23,10 @@ const FAQList = ({ faq }: FAQListProps) => {
           <AccordionButton
             px={{ base: "0", sm: "12px" }}
             py={{ base: "16px", sm: "20px" }}
-            _hover={{ bg: "gray.50" }}
             alignItems="center"
             justifyContent="space-between"
+            bg="transparent"
+            _hover={{ bg: "gray.50" }}
           >
             <HStack
               alignItems="flex-start"

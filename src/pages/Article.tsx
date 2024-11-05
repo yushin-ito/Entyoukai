@@ -81,7 +81,7 @@ const Article = () => {
                 </VStack>
               </HStack>
               <Divider
-                mt={{ base: "4px", sm: "6" }}
+                mt={{ base: "4", sm: "6" }}
                 mb={{ base: "6", sm: "8" }}
                 borderColor="gray.400"
               />
@@ -131,7 +131,7 @@ const Article = () => {
 
               <Divider
                 mt={{ base: "6", sm: "8" }}
-                mb={{ base: "4px", sm: "6" }}
+                mb={{ base: "4", sm: "6" }}
                 borderColor="gray.400"
               />
 
@@ -202,7 +202,13 @@ const Article = () => {
                   onClick={() => navigate("/article/" + (article.id - 1))}
                   isDisabled={article.id === 1}
                 >
-                  前へ
+                  <Text
+                    fontSize={{ base: "xs", sm: "sm" }}
+                    fontWeight="bold"
+                    color="white"
+                  >
+                    前へ
+                  </Text>
                 </Button>
                 <Button
                   color="brand"
@@ -210,7 +216,9 @@ const Article = () => {
                   onClick={() => navigate("/activity")}
                   variant="ghost"
                 >
-                  一覧へ
+                  <Text fontSize={{ base: "xs", sm: "sm" }} fontWeight="bold">
+                    一覧へ
+                  </Text>
                 </Button>
                 <Button
                   bg="brand"
@@ -222,7 +230,13 @@ const Article = () => {
                   onClick={() => navigate("/article/" + (article.id + 1))}
                   isDisabled={articles?.length === article.id}
                 >
-                  次へ
+                  <Text
+                    fontSize={{ base: "xs", sm: "sm" }}
+                    fontWeight="bold"
+                    color="white"
+                  >
+                    次へ
+                  </Text>
                 </Button>
               </HStack>
             </VStack>

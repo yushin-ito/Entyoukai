@@ -8,7 +8,7 @@ import ScrollToTopButton from "../components/elements/ScrollTopButton";
 import TableOfContents from "../components/layouts/TableOfContents";
 import { useQueryNews } from "../hooks/news";
 import NewsList from "../components/layouts/NewsList";
-import FAQList from "../components/layouts/FAQLIst";
+import FAQList from "../components/layouts/FAQList";
 import { useQueryFAQ } from "../hooks/faq";
 
 const Top = () => {

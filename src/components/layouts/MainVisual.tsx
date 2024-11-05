@@ -70,7 +70,6 @@ const MainVisual = () => {
       h={{ base: "calc(100vh * 0.8)", sm: "100vh" }}
       pos="relative"
       display="flex"
-      flexDir="column"
       alignItems="center"
       justifyContent="center"
     >

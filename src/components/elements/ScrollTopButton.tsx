@@ -54,17 +54,17 @@ const ScrollToTopButton = () => {
             transition: { duration: 0.3, ease: "easeOut" },
           }}
           position="fixed"
-          bottom={{ base: "24px", sm: "48px" }}
-          right={{ base: "20px", sm: "48px" }}
+          bottom={{ base: "36px", sm: "52px" }}
+          right={{ base: "24px", sm: "52px" }}
           zIndex={999}
         >
           <IconButton
             aria-label="top"
             icon={
-              <FiChevronUp size={breakpoint === "base" ? "24px" : "30px"} />
+              <FiChevronUp size={breakpoint === "base" ? "24px" : "28px"} />
             }
             onClick={() => scrollToTop(500)}
-            p="10px"
+            p="12px"
             bg="brand"
             color="white"
             _hover={{

@@ -19,7 +19,7 @@ const Access = () => {
     >
       <Stack
         w="100%"
-        flexDir={{ base: "column", sm: "row" }}
+        direction={{ base: "column", sm: "row" }}
         spacing={{ base: "4", sm: "6" }}
       >
         <iframe
