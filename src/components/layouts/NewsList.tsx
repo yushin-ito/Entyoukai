@@ -57,7 +57,7 @@ const NewsList = ({ news }: NewsListProps) => {
               h={{ base: "24px", sm: "28px" }}
               px={{ base: "8px", sm: "12px" }}
               rounded="full"
-              bg={activeId === key ? "brand" : "gray.300"}
+              bg={activeId === key ? "brand" : "gray.450"}
               _hover={{ transform: "scale(0.98)" }}
               _active={{ transform: "scale(0.96)" }}
               onClick={() => setActiveId(key)}
@@ -134,7 +134,7 @@ const NewsList = ({ news }: NewsListProps) => {
                 {item.title}
               </Text>
             </Stack>
-            {index < list.length - 1 && <Divider bg="gray.00" />}
+            {index < list.length - 1 && <Divider borderColor="gray.200" />}
           </VStack>
         ))}
       </VStack>

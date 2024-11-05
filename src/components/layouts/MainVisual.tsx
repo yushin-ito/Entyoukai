@@ -13,16 +13,15 @@ import {
   DrawerBody,
   useDisclosure,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import { IoMdPin } from "react-icons/io";
 import MotionBox from "../elements/MotionBox";
-import { useRef, useLayoutEffect, useCallback } from "react";
+import { useRef, useCallback, useEffect } from "react";
 import IconButton from "../elements/IconButton";
 
 const MainVisual = () => {
-  const { pathname } = window.location;
-
+  const { pathname } = useLocation();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const ref = useRef<HTMLDivElement>(null);
   const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
@@ -50,14 +49,14 @@ const MainVisual = () => {
     []
   );
 
-  useLayoutEffect(() => {
-    if (pathname !== "/") {
-      setTimeout(() => {
+  useEffect(() => {
+    setTimeout(() => {
+      if (pathname !== "/" && window.scrollY < 300) {
         if (ref.current) {
-          scrollToElement(ref.current, 800);
+          scrollToElement(ref.current, 500);
         }
-      }, 100);
-    }
+      }
+    }, 50);
   }, [pathname, scrollToElement]);
 
   return (

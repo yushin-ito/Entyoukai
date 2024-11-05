@@ -34,7 +34,7 @@ const Top = () => {
           { id: "faq", title: "よくある質問" },
         ]}
       />
-      <VStack w={{ base: "75%", sm: "50%" }} spacing={{ base: "10", sm: "24" }}>
+      <VStack w={{ base: "75%", sm: "55%" }} spacing={{ base: "10", sm: "24" }}>
         <Countdown />
         <VStack id="overview" w="100%" spacing={{ base: "6", sm: "8" }}>
           <SectionTitle title="概要" />
