@@ -54,7 +54,7 @@ const NewsList = ({ news }: NewsListProps) => {
         {Object.keys(categories).map((key) => (
           <Box key={key}>
             <Button
-              h={{ base: "24px", sm: "32px" }}
+              h={{ base: "24px", sm: "28px" }}
               px={{ base: "8px", sm: "12px" }}
               rounded="full"
               bg={activeId === key ? "brand" : "gray.300"}
