@@ -32,7 +32,6 @@ export type FAQ = {
   question: string;
   answer: string;
   info: string;
-  path: string;
 };
 
 export type ContactFormData = {

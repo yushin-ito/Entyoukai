@@ -7,36 +7,8 @@ import {
   VStack,
   Text,
   HStack,
-  TextProps,
-  Link,
 } from "@chakra-ui/react";
 import { FAQ } from "../../types";
-
-type TextWithLinkProps = {
-  path: string;
-  children: string;
-};
-
-const TextWithLink = ({
-  path,
-  children,
-  ...props
-}: TextWithLinkProps & TextProps) => {
-  if (!path || !children.includes("こちら")) {
-    return <Text {...props}>{children}</Text>;
-  }
-
-  const parts = children.split("こちら");
-  return (
-    <Text {...props}>
-      {parts[0]}
-      <Link px="1px" href={path}>
-        こちら
-      </Link>
-      {parts[1]}
-    </Text>
-  );
-};
 
 type FAQListProps = {
   faq: FAQ[];
@@ -90,21 +62,15 @@ const FAQList = ({ faq }: FAQListProps) => {
                 >
                   A.
                 </Text>
-                <TextWithLink
-                  path={item.path}
+                <Text
                   fontSize={{ base: "xs", sm: "sm" }}
                   fontWeight="bold"
                   color="red.500"
                 >
                   {item.answer}
-                </TextWithLink>
+                </Text>
               </HStack>
-              <TextWithLink
-                path={item.path}
-                fontSize={{ base: "2xs", sm: "xs" }}
-              >
-                {item.info}
-              </TextWithLink>
+              <Text fontSize={{ base: "2xs", sm: "xs" }}>{item.info}</Text>
             </VStack>
           </AccordionPanel>
         </AccordionItem>
