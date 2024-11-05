@@ -15,8 +15,12 @@ const Activity = () => {
     >
       <ScrollToTopButton />
       <MainVisual />
-      <VStack w={{ base: "75%", sm: "50%" }} spacing={{ base: "6", sm: "8" }}>
-        <SectionTitle id="activity" title="活動について" />
+      <VStack
+        id="activity"
+        w={{ base: "75%", sm: "50%" }}
+        spacing={{ base: "6", sm: "8" }}
+      >
+        <SectionTitle title="活動について" />
         <Box h="400px" />
       </VStack>
       <Footer />
