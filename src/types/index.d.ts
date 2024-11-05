@@ -26,7 +26,14 @@ export type News = {
   title: string;
   date: string;
   category: "news" | "release" | "system";
-}
+};
+
+export type FAQ = {
+  question: string;
+  answer: string;
+  info: string;
+  path: string;
+};
 
 export type ContactFormData = {
   name: string;
