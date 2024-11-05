@@ -3,7 +3,7 @@ import { Text, VStack, HStack } from "@chakra-ui/react";
 import { useInView } from "framer-motion";
 import MotionBox from "../elements/MotionBox";
 
-const targetDate = new Date("2025-01-08T00:00:00").getTime();
+const target = new Date("2025-01-08T00:00:00").getTime();
 
 const Countdown = () => {
   const ref = useRef(null);
@@ -11,7 +11,7 @@ const Countdown = () => {
 
   const clac = () => {
     const now = Date.now();
-    const diff = Math.max(targetDate - now, 0);
+    const diff = Math.max(target - now, 0);
 
     return {
       days: Math.floor(diff / (1000 * 60 * 60 * 24)),

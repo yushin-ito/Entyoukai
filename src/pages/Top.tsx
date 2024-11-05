@@ -8,9 +8,12 @@ import ScrollToTopButton from "../components/elements/ScrollTopButton";
 import TableOfContents from "../components/layouts/TableOfContents";
 import { useQueryNews } from "../hooks/news";
 import NewsList from "../components/layouts/NewsList";
+import FAQList from "../components/layouts/FAQLIst";
+import { useQueryFAQ } from "../hooks/faq";
 
 const Top = () => {
   const { data: news } = useQueryNews();
+  const { data: faq } = useQueryFAQ();
 
   return (
     <VStack
@@ -28,6 +31,7 @@ const Top = () => {
           { id: "overview", title: "概要" },
           { id: "news", title: "お知らせ" },
           { id: "access", title: "アクセス" },
+          { id: "faq", title: "よくある質問" },
         ]}
       />
       <VStack w={{ base: "75%", sm: "50%" }} spacing={{ base: "10", sm: "24" }}>
@@ -46,6 +50,10 @@ const Top = () => {
         <VStack id="access" w="100%" spacing={{ base: "6", sm: "8" }}>
           <SectionTitle title="アクセス" />
           <Access />
+        </VStack>
+        <VStack id="faq" w="100%" spacing={{ base: "6", sm: "8" }}>
+          <SectionTitle title="よくある質問" />
+          {faq && <FAQList faq={faq} />}
         </VStack>
       </VStack>
       <Footer />
