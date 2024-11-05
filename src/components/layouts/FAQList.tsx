@@ -25,10 +25,8 @@ const FAQList = ({ faq }: FAQListProps) => {
             py={{ base: "16px", sm: "20px" }}
             alignItems="center"
             justifyContent="space-between"
-            bg="white"
-            _hover={{ bg: "gray.50" }}
-            _active={{ bg: "gray.50" }}
-            _expanded={{ bg: "white" }}
+            _hover={{ bg: "gray.50", opacity: 1 }}
+            _active={{ bg: "gray.50", opacity: 1 }}
           >
             <HStack
               alignItems="flex-start"
