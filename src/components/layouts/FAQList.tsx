@@ -27,6 +27,7 @@ const FAQList = ({ faq }: FAQListProps) => {
             justifyContent="space-between"
             _hover={{ bg: "gray.50" }}
             _focus={{ bg: "transparent" }}
+            _active={{ bg: "transparent" }}
             sx={{
               WebkitTapHighlightColor: "transparent",
             }}
