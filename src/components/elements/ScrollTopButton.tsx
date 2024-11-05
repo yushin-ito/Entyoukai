@@ -3,9 +3,11 @@ import { FiChevronUp } from "react-icons/fi";
 import { AnimatePresence } from "framer-motion";
 import MotionBox from "./MotionBox";
 import IconButton from "./IconButton";
+import { useBreakpointValue } from "@chakra-ui/react";
 
 const ScrollToTopButton = () => {
   const [visible, setVisible] = useState(false);
+  const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
 
   useEffect(() => {
     const onScroll = () => {
@@ -53,12 +55,14 @@ const ScrollToTopButton = () => {
           }}
           position="fixed"
           bottom={{ base: "24px", sm: "48px" }}
-          right={{ base: "24px", sm: "48px" }}
+          right={{ base: "20px", sm: "48px" }}
           zIndex={999}
         >
           <IconButton
             aria-label="top"
-            icon={<FiChevronUp size="36px" />}
+            icon={
+              <FiChevronUp size={breakpoint === "base" ? "24px" : "36px"} />
+            }
             onClick={() => scrollToTop(800)}
             p="10px"
             bg="brand"

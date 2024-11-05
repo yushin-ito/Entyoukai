@@ -7,6 +7,7 @@ import {
   Button,
   Box,
   Stack,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { News } from "../../types";
 import { format } from "date-fns";
@@ -24,6 +25,7 @@ type NewsListProps = {
 
 const NewsList = ({ news }: NewsListProps) => {
   const [activeId, setActiveId] = useState<string>("all");
+  const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
 
   const list = useMemo(() => {
     return news.filter((item) => {
@@ -74,6 +76,7 @@ const NewsList = ({ news }: NewsListProps) => {
         spacing="2"
         sx={{
           "&::-webkit-scrollbar": {
+            display: { base: "none", sm: "block" },
             width: "4px",
           },
           "&::-webkit-scrollbar-thumb": {
@@ -87,6 +90,11 @@ const NewsList = ({ news }: NewsListProps) => {
             backgroundColor: "#f1f1f1",
           },
         }}
+        css={{
+          scrollbarWidth: breakpoint === "base" ? "none" : "auto",
+          scrollbarHeight: breakpoint === "base" ? "none" : "auto",
+          msOverflowStyle: breakpoint === "base" ? "none" : "auto",
+        }}
       >
         {list.map((item, index) => (
           <VStack key={index} w="100%" alignItems="start" spacing="2">
@@ -95,7 +103,7 @@ const NewsList = ({ news }: NewsListProps) => {
               flexDir={{ base: "column", sm: "row" }}
               alignItems={{ base: "flex-start", sm: "center" }}
               px={{ base: "4px", sm: "8px" }}
-              py={{ base: "8px", sm: "12px" }}
+              py={{ base: "12px", sm: "20px" }}
               spacing={{ base: "4", sm: "6" }}
             >
               <HStack spacing={{ base: "2", sm: "4" }} alignItems="center">
