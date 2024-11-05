@@ -58,8 +58,12 @@ const Contact = () => {
     >
       <ScrollToTopButton />
       <MainVisual />
-      <VStack w={{ base: "75%", sm: "50%" }} spacing={{ base: "6", sm: "8" }}>
-        <SectionTitle id="contact" title="お問い合わせ" />
+      <VStack
+        id="contact"
+        w={{ base: "75%", sm: "50%" }}
+        spacing={{ base: "6", sm: "8" }}
+      >
+        <SectionTitle title="お問い合わせ" />
         <ContactForm postContact={postContact} />
       </VStack>
       <Footer />

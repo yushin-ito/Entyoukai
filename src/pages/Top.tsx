@@ -32,19 +32,19 @@ const Top = () => {
       />
       <VStack w={{ base: "75%", sm: "50%" }} spacing={{ base: "10", sm: "24" }}>
         <Countdown />
-        <VStack w="100%" spacing={{ base: "6", sm: "8" }}>
-          <SectionTitle id="overview" title="概要" />
+        <VStack id="overview" w="100%" spacing={{ base: "6", sm: "8" }}>
+          <SectionTitle title="概要" />
           <Text fontSize={{ base: "sm", sm: "md" }} fontWeight="bold">
             このページを読んでいただき誠にありがとうございます。これは、朝日町の令和7年度1月12日に保健福祉センター（さわやか村）で開催される「二十歳のつどい」の特設ページです。
             成人式の概要やアクセスについてご案内します。また、実行委員会による特別企画についてもご紹介します。ぜひご覧ください。
           </Text>
         </VStack>
-        <VStack w="100%" spacing={{ base: "6", sm: "8" }}>
-          <SectionTitle id="news" title="ニュース" />
+        <VStack id="news" w="100%" spacing={{ base: "6", sm: "8" }}>
+          <SectionTitle title="お知らせ" />
           {news && <NewsList news={news} />}
         </VStack>
-        <VStack w="100%" spacing={{ base: "6", sm: "8" }}>
-          <SectionTitle id="access" title="アクセス" />
+        <VStack id="access" w="100%" spacing={{ base: "6", sm: "8" }}>
+          <SectionTitle title="アクセス" />
           <Access />
         </VStack>
       </VStack>

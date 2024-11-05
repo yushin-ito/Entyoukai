@@ -10,18 +10,16 @@ import { useRef } from "react";
 import MotionBox from "../elements/MotionBox";
 
 type SectionTitleProps = {
-  id: string;
   title: string;
 };
 
-const SectionTitle = ({ id, title }: SectionTitleProps) => {
+const SectionTitle = ({ title }: SectionTitleProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
 
   return (
     <MotionBox
-      id={id}
       ref={ref}
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1, transition: { duration: 1.5 } } : {}}
