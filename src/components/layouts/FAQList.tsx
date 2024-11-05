@@ -26,7 +26,12 @@ const FAQList = ({ faq }: FAQListProps) => {
             alignItems="center"
             justifyContent="space-between"
             _hover={{ bg: "gray.50" }}
+            _focus={{ bg: "transparent" }}
             _active={{ bg: "transparent" }}
+            _expanded={{ bg: "transparent" }}
+            sx={{
+              WebkitTapHighlightColor: "transparent",
+            }}
           >
             <HStack
               alignItems="flex-start"
