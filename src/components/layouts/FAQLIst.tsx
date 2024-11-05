@@ -21,16 +21,17 @@ const FAQList = ({ faq }: FAQListProps) => {
         <AccordionItem key={index}>
           {/* 質問 */}
           <AccordionButton
-            px={{ base: "0", sm: "12px" }}
+            px={{ base: "6px", sm: "12px" }}
             py={{ base: "16px", sm: "20px" }}
             alignItems="center"
             justifyContent="space-between"
             bg="transparent"
             _hover={{ bg: "gray.50" }}
+            _expanded={{ bg: "transparent" }}
           >
             <HStack
               alignItems="flex-start"
-              spacing={{ base: "2px", sm: "6px" }}
+              spacing={{ base: "4px", sm: "6px" }}
             >
               <Text fontSize={{ base: "xs", sm: "sm" }} fontWeight="bold">
                 Q.
@@ -50,11 +51,14 @@ const FAQList = ({ faq }: FAQListProps) => {
           </AccordionButton>
 
           {/* 回答 */}
-          <AccordionPanel px="12px" pb="4">
+          <AccordionPanel
+            px={{ base: "6px", sm: "12px" }}
+            pb={{ base: "4", sm: "6" }}
+          >
             <VStack alignItems="flex-start" spacing="2">
               <HStack
                 alignItems="flex-start"
-                spacing={{ base: "2px", sm: "6px" }}
+                spacing={{ base: "4px", sm: "6px" }}
               >
                 <Text
                   fontSize={{ base: "xs", sm: "sm" }}
