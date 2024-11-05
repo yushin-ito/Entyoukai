@@ -3,8 +3,12 @@ import MainVisual from "../components/layouts/MainVisual";
 import SectionTitle from "../components/elements/SectionTitle";
 import Footer from "../components/layouts/Footer";
 import ScrollToTopButton from "../components/elements/ScrollTopButton";
+import ArticleList from "../components/layouts/ArticleList";
+import { useQueryArticles } from "../hooks/articles";
 
 const Activity = () => {
+  const { data: articles } = useQueryArticles();
+
   return (
     <VStack
       flex="1"
@@ -15,13 +19,16 @@ const Activity = () => {
     >
       <ScrollToTopButton />
       <MainVisual />
-      <VStack
-        id="activity"
-        w={{ base: "75%", sm: "50%" }}
-        spacing={{ base: "6", sm: "8" }}
-      >
-        <SectionTitle title="活動について" />
-        <Box h="400px" />
+
+      <VStack w={{ base: "75%", sm: "50%" }} spacing={{ base: "10", sm: "24" }}>
+        <VStack id="activity" w="100%" spacing={{ base: "6", sm: "8" }}>
+          <SectionTitle title="活動について" />
+          <Box h="240px" />
+        </VStack>
+        <VStack id="article" w="100%" spacing={{ base: "6", sm: "8" }}>
+          <SectionTitle title="活動報告" />
+          {articles && <ArticleList articles={articles} />}
+        </VStack>
       </VStack>
       <Footer />
     </VStack>
