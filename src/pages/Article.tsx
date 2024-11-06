@@ -3,7 +3,7 @@ import {
   VStack,
   Text,
   Image,
-  Button,
+  Button as ChakraButton,
   HStack,
   Avatar,
   Divider
@@ -15,6 +15,7 @@ import { FaLine, FaInstagram } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { useParams, useNavigate } from "react-router-dom";
 
+import Button from "../components/elements/Button";
 import IconButton from "../components/elements/IconButton";
 import MotionBox from "../components/elements/MotionBox";
 import ScrollToTopButton from "../components/elements/ScrollToTopButton";
@@ -214,7 +215,7 @@ const Article = () => {
                     前へ
                   </Text>
                 </Button>
-                <Button
+                <ChakraButton
                   color="brand"
                   size={{ base: "sm", sm: "md" }}
                   onClick={() => navigate("/activity")}
@@ -223,7 +224,7 @@ const Article = () => {
                   <Text fontSize={{ base: "xs", sm: "sm" }} fontWeight="bold">
                     一覧へ
                   </Text>
-                </Button>
+                </ChakraButton>
                 <Button
                   bg="brand"
                   size={{ base: "sm", sm: "md" }}

@@ -56,20 +56,6 @@ const TableOfContents = ({ sections }: TableOfContentsProps) => {
     };
   }, [sections, scrolling]);
 
-  const handleButtonClick = (id: string) => {
-    setScrolling(true);
-    setActiveId(id);
-
-    document.getElementById(id)?.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    });
-
-    setTimeout(() => {
-      setScrolling(false);
-    }, 1000);
-  };
-
   return breakpoint === "base" ? null : (
     <VStack
       position={fixed ? "fixed" : "absolute"}
@@ -109,7 +95,22 @@ const TableOfContents = ({ sections }: TableOfContentsProps) => {
           bg="transparent"
           _hover={{ bg: "transparent" }}
           _active={{ bg: "transparent" }}
-          onClick={() => handleButtonClick(section.id)}
+          onClick={() => {
+            setScrolling(true);
+            setActiveId(section.id);
+
+            document.getElementById(section.id)?.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+
+            setTimeout(() => {
+              setScrolling(false);
+            }, 1000);
+          }}
+          sx={{
+            WebkitTapHighlightColor: "transparent"
+          }}
         >
           <HStack spacing="4">
             <Text

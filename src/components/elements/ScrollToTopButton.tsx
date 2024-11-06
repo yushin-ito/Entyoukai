@@ -66,13 +66,6 @@ const ScrollToTopButton = () => {
             }
             onClick={() => scrollToTop(500)}
             p="12px"
-            bg="brand"
-            color="white"
-            _hover={{
-              bg: "brand",
-              opacity: { base: 1, sm: 0.8 }
-            }}
-            _active={{ transform: "scale(0.98)", opacity: 0.8 }}
             shadow="lg"
             rounded="full"
           />

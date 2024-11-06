@@ -1,4 +1,6 @@
-import { Text, Center, VStack, Button } from "@chakra-ui/react";
+import { Text, Center, VStack } from "@chakra-ui/react";
+
+import Button from "../components/elements/Button";
 
 const NotFound = () => {
   return (
@@ -22,13 +24,6 @@ const NotFound = () => {
           py="6"
           fontSize="sm"
           rounded="full"
-          bg="brand"
-          _hover={{ bg: "brand", opacity: { base: 1, sm: 0.8 } }}
-          _active={{
-            transform: "scale(0.98)",
-            opacity: 0.8
-          }}
-          color="white"
           shadow="sm"
           onClick={() => window.location.replace("/")}
         >
