@@ -50,6 +50,10 @@ const MainVisual = () => {
   );
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  useEffect(() => {
     setTimeout(() => {
       if (pathname !== "/" && window.scrollY < 300) {
         if (ref.current) {

@@ -95,7 +95,7 @@ const ArticleListItem = ({
         >
           {/* タイトル */}
           {breakpoint === "sm" && (
-            <Text fontSize="md" fontWeight="bold" noOfLines={1}>
+            <Text fontWeight="bold" noOfLines={1}>
               {title}
             </Text>
           )}
