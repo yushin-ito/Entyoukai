@@ -60,11 +60,7 @@ const ScrollToSectionButton = ({
     >
       <HStack spacing="4">
         <Box w="3px" h="42px" bg={active ? "brand" : "gray.500"} />
-        <Text
-          color={active ? "brand" : "gray.500"}
-          fontWeight="bold"
-          fontSize="md"
-        >
+        <Text color={active ? "brand" : "gray.500"} fontWeight="bold">
           {title}
         </Text>
       </HStack>

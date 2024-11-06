@@ -15,7 +15,7 @@ import SectionTitle from "../components/elements/SectionTitle";
 import Footer from "../components/layouts/Footer";
 import ScrollToTopButton from "../components/elements/ScrollTopButton";
 import { useQueryArticles } from "../hooks/articles";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useMemo, useEffect, useState } from "react";
 import MotionBox from "../components/elements/MotionBox";
 import { format } from "date-fns";
@@ -24,17 +24,12 @@ import IconButton from "../components/elements/IconButton";
 const Article = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { pathname } = useLocation();
   const { data: articles } = useQueryArticles();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const article = useMemo(() => {
     return articles?.find((article) => article.id.toString() === id);
   }, [articles, id]);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
 
   useEffect(() => {
     if (article?.images) {

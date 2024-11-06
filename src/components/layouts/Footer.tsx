@@ -16,7 +16,7 @@ const Footer = () => {
       <HStack spacing={{ base: "4", sm: "8" }}>
         <Button
           as={Link}
-          to="/"
+          to="/sitepolicy"
           variant="link"
           fontSize={{ base: "2xs", sm: "sm" }}
           fontWeight="extrabold"
@@ -26,7 +26,7 @@ const Footer = () => {
         </Button>
         <Button
           as={Link}
-          to="/"
+          to="/privacypolicy"
           variant="link"
           fontSize={{ base: "2xs", sm: "sm" }}
           fontWeight="extrabold"
@@ -36,7 +36,7 @@ const Footer = () => {
         </Button>
         <Button
           as={Link}
-          to="/"
+          to="/contact"
           variant="link"
           fontSize={{ base: "2xs", sm: "sm" }}
           fontWeight="extrabold"
