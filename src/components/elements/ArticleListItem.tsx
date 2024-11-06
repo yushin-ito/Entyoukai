@@ -56,12 +56,12 @@ const ArticleListItem = ({
         pb={{ base: "4", sm: "0" }}
         _hover={
           breakpoint === "base"
-            ? { opacity: 0.8 }
+            ? {}
             : { transform: "scale(1.02)", opacity: 0.8 }
         }
         _active={
           breakpoint === "base"
-            ? { transform: "scale(0.98)" }
+            ? { transform: "scale(0.98)", opacity: 0.8 }
             : { transform: "scale(1.00)" }
         }
       >

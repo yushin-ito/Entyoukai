@@ -92,6 +92,7 @@ const MainVisual = () => {
           bg="brand"
           opacity="0.8"
           _hover={{ bg: "brand", opacity: 1 }}
+          _active={{ transform: "scale(0.98)" }}
           onClick={onOpen}
         />
       ) : (

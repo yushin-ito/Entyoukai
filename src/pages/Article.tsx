@@ -100,8 +100,8 @@ const Article = () => {
                   <MotionBox
                     key={currentIndex}
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 1, transition: { duration: 0.6 } }}
-                    exit={{ opacity: 0, transition: { duration: 0.6 } }}
+                    animate={{ opacity: 1, transition: { duration: 0.5 } }}
+                    exit={{ opacity: 0, transition: { duration: 0.5 } }}
                     pos="absolute"
                     top="0"
                     left="0"
@@ -196,8 +196,11 @@ const Article = () => {
                 <Button
                   bg="brand"
                   size={{ base: "sm", sm: "md" }}
-                  _hover={{ bg: "brand", opacity: 0.8 }}
-                  _active={{ transform: "scale(0.98)" }}
+                  _hover={{ bg: "brand", opacity: { base: 1, sm: 0.8 } }}
+                  _active={{
+                    transform: "scale(0.98)",
+                    opacity: 0.8
+                  }}
                   _disabled={{ opacity: 0.6 }}
                   color="white"
                   onClick={() => navigate("/article/" + (article.id - 1))}
@@ -224,8 +227,11 @@ const Article = () => {
                 <Button
                   bg="brand"
                   size={{ base: "sm", sm: "md" }}
-                  _hover={{ bg: "brand", opacity: 0.8 }}
-                  _active={{ transform: "scale(0.98)" }}
+                  _hover={{ bg: "brand", opacity: { base: 1, sm: 0.8 } }}
+                  _active={{
+                    transform: "scale(0.98)",
+                    opacity: 0.8
+                  }}
                   _disabled={{ opacity: 0.6 }}
                   color="white"
                   onClick={() => navigate("/article/" + (article.id + 1))}
