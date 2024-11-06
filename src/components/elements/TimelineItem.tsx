@@ -39,14 +39,13 @@ const TimelineItem = ({
           x: isInView ? 0 : 30,
           transition: { duration: 0.8 }
         }}
-        p="4"
-        ml={{ base: "80px", sm: "180px" }}
+        ml={{ base: "90px", sm: "180px" }}
         rounded="md"
       >
-        <Text fontWeight="semibold" fontSize={{ base: "md", sm: "2xl" }}>
+        <Text fontWeight="bold" fontSize={{ base: "sm", sm: "lg" }}>
           {title}
         </Text>
-        <Text mt="1" fontSize={{ base: "sm", sm: "lg" }}>
+        <Text mt="1" fontSize={{ base: "xs", sm: "md" }}>
           {description}
         </Text>
       </MotionBox>

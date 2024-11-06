@@ -16,7 +16,7 @@ type TimelineProps = {
 };
 
 const Timeline = ({ events }: TimelineProps) => {
-  const space = { base: 24, sm: 64 };
+  const space = { base: 50, sm: 100 };
   const [resize, setResize] = useState(false);
   const [heights, setHeights] = useState<number[]>([]);
 
@@ -59,6 +59,7 @@ const Timeline = ({ events }: TimelineProps) => {
 
   return (
     <VStack
+      w={{ base: "100%", sm: "90%" }}
       pos="relative"
       spacing={{ base: `${space.base}px`, sm: `${space.sm}px` }}
     >
@@ -66,8 +67,8 @@ const Timeline = ({ events }: TimelineProps) => {
       <Box
         pos="absolute"
         left={{
-          base: "70px",
-          sm: "140px"
+          base: "60px",
+          sm: "120px"
         }}
         top="0"
         bottom="0"
@@ -91,8 +92,8 @@ const Timeline = ({ events }: TimelineProps) => {
           {event.dates.map((date, index) => (
             <Text
               key={index}
-              fontSize={{ base: "sm", sm: "lg" }}
-              fontWeight="semibold"
+              fontSize={{ base: "xs", sm: "md" }}
+              fontWeight="bold"
             >
               {breakpoint === "base"
                 ? format(date, "yy.M.d")
@@ -113,8 +114,8 @@ const Timeline = ({ events }: TimelineProps) => {
           bg="white"
           pos="absolute"
           left={{
-            base: "70px",
-            sm: "140px"
+            base: "60px",
+            sm: "120px"
           }}
           top={`${position}px`}
           transform="translate(-50%, -50%)"
