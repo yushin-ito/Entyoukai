@@ -3,101 +3,72 @@ import {
   Text,
   Button,
   HStack,
-  Box,
-  useBreakpointValue
+  useBreakpointValue,
+  Box
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
-type ScrollToSectionButtonProps = {
-  id: string;
-  duration: number;
-  title: string;
-  active: boolean;
-  onClick: () => void;
-};
-
-const ScrollToSectionButton = ({
-  id,
-  duration,
-  title,
-  active,
-  onClick
-}: ScrollToSectionButtonProps) => {
-  const scrollToSection = (elementId: string, duration: number) => {
-    const element = document.getElementById(elementId);
-    if (!element) return;
-
-    const start = window.scrollY;
-    const target = element.getBoundingClientRect().top;
-    const now = performance.now();
-
-    const scroll = (time: number) => {
-      const elapsed = time - now;
-      const progress = Math.min(elapsed / duration, 1);
-      const easing = 1 - Math.pow(1 - progress, 3);
-
-      window.scrollTo(0, start + target * easing);
-
-      if (progress < 1) {
-        requestAnimationFrame(scroll);
-      }
-    };
-
-    requestAnimationFrame(scroll);
-  };
-
-  return (
-    <Button
-      h="42px"
-      px="0"
-      bg="transparent"
-      _hover={{ bg: "transparent" }}
-      _active={{ bg: "transparent" }}
-      onClick={() => {
-        scrollToSection(id, duration);
-        onClick();
-      }}
-    >
-      <HStack spacing="4">
-        <Box w="3px" h="42px" bg={active ? "brand" : "gray.500"} />
-        <Text color={active ? "brand" : "gray.500"} fontWeight="bold">
-          {title}
-        </Text>
-      </HStack>
-    </Button>
-  );
-};
+import MotionBox from "../elements/MotionBox";
 
 type TableOfContentsProps = {
   sections: { id: string; title: string }[];
 };
 
 const TableOfContents = ({ sections }: TableOfContentsProps) => {
-  const [activeId, setActiveId] = useState<string | null>(null);
+  const [activeId, setActiveId] = useState<string>(sections[0].id);
   const [fixed, setFixed] = useState(false);
+  const [scrolling, setScrolling] = useState(false);
   const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
 
   useEffect(() => {
-    const onScroll = () => {
-      const threshold = window.innerHeight;
+    let observer: IntersectionObserver | null = null;
 
-      setFixed(window.scrollY >= threshold);
-
-      const found = sections.find((section) => {
-        const element = document.getElementById(section.id);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top >= 0 && rect.top <= window.innerHeight / 2;
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+      if (scrolling) return;
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveId(entry.target.id);
         }
-        return false;
       });
+    };
 
-      setActiveId(found ? found.id : null);
+    const initializeObserver = () => {
+      observer = new IntersectionObserver(handleIntersection, {
+        threshold: 0.5
+      });
+      sections.forEach((section) => {
+        const element = document.getElementById(section.id);
+        if (element) observer?.observe(element);
+      });
+    };
+
+    initializeObserver();
+
+    const onScroll = () => {
+      setFixed(window.scrollY >= window.innerHeight);
     };
 
     window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [sections]);
+
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, [sections, scrolling]);
+
+  const handleButtonClick = (id: string) => {
+    setScrolling(true);
+    setActiveId(id);
+
+    document.getElementById(id)?.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+
+    setTimeout(() => {
+      setScrolling(false);
+    }, 1000);
+  };
 
   return breakpoint === "base" ? null : (
     <VStack
@@ -108,15 +79,47 @@ const TableOfContents = ({ sections }: TableOfContentsProps) => {
       alignItems="flex-start"
       zIndex={999}
     >
+      <Box
+        position="absolute"
+        left="0"
+        width="3px"
+        height={`${sections.length * 42}px`}
+        rounded="2px"
+        bg="gray.400"
+      />
+      <MotionBox
+        position="absolute"
+        left="0"
+        width="3px"
+        height="42px"
+        rounded="2px"
+        bg="brand"
+        animate={{
+          y: sections.findIndex((section) => section.id === activeId) * 42,
+          transition: { duration: 0.3, ease: "easeInOut" }
+        }}
+      />
+
       {sections.map((section) => (
-        <ScrollToSectionButton
+        <Button
           key={section.id}
-          id={section.id}
-          title={section.title}
-          duration={500}
-          active={activeId === section.id}
-          onClick={() => setActiveId(section.id)}
-        />
+          h="42px"
+          px="0"
+          ml="4"
+          bg="transparent"
+          _hover={{ bg: "transparent" }}
+          _active={{ bg: "transparent" }}
+          onClick={() => handleButtonClick(section.id)}
+        >
+          <HStack spacing="4">
+            <Text
+              color={activeId === section.id ? "brand" : "gray.400"}
+              fontWeight="bold"
+            >
+              {section.title}
+            </Text>
+          </HStack>
+        </Button>
       ))}
     </VStack>
   );

@@ -73,6 +73,7 @@ const NewsList = ({ news }: NewsListProps) => {
       <VStack
         w="100%"
         h="320px"
+        p={{ base: "0", sm: "2" }}
         overflowY="auto"
         spacing="2"
         sx={{
