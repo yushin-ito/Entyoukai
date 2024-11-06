@@ -1,6 +1,6 @@
 import { VStack, Text } from "@chakra-ui/react";
 
-import ScrollToTopButton from "../components/elements/ScrollTopButton";
+import ScrollToTopButton from "../components/elements/ScrollToTopButton";
 import SectionTitle from "../components/elements/SectionTitle";
 import Access from "../components/layouts/Access";
 import Countdown from "../components/layouts/Countdown";
@@ -27,7 +27,6 @@ const Top = () => {
       <MainVisual />
       <TableOfContents
         sections={[
-          { id: "countdown", title: "カウントダウン" },
           { id: "overview", title: "概要" },
           { id: "news", title: "お知らせ" },
           { id: "access", title: "アクセス" },

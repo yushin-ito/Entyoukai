@@ -1,7 +1,7 @@
 import { VStack, useToast } from "@chakra-ui/react";
 import { useCallback } from "react";
 
-import ScrollToTopButton from "../components/elements/ScrollTopButton";
+import ScrollToTopButton from "../components/elements/ScrollToTopButton";
 import SectionTitle from "../components/elements/SectionTitle";
 import Toast from "../components/elements/Toast";
 import ContactForm from "../components/layouts/ContactForm";

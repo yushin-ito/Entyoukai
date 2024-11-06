@@ -1,6 +1,6 @@
 import { Box, VStack } from "@chakra-ui/react";
 
-import ScrollToTopButton from "../components/elements/ScrollTopButton";
+import ScrollToTopButton from "../components/elements/ScrollToTopButton";
 import SectionTitle from "../components/elements/SectionTitle";
 import ArticleList from "../components/layouts/ArticleList";
 import Footer from "../components/layouts/Footer";

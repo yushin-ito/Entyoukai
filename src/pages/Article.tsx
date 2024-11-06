@@ -16,7 +16,7 @@ import { useParams, useNavigate } from "react-router-dom";
 
 import IconButton from "../components/elements/IconButton";
 import MotionBox from "../components/elements/MotionBox";
-import ScrollToTopButton from "../components/elements/ScrollTopButton";
+import ScrollToTopButton from "../components/elements/ScrollToTopButton";
 import SectionTitle from "../components/elements/SectionTitle";
 import Footer from "../components/layouts/Footer";
 import MainVisual from "../components/layouts/MainVisual";
