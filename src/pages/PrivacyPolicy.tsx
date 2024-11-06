@@ -19,7 +19,7 @@ const PrivacyPolicy = () => {
     >
       <ScrollToTopButton />
       <MainVisual />
-      <VStack w={{ base: "75%", sm: "55%" }} spacing={{ base: "2", sm: "4" }}>
+      <VStack w={{ base: "80%", sm: "60%" }} spacing={{ base: "2", sm: "4" }}>
         <SectionTitle title="プライバシーポリシー" />
         <VStack
           w="100%"

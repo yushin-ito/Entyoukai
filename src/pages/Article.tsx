@@ -51,7 +51,7 @@ const Article = () => {
     >
       <ScrollToTopButton />
       <MainVisual />
-      <VStack w={{ base: "75%", sm: "60%" }} spacing={{ base: "10", sm: "24" }}>
+      <VStack w={{ base: "80%", sm: "60%" }} spacing={{ base: "10", sm: "24" }}>
         {article && (
           <VStack w="100%" spacing={{ base: "6", sm: "8" }} rounded="lg">
             <SectionTitle title={article.title} />

@@ -16,7 +16,7 @@ const Company = () => {
     >
       <ScrollToTopButton />
       <MainVisual />
-      <VStack w={{ base: "75%", sm: "55%" }} spacing={{ base: "6", sm: "8" }}>
+      <VStack w={{ base: "80%", sm: "60%" }} spacing={{ base: "6", sm: "8" }}>
         <SectionTitle title="協賛企業" />
         <Box h="400px" />
       </VStack>

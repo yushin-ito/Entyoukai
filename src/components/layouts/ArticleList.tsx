@@ -25,7 +25,7 @@ const ArticleList = ({ articles }: ArticleListProps) => {
     const onScroll = () => {
       if (current) {
         const index = Math.round(
-          current.scrollLeft / (window.innerWidth * 0.75 + 24)
+          current.scrollLeft / (window.innerWidth * 0.8 + 24)
         );
         setCurrentIndex(index);
       }
@@ -45,7 +45,7 @@ const ArticleList = ({ articles }: ArticleListProps) => {
         ref={ref}
         overflowX="auto"
         overflowY="hidden"
-        w="calc(100vw * 0.75)"
+        w="calc(100vw * 0.8)"
         scrollBehavior="smooth"
         scrollSnapType="x mandatory"
         sx={{
@@ -59,7 +59,7 @@ const ArticleList = ({ articles }: ArticleListProps) => {
         }}
       >
         <HStack
-          w={`calc(${articles.length * 100}vw * 0.75 + ${24 * articles.length}px )`}
+          w={`calc(${articles.length * 100}vw * 0.8 + ${24 * articles.length}px )`}
           spacing="0"
           alignItems="flex-start"
         >
