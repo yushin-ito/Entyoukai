@@ -52,14 +52,18 @@ const ArticleListItem = ({
         to={`/article/${id}`}
         w="100%"
         rounded={{ base: "none", sm: "md" }}
-        spacing={{ base: "6", sm: "2" }}
+        spacing={{ base: "4", sm: "2" }}
         pb={{ base: "4", sm: "0" }}
         _hover={
           breakpoint === "base"
-            ? {}
+            ? { opacity: 0.8 }
             : { transform: "scale(1.02)", opacity: 0.8 }
         }
-        _active={breakpoint === "base" ? {} : { transform: "scale(1.00)" }}
+        _active={
+          breakpoint === "base"
+            ? { transform: "scale(0.98)" }
+            : { transform: "scale(1.00)" }
+        }
       >
         <Box w="100%" pos="relative">
           {/* 画像 */}
@@ -67,10 +71,10 @@ const ArticleListItem = ({
             src={images[0]}
             alt={location}
             w="100%"
-            h={{ base: "220px", sm: "175px" }}
+            h={{ base: "200px", sm: "180px" }}
             objectFit="cover"
-            rounded={{ base: "none", sm: "xl" }}
-            shadow="sm"
+            rounded={{ base: "md", sm: "xl" }}
+            shadow={{ base: "xs", sm: "sm" }}
             draggable="false"
           />
           {/* ロケーション */}
@@ -111,7 +115,7 @@ const ArticleListItem = ({
                 rounded="full"
               >
                 <Text fontSize="2xs" fontWeight="bold">
-                  {format(date, "yyyy.M.d")}
+                  {format(date, "yyyy.MM.dd")}
                 </Text>
               </Box>
               <HStack spacing="2">
@@ -127,7 +131,7 @@ const ArticleListItem = ({
             fontSize="xs"
             fontWeight={{ base: "bold", sm: "normal" }}
             color={{ base: "brand", sm: "gray.600" }}
-            noOfLines={{ base: 10, sm: 2 }}
+            noOfLines={{ base: 6, sm: 2 }}
           >
             {description}
           </Text>

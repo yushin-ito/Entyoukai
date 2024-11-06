@@ -89,12 +89,12 @@ const Article = () => {
               {/* スライドショー */}
               <Box
                 w="100%"
-                h={{ base: "210px", sm: "420px" }}
+                h={{ base: "200px", sm: "420px" }}
                 overflow="hidden"
                 pos="relative"
                 rounded={{ base: "lg", sm: "xl" }}
-                shadow="md"
-                bg="gray.100"
+                shadow={{ base: "xs", sm: "md" }}
+                bg="gray.50"
               >
                 <AnimatePresence>
                   <MotionBox
