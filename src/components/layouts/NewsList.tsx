@@ -1,4 +1,3 @@
-import { useState, useMemo } from "react";
 import {
   VStack,
   HStack,
@@ -7,16 +6,18 @@ import {
   Button,
   Box,
   Stack,
-  useBreakpointValue,
+  useBreakpointValue
 } from "@chakra-ui/react";
-import { News } from "../../types";
 import { format } from "date-fns";
+import { useState, useMemo } from "react";
+
+import type { News } from "../../types";
 
 const categories: Record<string, string> = {
   all: "すべて",
   news: "ニュース",
   release: "リリース",
-  system: "システム",
+  system: "システム"
 };
 
 type NewsListProps = {
@@ -42,13 +43,13 @@ const NewsList = ({ news }: NewsListProps) => {
         overflowX="auto"
         sx={{
           "::-webkit-scrollbar": {
-            display: "none",
-          },
+            display: "none"
+          }
         }}
         css={{
           scrollbarWidth: "none",
           scrollbarHeight: "none",
-          msOverflowStyle: "none",
+          msOverflowStyle: "none"
         }}
       >
         {Object.keys(categories).map((id) => (
@@ -77,23 +78,23 @@ const NewsList = ({ news }: NewsListProps) => {
         sx={{
           "&::-webkit-scrollbar": {
             display: { base: "none", sm: "block" },
-            width: "4px",
+            width: "4px"
           },
           "&::-webkit-scrollbar-thumb": {
             backgroundColor: "#888",
-            borderRadius: "2px",
+            borderRadius: "2px"
           },
           "&::-webkit-scrollbar-thumb:hover": {
-            backgroundColor: "#555",
+            backgroundColor: "#555"
           },
           "&::-webkit-scrollbar-track": {
-            backgroundColor: "#f1f1f1",
-          },
+            backgroundColor: "#f1f1f1"
+          }
         }}
         css={{
           scrollbarWidth: breakpoint === "base" ? "none" : "auto",
           scrollbarHeight: breakpoint === "base" ? "none" : "auto",
-          msOverflowStyle: breakpoint === "base" ? "none" : "auto",
+          msOverflowStyle: breakpoint === "base" ? "none" : "auto"
         }}
       >
         {list.map((item, index) => (

@@ -1,8 +1,9 @@
 import { VStack, Text } from "@chakra-ui/react";
-import MainVisual from "../components/layouts/MainVisual";
+
+import ScrollToTopButton from "../components/elements/ScrollTopButton";
 import SectionTitle from "../components/elements/SectionTitle";
 import Footer from "../components/layouts/Footer";
-import ScrollToTopButton from "../components/elements/ScrollTopButton";
+import MainVisual from "../components/layouts/MainVisual";
 import { useQuerySitePolicy } from "../hooks/contents";
 
 const SitePolicy = () => {

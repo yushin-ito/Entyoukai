@@ -1,13 +1,14 @@
 import { VStack, Text } from "@chakra-ui/react";
-import MainVisual from "../components/layouts/MainVisual";
+
+import ScrollToTopButton from "../components/elements/ScrollTopButton";
 import SectionTitle from "../components/elements/SectionTitle";
 import Access from "../components/layouts/Access";
-import Footer from "../components/layouts/Footer";
 import Countdown from "../components/layouts/Countdown";
-import ScrollToTopButton from "../components/elements/ScrollTopButton";
-import TableOfContents from "../components/layouts/TableOfContents";
-import NewsList from "../components/layouts/NewsList";
 import FAQList from "../components/layouts/FAQList";
+import Footer from "../components/layouts/Footer";
+import MainVisual from "../components/layouts/MainVisual";
+import NewsList from "../components/layouts/NewsList";
+import TableOfContents from "../components/layouts/TableOfContents";
 import { useQueryFAQ, useQueryNews } from "../hooks/contents";
 
 const Top = () => {
@@ -30,7 +31,7 @@ const Top = () => {
           { id: "overview", title: "概要" },
           { id: "news", title: "お知らせ" },
           { id: "access", title: "アクセス" },
-          { id: "faq", title: "よくある質問" },
+          { id: "faq", title: "よくある質問" }
         ]}
       />
       <VStack w={{ base: "75%", sm: "55%" }} spacing={{ base: "10", sm: "24" }}>

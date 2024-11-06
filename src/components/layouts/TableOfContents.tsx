@@ -4,7 +4,7 @@ import {
   Button,
   HStack,
   Box,
-  useBreakpointValue,
+  useBreakpointValue
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
@@ -21,7 +21,7 @@ const ScrollToSectionButton = ({
   duration,
   title,
   active,
-  onClick,
+  onClick
 }: ScrollToSectionButtonProps) => {
   const scrollToSection = (elementId: string, duration: number) => {
     const element = document.getElementById(elementId);

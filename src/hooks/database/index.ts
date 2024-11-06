@@ -2,7 +2,7 @@ import { PostgrestError } from "@supabase/supabase-js";
 import { useMutation } from "@tanstack/react-query";
 
 import { supabase } from "../../client";
-import { UseMutationResult, Contact } from "../../types";
+import type { UseMutationResult, Contact } from "../../types";
 
 export type PostContactResponse = Awaited<ReturnType<typeof postContact>>;
 
@@ -16,10 +16,10 @@ const postContact = async (contact: Contact["Insert"]) => {
 
 export const usePostContact = ({
   onSuccess,
-  onError,
+  onError
 }: UseMutationResult<PostContactResponse, PostgrestError>) =>
   useMutation({
     mutationFn: postContact,
     onSuccess,
-    onError,
+    onError
   });

@@ -1,8 +1,8 @@
-import { VStack, Text, Stack } from "@chakra-ui/react";
-import { useRef } from "react";
+import { VStack, Text, Stack, useBreakpointValue } from "@chakra-ui/react";
 import { useInView } from "framer-motion";
+import { useRef } from "react";
+
 import MotionBox from "../elements/MotionBox";
-import { useBreakpointValue } from "@chakra-ui/react";
 
 const Access = () => {
   const ref = useRef(null);

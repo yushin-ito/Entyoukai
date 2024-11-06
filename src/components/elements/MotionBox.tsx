@@ -3,7 +3,7 @@ import { motion, isValidMotionProp } from "framer-motion";
 
 const MotionBox = chakra(motion.div, {
   shouldForwardProp: (prop) =>
-    isValidMotionProp(prop) || shouldForwardProp(prop),
+    isValidMotionProp(prop) || shouldForwardProp(prop)
 });
 
 export default MotionBox;

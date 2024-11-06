@@ -1,6 +1,6 @@
 import {
   Input as ChakraInput,
-  InputProps as ChakraInputProps,
+  InputProps as ChakraInputProps
 } from "@chakra-ui/react";
 import { forwardRef } from "react";
 

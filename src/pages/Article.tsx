@@ -6,19 +6,20 @@ import {
   Button,
   HStack,
   Avatar,
-  Divider,
+  Divider
 } from "@chakra-ui/react";
-import { FaTwitter, FaFacebook, FaLine } from "react-icons/fa";
+import { format } from "date-fns";
 import { AnimatePresence } from "framer-motion";
-import MainVisual from "../components/layouts/MainVisual";
+import { useMemo, useEffect, useState } from "react";
+import { FaTwitter, FaFacebook, FaLine } from "react-icons/fa";
+import { useParams, useNavigate } from "react-router-dom";
+
+import IconButton from "../components/elements/IconButton";
+import MotionBox from "../components/elements/MotionBox";
+import ScrollToTopButton from "../components/elements/ScrollTopButton";
 import SectionTitle from "../components/elements/SectionTitle";
 import Footer from "../components/layouts/Footer";
-import ScrollToTopButton from "../components/elements/ScrollTopButton";
-import { useParams, useNavigate } from "react-router-dom";
-import { useMemo, useEffect, useState } from "react";
-import MotionBox from "../components/elements/MotionBox";
-import { format } from "date-fns";
-import IconButton from "../components/elements/IconButton";
+import MainVisual from "../components/layouts/MainVisual";
 import { useQueryArticles } from "../hooks/contents";
 
 const Article = () => {

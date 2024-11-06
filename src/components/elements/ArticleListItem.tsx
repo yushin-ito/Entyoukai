@@ -5,14 +5,15 @@ import {
   Image,
   HStack,
   useBreakpointValue,
-  Avatar,
+  Avatar
 } from "@chakra-ui/react";
-import { useRef } from "react";
-import { useInView } from "framer-motion";
-import MotionBox from "../elements/MotionBox";
 import { format, formatDistanceToNow, parseISO } from "date-fns";
 import { ja } from "date-fns/locale";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
+
+import MotionBox from "../elements/MotionBox";
 
 type ArticleListItemProps = {
   id: number;
@@ -33,7 +34,7 @@ const ArticleListItem = ({
   images,
   avatar,
   location,
-  author,
+  author
 }: ArticleListItemProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -147,7 +148,7 @@ const ArticleListItem = ({
               <Text fontSize="2xs" color="gray.600">
                 {formatDistanceToNow(parseISO(date), {
                   addSuffix: true,
-                  locale: ja,
+                  locale: ja
                 })}
               </Text>
             </HStack>

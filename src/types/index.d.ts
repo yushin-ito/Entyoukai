@@ -1,4 +1,4 @@
-import { Database } from "./schema";
+import type { Database } from "./schema";
 
 export type UseMutationResult<T1, T2> = {
   onSuccess?: (response: T1) => void;

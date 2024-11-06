@@ -1,6 +1,7 @@
-import { useState, useEffect, useRef } from "react";
 import { Text, VStack, HStack } from "@chakra-ui/react";
 import { useInView } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+
 import MotionBox from "../elements/MotionBox";
 
 const target = new Date("2025-01-08T00:00:00").getTime();
@@ -17,7 +18,7 @@ const Countdown = () => {
       days: Math.floor(diff / (1000 * 60 * 60 * 24)),
       hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
       minutes: Math.floor((diff / (1000 * 60)) % 60),
-      seconds: Math.floor((diff / 1000) % 60),
+      seconds: Math.floor((diff / 1000) % 60)
     };
   };
 
@@ -35,7 +36,7 @@ const Countdown = () => {
     days: "日",
     hours: "時間",
     minutes: "分",
-    seconds: "秒",
+    seconds: "秒"
   };
 
   return (
@@ -53,7 +54,7 @@ const Countdown = () => {
                 ? {
                     opacity: 1,
                     y: 0,
-                    transition: { duration: 0.5, ease: "easeOut" },
+                    transition: { duration: 0.5, ease: "easeOut" }
                   }
                 : {}
             }

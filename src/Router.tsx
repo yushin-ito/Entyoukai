@@ -1,15 +1,15 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Box } from "@chakra-ui/react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import Top from "./pages/Top";
 import Activity from "./pages/Activity";
-import Company from "./pages/Company";
-import Memory from "./pages/Memory";
-import Contact from "./pages/Contact";
-import NotFound from "./pages/NotFound";
 import Article from "./pages/Article";
-import SitePolicy from "./pages/SitePolicy";
+import Company from "./pages/Company";
+import Contact from "./pages/Contact";
+import Memory from "./pages/Memory";
+import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import SitePolicy from "./pages/SitePolicy";
+import Top from "./pages/Top";
 
 const Router = () => {
   return (

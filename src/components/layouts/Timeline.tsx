@@ -1,13 +1,14 @@
-import { useEffect, useState, useMemo, useCallback } from "react";
-import { format } from "date-fns";
 import {
   Box,
   VStack,
   Text,
   Circle,
-  useBreakpointValue,
+  useBreakpointValue
 } from "@chakra-ui/react";
-import { Event } from "../../types";
+import { format } from "date-fns";
+import { useEffect, useState, useMemo, useCallback } from "react";
+
+import type { Event } from "../../types";
 import TimelineItem from "../elements/TimelineItem";
 
 type TimelineProps = {
@@ -66,13 +67,13 @@ const Timeline = ({ events }: TimelineProps) => {
         pos="absolute"
         left={{
           base: "70px",
-          sm: "140px",
+          sm: "140px"
         }}
         top="0"
         bottom="0"
         width={{
           base: "1.8px",
-          sm: "2.5px",
+          sm: "2.5px"
         }}
         bg="brand"
         transform="translateX(-50%)"
@@ -107,19 +108,19 @@ const Timeline = ({ events }: TimelineProps) => {
           key={index}
           size={{
             base: "12px",
-            sm: "24px",
+            sm: "24px"
           }}
           bg="white"
           pos="absolute"
           left={{
             base: "70px",
-            sm: "140px",
+            sm: "140px"
           }}
           top={`${position}px`}
           transform="translate(-50%, -50%)"
           borderWidth={{
             base: "2px",
-            sm: "3px",
+            sm: "3px"
           }}
           borderColor="brand"
         />

@@ -6,9 +6,10 @@ import {
   AccordionIcon,
   VStack,
   Text,
-  HStack,
+  HStack
 } from "@chakra-ui/react";
-import { FAQ } from "../../types";
+
+import type { FAQ } from "../../types";
 
 type FAQListProps = {
   faq: FAQ[];
@@ -30,7 +31,7 @@ const FAQList = ({ faq }: FAQListProps) => {
             _active={{ bg: "transparent" }}
             _expanded={{ bg: "transparent" }}
             sx={{
-              WebkitTapHighlightColor: "transparent",
+              WebkitTapHighlightColor: "transparent"
             }}
           >
             <HStack
