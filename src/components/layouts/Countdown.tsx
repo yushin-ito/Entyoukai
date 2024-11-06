@@ -40,7 +40,7 @@ const Countdown = () => {
   };
 
   return (
-    <VStack  ref={ref} spacing="5" rounded="lg">
+    <VStack ref={ref} spacing="5" rounded="lg">
       <Text fontSize={{ base: "lg", sm: "2xl" }} fontWeight="bold">
         二十歳のつどいまであと
       </Text>
