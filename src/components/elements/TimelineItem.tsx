@@ -1,6 +1,7 @@
 import { HStack, Text } from "@chakra-ui/react";
 import { useInView } from "framer-motion";
 import { useRef, useEffect } from "react";
+
 import MotionBox from "../elements/MotionBox";
 
 type TimelineItemProps = {
@@ -16,7 +17,7 @@ const TimelineItem = ({
   resize,
   title,
   description,
-  onMeasure,
+  onMeasure
 }: TimelineItemProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true });
@@ -36,7 +37,7 @@ const TimelineItem = ({
         animate={{
           opacity: isInView ? 1 : 0,
           x: isInView ? 0 : 30,
-          transition: { duration: 0.8 },
+          transition: { duration: 0.8 }
         }}
         p="4"
         ml={{ base: "80px", sm: "180px" }}

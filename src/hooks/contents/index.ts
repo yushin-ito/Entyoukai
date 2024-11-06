@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { Article, Event, FAQ, News, Policy } from "../../types";
+
+import type { Article, Event, FAQ, News, Policy } from "../../types";
 
 export const useQueryArticles = () =>
   useQuery<Article[]>(["articles"], async () => {

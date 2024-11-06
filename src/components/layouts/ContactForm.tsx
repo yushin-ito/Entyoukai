@@ -4,22 +4,23 @@ import {
   FormLabel,
   FormErrorMessage,
   Button,
-  Text,
+  Text
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
+
+import type { Contact, ContactFormData } from "../../types";
 import Input from "../elements/Input";
 import Textarea from "../elements/Textarea";
-import { ContactFormData } from "../../types";
 
 type ContactFormProps = {
-  postContact: (contact: ContactFormData) => Promise<void>;
+  postContact: (contact: Contact["Insert"]) => Promise<void>;
 };
 
 const ContactForm = ({ postContact }: ContactFormProps) => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting }
   } = useForm<ContactFormData>();
 
   const onSubmit = async (data: ContactFormData) => {
@@ -58,8 +59,8 @@ const ContactForm = ({ postContact }: ContactFormProps) => {
               required: "メールアドレスを入力してください",
               pattern: {
                 value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                message: "有効なメールアドレスを入力してください",
-              },
+                message: "有効なメールアドレスを入力してください"
+              }
             })}
           />
           <FormErrorMessage>
@@ -79,8 +80,8 @@ const ContactForm = ({ postContact }: ContactFormProps) => {
               required: "電話番号を入力してください",
               pattern: {
                 value: /^[0-9]{10,11}$/,
-                message: "有効な電話番号を入力してください",
-              },
+                message: "有効な電話番号を入力してください"
+              }
             })}
           />
           <FormErrorMessage>
@@ -97,7 +98,7 @@ const ContactForm = ({ postContact }: ContactFormProps) => {
             h="180px"
             placeholder="お問い合わせ内容"
             {...register("message", {
-              required: "お問い合わせ内容を入力してください",
+              required: "お問い合わせ内容を入力してください"
             })}
           />
           <FormErrorMessage>

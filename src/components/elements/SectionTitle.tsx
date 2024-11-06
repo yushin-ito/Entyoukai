@@ -3,7 +3,7 @@ import {
   Box,
   Text,
   useBreakpointValue,
-  HStack,
+  HStack
 } from "@chakra-ui/react";
 
 type SectionTitleProps = {

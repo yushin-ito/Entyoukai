@@ -1,6 +1,6 @@
 import {
   Textarea as ChakraTextarea,
-  TextareaProps as ChakraTextareaProps,
+  TextareaProps as ChakraTextareaProps
 } from "@chakra-ui/react";
 import { forwardRef } from "react";
 

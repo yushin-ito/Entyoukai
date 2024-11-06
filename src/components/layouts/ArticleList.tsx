@@ -1,13 +1,14 @@
-import { useEffect, useRef, useState } from "react";
 import {
   Box,
   HStack,
   Circle,
   VStack,
   useBreakpointValue,
-  SimpleGrid,
+  SimpleGrid
 } from "@chakra-ui/react";
-import { Article } from "../../types";
+import { useEffect, useRef, useState } from "react";
+
+import type { Article } from "../../types";
 import ArticleListItem from "../elements/ArticleListItem";
 
 type ArticleListProps = {
@@ -49,12 +50,12 @@ const ArticleList = ({ articles }: ArticleListProps) => {
         scrollSnapType="x mandatory"
         sx={{
           "::-webkit-scrollbar": {
-            display: "none",
-          },
+            display: "none"
+          }
         }}
         css={{
           scrollbarWidth: "none",
-          msOverflowStyle: "none",
+          msOverflowStyle: "none"
         }}
       >
         <HStack

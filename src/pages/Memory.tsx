@@ -1,9 +1,10 @@
 import { VStack } from "@chakra-ui/react";
-import MainVisual from "../components/layouts/MainVisual";
+
+import ScrollToTopButton from "../components/elements/ScrollTopButton";
 import SectionTitle from "../components/elements/SectionTitle";
 import Footer from "../components/layouts/Footer";
+import MainVisual from "../components/layouts/MainVisual";
 import Timeline from "../components/layouts/Timeline";
-import ScrollToTopButton from "../components/elements/ScrollTopButton";
 import { useQueryEvents } from "../hooks/contents";
 
 const Memory = () => {

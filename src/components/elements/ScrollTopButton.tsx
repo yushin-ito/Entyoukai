@@ -1,9 +1,10 @@
+import { useBreakpointValue } from "@chakra-ui/react";
+import { AnimatePresence } from "framer-motion";
 import { useState, useEffect, useCallback } from "react";
 import { FiChevronUp } from "react-icons/fi";
-import { AnimatePresence } from "framer-motion";
-import MotionBox from "./MotionBox";
+
 import IconButton from "./IconButton";
-import { useBreakpointValue } from "@chakra-ui/react";
+import MotionBox from "./MotionBox";
 
 const ScrollToTopButton = () => {
   const [visible, setVisible] = useState(false);
@@ -46,12 +47,12 @@ const ScrollToTopButton = () => {
           animate={{
             opacity: 1,
             y: 0,
-            transition: { duration: 0.3, ease: "easeIn" },
+            transition: { duration: 0.3, ease: "easeIn" }
           }}
           exit={{
             opacity: 0,
             y: 10,
-            transition: { duration: 0.3, ease: "easeOut" },
+            transition: { duration: 0.3, ease: "easeOut" }
           }}
           position="fixed"
           bottom={{ base: "36px", sm: "52px" }}
@@ -69,7 +70,7 @@ const ScrollToTopButton = () => {
             color="white"
             _hover={{
               bg: "brand",
-              opacity: 0.8,
+              opacity: 0.8
             }}
             _active={{ transform: "scale(0.96)" }}
             shadow="lg"

@@ -11,14 +11,15 @@ import {
   DrawerContent,
   DrawerCloseButton,
   DrawerBody,
-  useDisclosure,
+  useDisclosure
 } from "@chakra-ui/react";
-import { Link, useLocation } from "react-router-dom";
+import { useRef, useCallback, useEffect } from "react";
 import { FiMenu } from "react-icons/fi";
 import { IoMdPin } from "react-icons/io";
-import MotionBox from "../elements/MotionBox";
-import { useRef, useCallback, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+
 import IconButton from "../elements/IconButton";
+import MotionBox from "../elements/MotionBox";
 
 const MainVisual = () => {
   const { pathname } = useLocation();

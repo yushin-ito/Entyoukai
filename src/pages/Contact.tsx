@@ -1,13 +1,14 @@
 import { VStack, useToast } from "@chakra-ui/react";
-import MainVisual from "../components/layouts/MainVisual";
-import SectionTitle from "../components/elements/SectionTitle";
-import Footer from "../components/layouts/Footer";
-import ContactForm from "../components/layouts/ContactForm";
-import { usePostContact } from "../hooks/database";
 import { useCallback } from "react";
-import { ContactFormData } from "../types";
-import Toast from "../components/elements/Toast";
+
 import ScrollToTopButton from "../components/elements/ScrollTopButton";
+import SectionTitle from "../components/elements/SectionTitle";
+import Toast from "../components/elements/Toast";
+import ContactForm from "../components/layouts/ContactForm";
+import Footer from "../components/layouts/Footer";
+import MainVisual from "../components/layouts/MainVisual";
+import { usePostContact } from "../hooks/database";
+import type { ContactFormData } from "../types";
 
 const Contact = () => {
   const toast = useToast();
@@ -22,7 +23,7 @@ const Contact = () => {
             title="お問い合わせを受け付けました"
             onClose={onClose}
           />
-        ),
+        )
       });
     },
     onError: (error) => {
@@ -36,9 +37,9 @@ const Contact = () => {
           />
         ),
         duration: 5000,
-        isClosable: true,
+        isClosable: true
       });
-    },
+    }
   });
 
   const postContact = useCallback(
