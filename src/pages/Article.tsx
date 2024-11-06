@@ -6,7 +6,8 @@ import {
   Button as ChakraButton,
   HStack,
   Avatar,
-  Divider
+  Divider,
+  IconButton
 } from "@chakra-ui/react";
 import { format } from "date-fns";
 import { AnimatePresence } from "framer-motion";
@@ -16,7 +17,6 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { useParams, useNavigate } from "react-router-dom";
 
 import Button from "../components/elements/Button";
-import IconButton from "../components/elements/IconButton";
 import MotionBox from "../components/elements/MotionBox";
 import ScrollToTopButton from "../components/elements/ScrollToTopButton";
 import SectionTitle from "../components/elements/SectionTitle";
@@ -159,6 +159,7 @@ const Article = () => {
                       `https://twitter.com/intent/tweet?text=${article.title}&url=${window.location.href}`
                     );
                   }}
+                  sx={{ WebkitTapHighlightColor: "transparent" }}
                 />
                 <IconButton
                   aria-label="instagram"
@@ -174,6 +175,7 @@ const Article = () => {
                       `https://www.instagram.com/?url=${window.location.href}`
                     );
                   }}
+                  sx={{ WebkitTapHighlightColor: "transparent" }}
                 />
                 <IconButton
                   aria-label="line"
@@ -189,6 +191,7 @@ const Article = () => {
                       `https://social-plugins.line.me/lineit/share?url=${window.location.href}`
                     );
                   }}
+                  sx={{ WebkitTapHighlightColor: "transparent" }}
                 />
               </HStack>
 
