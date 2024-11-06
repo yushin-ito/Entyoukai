@@ -11,7 +11,8 @@ import {
 import { format } from "date-fns";
 import { AnimatePresence } from "framer-motion";
 import { useMemo, useEffect, useState } from "react";
-import { FaTwitter, FaFacebook, FaLine } from "react-icons/fa";
+import { FaLine, FaInstagram } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
 import { useParams, useNavigate } from "react-router-dom";
 
 import IconButton from "../components/elements/IconButton";
@@ -53,7 +54,11 @@ const Article = () => {
       <MainVisual />
       <VStack w={{ base: "80%", sm: "60%" }} spacing={{ base: "10", sm: "24" }}>
         {article && (
-          <VStack w="100%" spacing={{ base: "6", sm: "8" }} rounded="lg">
+          <VStack
+            w="100%"
+            spacing={{ base: "6", sm: "8" }}
+            rounded={{ base: "md", sm: "lg" }}
+          >
             <SectionTitle title={article.title} />
             <VStack
               w={{ base: "100%", sm: "90%" }}
@@ -141,7 +146,7 @@ const Article = () => {
               >
                 <IconButton
                   aria-label="twitter"
-                  icon={<FaTwitter size="18px" />}
+                  icon={<FaSquareXTwitter size="18px" />}
                   color="brand"
                   borderWidth="1px"
                   borderColor="brand"
@@ -155,8 +160,8 @@ const Article = () => {
                   }}
                 />
                 <IconButton
-                  aria-label="facebook"
-                  icon={<FaFacebook size="18px" />}
+                  aria-label="instagram"
+                  icon={<FaInstagram size="18px" />}
                   color="brand"
                   borderWidth="1px"
                   borderColor="brand"
@@ -165,7 +170,7 @@ const Article = () => {
                   bg="white"
                   onClick={() => {
                     window.open(
-                      `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`
+                      `https://www.instagram.com/?url=${window.location.href}`
                     );
                   }}
                 />

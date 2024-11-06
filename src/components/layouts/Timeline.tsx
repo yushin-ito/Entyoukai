@@ -97,7 +97,7 @@ const Timeline = ({ events }: TimelineProps) => {
             >
               {breakpoint === "base"
                 ? format(date, "yy.M.d")
-                : format(date, "yyyy.M.d")}
+                : format(date, "yyyy.MM.dd")}
             </Text>
           ))}
         </VStack>
