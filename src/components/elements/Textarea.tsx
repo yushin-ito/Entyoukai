@@ -10,7 +10,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, ChakraTextareaProps>(
       <ChakraTextarea
         ref={ref}
         borderWidth="1.2px"
-        borderColor="gray.300"
+        borderColor="gray.400"
         focusBorderColor="brand"
         _placeholder={{ color: "gray.400" }}
         {...props}

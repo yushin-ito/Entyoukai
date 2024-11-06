@@ -39,6 +39,8 @@ const ContactForm = ({ postContact }: ContactFormProps) => {
             お名前 <span style={{ color: "red" }}>*</span>
           </FormLabel>
           <Input
+            size={{ base: "sm", sm: "md" }}
+            rounded="md"
             placeholder="お名前"
             {...register("name", { required: "お名前を入力してください" })}
           />
@@ -54,6 +56,8 @@ const ContactForm = ({ postContact }: ContactFormProps) => {
           </FormLabel>
           <Input
             type="email"
+            size={{ base: "sm", sm: "md" }}
+            rounded="md"
             placeholder="メールアドレス"
             {...register("email", {
               required: "メールアドレスを入力してください",
@@ -75,6 +79,8 @@ const ContactForm = ({ postContact }: ContactFormProps) => {
           </FormLabel>
           <Input
             type="tel"
+            size={{ base: "sm", sm: "md" }}
+            rounded="md"
             placeholder="電話番号"
             {...register("phone", {
               required: "電話番号を入力してください",
@@ -95,7 +101,7 @@ const ContactForm = ({ postContact }: ContactFormProps) => {
             お問い合わせ内容 <span style={{ color: "red" }}>*</span>
           </FormLabel>
           <Textarea
-            h="180px"
+            h={{ base: "160px", sm: "180px" }}
             placeholder="お問い合わせ内容"
             {...register("message", {
               required: "お問い合わせ内容を入力してください"

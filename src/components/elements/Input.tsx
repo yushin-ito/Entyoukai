@@ -8,8 +8,8 @@ const Input = forwardRef<HTMLInputElement, ChakraInputProps>((props, ref) => {
   return (
     <ChakraInput
       ref={ref}
-      borderWidth="1.2px"
-      borderColor="gray.300"
+      borderWidth={{ base: "0.8px", sm: "1.2px" }}
+      borderColor="gray.400"
       focusBorderColor="brand"
       _placeholder={{ color: "gray.400" }}
       {...props}

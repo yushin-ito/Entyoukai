@@ -11,17 +11,27 @@ const Toast = ({ status, title, onClose }: ToastProps) => {
   if (status === "info") {
     return (
       <HStack
-        w="auto"
-        maxWidth="none"
-        minWidth="auto"
-        px="6"
-        py="4"
+        justifyContent={{ base: "space-between", sm: "center" }}
+        px="16px"
+        py={{ base: "10px", sm: "12px" }}
         bg="info"
         rounded="md"
+        spacing={{ base: "0", sm: "12px" }}
       >
-        <Icon as={FiInfo} boxSize="20px" color="white" />
-        <Text color="white">{title}</Text>
-        <Icon as={FiX} boxSize="18px" color="white" onClick={onClose} />
+        <Icon
+          as={FiInfo}
+          boxSize={{ base: "18px", sm: "20px" }}
+          color="white"
+        />
+        <Text fontSize={{ base: "sm", sm: "md" }} color="white">
+          {title}
+        </Text>
+        <Icon
+          as={FiX}
+          boxSize={{ base: "16px", sm: "18px" }}
+          color="white"
+          onClick={onClose}
+        />
       </HStack>
     );
   }
@@ -29,17 +39,27 @@ const Toast = ({ status, title, onClose }: ToastProps) => {
   if (status === "success") {
     return (
       <HStack
-        w="auto"
-        maxWidth="none"
-        minWidth="auto"
-        px="6"
-        py="4"
+        justifyContent={{ base: "space-between", sm: "center" }}
+        px="16px"
+        py={{ base: "10px", sm: "12px" }}
         bg="success"
         rounded="md"
+        spacing={{ base: "0", sm: "12px" }}
       >
-        <Icon as={FiCheckCircle} boxSize="20px" color="white" />
-        <Text color="white">{title}</Text>
-        <Icon as={FiX} boxSize="18px" color="white" onClick={onClose} />
+        <Icon
+          as={FiCheckCircle}
+          boxSize={{ base: "18px", sm: "20px" }}
+          color="white"
+        />
+        <Text fontSize={{ base: "sm", sm: "md" }} color="white">
+          {title}
+        </Text>
+        <Icon
+          as={FiX}
+          boxSize={{ base: "16px", sm: "18px" }}
+          color="white"
+          onClick={onClose}
+        />
       </HStack>
     );
   }
@@ -47,17 +67,27 @@ const Toast = ({ status, title, onClose }: ToastProps) => {
   if (status === "error") {
     return (
       <HStack
-        w="auto"
-        maxWidth="none"
-        minWidth="auto"
-        px="6"
-        py="4"
-        bg="error"
+        justifyContent={{ base: "space-between", sm: "center" }}
+        px="16px"
+        py={{ base: "10px", sm: "12px" }}
+        bg="success"
         rounded="md"
+        spacing={{ base: "0", sm: "12px" }}
       >
-        <Icon as={FiAlertCircle} boxSize="20px" color="white" />
-        <Text color="white">{title}</Text>
-        <Icon as={FiX} boxSize="18px" color="white" onClick={onClose} />
+        <Icon
+          as={FiAlertCircle}
+          boxSize={{ base: "18px", sm: "20px" }}
+          color="white"
+        />
+        <Text fontSize={{ base: "sm", sm: "md" }} color="white">
+          {title}
+        </Text>
+        <Icon
+          as={FiX}
+          boxSize={{ base: "16px", sm: "18px" }}
+          color="white"
+          onClick={onClose}
+        />
       </HStack>
     );
   }

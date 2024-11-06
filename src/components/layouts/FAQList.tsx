@@ -50,8 +50,8 @@ const FAQList = ({ faq }: FAQListProps) => {
               </Text>
             </HStack>
             <AccordionIcon
-              w={{ base: "16px", sm: "24px" }}
-              h={{ base: "16px", sm: "24px" }}
+              boxSize={{ base: "16px", sm: "24px" }}
+              color="brand"
             />
           </AccordionButton>
 
