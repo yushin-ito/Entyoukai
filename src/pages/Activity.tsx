@@ -4,8 +4,8 @@ import SectionTitle from "../components/elements/SectionTitle";
 import Footer from "../components/layouts/Footer";
 import ScrollToTopButton from "../components/elements/ScrollTopButton";
 import ArticleList from "../components/layouts/ArticleList";
-import { useQueryArticles } from "../hooks/articles";
 import TableOfContents from "../components/layouts/TableOfContents";
+import { useQueryArticles } from "../hooks/contents";
 
 const Activity = () => {
   const { data: articles } = useQueryArticles();

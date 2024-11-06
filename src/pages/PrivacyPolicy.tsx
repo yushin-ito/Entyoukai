@@ -3,7 +3,7 @@ import MainVisual from "../components/layouts/MainVisual";
 import SectionTitle from "../components/elements/SectionTitle";
 import Footer from "../components/layouts/Footer";
 import ScrollToTopButton from "../components/elements/ScrollTopButton";
-import { useQueryPrivacyPolicy } from "../hooks/policy";
+import { useQueryPrivacyPolicy } from "../hooks/contents";
 
 const PrivacyPolicy = () => {
   const { data: policy } = useQueryPrivacyPolicy();

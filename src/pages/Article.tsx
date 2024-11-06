@@ -14,12 +14,12 @@ import MainVisual from "../components/layouts/MainVisual";
 import SectionTitle from "../components/elements/SectionTitle";
 import Footer from "../components/layouts/Footer";
 import ScrollToTopButton from "../components/elements/ScrollTopButton";
-import { useQueryArticles } from "../hooks/articles";
 import { useParams, useNavigate } from "react-router-dom";
 import { useMemo, useEffect, useState } from "react";
 import MotionBox from "../components/elements/MotionBox";
 import { format } from "date-fns";
 import IconButton from "../components/elements/IconButton";
+import { useQueryArticles } from "../hooks/contents";
 
 const Article = () => {
   const { id } = useParams();

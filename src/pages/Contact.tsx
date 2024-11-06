@@ -3,7 +3,7 @@ import MainVisual from "../components/layouts/MainVisual";
 import SectionTitle from "../components/elements/SectionTitle";
 import Footer from "../components/layouts/Footer";
 import ContactForm from "../components/layouts/ContactForm";
-import { usePostContact } from "../hooks/contact";
+import { usePostContact } from "../hooks/database";
 import { useCallback } from "react";
 import { ContactFormData } from "../types";
 import Toast from "../components/elements/Toast";
