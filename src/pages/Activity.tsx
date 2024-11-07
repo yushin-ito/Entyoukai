@@ -28,11 +28,11 @@ const Activity = () => {
         ]}
       />
       <VStack w={{ base: "80%", sm: "60%" }} spacing={{ base: "10", sm: "24" }}>
-        <VStack id="activity" w="100%" spacing={{ base: "6", sm: "8" }}>
+        <VStack id="activity" w="100%" spacing={{ base: "4", sm: "8" }}>
           <SectionTitle title="活動について" />
           <Box h="240px" />
         </VStack>
-        <VStack id="article" w="100%" spacing={{ base: "6", sm: "8" }}>
+        <VStack id="article" w="100%" spacing={{ base: "4", sm: "8" }}>
           <SectionTitle title="活動報告" />
           {articles && <ArticleList articles={articles} />}
         </VStack>

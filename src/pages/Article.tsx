@@ -56,7 +56,7 @@ const Article = () => {
         {article && (
           <VStack
             w="100%"
-            spacing={{ base: "6", sm: "8" }}
+            spacing={{ base: "4", sm: "8" }}
             rounded={{ base: "md", sm: "lg" }}
           >
             <SectionTitle title={article.title} />

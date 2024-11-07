@@ -40,10 +40,3 @@ export type Policy = {
   title: string;
   description: string;
 };
-
-export type ContactFormData = {
-  name: string;
-  email: string;
-  phone: string;
-  message: string;
-};
