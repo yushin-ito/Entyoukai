@@ -154,7 +154,7 @@ const Article = () => {
                   size={{ base: "sm", sm: "md" }}
                   color="white"
                   bg="brand"
-                  _hover={{ bg: "brand", opacity: { base: 1, sm: 0.8 } }}
+                  _hover={{ opacity: { base: 1, sm: 0.8 } }}
                   _active={{
                     transform: "scale(0.98)",
                     opacity: 0.8
@@ -185,7 +185,7 @@ const Article = () => {
                   size={{ base: "sm", sm: "md" }}
                   color="white"
                   bg="brand"
-                  _hover={{ bg: "brand", opacity: { base: 1, sm: 0.8 } }}
+                  _hover={{ opacity: { base: 1, sm: 0.8 } }}
                   _active={{
                     transform: "scale(0.98)",
                     opacity: 0.8

@@ -59,7 +59,7 @@ const NewsList = ({ news }: NewsListProps) => {
               px={{ base: "8px", sm: "12px" }}
               rounded="full"
               bg={activeId === id ? "brand" : "gray.300"}
-              _hover={{ transform: "scale(0.98)" }}
+              _hover={{}}
               _active={{ transform: "scale(0.96)" }}
               onClick={() => setActiveId(id)}
             >
