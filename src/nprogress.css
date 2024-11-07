@@ -1,4 +1,10 @@
 #nprogress .bar {
   background: #010158;
-  height: 6px;
+  height: 3px;
+}
+
+@media (min-width: 30em) {
+  #nprogress .bar {
+    height: 6px;
+  }
 }
