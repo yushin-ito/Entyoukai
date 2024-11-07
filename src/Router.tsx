@@ -1,4 +1,5 @@
 import { Box } from "@chakra-ui/react";
+import { useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 
 import Activity from "./pages/Activity";
@@ -10,7 +11,6 @@ import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import SitePolicy from "./pages/SitePolicy";
 import Top from "./pages/Top";
-import { useEffect } from "react";
 
 const AppRouter = () => {
   const { pathname } = useLocation();
@@ -23,7 +23,7 @@ const AppRouter = () => {
     <Routes>
       <Route path="/" element={<Top />} />
       <Route path="/activity" element={<Activity />} />
-      <Route path="/article" element={<Article />} />
+      <Route path="/article/:id" element={<Article />} />
       <Route path="/company" element={<Company />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/memory" element={<Memory />} />
