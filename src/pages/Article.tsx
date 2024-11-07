@@ -8,6 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { format } from "date-fns";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { FaLine, FaInstagram } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { useParams, useNavigate } from "react-router-dom";
@@ -40,6 +41,9 @@ const Article = () => {
       overflowX="hidden"
       pos="relative"
     >
+      <Helmet>
+        <title>{article?.title}</title>
+      </Helmet>
       <ScrollToTopButton />
       <MainVisual />
       <VStack w={{ base: "80%", sm: "55%" }} spacing={{ base: "10", sm: "24" }}>

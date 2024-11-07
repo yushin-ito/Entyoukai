@@ -7,6 +7,7 @@ import {
   useToast,
   Text
 } from "@chakra-ui/react";
+import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 
 import Input from "../components/atoms/Input";
@@ -75,6 +76,9 @@ const Contact = () => {
       overflowX="hidden"
       pos="relative"
     >
+      <Helmet>
+        <title>お問い合わせ</title>
+      </Helmet>
       <ScrollToTopButton />
       <MainVisual />
       <VStack w={{ base: "80%", sm: "50%" }} spacing={{ base: "4", sm: "8" }}>

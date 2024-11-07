@@ -1,4 +1,5 @@
 import { VStack } from "@chakra-ui/react";
+import { Helmet } from "react-helmet-async";
 
 import ScrollToTopButton from "../components/molecules/ScrollToTopButton";
 import SectionTitle from "../components/molecules/SectionTitle";
@@ -18,6 +19,9 @@ const Memory = () => {
       overflowX="hidden"
       pos="relative"
     >
+      <Helmet>
+        <title>おもいで</title>
+      </Helmet>
       <ScrollToTopButton />
       <MainVisual />
       <VStack w={{ base: "80%", sm: "55%" }} spacing={{ base: "10", sm: "16" }}>
