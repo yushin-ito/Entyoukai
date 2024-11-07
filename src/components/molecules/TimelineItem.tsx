@@ -2,7 +2,7 @@ import { HStack, Text } from "@chakra-ui/react";
 import { useInView } from "framer-motion";
 import { useRef, useEffect } from "react";
 
-import MotionBox from "../elements/MotionBox";
+import MotionBox from "../atoms/MotionBox";
 
 type TimelineItemProps = {
   index: number;

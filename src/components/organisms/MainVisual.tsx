@@ -19,7 +19,7 @@ import { FiMenu } from "react-icons/fi";
 import { IoMdPin } from "react-icons/io";
 import { Link, useLocation } from "react-router-dom";
 
-import MotionBox from "../elements/MotionBox";
+import MotionBox from "../atoms/MotionBox";
 
 const MainVisual = () => {
   const { pathname } = useLocation();

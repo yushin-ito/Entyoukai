@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
-import MotionBox from "../elements/MotionBox";
+import MotionBox from "../atoms/MotionBox";
 
 type TableOfContentsProps = {
   sections: { id: string; title: string }[];

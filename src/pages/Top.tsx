@@ -1,14 +1,14 @@
 import { VStack, Text } from "@chakra-ui/react";
 
-import ScrollToTopButton from "../components/elements/ScrollToTopButton";
-import SectionTitle from "../components/elements/SectionTitle";
-import Access from "../components/layouts/Access";
-import Countdown from "../components/layouts/Countdown";
-import FAQList from "../components/layouts/FAQList";
-import Footer from "../components/layouts/Footer";
-import MainVisual from "../components/layouts/MainVisual";
-import NewsList from "../components/layouts/NewsList";
-import TableOfContents from "../components/layouts/TableOfContents";
+import ScrollToTopButton from "../components/molecules/ScrollToTopButton";
+import SectionTitle from "../components/molecules/SectionTitle";
+import Access from "../components/organisms/Access";
+import Countdown from "../components/organisms/Countdown";
+import FAQList from "../components/organisms/FAQList";
+import Footer from "../components/organisms/Footer";
+import MainVisual from "../components/organisms/MainVisual";
+import NewsList from "../components/organisms/NewsList";
+import TableOfContents from "../components/organisms/TableOfContents";
 import { useQueryFAQ, useQueryNews } from "../hooks/contents";
 
 const Top = () => {

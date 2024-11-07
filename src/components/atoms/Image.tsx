@@ -2,7 +2,7 @@ import { Image as ChakraImage, BoxProps } from "@chakra-ui/react";
 import { useState } from "react";
 
 import MotionBox from "./MotionBox";
-import Skeleton from "./Skelton";
+import Skeleton from "./Skeleton";
 
 type ImageProps = BoxProps & {
   alt: string;

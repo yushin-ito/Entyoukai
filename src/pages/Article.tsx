@@ -12,12 +12,12 @@ import { FaLine, FaInstagram } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { useParams, useNavigate } from "react-router-dom";
 
-import Avatar from "../components/elements/Avatar";
-import ScrollToTopButton from "../components/elements/ScrollToTopButton";
-import SectionTitle from "../components/elements/SectionTitle";
-import Footer from "../components/layouts/Footer";
-import ImageCarousel from "../components/layouts/ImageCarousel";
-import MainVisual from "../components/layouts/MainVisual";
+import Avatar from "../components/atoms/Avatar";
+import ScrollToTopButton from "../components/molecules/ScrollToTopButton";
+import SectionTitle from "../components/molecules/SectionTitle";
+import Footer from "../components/organisms/Footer";
+import ImageCarousel from "../components/organisms/ImageCarousel";
+import MainVisual from "../components/organisms/MainVisual";
 import { FIRST_ARTICLE_ID, END_ARTICLE_ID } from "../constants";
 import { useQueryArticle } from "../hooks/contents";
 

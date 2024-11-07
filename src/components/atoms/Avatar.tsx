@@ -1,6 +1,6 @@
 import { Avatar as CustomAvatar, AvatarProps } from "@chakra-ui/react";
 
-import Skeleton from "./Skelton";
+import Skeleton from "./Skeleton";
 
 const Avatar = ({ ...props }: AvatarProps) => {
   return (

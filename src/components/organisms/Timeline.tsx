@@ -9,7 +9,7 @@ import { format } from "date-fns";
 import { useEffect, useState, useMemo, useCallback } from "react";
 
 import type { Event } from "../../types";
-import TimelineItem from "../elements/TimelineItem";
+import TimelineItem from "../molecules/TimelineItem";
 
 type TimelineProps = {
   events: Event[];

@@ -11,10 +11,9 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 
-import MotionBox from "../elements/MotionBox";
-
-import Avatar from "./Avatar";
-import Image from "./Image";
+import Avatar from "../atoms/Avatar";
+import Image from "../atoms/Image";
+import MotionBox from "../atoms/MotionBox";
 
 type ArticleListItemProps = {
   id: number;

@@ -1,10 +1,10 @@
 import { VStack } from "@chakra-ui/react";
 
-import ScrollToTopButton from "../components/elements/ScrollToTopButton";
-import SectionTitle from "../components/elements/SectionTitle";
-import Footer from "../components/layouts/Footer";
-import MainVisual from "../components/layouts/MainVisual";
-import Timeline from "../components/layouts/Timeline";
+import ScrollToTopButton from "../components/molecules/ScrollToTopButton";
+import SectionTitle from "../components/molecules/SectionTitle";
+import Footer from "../components/organisms/Footer";
+import MainVisual from "../components/organisms/MainVisual";
+import Timeline from "../components/organisms/Timeline";
 import { useQueryEvents } from "../hooks/contents";
 
 const Memory = () => {

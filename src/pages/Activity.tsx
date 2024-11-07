@@ -1,11 +1,11 @@
 import { Box, VStack } from "@chakra-ui/react";
 
-import ScrollToTopButton from "../components/elements/ScrollToTopButton";
-import SectionTitle from "../components/elements/SectionTitle";
-import ArticleList from "../components/layouts/ArticleList";
-import Footer from "../components/layouts/Footer";
-import MainVisual from "../components/layouts/MainVisual";
-import TableOfContents from "../components/layouts/TableOfContents";
+import ScrollToTopButton from "../components/molecules/ScrollToTopButton";
+import SectionTitle from "../components/molecules/SectionTitle";
+import ArticleList from "../components/organisms/ArticleList";
+import Footer from "../components/organisms/Footer";
+import MainVisual from "../components/organisms/MainVisual";
+import TableOfContents from "../components/organisms/TableOfContents";
 import { useQueryArticles } from "../hooks/contents";
 
 const Activity = () => {

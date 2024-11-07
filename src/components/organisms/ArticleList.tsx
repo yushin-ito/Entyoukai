@@ -9,7 +9,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 
 import type { Article } from "../../types";
-import ArticleListItem from "../elements/ArticleListItem";
+import ArticleListItem from "../molecules/ArticleListItem";
 
 type ArticleListProps = {
   articles: Article[];

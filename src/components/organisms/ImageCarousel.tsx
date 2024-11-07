@@ -2,8 +2,8 @@ import { Box, Image } from "@chakra-ui/react";
 import { AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 
-import MotionBox from "../elements/MotionBox";
-import Skeleton from "../elements/Skelton";
+import MotionBox from "../atoms/MotionBox";
+import Skeleton from "../atoms/Skeleton";
 
 type ImageCarouselProps = {
   images: string[];

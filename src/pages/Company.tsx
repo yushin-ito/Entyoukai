@@ -1,9 +1,9 @@
 import { Box, VStack } from "@chakra-ui/react";
 
-import ScrollToTopButton from "../components/elements/ScrollToTopButton";
-import SectionTitle from "../components/elements/SectionTitle";
-import Footer from "../components/layouts/Footer";
-import MainVisual from "../components/layouts/MainVisual";
+import ScrollToTopButton from "../components/molecules/ScrollToTopButton";
+import SectionTitle from "../components/molecules/SectionTitle";
+import Footer from "../components/organisms/Footer";
+import MainVisual from "../components/organisms/MainVisual";
 
 const Company = () => {
   return (

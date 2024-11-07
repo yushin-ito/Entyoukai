@@ -9,13 +9,13 @@ import {
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 
-import Input from "../components/elements/Input";
-import ScrollToTopButton from "../components/elements/ScrollToTopButton";
-import SectionTitle from "../components/elements/SectionTitle";
-import Textarea from "../components/elements/Textarea";
-import Toast from "../components/elements/Toast";
-import Footer from "../components/layouts/Footer";
-import MainVisual from "../components/layouts/MainVisual";
+import Input from "../components/atoms/Input";
+import Textarea from "../components/atoms/Textarea";
+import Toast from "../components/atoms/Toast";
+import ScrollToTopButton from "../components/molecules/ScrollToTopButton";
+import SectionTitle from "../components/molecules/SectionTitle";
+import Footer from "../components/organisms/Footer";
+import MainVisual from "../components/organisms/MainVisual";
 import { usePostContact } from "../hooks/database";
 
 export type FormData = {

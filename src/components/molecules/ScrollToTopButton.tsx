@@ -3,7 +3,7 @@ import { AnimatePresence } from "framer-motion";
 import { useState, useEffect, useCallback } from "react";
 import { FiChevronUp } from "react-icons/fi";
 
-import MotionBox from "./MotionBox";
+import MotionBox from "../atoms/MotionBox";
 
 const ScrollToTopButton = () => {
   const [visible, setVisible] = useState(false);
