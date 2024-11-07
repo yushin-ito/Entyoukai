@@ -8,6 +8,7 @@ import {
   useLocation
 } from "react-router-dom";
 
+import ProgressBar from "./components/molecules/ProgressBar";
 import Activity from "./pages/Activity";
 import Article from "./pages/Article";
 import Company from "./pages/Company";
@@ -48,6 +49,7 @@ const RootRouter = () => {
   return (
     <BrowserRouter>
       <Box flex="1" p="0" bg="white">
+        <ProgressBar />
         <AppRouter />
       </Box>
     </BrowserRouter>

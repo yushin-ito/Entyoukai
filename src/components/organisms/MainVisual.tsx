@@ -21,11 +21,14 @@ import { FiMenu } from "react-icons/fi";
 import { IoMdPin } from "react-icons/io";
 import { Link, useLocation } from "react-router-dom";
 
+import useAppStore from "../../stores";
+
 const MainVisual = () => {
   const { pathname } = useLocation();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const ref = useRef<HTMLDivElement>(null);
   const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
+  const progress = useAppStore((state) => state.progress);
 
   const scrollToElement = useCallback(
     (element: HTMLDivElement, duration: number) => {
@@ -51,14 +54,14 @@ const MainVisual = () => {
   );
 
   useEffect(() => {
-    setTimeout(() => {
-      if (pathname !== "/" && window.scrollY < 300) {
+    if (pathname !== "/" && window.scrollY < 300 && progress === 100) {
+      setTimeout(() => {
         if (ref.current) {
           scrollToElement(ref.current, 500);
         }
-      }
-    }, 100);
-  }, [pathname, scrollToElement]);
+      }, 300);
+    }
+  }, [pathname, progress, scrollToElement]);
 
   return (
     <Center
