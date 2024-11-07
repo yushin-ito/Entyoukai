@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 import Activity from "./pages/Activity";
 import Article from "./pages/Article";
@@ -24,7 +24,8 @@ const Router = () => {
           <Route path="/article/:id" element={<Article />} />
           <Route path="/sitepolicy" element={<SitePolicy />} />
           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/404" element={<NotFound />} />
+          <Route path="*" element={<Navigate to="/404" replace />} />
         </Routes>
       </Box>
     </BrowserRouter>
