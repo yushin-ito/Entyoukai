@@ -73,7 +73,7 @@ const MainVisual = () => {
       {/* 背景画像 */}
       <Image
         src="/assets/images/background.webp"
-        alt="background"
+        alt=""
         objectFit="cover"
         w="100vw"
         h={{ base: "calc(100vh * 0.8)", sm: "100vh" }}

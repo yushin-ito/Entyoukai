@@ -7,9 +7,10 @@ import Skeleton from "./Skeleton";
 type ImageProps = BoxProps & {
   alt: string;
   src: string;
+  fallbackSrc: string;
 };
 
-const Image: React.FC<ImageProps> = ({ alt, src, ...props }) => {
+const Image: React.FC<ImageProps> = ({ alt, src, fallbackSrc, ...props }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
@@ -26,13 +27,13 @@ const Image: React.FC<ImageProps> = ({ alt, src, ...props }) => {
         <ChakraImage
           src={src}
           alt={alt}
-          onLoad={() => setIsLoaded(true)}
+          fallbackSrc={fallbackSrc}
           w="100%"
-          h="auto"
-          objectFit="contain"
+          h="100%"
+          objectFit="cover"
           draggable="false"
-          loading="lazy"
           shadow={{ base: "xs", sm: "sm" }}
+          onLoad={() => setIsLoaded(true)}
         />
       </MotionBox>
     </Skeleton>

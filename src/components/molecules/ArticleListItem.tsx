@@ -73,6 +73,11 @@ const ArticleListItem = ({
             w="100%"
             h={{ base: "200px", sm: "180px" }}
             rounded={{ base: "md", sm: "xl" }}
+            fallbackSrc={
+              breakpoint === "base"
+                ? "https://placehold.jp/28/e2e8f0/010158/600x400.png?text=No%20Image"
+                : "https://placehold.jp/32/e2e8f0/010158/540x360.png?text=No%20Image"
+            }
           />
           {/* ロケーション */}
           <Box
