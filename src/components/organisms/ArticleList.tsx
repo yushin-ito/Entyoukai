@@ -19,6 +19,7 @@ const ArticleList = ({ articles }: ArticleListProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
+
   useEffect(() => {
     const current = ref.current;
 

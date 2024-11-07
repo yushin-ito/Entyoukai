@@ -1,10 +1,10 @@
-import typescriptParser from "@typescript-eslint/parser";
 import eslintImport from "eslint-plugin-import";
 import prettier from "eslint-plugin-prettier";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import unusedImports from "eslint-plugin-unused-imports";
+import typescriptParser from "@typescript-eslint/parser";
 import globals from "globals";
 
 export default [
@@ -45,7 +45,7 @@ export default [
       ],
       "import/no-unresolved": "error",
       "import/no-duplicates": "warn",
-      "react-refresh/only-export-components": "warn",
+      "react-refresh/only-export-components": "off",
       "unused-imports/no-unused-imports": "warn",
       "unused-imports/no-unused-vars": [
         "warn",

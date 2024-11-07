@@ -53,7 +53,7 @@ const ScrollToTopButton = () => {
             y: 10,
             transition: { duration: 0.3, ease: "easeOut" }
           }}
-          position="fixed"
+          pos="fixed"
           bottom={{ base: "36px", sm: "52px" }}
           right={{ base: "24px", sm: "52px" }}
           zIndex={999}
