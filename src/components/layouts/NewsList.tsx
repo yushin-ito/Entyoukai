@@ -62,9 +62,6 @@ const NewsList = ({ news }: NewsListProps) => {
               _hover={{ transform: "scale(0.98)" }}
               _active={{ transform: "scale(0.96)" }}
               onClick={() => setActiveId(id)}
-              sx={{
-                WebkitTapHighlightColor: "transparent"
-              }}
             >
               <Text fontSize={{ base: "xs", sm: "sm" }} color="white">
                 {categories[id]}

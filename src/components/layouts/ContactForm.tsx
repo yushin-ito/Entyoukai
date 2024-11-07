@@ -3,12 +3,12 @@ import {
   FormControl,
   FormLabel,
   FormErrorMessage,
-  Text
+  Text,
+  Button
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 
 import type { Contact, ContactFormData } from "../../types";
-import Button from "../elements/Button";
 import Input from "../elements/Input";
 import Textarea from "../elements/Textarea";
 
@@ -118,6 +118,13 @@ const ContactForm = ({ postContact }: ContactFormProps) => {
         type="submit"
         w={{ base: "80%", sm: "40%" }}
         mt={{ base: "6", sm: "12" }}
+        color="white"
+        bg="brand"
+        _hover={{ bg: "brand", opacity: { base: 1, sm: 0.8 } }}
+        _active={{
+          transform: "scale(0.98)",
+          opacity: 0.8
+        }}
         isLoading={isSubmitting}
       >
         送信する

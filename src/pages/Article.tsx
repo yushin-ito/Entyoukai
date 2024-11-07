@@ -3,7 +3,7 @@ import {
   VStack,
   Text,
   Image,
-  Button as ChakraButton,
+  Button,
   HStack,
   Avatar,
   Divider,
@@ -16,7 +16,6 @@ import { FaLine, FaInstagram } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { useParams, useNavigate } from "react-router-dom";
 
-import Button from "../components/elements/Button";
 import MotionBox from "../components/elements/MotionBox";
 import ScrollToTopButton from "../components/elements/ScrollToTopButton";
 import SectionTitle from "../components/elements/SectionTitle";
@@ -152,14 +151,12 @@ const Article = () => {
                   borderWidth="1px"
                   borderColor="brand"
                   rounded="full"
-                  p={{ base: "8px", sm: "12px" }}
                   bg="white"
                   onClick={() => {
                     window.open(
                       `https://twitter.com/intent/tweet?text=${article.title}&url=${window.location.href}`
                     );
                   }}
-                  sx={{ WebkitTapHighlightColor: "transparent" }}
                 />
                 <IconButton
                   aria-label="instagram"
@@ -168,14 +165,12 @@ const Article = () => {
                   borderWidth="1px"
                   borderColor="brand"
                   rounded="full"
-                  p={{ base: "8px", sm: "12px" }}
                   bg="white"
                   onClick={() => {
                     window.open(
                       `https://www.instagram.com/?url=${window.location.href}`
                     );
                   }}
-                  sx={{ WebkitTapHighlightColor: "transparent" }}
                 />
                 <IconButton
                   aria-label="line"
@@ -184,29 +179,27 @@ const Article = () => {
                   borderWidth="1px"
                   borderColor="brand"
                   rounded="full"
-                  p={{ base: "8px", sm: "12px" }}
                   bg="white"
                   onClick={() => {
                     window.open(
                       `https://social-plugins.line.me/lineit/share?url=${window.location.href}`
                     );
                   }}
-                  sx={{ WebkitTapHighlightColor: "transparent" }}
                 />
               </HStack>
 
               {/* ナビゲーションボタン */}
               <HStack w="100%" justifyContent="space-between">
                 <Button
-                  bg="brand"
                   size={{ base: "sm", sm: "md" }}
+                  color="white"
+                  bg="brand"
                   _hover={{ bg: "brand", opacity: { base: 1, sm: 0.8 } }}
                   _active={{
                     transform: "scale(0.98)",
                     opacity: 0.8
                   }}
                   _disabled={{ opacity: 0.6 }}
-                  color="white"
                   onClick={() => navigate("/article/" + (article.id - 1))}
                   isDisabled={article.id === 1}
                 >
@@ -218,7 +211,7 @@ const Article = () => {
                     前へ
                   </Text>
                 </Button>
-                <ChakraButton
+                <Button
                   color="brand"
                   size={{ base: "sm", sm: "md" }}
                   onClick={() => navigate("/activity")}
@@ -227,17 +220,17 @@ const Article = () => {
                   <Text fontSize={{ base: "xs", sm: "sm" }} fontWeight="bold">
                     一覧へ
                   </Text>
-                </ChakraButton>
+                </Button>
                 <Button
-                  bg="brand"
                   size={{ base: "sm", sm: "md" }}
+                  color="white"
+                  bg="brand"
                   _hover={{ bg: "brand", opacity: { base: 1, sm: 0.8 } }}
                   _active={{
                     transform: "scale(0.98)",
                     opacity: 0.8
                   }}
                   _disabled={{ opacity: 0.6 }}
-                  color="white"
                   onClick={() => navigate("/article/" + (article.id + 1))}
                   isDisabled={articles?.length === article.id}
                 >

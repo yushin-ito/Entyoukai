@@ -5,6 +5,9 @@ const theme = extendTheme({
     global: {
       "html, body": {
         overscrollBehavior: "none"
+      },
+      "*, *::before, &::after": {
+        WebkitTapHighlightColor: "transparent"
       }
     }
   },

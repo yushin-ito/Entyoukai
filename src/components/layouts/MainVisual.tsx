@@ -11,14 +11,14 @@ import {
   DrawerContent,
   DrawerCloseButton,
   DrawerBody,
-  useDisclosure
+  useDisclosure,
+  IconButton
 } from "@chakra-ui/react";
 import { useRef, useCallback, useEffect } from "react";
 import { FiMenu } from "react-icons/fi";
 import { IoMdPin } from "react-icons/io";
 import { Link, useLocation } from "react-router-dom";
 
-import IconButton from "../elements/IconButton";
 import MotionBox from "../elements/MotionBox";
 
 const MainVisual = () => {
@@ -86,7 +86,13 @@ const MainVisual = () => {
           pos="absolute"
           top="6"
           right="6"
-          p="2"
+          color="white"
+          bg="brand"
+          _hover={{ bg: "brand", opacity: { base: 1, sm: 0.8 } }}
+          _active={{
+            transform: "scale(0.98)",
+            opacity: 0.8
+          }}
           rounded="md"
           opacity="0.8"
           onClick={onOpen}

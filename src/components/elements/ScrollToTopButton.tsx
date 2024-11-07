@@ -1,9 +1,8 @@
-import { useBreakpointValue } from "@chakra-ui/react";
+import { IconButton, useBreakpointValue } from "@chakra-ui/react";
 import { AnimatePresence } from "framer-motion";
 import { useState, useEffect, useCallback } from "react";
 import { FiChevronUp } from "react-icons/fi";
 
-import IconButton from "./IconButton";
 import MotionBox from "./MotionBox";
 
 const ScrollToTopButton = () => {
@@ -64,8 +63,15 @@ const ScrollToTopButton = () => {
             icon={
               <FiChevronUp size={breakpoint === "base" ? "24px" : "28px"} />
             }
+            size="lg"
+            color="white"
+            bg="brand"
+            _hover={{ bg: "brand", opacity: { base: 1, sm: 0.8 } }}
+            _active={{
+              transform: "scale(0.98)",
+              opacity: 0.8
+            }}
             onClick={() => scrollToTop(500)}
-            p="12px"
             shadow="lg"
             rounded="full"
           />

@@ -108,9 +108,6 @@ const TableOfContents = ({ sections }: TableOfContentsProps) => {
               setScrolling(false);
             }, 1000);
           }}
-          sx={{
-            WebkitTapHighlightColor: "transparent"
-          }}
         >
           <HStack spacing="4">
             <Text
