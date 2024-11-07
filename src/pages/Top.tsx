@@ -10,7 +10,8 @@ import Footer from "../components/organisms/Footer";
 import MainVisual from "../components/organisms/MainVisual";
 import NewsList from "../components/organisms/NewsList";
 import TableOfContents from "../components/organisms/TableOfContents";
-import { useQueryFAQ, useQueryNews } from "../hooks/contents";
+import { useQueryFAQ } from "../hooks/faq";
+import { useQueryNews } from "../hooks/news";
 
 const Top = () => {
   const { data: news } = useQueryNews();

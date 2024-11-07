@@ -7,7 +7,7 @@ import ArticleList from "../components/organisms/ArticleList";
 import Footer from "../components/organisms/Footer";
 import MainVisual from "../components/organisms/MainVisual";
 import TableOfContents from "../components/organisms/TableOfContents";
-import { useQueryArticles } from "../hooks/contents";
+import { useQueryArticles } from "../hooks/article";
 
 const Activity = () => {
   const { data: articles } = useQueryArticles();

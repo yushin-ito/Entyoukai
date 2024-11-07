@@ -6,7 +6,7 @@ import SectionTitle from "../components/molecules/SectionTitle";
 import Footer from "../components/organisms/Footer";
 import MainVisual from "../components/organisms/MainVisual";
 import Timeline from "../components/organisms/Timeline";
-import { useQueryEvents } from "../hooks/contents";
+import { useQueryEvents } from "../hooks/event";
 
 const Memory = () => {
   const { data: events } = useQueryEvents();

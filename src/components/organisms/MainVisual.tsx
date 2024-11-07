@@ -113,7 +113,7 @@ const MainVisual = () => {
         >
           <Button
             as={Link}
-            to="/"
+            to="/top"
             variant="link"
             color="white"
             _active={{ opacity: 0.6 }}
@@ -168,7 +168,7 @@ const MainVisual = () => {
             <VStack mt="20" spacing="10">
               <Button
                 as={Link}
-                to="/"
+                to="/top"
                 variant="link"
                 color="white"
                 fontSize="lg"
