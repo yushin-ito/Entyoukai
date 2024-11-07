@@ -13,19 +13,28 @@ export const useQueryArticle = (id: string | undefined) => {
   return useQuery<Article | undefined>(
     ["article", id],
     async () => {
-      if (!id) return;
+      if (!id) {
+        navigate("/notfound", { replace: true });
+        return;
+      }
       const response = await axios.get("/assets/contents/articles.json");
       const articles: Article[] = response.data;
-      return articles.find((article) => article.id === Number(id));
+      const article = articles.find((article) => article.id === Number(id));
+
+      if (!article) {
+        navigate("/notfound", { replace: true });
+        return;
+      }
+
+      return article;
     },
     {
       onSettled: () => setIsLoading(false),
       onSuccess: () => setError(null),
       onError: (error) => {
-        console.error(error);
+        navigate("/error", { replace: true });
         setError(error as string);
         setIsLoading(false);
-        navigate("/error");
       }
     }
   );
@@ -46,9 +55,9 @@ export const useQueryArticles = () => {
       onSettled: () => setIsLoading(false),
       onSuccess: () => setError(null),
       onError: (error) => {
+        navigate("/error", { replace: true });
         setError(error as string);
         setIsLoading(false);
-        navigate("/error");
       }
     }
   );

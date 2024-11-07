@@ -20,9 +20,9 @@ export const useQuerySitePolicy = () => {
       onSettled: () => setIsLoading(false),
       onSuccess: () => setError(null),
       onError: (error) => {
+        navigate("/error", { replace: true });
         setError(error as string);
         setIsLoading(false);
-        navigate("/error");
       }
     }
   );
@@ -43,9 +43,9 @@ export const useQueryPrivacyPolicy = () => {
       onSettled: () => setIsLoading(false),
       onSuccess: () => setError(null),
       onError: (error) => {
+        navigate("/error", { replace: true });
         setError(error as string);
         setIsLoading(false);
-        navigate("/error");
       }
     }
   );

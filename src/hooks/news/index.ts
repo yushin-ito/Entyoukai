@@ -20,9 +20,9 @@ export const useQueryNews = () => {
       onSettled: () => setIsLoading(false),
       onSuccess: () => setError(null),
       onError: (error) => {
+        navigate("/error", { replace: true });
         setError(error as string);
         setIsLoading(false);
-        navigate("/error");
       }
     }
   );

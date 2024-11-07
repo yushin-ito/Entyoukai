@@ -7,7 +7,6 @@ import {
   IconButton
 } from "@chakra-ui/react";
 import { format } from "date-fns";
-import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaLine, FaInstagram } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
@@ -25,13 +24,7 @@ import { useQueryArticle } from "../hooks/article";
 const Article = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { data: article, isLoading } = useQueryArticle(id);
-
-  useEffect(() => {
-    if (!article && !isLoading) {
-      navigate("/notfound", { replace: true });
-    }
-  }, [article, isLoading, navigate]);
+  const { data: article } = useQueryArticle(id);
 
   return (
     <VStack

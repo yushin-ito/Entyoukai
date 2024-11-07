@@ -48,8 +48,7 @@ const Contact = () => {
         )
       });
     },
-    onError: (error) => {
-      console.error(error);
+    onError: () => {
       toast({
         render: ({ onClose }) => (
           <Toast
