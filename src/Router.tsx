@@ -27,8 +27,8 @@ const AppRouter = () => {
       <Route path="/company" element={<Company />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/memory" element={<Memory />} />
-      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-      <Route path="/site-policy" element={<SitePolicy />} />
+      <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+      <Route path="/sitepolicy" element={<SitePolicy />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
