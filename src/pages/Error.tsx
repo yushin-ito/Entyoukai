@@ -1,7 +1,7 @@
 import { Text, Center, VStack, Button } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
-const NotFound = () => {
+const Error = () => {
   const navigate = useNavigate();
 
   return (
@@ -9,10 +9,10 @@ const NotFound = () => {
       <VStack w="100%" spacing={{ base: "12", sm: "20" }}>
         <VStack w={{ base: "80%", sm: "40%" }} spacing={{ base: "1", sm: "4" }}>
           <Text fontSize={{ base: "lg", sm: "3xl" }} fontWeight="bold">
-            ご指定のページが見つかりません。
+            予期せぬエラーが発生しました。
           </Text>
           <Text fontSize={{ base: "xs", sm: "sm" }} color="gray.600">
-            URLが変更されたか、削除された可能性があります。
+            もう一度お試しいただくか、時間をおいてアクセスしてください。
           </Text>
         </VStack>
         <Button
@@ -37,4 +37,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default Error;

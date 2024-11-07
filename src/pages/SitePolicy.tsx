@@ -5,7 +5,7 @@ import ScrollToTopButton from "../components/molecules/ScrollToTopButton";
 import SectionTitle from "../components/molecules/SectionTitle";
 import Footer from "../components/organisms/Footer";
 import MainVisual from "../components/organisms/MainVisual";
-import { useQuerySitePolicy } from "../hooks/contents";
+import { useQuerySitePolicy } from "../hooks/policy";
 
 const SitePolicy = () => {
   const { data: policy } = useQuerySitePolicy();

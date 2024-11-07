@@ -20,7 +20,7 @@ import Footer from "../components/organisms/Footer";
 import ImageCarousel from "../components/organisms/ImageCarousel";
 import MainVisual from "../components/organisms/MainVisual";
 import { FIRST_ARTICLE_ID, END_ARTICLE_ID } from "../constants";
-import { useQueryArticle } from "../hooks/contents";
+import { useQueryArticle } from "../hooks/article";
 
 const Article = () => {
   const { id } = useParams();
