@@ -136,7 +136,7 @@ const MainVisual = () => {
             color="white"
             _active={{ opacity: 0.6 }}
           >
-            協賛企業
+            協賛について
           </Button>
           <Button
             as={Link}
@@ -197,7 +197,7 @@ const MainVisual = () => {
                 _active={{ opacity: 0.6 }}
                 onClick={onClose}
               >
-                協賛企業
+                協賛について
               </Button>
               <Button
                 as={Link}

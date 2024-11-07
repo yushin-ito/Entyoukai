@@ -1,4 +1,5 @@
 import { VStack, Text } from "@chakra-ui/react";
+import { Helmet } from "react-helmet-async";
 
 import ScrollToTopButton from "../components/molecules/ScrollToTopButton";
 import SectionTitle from "../components/molecules/SectionTitle";
@@ -23,6 +24,9 @@ const Top = () => {
       overflowX="hidden"
       pos="relative"
     >
+      <Helmet>
+        <title>トップ</title>
+      </Helmet>
       <ScrollToTopButton />
       <MainVisual />
       <TableOfContents

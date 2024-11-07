@@ -1,4 +1,5 @@
 import { VStack, Text } from "@chakra-ui/react";
+import { Helmet } from "react-helmet-async";
 
 import ScrollToTopButton from "../components/molecules/ScrollToTopButton";
 import SectionTitle from "../components/molecules/SectionTitle";
@@ -17,6 +18,9 @@ const PrivacyPolicy = () => {
       overflowX="hidden"
       pos="relative"
     >
+      <Helmet>
+        <title>プライバシーポリシー</title>
+      </Helmet>
       <ScrollToTopButton />
       <MainVisual />
       <VStack w={{ base: "80%", sm: "55%" }} spacing={{ base: "2", sm: "4" }}>
