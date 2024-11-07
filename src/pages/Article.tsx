@@ -1,46 +1,36 @@
 import {
-  Box,
   VStack,
   Text,
-  Image,
   Button,
   HStack,
-  Avatar,
   Divider,
   IconButton
 } from "@chakra-ui/react";
 import { format } from "date-fns";
-import { AnimatePresence } from "framer-motion";
-import { useMemo, useEffect, useState } from "react";
+import { useEffect } from "react";
 import { FaLine, FaInstagram } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { useParams, useNavigate } from "react-router-dom";
 
-import MotionBox from "../components/elements/MotionBox";
+import Avatar from "../components/elements/Avatar";
 import ScrollToTopButton from "../components/elements/ScrollToTopButton";
 import SectionTitle from "../components/elements/SectionTitle";
 import Footer from "../components/layouts/Footer";
+import ImageCarousel from "../components/layouts/ImageCarousel";
 import MainVisual from "../components/layouts/MainVisual";
-import { useQueryArticles } from "../hooks/contents";
+import { FIRST_ARTICLE_ID, END_ARTICLE_ID } from "../constants";
+import { useQueryArticle } from "../hooks/contents";
 
 const Article = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { data: articles } = useQueryArticles();
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const article = useMemo(() => {
-    return articles?.find((article) => article.id.toString() === id);
-  }, [articles, id]);
+  const { data: article, isLoading } = useQueryArticle(id);
 
   useEffect(() => {
-    if (article?.images) {
-      const id = setInterval(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % article.images.length);
-      }, 5000);
-      return () => clearInterval(id);
+    if (!article && !isLoading) {
+      navigate("/notfound", { replace: true });
     }
-  }, [article]);
+  }, [article, isLoading, navigate]);
 
   return (
     <VStack
@@ -52,7 +42,7 @@ const Article = () => {
     >
       <ScrollToTopButton />
       <MainVisual />
-      <VStack w={{ base: "80%", sm: "60%" }} spacing={{ base: "10", sm: "24" }}>
+      <VStack w={{ base: "80%", sm: "50%" }} spacing={{ base: "10", sm: "24" }}>
         {article && (
           <VStack
             w="100%"
@@ -61,7 +51,8 @@ const Article = () => {
           >
             <SectionTitle title={article.title} />
             <VStack
-              w={{ base: "100%", sm: "90%" }}
+              w="100%"
+              px={{ base: "0", sm: "4" }}
               spacing="0"
               alignItems="flex-start"
             >
@@ -86,39 +77,8 @@ const Article = () => {
                 mb={{ base: "6", sm: "8" }}
                 borderColor="gray.400"
               />
-              {/* スライドショー */}
-              <Box
-                w="100%"
-                h={{ base: "200px", sm: "420px" }}
-                overflow="hidden"
-                pos="relative"
-                rounded={{ base: "lg", sm: "xl" }}
-                shadow={{ base: "xs", sm: "md" }}
-                bg="gray.50"
-              >
-                <AnimatePresence>
-                  <MotionBox
-                    key={currentIndex}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1, transition: { duration: 0.5 } }}
-                    exit={{ opacity: 0, transition: { duration: 0.5 } }}
-                    pos="absolute"
-                    top="0"
-                    left="0"
-                    w="100%"
-                    h="100%"
-                  >
-                    <Image
-                      src={article.images[currentIndex]}
-                      alt={article.title}
-                      objectFit="cover"
-                      w="100%"
-                      h="100%"
-                      draggable="false"
-                    />
-                  </MotionBox>
-                </AnimatePresence>
-              </Box>
+              {/* カルーセル */}
+              <ImageCarousel images={article.images} />
 
               {/* 記事内容 */}
               <Text
@@ -200,8 +160,8 @@ const Article = () => {
                     opacity: 0.8
                   }}
                   _disabled={{ opacity: 0.6 }}
-                  onClick={() => navigate("/article/" + (article.id - 1))}
-                  isDisabled={article.id === 1}
+                  onClick={() => navigate("/article/" + (article.id + 1))}
+                  isDisabled={END_ARTICLE_ID === article.id}
                 >
                   <Text
                     fontSize={{ base: "xs", sm: "sm" }}
@@ -231,8 +191,8 @@ const Article = () => {
                     opacity: 0.8
                   }}
                   _disabled={{ opacity: 0.6 }}
-                  onClick={() => navigate("/article/" + (article.id + 1))}
-                  isDisabled={articles?.length === article.id}
+                  onClick={() => navigate("/article/" + (article.id - 1))}
+                  isDisabled={FIRST_ARTICLE_ID === article.id}
                 >
                   <Text
                     fontSize={{ base: "xs", sm: "sm" }}

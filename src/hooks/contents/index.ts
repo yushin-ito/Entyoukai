@@ -3,6 +3,14 @@ import axios from "axios";
 
 import type { Article, Event, FAQ, News, Policy } from "../../types";
 
+export const useQueryArticle = (id: string | undefined) =>
+  useQuery<Article | undefined>(["article", id], async () => {
+    if (!id) return;
+    const response = await axios.get("/assets/contents/articles.json");
+    const articles: Article[] = response.data;
+    return articles.find((article) => article.id === Number(id));
+  });
+
 export const useQueryArticles = () =>
   useQuery<Article[]>(["articles"], async () => {
     const response = await axios.get("/assets/contents/articles.json");

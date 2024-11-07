@@ -24,8 +24,8 @@ const Router = () => {
           <Route path="/article/:id" element={<Article />} />
           <Route path="/sitepolicy" element={<SitePolicy />} />
           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
-          <Route path="/404" element={<NotFound />} />
-          <Route path="*" element={<Navigate to="/404" replace />} />
+          <Route path="/notfound" element={<NotFound />} />
+          <Route path="*" element={<Navigate to="/notfound" replace />} />
         </Routes>
       </Box>
     </BrowserRouter>

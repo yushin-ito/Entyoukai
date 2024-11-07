@@ -2,10 +2,8 @@ import {
   Box,
   Text,
   VStack,
-  Image,
   HStack,
-  useBreakpointValue,
-  Avatar
+  useBreakpointValue
 } from "@chakra-ui/react";
 import { format, formatDistanceToNow, parseISO } from "date-fns";
 import { ja } from "date-fns/locale";
@@ -14,6 +12,9 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 
 import MotionBox from "../elements/MotionBox";
+
+import Avatar from "./Avatar";
+import Image from "./Image";
 
 type ArticleListItemProps = {
   id: number;
@@ -72,10 +73,7 @@ const ArticleListItem = ({
             alt={location}
             w="100%"
             h={{ base: "200px", sm: "180px" }}
-            objectFit="cover"
             rounded={{ base: "md", sm: "xl" }}
-            shadow={{ base: "xs", sm: "sm" }}
-            draggable="false"
           />
           {/* ロケーション */}
           <Box
