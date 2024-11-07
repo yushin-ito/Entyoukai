@@ -4,18 +4,13 @@ const NotFound = () => {
   return (
     <Center w="100vw" h="100vh">
       <VStack w="100%" spacing={{ base: "12", sm: "20" }}>
-        <VStack w={{ base: "80%", sm: "40%" }} spacing={{ base: "1", sm: "2" }}>
+        <VStack w={{ base: "80%", sm: "40%" }} spacing={{ base: "1", sm: "4" }}>
           <Text fontSize={{ base: "lg", sm: "3xl" }} fontWeight="bold">
             ご指定のページが見つかりません。
           </Text>
-          <VStack w="100%" spacing="0">
-            <Text fontSize={{ base: "xs", sm: "md" }} color="gray.600">
-              お探しのページが見つかりませんでした。
-            </Text>
-            <Text fontSize={{ base: "xs", sm: "md" }} color="gray.600">
-              URLが変更されたか、削除された可能性があります。
-            </Text>
-          </VStack>
+          <Text fontSize={{ base: "xs", sm: "sm" }} color="gray.600">
+            URLが変更されたか、削除された可能性があります。
+          </Text>
         </VStack>
         <Button
           w={{ base: "60%", sm: "20%" }}
