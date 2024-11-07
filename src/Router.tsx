@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 
 import Activity from "./pages/Activity";
 import Article from "./pages/Article";
@@ -10,26 +10,38 @@ import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import SitePolicy from "./pages/SitePolicy";
 import Top from "./pages/Top";
+import { useEffect } from "react";
 
-const Router = () => {
+const AppRouter = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return (
+    <Routes>
+      <Route path="/" element={<Top />} />
+      <Route path="/activity" element={<Activity />} />
+      <Route path="/article" element={<Article />} />
+      <Route path="/company" element={<Company />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/memory" element={<Memory />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="/site-policy" element={<SitePolicy />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
+};
+
+const RootRouter = () => {
   return (
     <BrowserRouter>
-      <Box flex="1" p="0">
-        <Routes>
-          <Route path="/" element={<Top />} />
-          <Route path="/activity" element={<Activity />} />
-          <Route path="/company" element={<Company />} />
-          <Route path="/memory" element={<Memory />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/article/:id" element={<Article />} />
-          <Route path="/sitepolicy" element={<SitePolicy />} />
-          <Route path="/privacypolicy" element={<PrivacyPolicy />} />
-          <Route path="/notfound" element={<NotFound />} />
-          <Route path="*" element={<Navigate to="/notfound" replace />} />
-        </Routes>
+      <Box flex="1" p="0" bg="white">
+        <AppRouter />
       </Box>
     </BrowserRouter>
   );
 };
 
-export default Router;
+export default RootRouter;

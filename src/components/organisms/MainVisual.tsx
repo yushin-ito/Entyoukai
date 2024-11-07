@@ -5,6 +5,7 @@ import {
   HStack,
   Box,
   Icon,
+  Center,
   useBreakpointValue,
   Drawer,
   DrawerOverlay,
@@ -12,14 +13,13 @@ import {
   DrawerCloseButton,
   DrawerBody,
   useDisclosure,
-  IconButton
+  IconButton,
+  Image
 } from "@chakra-ui/react";
 import { useRef, useCallback, useEffect } from "react";
 import { FiMenu } from "react-icons/fi";
 import { IoMdPin } from "react-icons/io";
 import { Link, useLocation } from "react-router-dom";
-
-import MotionBox from "../atoms/MotionBox";
 
 const MainVisual = () => {
   const { pathname } = useLocation();
@@ -51,33 +51,34 @@ const MainVisual = () => {
   );
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
-  useEffect(() => {
     setTimeout(() => {
       if (pathname !== "/" && window.scrollY < 300) {
         if (ref.current) {
           scrollToElement(ref.current, 500);
         }
       }
-    }, 50);
+    }, 100);
   }, [pathname, scrollToElement]);
 
   return (
-    <MotionBox
-      initial={{ opacity: 0.2 }}
-      animate={{ opacity: 1, transition: { duration: 0.8 } }}
-      bgImage="url('/assets/images/background.webp')"
-      bgPosition="center"
-      bgSize="cover"
+    <Center
+      bg="white"
       w="100vw"
       h={{ base: "calc(100vh * 0.8)", sm: "100vh" }}
       pos="relative"
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
     >
+      {/* 背景画像 */}
+      <Image
+        src="/assets/images/background.webp"
+        alt="background"
+        objectFit="cover"
+        w="100vw"
+        h={{ base: "calc(100vh * 0.8)", sm: "100vh" }}
+        pos="absolute"
+        top="0"
+        left="0"
+      />
+
       {/* ナビゲーションバー */}
       {breakpoint === "base" ? (
         <IconButton
@@ -269,7 +270,7 @@ const MainVisual = () => {
         </VStack>
       </VStack>
       <Box ref={ref} pos="absolute" bottom="20" />
-    </MotionBox>
+    </Center>
   );
 };
 

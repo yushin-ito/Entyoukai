@@ -21,9 +21,7 @@ const TableOfContents = ({ sections }: TableOfContentsProps) => {
   const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
 
   useEffect(() => {
-    let observer: IntersectionObserver | null = null;
-
-    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+    const onIntersection = (entries: IntersectionObserverEntry[]) => {
       if (scrolling) return;
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -32,17 +30,14 @@ const TableOfContents = ({ sections }: TableOfContentsProps) => {
       });
     };
 
-    const initializeObserver = () => {
-      observer = new IntersectionObserver(handleIntersection, {
-        threshold: 0.5
-      });
-      sections.forEach((section) => {
-        const element = document.getElementById(section.id);
-        if (element) observer?.observe(element);
-      });
-    };
+    const observer = new IntersectionObserver(onIntersection, {
+      threshold: 0.5
+    });
 
-    initializeObserver();
+    sections.forEach((section) => {
+      const element = document.getElementById(section.id);
+      if (element) observer.observe(element);
+    });
 
     const onScroll = () => {
       setFixed(window.scrollY >= window.innerHeight);
@@ -51,14 +46,14 @@ const TableOfContents = ({ sections }: TableOfContentsProps) => {
     window.addEventListener("scroll", onScroll);
 
     return () => {
-      observer?.disconnect();
+      observer.disconnect();
       window.removeEventListener("scroll", onScroll);
     };
   }, [sections, scrolling]);
 
   return breakpoint === "base" ? null : (
     <VStack
-      position={fixed ? "fixed" : "absolute"}
+      pos={fixed ? "fixed" : "absolute"}
       top={fixed ? "96px" : "calc(100vh + 96px)"}
       left="64px"
       spacing="0"
@@ -66,7 +61,7 @@ const TableOfContents = ({ sections }: TableOfContentsProps) => {
       zIndex={999}
     >
       <Box
-        position="absolute"
+        pos="absolute"
         left="0"
         width="3px"
         height={`${sections.length * 42}px`}
@@ -74,7 +69,7 @@ const TableOfContents = ({ sections }: TableOfContentsProps) => {
         bg="gray.400"
       />
       <MotionBox
-        position="absolute"
+        pos="absolute"
         left="0"
         width="3px"
         height="42px"
