@@ -19,10 +19,11 @@ const SitePolicy = () => {
     >
       <ScrollToTopButton />
       <MainVisual />
-      <VStack w={{ base: "80%", sm: "60%" }} spacing={{ base: "2", sm: "4" }}>
+      <VStack w={{ base: "80%", sm: "55%" }} spacing={{ base: "2", sm: "4" }}>
         <SectionTitle title="サイトポリシー" />
         <VStack
           w="100%"
+          px={{ base: "0", sm: "2" }}
           alignItems="flex-start"
           spacing={{ base: "4", sm: "6" }}
         >

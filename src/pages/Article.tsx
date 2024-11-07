@@ -42,7 +42,7 @@ const Article = () => {
     >
       <ScrollToTopButton />
       <MainVisual />
-      <VStack w={{ base: "80%", sm: "50%" }} spacing={{ base: "10", sm: "24" }}>
+      <VStack w={{ base: "80%", sm: "55%" }} spacing={{ base: "10", sm: "24" }}>
         {article && (
           <VStack
             w="100%"
