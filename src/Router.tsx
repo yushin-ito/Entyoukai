@@ -11,13 +11,13 @@ import {
 import ProgressBar from "./components/molecules/ProgressBar";
 import Activity from "./pages/Activity";
 import Article from "./pages/Article";
-import Company from "./pages/Company";
 import Contact from "./pages/Contact";
 import Error from "./pages/Error";
 import Memory from "./pages/Memory";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import SitePolicy from "./pages/SitePolicy";
+import Sponsor from "./pages/Sponsor";
 import Top from "./pages/Top";
 
 const AppRouter = () => {
@@ -33,7 +33,7 @@ const AppRouter = () => {
       <Route path="/top" element={<Top />} />
       <Route path="/activity" element={<Activity />} />
       <Route path="/article/:id" element={<Article />} />
-      <Route path="/company" element={<Company />} />
+      <Route path="/sponsor" element={<Sponsor />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/memory" element={<Memory />} />
       <Route path="/privacypolicy" element={<PrivacyPolicy />} />
