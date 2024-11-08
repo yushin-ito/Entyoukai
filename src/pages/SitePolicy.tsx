@@ -40,8 +40,9 @@ const SitePolicy = () => {
             alignItems="flex-start"
             spacing={{ base: "8", sm: "10" }}
           >
-            {policy?.map((item) => (
+            {policy?.map((item, index) => (
               <VStack
+                key={index}
                 w="100%"
                 alignItems="flex-start"
                 spacing={{ base: "1", sm: "2" }}

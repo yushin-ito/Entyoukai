@@ -134,7 +134,7 @@ const MainVisual = () => {
           </Button>
           <Button
             as={Link}
-            to="/company"
+            to="/sponsor"
             variant="link"
             color="white"
             _active={{ opacity: 0.6 }}
@@ -193,7 +193,7 @@ const MainVisual = () => {
               </Button>
               <Button
                 as={Link}
-                to="/company"
+                to="/sponsor"
                 variant="link"
                 color="white"
                 fontSize="lg"

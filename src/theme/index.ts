@@ -20,7 +20,8 @@ const theme = extendTheme({
   components: {
     Text: {
       baseStyle: {
-        color: "brand"
+        color: "brand",
+        lineHeight: { base: "1.5", sm: "1.8" }
       }
     },
     Heading: {

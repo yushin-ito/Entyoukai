@@ -40,3 +40,8 @@ export type Policy = {
   title: string;
   description: string;
 };
+
+export type Sponsor = {
+  name: string;
+  url: string | null;
+};

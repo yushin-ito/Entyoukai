@@ -57,11 +57,7 @@ const Article = () => {
               <HStack w="100%" alignItems="center" spacing="4">
                 <Avatar size={{ base: "sm", sm: "md" }} src={article.avatar} />
                 <VStack alignItems="flex-start" spacing="1px">
-                  <Text
-                    fontSize={{ base: "xs", sm: "md" }}
-                    fontWeight="bold"
-                    color="gray.900"
-                  >
+                  <Text fontSize={{ base: "xs", sm: "md" }} fontWeight="bold">
                     {article.author}
                   </Text>
                   <Text fontSize={{ base: "2xs", sm: "xs" }} color="gray.600">
