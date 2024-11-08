@@ -11,6 +11,20 @@ import { useQuerySponsors } from "../hooks/sponsor";
 const Sponsor = () => {
   const { data: sponsors } = useQuerySponsors();
 
+  const schema = sponsors && {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "協賛について | 猿鳥会",
+    description:
+      "「二十歳のつどい」は多くのご支援によって支えられています。ご協賛いただいた皆様の一覧を掲載しています。",
+    url: "https://entyoukai.com/sponsor",
+    sponsor: sponsors.map((sponsor) => ({
+      "@type": "Organization",
+      name: sponsor.name,
+      url: sponsor.url || undefined
+    }))
+  };
+
   return (
     <VStack
       flex="1"
@@ -20,14 +34,17 @@ const Sponsor = () => {
       pos="relative"
     >
       <Helmet>
-        <title>協賛について</title>
+        <title>協賛について | 猿鳥会</title>
+        {schema && (
+          <script type="application/ld+json">{JSON.stringify(schema)}</script>
+        )}
       </Helmet>
       <ScrollToTopButton />
       <MainVisual />
       <TableOfContents
         sections={[
           { id: "sponsor_about", title: "協賛について" },
-          { id: "sponsor_list", title: "お知らせ" }
+          { id: "sponsor_list", title: "協賛一覧" }
         ]}
       />
       <VStack w={{ base: "80%", sm: "55%" }} spacing={{ base: "10", sm: "24" }}>
@@ -48,20 +65,25 @@ const Sponsor = () => {
         </VStack>
         <VStack id="sponsor_list" w="100%" spacing={{ base: "4", sm: "8" }}>
           <SectionTitle title="協賛一覧（敬称略）" />
-          <SimpleGrid w="100%" columns={{ base: 1, sm: 2 }} spacing="4">
+          <SimpleGrid w="100%" columns={{ base: 1, sm: 2 }} spacingY="4">
             {sponsors?.map((sponsor, index) =>
               sponsor.url ? (
                 <Link
                   key={index}
                   href={sponsor.url}
                   isExternal
-                  color="brand"
+                  fontSize={{ base: "sm", sm: "md" }}
                   fontWeight="bold"
+                  color="brand"
                 >
                   {sponsor.name}
                 </Link>
               ) : (
-                <Text key={index} fontWeight="bold">
+                <Text
+                  key={index}
+                  fontSize={{ base: "sm", sm: "md" }}
+                  fontWeight="bold"
+                >
                   {sponsor.name}
                 </Text>
               )

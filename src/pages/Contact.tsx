@@ -67,6 +67,22 @@ const Contact = () => {
     await mutateAsyncPostContact(data);
   };
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "お問い合わせ | 猿鳥会",
+    description:
+      "「二十歳のつどい」公式Webサイトのお問い合わせページです。お問い合わせ内容をご入力のうえ、送信してください。",
+    url: "https://entyoukai.com/contact",
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "Customer Service",
+      email: "entyoukai.team@gmail.com",
+      telephone: "",
+      availableLanguage: ["Japanese"]
+    }
+  };
+
   return (
     <VStack
       flex="1"
@@ -77,6 +93,7 @@ const Contact = () => {
     >
       <Helmet>
         <title>お問い合わせ</title>
+        <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
       <ScrollToTopButton />
       <MainVisual />

@@ -12,6 +12,23 @@ import { useQueryArticles } from "../hooks/article";
 const Activity = () => {
   const { data: articles } = useQueryArticles();
 
+  const schema = articles && {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "活動について | 猿鳥会",
+    description: "猿鳥会の活動についてのページです。活動報告を掲載しています。",
+    url: "https://entyoukai.com/activity",
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: articles.map((article, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: "https://entyoukai.com/article/" + article.id,
+        name: article.title
+      }))
+    }
+  };
+
   return (
     <VStack
       flex="1"
@@ -21,7 +38,10 @@ const Activity = () => {
       pos="relative"
     >
       <Helmet>
-        <title>活動について</title>
+        <title>活動について | 猿鳥会</title>
+        {schema && (
+          <script type="application/ld+json">{JSON.stringify(schema)}</script>
+        )}
       </Helmet>
       <ScrollToTopButton />
       <MainVisual />

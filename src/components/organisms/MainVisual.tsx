@@ -267,7 +267,7 @@ const MainVisual = () => {
               fontWeight="bold"
               color="white"
             >
-              保健福祉センター１階ホール
+              保健福祉センター 1階ホール
             </Text>
           </HStack>
         </VStack>

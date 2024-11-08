@@ -26,6 +26,20 @@ const Article = () => {
   const navigate = useNavigate();
   const { data: article } = useQueryArticle(id);
 
+  const schema = article && {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    datePublished: article.date,
+    author: {
+      "@type": "Person",
+      name: article.author
+    },
+    image: article.images,
+    description: article.description,
+    url: "https://entyoukai.com/article/" + article.id
+  };
+
   return (
     <VStack
       flex="1"
@@ -35,7 +49,10 @@ const Article = () => {
       pos="relative"
     >
       <Helmet>
-        <title>{article?.title}</title>
+        {article && <title>{article.title + " | 猿鳥会"}</title>}
+        {schema && (
+          <script type="application/ld+json">{JSON.stringify(schema)}</script>
+        )}
       </Helmet>
       <ScrollToTopButton />
       <MainVisual />

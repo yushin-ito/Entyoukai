@@ -10,6 +10,15 @@ import { useQuerySitePolicy } from "../hooks/policy";
 const SitePolicy = () => {
   const { data: policy } = useQuerySitePolicy();
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "サイトポリシー | 猿鳥会",
+    description:
+      "「二十歳のつどい」公式Webサイトの利用に関するサイトポリシーのページです。サイトをご利用いただく際の注意事項をご確認ください。",
+    url: "https://entyoukai.com/sitepolicy"
+  };
+
   return (
     <VStack
       flex="1"
@@ -19,7 +28,8 @@ const SitePolicy = () => {
       pos="relative"
     >
       <Helmet>
-        <title>サイトポリシー</title>
+        <title>サイトポリシー | 猿鳥会</title>
+        <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
       <ScrollToTopButton />
       <MainVisual />
