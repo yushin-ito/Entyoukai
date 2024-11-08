@@ -11,6 +11,25 @@ import { useQueryEvents } from "../hooks/event";
 const Memory = () => {
   const { data: events } = useQueryEvents();
 
+  const schema = events && {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "おもいで | 猿鳥会",
+    description:
+      "小学校や中学校での「おもいで」をタイムライン形式で紹介しています。",
+    url: "https://entyoukai.com/memory",
+    hasPart: events.map((event) => {
+      const [start, end] = event.dates;
+      return {
+        "@type": "Event",
+        name: event.title,
+        startDate: start || undefined,
+        endDate: end || undefined,
+        description: event.description
+      };
+    })
+  };
+
   return (
     <VStack
       flex="1"
@@ -20,7 +39,10 @@ const Memory = () => {
       pos="relative"
     >
       <Helmet>
-        <title>おもいで</title>
+        <title>おもいで | 猿鳥会</title>
+        {schema && (
+          <script type="application/ld+json">{JSON.stringify(schema)}</script>
+        )}
       </Helmet>
       <ScrollToTopButton />
       <MainVisual />

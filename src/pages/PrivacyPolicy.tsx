@@ -10,6 +10,15 @@ import { useQueryPrivacyPolicy } from "../hooks/policy";
 const PrivacyPolicy = () => {
   const { data: policy } = useQueryPrivacyPolicy();
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "プライバシーポリシー | 猿鳥会",
+    description:
+      "「二十歳のつどい」公式Webサイトの利用に関するプライバシーポリシーのページです。個人情報の取り扱いについてご確認ください。",
+    url: "https://entyoukai.com/privacypolicy"
+  };
+
   return (
     <VStack
       flex="1"
@@ -19,7 +28,8 @@ const PrivacyPolicy = () => {
       pos="relative"
     >
       <Helmet>
-        <title>プライバシーポリシー</title>
+        <title>プライバシーポリシー | 猿鳥会</title>
+        <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
       <ScrollToTopButton />
       <MainVisual />

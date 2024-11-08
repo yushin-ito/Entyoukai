@@ -17,6 +17,15 @@ const Top = () => {
   const { data: news } = useQueryNews();
   const { data: faq } = useQueryFAQ();
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "トップページ | 猿鳥会",
+    description:
+      "朝日町の「二十歳のつどい」公式Webサイトです。イベント情報、アクセス情報、最新のお知らせなどをお届けしています。",
+    url: "https://entyoukai.com"
+  };
+
   return (
     <VStack
       flex="1"
@@ -26,7 +35,8 @@ const Top = () => {
       pos="relative"
     >
       <Helmet>
-        <title>トップ</title>
+        <title>トップ | 猿鳥会</title>
+        <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
       <ScrollToTopButton />
       <MainVisual />
@@ -43,7 +53,7 @@ const Top = () => {
         <VStack id="overview" w="100%" spacing={{ base: "4", sm: "8" }}>
           <SectionTitle title="概要" />
           <Text fontSize={{ base: "sm", sm: "md" }} fontWeight="bold">
-            このページをご覧いただきありがとうございます。こちらは、令和7年1月12日に保健福祉センター（さわやか村）で開催される「二十歳のつどい」特設ページです。「二十歳のつどい」の概要やアクセス情報、最新のお知らせなどをご案内しています。
+            このページをご覧いただきありがとうございます。こちらは、令和7年1月12日に保健福祉センター（さわやか村）で開催される「二十歳のつどい」公式ページです。「二十歳のつどい」の概要やアクセス情報、最新のお知らせなどをご案内しています。
             <br />
             <br />
             「二十歳のつどい」は、朝日町で育った私たちが、地域の皆様とともに成長を祝い合う場です。当日は式典に加え、町内の魅力を再発見できるイベントも企画されています。
