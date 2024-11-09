@@ -23,11 +23,7 @@ const Access = () => {
       />
       <VStack spacing={{ base: "4", sm: "8" }} alignItems="flex-start">
         <VStack spacing={{ base: "1", sm: "2" }} alignItems="flex-start">
-          <Heading
-            as="h3"
-            fontSize={{ base: "sm", sm: "md" }}
-            fontWeight="bold"
-          >
+          <Heading as="h3" fontSize={{ base: "sm", sm: "md" }}>
             保健福祉センター（さわやか村）
           </Heading>
           <Text
@@ -39,8 +35,8 @@ const Access = () => {
             〒510-8102 三重県三重郡朝日町大字小向891-5
           </Text>
         </VStack>
-        <VStack as="p" spacing={{ base: "1", sm: "2" }} alignItems="flex-start">
-          <Text fontSize={{ base: "sm", sm: "md" }} fontWeight="bold">
+        <VStack spacing={{ base: "1", sm: "2" }} alignItems="flex-start">
+          <Text as="p" fontSize={{ base: "sm", sm: "md" }} fontWeight="bold">
             ・近鉄伊勢朝日駅から徒歩8分
           </Text>
           <Text as="p" fontSize={{ base: "sm", sm: "md" }} fontWeight="bold">

@@ -1,4 +1,4 @@
-import { Heading, HStack, Text } from "@chakra-ui/react";
+import { Heading, Box, Text, VStack } from "@chakra-ui/react";
 import { useInView } from "framer-motion";
 import { useRef, useEffect } from "react";
 
@@ -30,7 +30,7 @@ const TimelineItem = ({
   }, [ref, resize, index, onMeasure]);
 
   return (
-    <HStack ref={ref} w="100%">
+    <Box ref={ref} w="100%">
       <MotionBox
         opacity={isInView ? 1 : 0}
         initial={{ opacity: 0, x: 30 }}
@@ -42,14 +42,16 @@ const TimelineItem = ({
         ml={{ base: "90px", sm: "180px" }}
         rounded="md"
       >
-        <Heading as="h3" fontSize={{ base: "sm", sm: "lg" }}>
-          {title}
-        </Heading>
-        <Text as="p" mt="1" fontSize={{ base: "xs", sm: "md" }}>
-          {description}
-        </Text>
+        <VStack w="100%" alignItems="flex-start" spacing="6px">
+          <Heading as="h3" fontSize={{ base: "sm", sm: "xl" }}>
+            {title}
+          </Heading>
+          <Text as="p" fontSize={{ base: "xs", sm: "lg" }}>
+            {description}
+          </Text>
+        </VStack>
       </MotionBox>
-    </HStack>
+    </Box>
   );
 };
 
