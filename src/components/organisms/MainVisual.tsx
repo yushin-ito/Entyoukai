@@ -88,10 +88,10 @@ const MainVisual = () => {
         src="/assets/images/logo.webp"
         alt="logo"
         objectFit="cover"
-        w={{ base: "28", sm: "32" }}
+        w={{ base: "100px", sm: "120px" }}
         h="auto"
         pos="absolute"
-        top="5"
+        top="6"
         left="8"
         rounded="4px"
         onClick={() => navigate("/top")}
