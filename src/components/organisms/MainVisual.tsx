@@ -268,7 +268,7 @@ const MainVisual = () => {
             fontWeight="bold"
             color="white"
           >
-            2025年1月12日（月）13時30分
+            2025年1月12日（日）13時30分
           </Text>
 
           <HStack alignItems="center" spacing="1">
