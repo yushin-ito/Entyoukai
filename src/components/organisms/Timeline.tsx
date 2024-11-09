@@ -58,6 +58,7 @@ const Timeline = ({ events }: TimelineProps) => {
 
   return (
     <VStack
+      as="section"
       w={{ base: "100%", sm: "90%" }}
       pos="relative"
       spacing={{ base: `${space.base}px`, sm: `${space.sm}px` }}

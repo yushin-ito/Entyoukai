@@ -32,7 +32,8 @@ const Contact = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting }
+    formState: { errors, isSubmitting },
+    reset
   } = useForm<FormData>();
 
   const { mutateAsync: mutateAsyncPostContact } = usePostContact({
@@ -66,6 +67,7 @@ const Contact = () => {
 
   const onSubmit = async (data: FormData) => {
     await mutateAsyncPostContact(data);
+    reset();
   };
 
   const schema = {
