@@ -19,12 +19,13 @@ import {
 import { useRef, useCallback, useEffect } from "react";
 import { FiMenu } from "react-icons/fi";
 import { IoMdPin } from "react-icons/io";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import useAppStore from "../../stores";
 
 const MainVisual = () => {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const ref = useRef<HTMLDivElement>(null);
   const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
@@ -73,13 +74,27 @@ const MainVisual = () => {
       {/* 背景画像 */}
       <Image
         src="/assets/images/background.webp"
-        alt=""
+        alt="backgroud"
         objectFit="cover"
         w="100vw"
         h={{ base: "calc(100vh * 0.8)", sm: "100vh" }}
         pos="absolute"
         top="0"
         left="0"
+      />
+
+      {/* ロゴ */}
+      <Image
+        src="/assets/images/logo.webp"
+        alt="logo"
+        objectFit="cover"
+        w={{ base: "28", sm: "32" }}
+        h="auto"
+        pos="absolute"
+        top="5"
+        left="8"
+        rounded="4px"
+        onClick={() => navigate("/top")}
       />
 
       {/* ナビゲーションバー */}
@@ -89,7 +104,7 @@ const MainVisual = () => {
           aria-label="menu"
           pos="absolute"
           top="6"
-          right="6"
+          right="8"
           color="white"
           bg="brand"
           _hover={{ opacity: { base: 1, sm: 0.8 } }}
