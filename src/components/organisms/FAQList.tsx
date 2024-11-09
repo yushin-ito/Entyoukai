@@ -6,7 +6,8 @@ import {
   AccordionIcon,
   VStack,
   Text,
-  HStack
+  HStack,
+  Heading
 } from "@chakra-ui/react";
 
 import type { FAQ } from "../../types";
@@ -33,16 +34,20 @@ const FAQList = ({ faq }: FAQListProps) => {
               alignItems="flex-start"
               spacing={{ base: "4px", sm: "6px" }}
             >
-              <Text fontSize={{ base: "xs", sm: "sm" }} fontWeight="bold">
-                Q.
-              </Text>
               <Text
-                textAlign="left"
+                as="span"
                 fontSize={{ base: "xs", sm: "sm" }}
                 fontWeight="bold"
               >
-                {item.question}
+                Q.
               </Text>
+              <Heading
+                as="h3"
+                textAlign="left"
+                fontSize={{ base: "xs", sm: "sm" }}
+              >
+                {item.question}
+              </Heading>
             </HStack>
             <AccordionIcon
               boxSize={{ base: "16px", sm: "24px" }}
@@ -61,6 +66,7 @@ const FAQList = ({ faq }: FAQListProps) => {
                 spacing={{ base: "4px", sm: "6px" }}
               >
                 <Text
+                  as="span"
                   fontSize={{ base: "xs", sm: "sm" }}
                   fontWeight="bold"
                   color="red.500"
@@ -68,6 +74,7 @@ const FAQList = ({ faq }: FAQListProps) => {
                   A.
                 </Text>
                 <Text
+                  as="p"
                   fontSize={{ base: "xs", sm: "sm" }}
                   fontWeight="bold"
                   color="red.500"
@@ -75,7 +82,9 @@ const FAQList = ({ faq }: FAQListProps) => {
                   {item.answer}
                 </Text>
               </HStack>
-              <Text fontSize={{ base: "2xs", sm: "xs" }}>{item.info}</Text>
+              <Text as="p" fontSize={{ base: "2xs", sm: "xs" }}>
+                {item.info}
+              </Text>
             </VStack>
           </AccordionPanel>
         </AccordionItem>

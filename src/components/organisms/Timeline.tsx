@@ -25,8 +25,7 @@ const Timeline = ({ events }: TimelineProps) => {
   const positions = useMemo(
     () =>
       heights.reduce<number[]>((acc, height, index) => {
-        const prev = acc[index - 1] || 0; // 1つ前の位置
-        // 現在の位置 = 1つ前の位置 + 現在の高さ / 2 + 1つ前の高さ / 2 + 余白
+        const prev = acc[index - 1] || 0;
         acc.push(
           prev +
             height / 2 +
@@ -63,7 +62,6 @@ const Timeline = ({ events }: TimelineProps) => {
       pos="relative"
       spacing={{ base: `${space.base}px`, sm: `${space.sm}px` }}
     >
-      {/* 縦のライン */}
       <Box
         pos="absolute"
         left={{
@@ -84,6 +82,8 @@ const Timeline = ({ events }: TimelineProps) => {
       {events.map((event, index) => (
         <VStack
           key={index}
+          as="time"
+          dateTime={event.dates[0]}
           pos="absolute"
           left="0"
           top={`${positions[index]}px`}
@@ -92,6 +92,7 @@ const Timeline = ({ events }: TimelineProps) => {
           {event.dates.map((date, index) => (
             <Text
               key={index}
+              as="span"
               fontSize={{ base: "xs", sm: "md" }}
               fontWeight="bold"
             >

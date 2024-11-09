@@ -31,9 +31,10 @@ const Activity = () => {
 
   return (
     <VStack
+      as="main"
       flex="1"
       alignItems="center"
-      spacing={{ base: "10", sm: "24" }}
+      spacing={{ base: "16", sm: "24" }}
       overflowX="hidden"
       pos="relative"
     >
@@ -48,13 +49,18 @@ const Activity = () => {
       <TableOfContents
         sections={[
           { id: "activity_reason", title: "活動理由" },
-          { id: "activity_article", title: "活動報告" }
+          { id: "activity_report", title: "活動報告" }
         ]}
       />
-      <VStack w={{ base: "80%", sm: "55%" }} spacing={{ base: "10", sm: "24" }}>
-        <VStack id="activity_reason" w="100%" spacing={{ base: "4", sm: "8" }}>
+      <VStack w={{ base: "80%", sm: "55%" }} spacing={{ base: "16", sm: "24" }}>
+        <VStack
+          as="section"
+          id="activity_reason"
+          w="100%"
+          spacing={{ base: "4", sm: "8" }}
+        >
           <SectionTitle title="活動理由" />
-          <Text fontSize={{ base: "sm", sm: "md" }} fontWeight="bold">
+          <Text as="p" fontSize={{ base: "sm", sm: "md" }} fontWeight="bold">
             私たちが「二十歳のつどい」のために活動する理由は、コロナによって失われた同期との思い出をもう一度作り直すためです。
             <br />
             <br />
@@ -77,7 +83,12 @@ const Activity = () => {
             猿鳥会）
           </Text>
         </VStack>
-        <VStack id="activity_article" w="100%" spacing={{ base: "4", sm: "8" }}>
+        <VStack
+          as="section"
+          id="activity_report"
+          w="100%"
+          spacing={{ base: "4", sm: "8" }}
+        >
           <SectionTitle title="活動報告" />
           {articles && <ArticleList articles={articles} />}
         </VStack>

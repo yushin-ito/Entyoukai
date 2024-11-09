@@ -1,4 +1,4 @@
-import { HStack, Text } from "@chakra-ui/react";
+import { Heading, HStack, Text } from "@chakra-ui/react";
 import { useInView } from "framer-motion";
 import { useRef, useEffect } from "react";
 
@@ -42,10 +42,10 @@ const TimelineItem = ({
         ml={{ base: "90px", sm: "180px" }}
         rounded="md"
       >
-        <Text fontWeight="bold" fontSize={{ base: "sm", sm: "lg" }}>
+        <Heading as="h3" fontSize={{ base: "sm", sm: "lg" }}>
           {title}
-        </Text>
-        <Text mt="1" fontSize={{ base: "xs", sm: "md" }}>
+        </Heading>
+        <Text as="p" mt="1" fontSize={{ base: "xs", sm: "md" }}>
           {description}
         </Text>
       </MotionBox>

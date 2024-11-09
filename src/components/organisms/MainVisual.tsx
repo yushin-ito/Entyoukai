@@ -14,7 +14,8 @@ import {
   DrawerBody,
   useDisclosure,
   IconButton,
-  Image
+  Image,
+  Heading
 } from "@chakra-ui/react";
 import { useRef, useCallback, useEffect } from "react";
 import { FiMenu } from "react-icons/fi";
@@ -55,7 +56,7 @@ const MainVisual = () => {
   );
 
   useEffect(() => {
-    if (pathname !== "/" && window.scrollY === 0 && progress === 100) {
+    if (pathname !== "/" && window.scrollY < 200 && progress === 100) {
       setTimeout(() => {
         if (ref.current) {
           scrollToElement(ref.current, 500);
@@ -88,10 +89,10 @@ const MainVisual = () => {
         src="/assets/images/logo.webp"
         alt="logo"
         objectFit="cover"
-        w={{ base: "28", sm: "32" }}
+        w={{ base: "100px", sm: "120px" }}
         h="auto"
         pos="absolute"
-        top="5"
+        top="6"
         left="8"
         rounded="4px"
         onClick={() => navigate("/top")}
@@ -255,20 +256,16 @@ const MainVisual = () => {
         alignItems="center"
         justifyContent="center"
       >
-        <Text
-          fontSize={{ base: "3xl", sm: "5xl" }}
-          fontWeight="bold"
-          color="white"
-        >
+        <Heading as="h1" fontSize={{ base: "3xl", sm: "5xl" }} color="white">
           二十歳のつどい
-        </Text>
+        </Heading>
         <VStack spacing="2">
           <Text
             fontSize={{ base: "md", sm: "xl" }}
             fontWeight="bold"
             color="white"
           >
-            2025年1月12日（月）13時30分
+            2025年1月12日（日）13時30分
           </Text>
 
           <HStack alignItems="center" spacing="1">

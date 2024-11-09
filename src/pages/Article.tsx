@@ -1,20 +1,12 @@
-import {
-  VStack,
-  Text,
-  Button,
-  HStack,
-  Divider,
-  IconButton
-} from "@chakra-ui/react";
+import { VStack, Text, Button, HStack, Divider } from "@chakra-ui/react";
 import { format } from "date-fns";
 import { Helmet } from "react-helmet-async";
-import { FaLine, FaInstagram } from "react-icons/fa";
-import { FaSquareXTwitter } from "react-icons/fa6";
 import { useParams, useNavigate } from "react-router-dom";
 
 import Avatar from "../components/atoms/Avatar";
 import ScrollToTopButton from "../components/molecules/ScrollToTopButton";
 import SectionTitle from "../components/molecules/SectionTitle";
+import ShareButtonGroup from "../components/molecules/ShareButtonGroup";
 import Footer from "../components/organisms/Footer";
 import ImageCarousel from "../components/organisms/ImageCarousel";
 import MainVisual from "../components/organisms/MainVisual";
@@ -42,9 +34,10 @@ const Article = () => {
 
   return (
     <VStack
+      as="main"
       flex="1"
       alignItems="center"
-      spacing={{ base: "10", sm: "24" }}
+      spacing={{ base: "16", sm: "24" }}
       overflowX="hidden"
       pos="relative"
     >
@@ -56,9 +49,10 @@ const Article = () => {
       </Helmet>
       <ScrollToTopButton />
       <MainVisual />
-      <VStack w={{ base: "80%", sm: "55%" }} spacing={{ base: "10", sm: "24" }}>
+      <VStack w={{ base: "80%", sm: "55%" }} spacing={{ base: "16", sm: "24" }}>
         {article && (
           <VStack
+            as="article"
             w="100%"
             spacing={{ base: "4", sm: "8" }}
             rounded={{ base: "md", sm: "lg" }}
@@ -74,10 +68,18 @@ const Article = () => {
               <HStack w="100%" alignItems="center" spacing="4">
                 <Avatar size={{ base: "sm", sm: "md" }} src={article.avatar} />
                 <VStack alignItems="flex-start" spacing="1px">
-                  <Text fontSize={{ base: "xs", sm: "md" }} fontWeight="bold">
+                  <Text
+                    as="span"
+                    fontSize={{ base: "xs", sm: "md" }}
+                    fontWeight="bold"
+                  >
                     {article.author}
                   </Text>
-                  <Text fontSize={{ base: "2xs", sm: "xs" }} color="gray.600">
+                  <Text
+                    as="time"
+                    fontSize={{ base: "2xs", sm: "xs" }}
+                    color="gray.600"
+                  >
                     {format(new Date(article.date), "yyyy年MM月dd日")}
                   </Text>
                 </VStack>
@@ -92,6 +94,7 @@ const Article = () => {
 
               {/* 記事内容 */}
               <Text
+                as="p"
                 mt={{ base: "6", sm: "10" }}
                 fontSize={{ base: "sm", sm: "md" }}
                 fontWeight="bold"
@@ -107,59 +110,15 @@ const Article = () => {
               />
 
               {/* シェアボタン */}
-              <HStack
-                w="100%"
-                alignItems="center"
-                justifyContent="center"
-                spacing={{ base: "4", sm: "6" }}
-                mb={{ base: "12", sm: "16" }}
-              >
-                <IconButton
-                  aria-label="twitter"
-                  icon={<FaSquareXTwitter size="18px" />}
-                  color="brand"
-                  borderWidth="1px"
-                  borderColor="brand"
-                  rounded="full"
-                  bg="white"
-                  onClick={() => {
-                    window.open(
-                      `https://twitter.com/intent/tweet?text=${article.title}&url=${window.location.href}`
-                    );
-                  }}
-                />
-                <IconButton
-                  aria-label="instagram"
-                  icon={<FaInstagram size="18px" />}
-                  color="brand"
-                  borderWidth="1px"
-                  borderColor="brand"
-                  rounded="full"
-                  bg="white"
-                  onClick={() => {
-                    window.open(
-                      `https://www.instagram.com/?url=${window.location.href}`
-                    );
-                  }}
-                />
-                <IconButton
-                  aria-label="line"
-                  icon={<FaLine size="18px" />}
-                  color="brand"
-                  borderWidth="1px"
-                  borderColor="brand"
-                  rounded="full"
-                  bg="white"
-                  onClick={() => {
-                    window.open(
-                      `https://social-plugins.line.me/lineit/share?url=${window.location.href}`
-                    );
-                  }}
-                />
-              </HStack>
+              <ShareButtonGroup />
 
               {/* ナビゲーションボタン */}
-              <HStack w="100%" justifyContent="space-between">
+              <HStack
+                as="nav"
+                mt={{ base: "12", sm: "16" }}
+                w="100%"
+                justifyContent="space-between"
+              >
                 <Button
                   size={{ base: "sm", sm: "md" }}
                   color="white"
@@ -174,6 +133,7 @@ const Article = () => {
                   isDisabled={END_ARTICLE_ID === article.id}
                 >
                   <Text
+                    as="span"
                     fontSize={{ base: "xs", sm: "sm" }}
                     fontWeight="bold"
                     color="white"
@@ -187,7 +147,11 @@ const Article = () => {
                   onClick={() => navigate("/activity")}
                   variant="ghost"
                 >
-                  <Text fontSize={{ base: "xs", sm: "sm" }} fontWeight="bold">
+                  <Text
+                    as="span"
+                    fontSize={{ base: "xs", sm: "sm" }}
+                    fontWeight="bold"
+                  >
                     一覧へ
                   </Text>
                 </Button>
@@ -205,6 +169,7 @@ const Article = () => {
                   isDisabled={FIRST_ARTICLE_ID === article.id}
                 >
                   <Text
+                    as="span"
                     fontSize={{ base: "xs", sm: "sm" }}
                     fontWeight="bold"
                     color="white"

@@ -1,7 +1,7 @@
 import {
   VStack,
   Box,
-  Text,
+  Heading,
   useBreakpointValue,
   HStack
 } from "@chakra-ui/react";
@@ -16,15 +16,15 @@ const SectionTitle = ({ title }: SectionTitleProps) => {
   return breakpoint === "base" ? (
     <HStack w="100%" spacing="2" alignItems="center">
       <Box w="3px" h="8" bg="brand" />
-      <Text fontSize="xl" fontWeight="bold">
+      <Heading as="h2" fontSize="xl">
         {title}
-      </Text>
+      </Heading>
     </HStack>
   ) : (
     <VStack w="100%" spacing="2" alignItems="flex-start">
-      <Text fontSize="2xl" fontWeight="bold">
+      <Heading as="h2" fontSize="2xl">
         {title}
-      </Text>
+      </Heading>
       <Box w="100%" h="1" bg="brand" />
     </VStack>
   );

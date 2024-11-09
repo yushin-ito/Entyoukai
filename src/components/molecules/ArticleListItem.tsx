@@ -3,7 +3,8 @@ import {
   Text,
   VStack,
   HStack,
-  useBreakpointValue
+  useBreakpointValue,
+  Heading
 } from "@chakra-ui/react";
 import { format, formatDistanceToNow, parseISO } from "date-fns";
 import { ja } from "date-fns/locale";
@@ -42,6 +43,7 @@ const ArticleListItem = ({
 
   return (
     <MotionBox
+      as="li"
       ref={ref}
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1, transition: { duration: 1 } } : {}}
@@ -102,9 +104,9 @@ const ArticleListItem = ({
         >
           {/* タイトル */}
           {breakpoint === "sm" && (
-            <Text fontWeight="bold" noOfLines={1}>
+            <Heading as="h3" fontSize="md" noOfLines={1}>
               {title}
-            </Text>
+            </Heading>
           )}
           {/* 日付と作者 */}
           {breakpoint === "base" && (
@@ -130,6 +132,7 @@ const ArticleListItem = ({
           )}
           {/* 内容 */}
           <Text
+            as="p"
             fontSize="xs"
             fontWeight={{ base: "bold", sm: "normal" }}
             color={{ base: "brand", sm: "gray.600" }}

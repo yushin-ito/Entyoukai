@@ -28,9 +28,10 @@ const Top = () => {
 
   return (
     <VStack
+      as="main"
       flex="1"
       alignItems="center"
-      spacing={{ base: "10", sm: "24" }}
+      spacing={{ base: "16", sm: "24" }}
       overflowX="hidden"
       pos="relative"
     >
@@ -48,12 +49,17 @@ const Top = () => {
           { id: "faq", title: "よくある質問" }
         ]}
       />
-      <VStack w={{ base: "80%", sm: "55%" }} spacing={{ base: "10", sm: "24" }}>
+      <VStack w={{ base: "80%", sm: "55%" }} spacing={{ base: "16", sm: "24" }}>
         <Countdown />
-        <VStack id="overview" w="100%" spacing={{ base: "4", sm: "8" }}>
+        <VStack
+          as="section"
+          id="overview"
+          w="100%"
+          spacing={{ base: "4", sm: "8" }}
+        >
           <SectionTitle title="概要" />
-          <Text fontSize={{ base: "sm", sm: "md" }} fontWeight="bold">
-            このページをご覧いただきありがとうございます。こちらは、令和7年1月12日に保健福祉センター（さわやか村）で開催される「二十歳のつどい」公式ページです。「二十歳のつどい」の概要やアクセス情報、最新のお知らせなどをご案内しています。
+          <Text as="p" fontSize={{ base: "sm", sm: "md" }} fontWeight="bold">
+            このページをご覧いただきありがとうございます。こちらは、令和7年1月12日（日）に保健福祉センター（さわやか村）で開催される「二十歳のつどい」公式ページです。「二十歳のつどい」の概要やアクセス情報、最新のお知らせなどをご案内しています。
             <br />
             <br />
             「二十歳のつどい」は、朝日町で育った私たちが、地域の皆様とともに成長を祝い合う場です。当日は式典に加え、町内の魅力を再発見できるイベントも企画されています。
@@ -62,15 +68,25 @@ const Top = () => {
             参加される皆様には、決意を新たにし、地域との絆を感じていただけるよう、実行委員会一同準備を進めております。どうぞ素晴らしい一日をお過ごしください。
           </Text>
         </VStack>
-        <VStack id="news" w="100%" spacing={{ base: "4", sm: "8" }}>
+        <VStack
+          as="section"
+          id="news"
+          w="100%"
+          spacing={{ base: "4", sm: "8" }}
+        >
           <SectionTitle title="お知らせ" />
           {news && <NewsList news={news} />}
         </VStack>
-        <VStack id="access" w="100%" spacing={{ base: "4", sm: "8" }}>
+        <VStack
+          as="section"
+          id="access"
+          w="100%"
+          spacing={{ base: "4", sm: "8" }}
+        >
           <SectionTitle title="アクセス" />
           <Access />
         </VStack>
-        <VStack id="faq" w="100%" spacing={{ base: "4", sm: "8" }}>
+        <VStack as="section" id="faq" w="100%" spacing={{ base: "4", sm: "8" }}>
           <SectionTitle title="よくある質問" />
           {faq && <FAQList faq={faq} />}
         </VStack>

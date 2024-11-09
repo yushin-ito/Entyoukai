@@ -39,6 +39,7 @@ const Contact = () => {
     onSuccess: () => {
       toast({
         duration: 6000,
+        containerStyle: { minW: "auto" },
         render: ({ onClose }) => (
           <Toast
             status="success"
@@ -50,15 +51,15 @@ const Contact = () => {
     },
     onError: () => {
       toast({
+        duration: 6000,
+        containerStyle: { minW: "auto" },
         render: ({ onClose }) => (
           <Toast
             status="error"
             title="お問い合わせに失敗しました"
             onClose={onClose}
           />
-        ),
-        duration: 5000,
-        isClosable: true
+        )
       });
     }
   });
@@ -85,9 +86,10 @@ const Contact = () => {
 
   return (
     <VStack
+      as="main"
       flex="1"
       alignItems="center"
-      spacing={{ base: "10", sm: "24" }}
+      spacing={{ base: "16", sm: "24" }}
       overflowX="hidden"
       pos="relative"
     >
@@ -105,18 +107,23 @@ const Contact = () => {
           w={{ base: "100%", sm: "90%" }}
           spacing={{ base: "4", sm: "8" }}
         >
-          <VStack w="100%" alignItems="flex-start" spacing="1">
-            <Text fontSize={{ base: "sm", sm: "md" }} fontWeight="bold">
+          <VStack as="section" w="100%" alignItems="flex-start" spacing="1">
+            <Text as="p" fontSize={{ base: "sm", sm: "md" }} fontWeight="bold">
               お問い合わせ内容をご入力のうえ、以下のフォームから送信してください。
             </Text>
-            <Text fontSize={{ base: "xs", sm: "sm" }}>
+            <Text as="p" fontSize={{ base: "xs", sm: "sm" }}>
               内容を確認次第、ご入力いただいたメールアドレスにご返信いたします。なお、場合によっては返信にお時間をいただくことがございますので、あらかじめご了承ください。
             </Text>
           </VStack>
           <VStack w="100%" spacing={{ base: "8", sm: "12" }}>
             {/* お名前 */}
             <FormControl isInvalid={!!errors.name}>
-              <FormLabel fontSize="sm" fontWeight="bold" color="brand">
+              <FormLabel
+                as="label"
+                fontSize="sm"
+                fontWeight="bold"
+                color="brand"
+              >
                 お名前 <span style={{ color: "red" }}>*</span>
               </FormLabel>
               <Input
@@ -125,14 +132,19 @@ const Contact = () => {
                 placeholder="お名前"
                 {...register("name", { required: "お名前を入力してください" })}
               />
-              <FormErrorMessage>
+              <FormErrorMessage as="span">
                 {errors.name && errors.name.message}
               </FormErrorMessage>
             </FormControl>
 
             {/* メールアドレス */}
             <FormControl isInvalid={!!errors.email}>
-              <FormLabel fontSize="sm" fontWeight="bold" color="brand">
+              <FormLabel
+                as="label"
+                fontSize="sm"
+                fontWeight="bold"
+                color="brand"
+              >
                 メールアドレス <span style={{ color: "red" }}>*</span>
               </FormLabel>
               <Input
@@ -148,14 +160,19 @@ const Contact = () => {
                   }
                 })}
               />
-              <FormErrorMessage>
+              <FormErrorMessage as="span">
                 {errors.email && errors.email.message}
               </FormErrorMessage>
             </FormControl>
 
             {/* 電話番号 */}
             <FormControl isInvalid={!!errors.phone}>
-              <FormLabel fontSize="sm" fontWeight="bold" color="brand">
+              <FormLabel
+                as="label"
+                fontSize="sm"
+                fontWeight="bold"
+                color="brand"
+              >
                 電話番号 <span style={{ color: "red" }}>*</span>
               </FormLabel>
               <Input
@@ -171,14 +188,19 @@ const Contact = () => {
                   }
                 })}
               />
-              <FormErrorMessage>
+              <FormErrorMessage as="span">
                 {errors.phone && errors.phone.message}
               </FormErrorMessage>
             </FormControl>
 
             {/* お問い合わせ内容 */}
             <FormControl isInvalid={!!errors.message}>
-              <FormLabel fontSize="sm" fontWeight="bold" color="brand">
+              <FormLabel
+                as="label"
+                fontSize="sm"
+                fontWeight="bold"
+                color="brand"
+              >
                 お問い合わせ内容 <span style={{ color: "red" }}>*</span>
               </FormLabel>
               <Textarea
@@ -188,7 +210,7 @@ const Contact = () => {
                   required: "お問い合わせ内容を入力してください"
                 })}
               />
-              <FormErrorMessage>
+              <FormErrorMessage as="span">
                 {errors.message && errors.message.message}
               </FormErrorMessage>
             </FormControl>
@@ -197,6 +219,7 @@ const Contact = () => {
           {/* 送信ボタン */}
           <Button
             type="submit"
+            as="button" // 明確に button タグとしてマーク
             w={{ base: "90%", sm: "60%" }}
             mt={{ base: "6", sm: "12" }}
             color="white"

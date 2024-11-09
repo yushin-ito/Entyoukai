@@ -63,14 +63,17 @@ const ArticleList = ({ articles }: ArticleListProps) => {
           w={`calc(${articles.length * 100}vw * 0.8 + ${24 * articles.length}px )`}
           spacing="0"
           alignItems="flex-start"
+          as="ul"
         >
           {articles.map((article, index) => (
             <Box
+              as="li"
               key={index}
               w="100%"
               mr="24px"
               scrollSnapAlign="start"
               overflow="clip"
+              listStyleType="none"
             >
               <ArticleListItem
                 id={article.id}
@@ -99,7 +102,15 @@ const ArticleList = ({ articles }: ArticleListProps) => {
       </HStack>
     </VStack>
   ) : (
-    <SimpleGrid w="100%" px="4" columns={3} spacingX="10" spacingY="12">
+    <SimpleGrid
+      as="ul"
+      w="100%"
+      px="4"
+      columns={3}
+      spacingX="10"
+      spacingY="12"
+      listStyleType="none"
+    >
       {articles.map((article, index) => (
         <ArticleListItem
           key={index}

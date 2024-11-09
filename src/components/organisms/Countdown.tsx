@@ -1,4 +1,4 @@
-import { Text, VStack, HStack } from "@chakra-ui/react";
+import { Text, VStack, HStack, Heading } from "@chakra-ui/react";
 import { useInView } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 
@@ -41,9 +41,9 @@ const Countdown = () => {
 
   return (
     <VStack ref={ref} spacing="5" rounded="lg">
-      <Text fontSize={{ base: "lg", sm: "2xl" }} fontWeight="bold">
+      <Heading as="h3" fontSize={{ base: "lg", sm: "2xl" }}>
         二十歳のつどいまであと
-      </Text>
+      </Heading>
       <HStack spacing="0" alignItems="flex-end">
         {Object.entries(timer).map(([unit, value]) => (
           <MotionBox
@@ -63,6 +63,8 @@ const Countdown = () => {
             rounded="md"
           >
             <Text
+              as="span"
+              display="block"
               textAlign="center"
               fontSize={{ base: "3xl", sm: "5xl" }}
               fontWeight="bold"
@@ -70,6 +72,8 @@ const Countdown = () => {
               {String(value).padStart(2, "0")}
             </Text>
             <Text
+              as="span"
+              display="block"
               textAlign="center"
               fontSize={{ base: "lg", sm: "xl" }}
               fontWeight="bold"

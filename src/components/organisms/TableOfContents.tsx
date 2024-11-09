@@ -53,6 +53,7 @@ const TableOfContents = ({ sections }: TableOfContentsProps) => {
 
   return breakpoint === "base" ? null : (
     <VStack
+      as="nav"
       pos={fixed ? "fixed" : "absolute"}
       top={fixed ? "96px" : "calc(100vh + 96px)"}
       left="64px"
@@ -83,7 +84,9 @@ const TableOfContents = ({ sections }: TableOfContentsProps) => {
 
       {sections.map((section) => (
         <Button
+          as="a"
           key={section.id}
+          href={`#${section.id}`}
           h="42px"
           px="0"
           ml="4"
@@ -106,6 +109,7 @@ const TableOfContents = ({ sections }: TableOfContentsProps) => {
         >
           <HStack spacing="4">
             <Text
+              as="span"
               color={activeId === section.id ? "brand" : "gray.400"}
               fontWeight="bold"
             >
