@@ -55,7 +55,7 @@ const MainVisual = () => {
   );
 
   useEffect(() => {
-    if (pathname !== "/" && window.scrollY === 0 && progress === 100) {
+    if (pathname !== "/" && window.scrollY < 200 && progress === 100) {
       setTimeout(() => {
         if (ref.current) {
           scrollToElement(ref.current, 500);
