@@ -32,9 +32,10 @@ const Memory = () => {
 
   return (
     <VStack
+      as="main"
       flex="1"
       alignItems="center"
-      spacing={{ base: "10", sm: "24" }}
+      spacing={{ base: "16", sm: "24" }}
       overflowX="hidden"
       pos="relative"
     >
@@ -46,7 +47,11 @@ const Memory = () => {
       </Helmet>
       <ScrollToTopButton />
       <MainVisual />
-      <VStack w={{ base: "80%", sm: "55%" }} spacing={{ base: "10", sm: "16" }}>
+      <VStack
+        as="section"
+        w={{ base: "80%", sm: "55%" }}
+        spacing={{ base: "10", sm: "16" }}
+      >
         <SectionTitle title="おもいで" />
         {events && <Timeline events={events} />}
       </VStack>

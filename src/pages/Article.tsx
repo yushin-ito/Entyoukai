@@ -34,9 +34,10 @@ const Article = () => {
 
   return (
     <VStack
+      as="main"
       flex="1"
       alignItems="center"
-      spacing={{ base: "10", sm: "24" }}
+      spacing={{ base: "16", sm: "24" }}
       overflowX="hidden"
       pos="relative"
     >
@@ -48,9 +49,10 @@ const Article = () => {
       </Helmet>
       <ScrollToTopButton />
       <MainVisual />
-      <VStack w={{ base: "80%", sm: "55%" }} spacing={{ base: "10", sm: "24" }}>
+      <VStack w={{ base: "80%", sm: "55%" }} spacing={{ base: "16", sm: "24" }}>
         {article && (
           <VStack
+            as="article"
             w="100%"
             spacing={{ base: "4", sm: "8" }}
             rounded={{ base: "md", sm: "lg" }}
@@ -66,10 +68,18 @@ const Article = () => {
               <HStack w="100%" alignItems="center" spacing="4">
                 <Avatar size={{ base: "sm", sm: "md" }} src={article.avatar} />
                 <VStack alignItems="flex-start" spacing="1px">
-                  <Text fontSize={{ base: "xs", sm: "md" }} fontWeight="bold">
+                  <Text
+                    as="span"
+                    fontSize={{ base: "xs", sm: "md" }}
+                    fontWeight="bold"
+                  >
                     {article.author}
                   </Text>
-                  <Text fontSize={{ base: "2xs", sm: "xs" }} color="gray.600">
+                  <Text
+                    as="time"
+                    fontSize={{ base: "2xs", sm: "xs" }}
+                    color="gray.600"
+                  >
                     {format(new Date(article.date), "yyyy年MM月dd日")}
                   </Text>
                 </VStack>
@@ -84,6 +94,7 @@ const Article = () => {
 
               {/* 記事内容 */}
               <Text
+                as="p"
                 mt={{ base: "6", sm: "10" }}
                 fontSize={{ base: "sm", sm: "md" }}
                 fontWeight="bold"
@@ -103,6 +114,7 @@ const Article = () => {
 
               {/* ナビゲーションボタン */}
               <HStack
+                as="nav"
                 mt={{ base: "12", sm: "16" }}
                 w="100%"
                 justifyContent="space-between"
@@ -121,6 +133,7 @@ const Article = () => {
                   isDisabled={END_ARTICLE_ID === article.id}
                 >
                   <Text
+                    as="span"
                     fontSize={{ base: "xs", sm: "sm" }}
                     fontWeight="bold"
                     color="white"
@@ -134,7 +147,11 @@ const Article = () => {
                   onClick={() => navigate("/activity")}
                   variant="ghost"
                 >
-                  <Text fontSize={{ base: "xs", sm: "sm" }} fontWeight="bold">
+                  <Text
+                    as="span"
+                    fontSize={{ base: "xs", sm: "sm" }}
+                    fontWeight="bold"
+                  >
                     一覧へ
                   </Text>
                 </Button>
@@ -152,6 +169,7 @@ const Article = () => {
                   isDisabled={FIRST_ARTICLE_ID === article.id}
                 >
                   <Text
+                    as="span"
                     fontSize={{ base: "xs", sm: "sm" }}
                     fontWeight="bold"
                     color="white"

@@ -15,17 +15,21 @@ const Error = () => {
   };
 
   return (
-    <Center w="100vw" h="100vh">
+    <Center as="main" w="100vw" h="100vh">
       <Helmet>
         <title>エラーが発生しました | 猿鳥会</title>
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
       <VStack w="100%" spacing={{ base: "12", sm: "20" }}>
-        <VStack w={{ base: "80%", sm: "40%" }} spacing={{ base: "1", sm: "4" }}>
-          <Text fontSize={{ base: "lg", sm: "3xl" }} fontWeight="bold">
+        <VStack
+          as="section"
+          w={{ base: "80%", sm: "40%" }}
+          spacing={{ base: "1", sm: "4" }}
+        >
+          <Text as="h1" fontSize={{ base: "lg", sm: "3xl" }} fontWeight="bold">
             予期せぬエラーが発生しました。
           </Text>
-          <Text fontSize={{ base: "xs", sm: "sm" }} color="gray.600">
+          <Text as="p" fontSize={{ base: "xs", sm: "sm" }} color="gray.600">
             もう一度お試しいただくか、時間をおいてアクセスしてください。
           </Text>
         </VStack>

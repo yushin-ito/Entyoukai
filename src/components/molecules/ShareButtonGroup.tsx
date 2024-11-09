@@ -55,6 +55,11 @@ const ShareButtonGroup = () => {
         borderColor="brand"
         rounded="full"
         bg="white"
+        _hover={{ opacity: { base: 1, sm: 0.8 } }}
+        _active={{
+          transform: "scale(0.98)",
+          opacity: 0.8
+        }}
         onClick={() => {
           window.open(
             `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}`
@@ -71,6 +76,11 @@ const ShareButtonGroup = () => {
         borderColor="brand"
         rounded="full"
         bg="white"
+        _hover={{ opacity: { base: 1, sm: 0.8 } }}
+        _active={{
+          transform: "scale(0.98)",
+          opacity: 0.8
+        }}
         onClick={() => {
           window.open(
             `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`
@@ -87,6 +97,11 @@ const ShareButtonGroup = () => {
         borderColor="brand"
         rounded="full"
         bg="white"
+        _hover={{ opacity: { base: 1, sm: 0.8 } }}
+        _active={{
+          transform: "scale(0.98)",
+          opacity: 0.8
+        }}
         onClick={copyToClipboard}
       />
     </HStack>

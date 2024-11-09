@@ -15,17 +15,21 @@ const NotFound = () => {
   };
 
   return (
-    <Center w="100vw" h="100vh">
+    <Center as="main" w="100vw" h="100vh">
       <Helmet>
         <title>ページが見つかりません | 猿鳥会</title>
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
       <VStack w="100%" spacing={{ base: "12", sm: "20" }}>
-        <VStack w={{ base: "80%", sm: "40%" }} spacing={{ base: "1", sm: "4" }}>
-          <Text fontSize={{ base: "lg", sm: "3xl" }} fontWeight="bold">
+        <VStack
+          as="section"
+          w={{ base: "80%", sm: "40%" }}
+          spacing={{ base: "1", sm: "4" }}
+        >
+          <Text as="h1" fontSize={{ base: "lg", sm: "3xl" }} fontWeight="bold">
             ご指定のページが見つかりません。
           </Text>
-          <Text fontSize={{ base: "xs", sm: "sm" }} color="gray.600">
+          <Text as="p" fontSize={{ base: "xs", sm: "sm" }} color="gray.600">
             URLが変更されたか、削除された可能性があります。
           </Text>
         </VStack>

@@ -6,7 +6,8 @@ import {
   Button,
   Box,
   Stack,
-  useBreakpointValue
+  useBreakpointValue,
+  Heading
 } from "@chakra-ui/react";
 import { format } from "date-fns";
 import { useState, useMemo } from "react";
@@ -38,6 +39,7 @@ const NewsList = ({ news }: NewsListProps) => {
   return (
     <VStack w="100%" alignItems="start" spacing={{ base: "4", sm: "8" }}>
       <HStack
+        as="nav"
         w="100%"
         spacing={{ base: "8px", sm: "12px" }}
         overflowX="auto"
@@ -53,7 +55,7 @@ const NewsList = ({ news }: NewsListProps) => {
         }}
       >
         {Object.keys(categories).map((id) => (
-          <Box key={id}>
+          <Box key={id} as="button">
             <Button
               h={{ base: "24px", sm: "28px" }}
               px={{ base: "8px", sm: "12px" }}
@@ -99,7 +101,13 @@ const NewsList = ({ news }: NewsListProps) => {
         }}
       >
         {list.map((item, index) => (
-          <VStack key={index} w="100%" alignItems="start" spacing="2">
+          <VStack
+            key={index}
+            as="article"
+            w="100%"
+            alignItems="start"
+            spacing="2"
+          >
             <Stack
               w="100%"
               direction={{ base: "column", sm: "row" }}
@@ -109,7 +117,11 @@ const NewsList = ({ news }: NewsListProps) => {
               spacing={{ base: "4", sm: "6" }}
             >
               <HStack spacing={{ base: "2", sm: "4" }} alignItems="center">
-                <Text fontSize={{ base: "xs", sm: "sm" }} color="gray.600">
+                <Text
+                  as="time"
+                  fontSize={{ base: "xs", sm: "sm" }}
+                  color="gray.600"
+                >
                   {format(item.date, "yyyy.MM.dd")}
                 </Text>
                 <Box
@@ -127,13 +139,13 @@ const NewsList = ({ news }: NewsListProps) => {
                   </Text>
                 </Box>
               </HStack>
-              <Text
+              <Heading
+                as="h3"
                 fontSize={{ base: "xs", sm: "sm" }}
-                fontWeight="bold"
                 noOfLines={1}
               >
                 {item.title}
-              </Text>
+              </Heading>
             </Stack>
             {index < list.length - 1 && <Divider borderColor="gray.200" />}
           </VStack>

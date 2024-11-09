@@ -14,7 +14,8 @@ import {
   DrawerBody,
   useDisclosure,
   IconButton,
-  Image
+  Image,
+  Heading
 } from "@chakra-ui/react";
 import { useRef, useCallback, useEffect } from "react";
 import { FiMenu } from "react-icons/fi";
@@ -255,13 +256,9 @@ const MainVisual = () => {
         alignItems="center"
         justifyContent="center"
       >
-        <Text
-          fontSize={{ base: "3xl", sm: "5xl" }}
-          fontWeight="bold"
-          color="white"
-        >
+        <Heading as="h1" fontSize={{ base: "3xl", sm: "5xl" }} color="white">
           二十歳のつどい
-        </Text>
+        </Heading>
         <VStack spacing="2">
           <Text
             fontSize={{ base: "md", sm: "xl" }}
