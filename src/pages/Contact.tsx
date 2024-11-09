@@ -39,6 +39,7 @@ const Contact = () => {
     onSuccess: () => {
       toast({
         duration: 6000,
+        containerStyle: { minW: "auto" },
         render: ({ onClose }) => (
           <Toast
             status="success"
@@ -50,15 +51,15 @@ const Contact = () => {
     },
     onError: () => {
       toast({
+        duration: 6000,
+        containerStyle: { minW: "auto" },
         render: ({ onClose }) => (
           <Toast
             status="error"
             title="お問い合わせに失敗しました"
             onClose={onClose}
           />
-        ),
-        duration: 5000,
-        isClosable: true
+        )
       });
     }
   });

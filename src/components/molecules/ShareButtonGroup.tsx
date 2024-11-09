@@ -15,6 +15,7 @@ const ShareButtonGroup = () => {
       await navigator.clipboard.writeText(url);
       toast({
         duration: 6000,
+        containerStyle: { minW: "auto" },
         render: ({ onClose }) => (
           <Toast
             status="success"
@@ -26,6 +27,7 @@ const ShareButtonGroup = () => {
     } catch {
       toast({
         duration: 6000,
+        containerStyle: { minW: "auto" },
         render: ({ onClose }) => (
           <Toast
             status="error"

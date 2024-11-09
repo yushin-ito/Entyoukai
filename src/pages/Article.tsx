@@ -1,26 +1,17 @@
-import {
-  VStack,
-  Text,
-  Button,
-  HStack,
-  Divider,
-  IconButton
-} from "@chakra-ui/react";
+import { VStack, Text, Button, HStack, Divider } from "@chakra-ui/react";
 import { format } from "date-fns";
 import { Helmet } from "react-helmet-async";
-import { FaLine, FaInstagram } from "react-icons/fa";
-import { FaSquareXTwitter } from "react-icons/fa6";
 import { useParams, useNavigate } from "react-router-dom";
 
 import Avatar from "../components/atoms/Avatar";
 import ScrollToTopButton from "../components/molecules/ScrollToTopButton";
 import SectionTitle from "../components/molecules/SectionTitle";
+import ShareButtonGroup from "../components/molecules/ShareButtonGroup";
 import Footer from "../components/organisms/Footer";
 import ImageCarousel from "../components/organisms/ImageCarousel";
 import MainVisual from "../components/organisms/MainVisual";
 import { FIRST_ARTICLE_ID, END_ARTICLE_ID } from "../constants";
 import { useQueryArticle } from "../hooks/article";
-import ShareButtonGroup from "../components/molecules/ShareButtonGroup";
 
 const Article = () => {
   const { id } = useParams();
