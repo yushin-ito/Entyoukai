@@ -20,6 +20,7 @@ import ImageCarousel from "../components/organisms/ImageCarousel";
 import MainVisual from "../components/organisms/MainVisual";
 import { FIRST_ARTICLE_ID, END_ARTICLE_ID } from "../constants";
 import { useQueryArticle } from "../hooks/article";
+import ShareButtonGroup from "../components/molecules/ShareButtonGroup";
 
 const Article = () => {
   const { id } = useParams();
@@ -107,59 +108,14 @@ const Article = () => {
               />
 
               {/* シェアボタン */}
-              <HStack
-                w="100%"
-                alignItems="center"
-                justifyContent="center"
-                spacing={{ base: "4", sm: "6" }}
-                mb={{ base: "12", sm: "16" }}
-              >
-                <IconButton
-                  aria-label="twitter"
-                  icon={<FaSquareXTwitter size="18px" />}
-                  color="brand"
-                  borderWidth="1px"
-                  borderColor="brand"
-                  rounded="full"
-                  bg="white"
-                  onClick={() => {
-                    window.open(
-                      `https://twitter.com/intent/tweet?text=${article.title}&url=${window.location.href}`
-                    );
-                  }}
-                />
-                <IconButton
-                  aria-label="instagram"
-                  icon={<FaInstagram size="18px" />}
-                  color="brand"
-                  borderWidth="1px"
-                  borderColor="brand"
-                  rounded="full"
-                  bg="white"
-                  onClick={() => {
-                    window.open(
-                      `https://www.instagram.com/?url=${window.location.href}`
-                    );
-                  }}
-                />
-                <IconButton
-                  aria-label="line"
-                  icon={<FaLine size="18px" />}
-                  color="brand"
-                  borderWidth="1px"
-                  borderColor="brand"
-                  rounded="full"
-                  bg="white"
-                  onClick={() => {
-                    window.open(
-                      `https://social-plugins.line.me/lineit/share?url=${window.location.href}`
-                    );
-                  }}
-                />
-              </HStack>
+              <ShareButtonGroup />
 
               {/* ナビゲーションボタン */}
-              <HStack w="100%" justifyContent="space-between">
+              <HStack
+                mt={{ base: "12", sm: "16" }}
+                w="100%"
+                justifyContent="space-between"
+              >
                 <Button
                   size={{ base: "sm", sm: "md" }}
                   color="white"
