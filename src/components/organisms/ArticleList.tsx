@@ -67,7 +67,6 @@ const ArticleList = ({ articles }: ArticleListProps) => {
         >
           {articles.map((article, index) => (
             <Box
-              as="li"
               key={index}
               w="100%"
               mr="24px"

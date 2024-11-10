@@ -1,7 +1,7 @@
 import { PostgrestError } from "@supabase/supabase-js";
 import { useMutation } from "@tanstack/react-query";
 
-import { supabase } from "../../client";
+import { supabase } from "../../lib";
 import type { UseMutationResult, Contact } from "../../types";
 
 export type PostContactResponse = Awaited<ReturnType<typeof postContact>>;

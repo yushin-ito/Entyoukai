@@ -32,7 +32,8 @@ const Contact = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting }
+    formState: { errors, isSubmitting },
+    reset
   } = useForm<FormData>();
 
   const { mutateAsync: mutateAsyncPostContact } = usePostContact({
@@ -66,6 +67,7 @@ const Contact = () => {
 
   const onSubmit = async (data: FormData) => {
     await mutateAsyncPostContact(data);
+    reset();
   };
 
   const schema = {
@@ -219,7 +221,6 @@ const Contact = () => {
           {/* 送信ボタン */}
           <Button
             type="submit"
-            as="button" // 明確に button タグとしてマーク
             w={{ base: "90%", sm: "60%" }}
             mt={{ base: "6", sm: "12" }}
             color="white"
