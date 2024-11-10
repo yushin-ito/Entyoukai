@@ -24,7 +24,7 @@ const PrivacyPolicy = () => {
       as="main"
       flex="1"
       alignItems="center"
-      spacing={{ base: "16", sm: "24" }}
+      spacing={{ base: "16", md: "24" }}
       overflowX="hidden"
       pos="relative"
     >
@@ -36,17 +36,17 @@ const PrivacyPolicy = () => {
       <MainVisual />
       <VStack
         as="section"
-        w={{ base: "80%", sm: "55%" }}
-        spacing={{ base: "2", sm: "4" }}
+        w={{ base: "80%", md: "75%", lg: "55%" }}
+        spacing={{ base: "2", md: "4" }}
       >
         <SectionTitle title="プライバシーポリシー" />
         <VStack
           w="100%"
-          px={{ base: "0", sm: "2" }}
+          px={{ base: "0", md: "2" }}
           alignItems="flex-start"
-          spacing={{ base: "4", sm: "6" }}
+          spacing={{ base: "4", md: "6" }}
         >
-          <Text as="p" fontSize={{ base: "sm", sm: "md" }}>
+          <Text as="p" fontSize={{ base: "sm", md: "md" }}>
             このプライバシーポリシー（以下「本ポリシー」といいます。）は、二十歳のつどい実行委員会（以下「当委員会」といいます。）が運営する二十歳のつどい公式Webサイト（以下「本サイト」といいます。）における、個人情報の取り扱いについて定めるものです。
             ご利用にあたっては本ポリシーをよくご確認の上、同意いただきますようお願いいたします。
           </Text>
@@ -54,7 +54,7 @@ const PrivacyPolicy = () => {
             as="section"
             w="100%"
             alignItems="flex-start"
-            spacing={{ base: "8", sm: "10" }}
+            spacing={{ base: "8", md: "10" }}
           >
             {policy?.map((item, index) => (
               <VStack
@@ -62,12 +62,12 @@ const PrivacyPolicy = () => {
                 key={index}
                 w="100%"
                 alignItems="flex-start"
-                spacing={{ base: "1", sm: "2" }}
+                spacing={{ base: "1", md: "2" }}
               >
-                <Heading as="h3" fontSize={{ base: "md", sm: "lg" }}>
+                <Heading as="h3" fontSize={{ base: "md", md: "lg" }}>
                   {item.title}
                 </Heading>
-                <Text as="p" fontSize={{ base: "sm", sm: "md" }}>
+                <Text as="p" fontSize={{ base: "sm", md: "md" }}>
                   {item.description}
                 </Text>
               </VStack>

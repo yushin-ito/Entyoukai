@@ -34,7 +34,7 @@ const Activity = () => {
       as="main"
       flex="1"
       alignItems="center"
-      spacing={{ base: "16", sm: "24" }}
+      spacing={{ base: "16", md: "24" }}
       overflowX="hidden"
       pos="relative"
     >
@@ -52,15 +52,18 @@ const Activity = () => {
           { id: "activity_report", title: "活動報告" }
         ]}
       />
-      <VStack w={{ base: "80%", sm: "55%" }} spacing={{ base: "16", sm: "24" }}>
+      <VStack
+        w={{ base: "80%", md: "75%", lg: "55%" }}
+        spacing={{ base: "16", md: "24" }}
+      >
         <VStack
           as="section"
           id="activity_reason"
           w="100%"
-          spacing={{ base: "4", sm: "8" }}
+          spacing={{ base: "4", md: "8" }}
         >
           <SectionTitle title="活動理由" />
-          <Text as="p" fontSize={{ base: "sm", sm: "md" }} fontWeight="bold">
+          <Text as="p" fontSize={{ base: "sm", md: "md" }} fontWeight="bold">
             私たちが「二十歳のつどい」のために活動する理由は、コロナによって失われた同期との思い出をもう一度作り直すためです。
             <br />
             <br />
@@ -87,7 +90,7 @@ const Activity = () => {
           as="section"
           id="activity_report"
           w="100%"
-          spacing={{ base: "4", sm: "8" }}
+          spacing={{ base: "4", md: "8" }}
         >
           <SectionTitle title="活動報告" />
           {articles && <ArticleList articles={articles} />}

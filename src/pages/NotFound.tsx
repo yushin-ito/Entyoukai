@@ -20,27 +20,27 @@ const NotFound = () => {
         <title>ページが見つかりません | 猿鳥会</title>
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
-      <VStack w="100%" spacing={{ base: "12", sm: "20" }}>
+      <VStack w="100%" spacing={{ base: "12", md: "20" }}>
         <VStack
           as="section"
-          w={{ base: "80%", sm: "40%" }}
-          spacing={{ base: "1", sm: "4" }}
+          w={{ base: "80%", md: "40%" }}
+          spacing={{ base: "1", md: "4" }}
         >
-          <Text as="h1" fontSize={{ base: "lg", sm: "3xl" }} fontWeight="bold">
+          <Text as="h1" fontSize={{ base: "lg", md: "3xl" }} fontWeight="bold">
             ご指定のページが見つかりません。
           </Text>
-          <Text as="p" fontSize={{ base: "xs", sm: "sm" }} color="gray.600">
+          <Text as="p" fontSize={{ base: "xs", md: "sm" }} color="gray.600">
             URLが変更されたか、削除された可能性があります。
           </Text>
         </VStack>
         <Button
-          w={{ base: "60%", sm: "20%" }}
+          w={{ base: "60%", md: "20%" }}
           py="6"
           fontSize="sm"
           rounded="full"
           color="white"
           bg="brand"
-          _hover={{ opacity: { base: 1, sm: 0.8 } }}
+          _hover={{ opacity: { base: 1, md: 0.8 } }}
           _active={{
             transform: "scale(0.98)",
             opacity: 0.8

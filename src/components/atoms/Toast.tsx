@@ -19,19 +19,19 @@ const Toast = ({ status, title, onClose }: ToastProps) => {
   return (
     <HStack
       px="18px"
-      py={{ base: "10px", sm: "12px" }}
+      py={{ base: "10px", md: "12px" }}
       bg={bg}
       rounded="md"
-      spacing={{ base: "8px", sm: "12px" }}
+      spacing={{ base: "8px", md: "12px" }}
       alignItems="center"
     >
-      <Icon as={icon} boxSize={{ base: "18px", sm: "22px" }} color="white" />
-      <Text fontSize={{ base: "sm", sm: "md" }} color="white">
+      <Icon as={icon} boxSize={{ base: "18px", md: "22px" }} color="white" />
+      <Text fontSize={{ base: "sm", md: "md" }} color="white">
         {title}
       </Text>
       <Icon
         as={FiX}
-        boxSize={{ base: "16px", sm: "18px" }}
+        boxSize={{ base: "16px", md: "18px" }}
         color="white"
         onClick={onClose}
       />

@@ -39,14 +39,14 @@ const TimelineItem = ({
           x: isInView ? 0 : 30,
           transition: { duration: 0.8 }
         }}
-        ml={{ base: "90px", sm: "180px" }}
+        ml={{ base: "90px", md: "180px" }}
         rounded="md"
       >
         <VStack w="100%" alignItems="flex-start" spacing="6px">
-          <Heading as="h3" fontSize={{ base: "sm", sm: "xl" }}>
+          <Heading as="h3" fontSize={{ base: "sm", md: "xl" }}>
             {title}
           </Heading>
-          <Text as="p" fontSize={{ base: "xs", sm: "lg" }}>
+          <Text as="p" fontSize={{ base: "xs", md: "lg" }}>
             {description}
           </Text>
         </VStack>

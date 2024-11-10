@@ -11,7 +11,7 @@ type SectionTitleProps = {
 };
 
 const SectionTitle = ({ title }: SectionTitleProps) => {
-  const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
+  const breakpoint = useBreakpointValue({ base: "base", md: "md" });
 
   return breakpoint === "base" ? (
     <HStack w="100%" spacing="2" alignItems="center">

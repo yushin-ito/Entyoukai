@@ -31,7 +31,7 @@ const Top = () => {
       as="main"
       flex="1"
       alignItems="center"
-      spacing={{ base: "16", sm: "24" }}
+      spacing={{ base: "16", md: "24" }}
       overflowX="hidden"
       pos="relative"
     >
@@ -49,16 +49,19 @@ const Top = () => {
           { id: "faq", title: "よくある質問" }
         ]}
       />
-      <VStack w={{ base: "80%", sm: "55%" }} spacing={{ base: "16", sm: "24" }}>
+      <VStack
+        w={{ base: "80%", md: "75%", lg: "55%" }}
+        spacing={{ base: "16", md: "24" }}
+      >
         <Countdown />
         <VStack
           as="section"
           id="overview"
           w="100%"
-          spacing={{ base: "4", sm: "8" }}
+          spacing={{ base: "4", md: "8" }}
         >
           <SectionTitle title="概要" />
-          <Text as="p" fontSize={{ base: "sm", sm: "md" }} fontWeight="bold">
+          <Text as="p" fontSize={{ base: "sm", md: "md" }} fontWeight="bold">
             このページをご覧いただきありがとうございます。こちらは、令和7年1月12日（日）に保健福祉センター（さわやか村）で開催される「二十歳のつどい」公式ページです。「二十歳のつどい」の概要やアクセス情報、最新のお知らせなどをご案内しています。
             <br />
             <br />
@@ -72,7 +75,7 @@ const Top = () => {
           as="section"
           id="news"
           w="100%"
-          spacing={{ base: "4", sm: "8" }}
+          spacing={{ base: "4", md: "8" }}
         >
           <SectionTitle title="お知らせ" />
           {news && <NewsList news={news} />}
@@ -81,12 +84,12 @@ const Top = () => {
           as="section"
           id="access"
           w="100%"
-          spacing={{ base: "4", sm: "8" }}
+          spacing={{ base: "4", md: "8" }}
         >
           <SectionTitle title="アクセス" />
           <Access />
         </VStack>
-        <VStack as="section" id="faq" w="100%" spacing={{ base: "4", sm: "8" }}>
+        <VStack as="section" id="faq" w="100%" spacing={{ base: "4", md: "8" }}>
           <SectionTitle title="よくある質問" />
           {faq && <FAQList faq={faq} />}
         </VStack>

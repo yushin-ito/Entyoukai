@@ -13,12 +13,12 @@ const Footer = () => {
       alignItems="center"
       bg="brand"
     >
-      <HStack spacing={{ base: "4", sm: "8" }}>
+      <HStack spacing={{ base: "4", md: "8" }}>
         <Button
           as={Link}
           to="/sitepolicy"
           variant="link"
-          fontSize={{ base: "2xs", sm: "sm" }}
+          fontSize={{ base: "2xs", md: "sm" }}
           fontWeight="extrabold"
           color="white"
         >
@@ -28,7 +28,7 @@ const Footer = () => {
           as={Link}
           to="/privacypolicy"
           variant="link"
-          fontSize={{ base: "2xs", sm: "sm" }}
+          fontSize={{ base: "2xs", md: "sm" }}
           fontWeight="extrabold"
           color="white"
         >
@@ -38,7 +38,7 @@ const Footer = () => {
           as={Link}
           to="/contact"
           variant="link"
-          fontSize={{ base: "2xs", sm: "sm" }}
+          fontSize={{ base: "2xs", md: "sm" }}
           fontWeight="extrabold"
           color="white"
         >

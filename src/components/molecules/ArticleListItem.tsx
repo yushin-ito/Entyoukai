@@ -39,7 +39,7 @@ const ArticleListItem = ({
 }: ArticleListItemProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
-  const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
+  const breakpoint = useBreakpointValue({ base: "base", md: "md" });
 
   return (
     <MotionBox
@@ -53,9 +53,9 @@ const ArticleListItem = ({
         as={Link}
         to={`/article/${id}`}
         w="100%"
-        rounded={{ base: "none", sm: "md" }}
-        spacing={{ base: "4", sm: "2" }}
-        pb={{ base: "4", sm: "0" }}
+        rounded={{ base: "none", md: "md" }}
+        spacing={{ base: "4", md: "2" }}
+        pb={{ base: "4", md: "0" }}
         _hover={
           breakpoint === "base"
             ? {}
@@ -73,8 +73,14 @@ const ArticleListItem = ({
             src={images[0]}
             alt={location}
             w="100%"
-            h={{ base: "200px", sm: "180px" }}
-            rounded={{ base: "md", sm: "xl" }}
+            minH="100px"
+            maxH="320px"
+            h={{
+              base: "calc(100vw * 0.8 * 0.7)",
+              md: "calc((100vw * 0.75 - 240px) / 2)",
+              lg: "calc((100vw * 0.55 - 320px) / 3)"
+            }}
+            rounded={{ base: "md", md: "xl" }}
             fallbackSrc={
               breakpoint === "base"
                 ? "https://placehold.jp/28/e2e8f0/010158/600x400.png?text=No%20Image"
@@ -84,8 +90,8 @@ const ArticleListItem = ({
           {/* ロケーション */}
           <Box
             pos="absolute"
-            bottom={{ base: "3", sm: "2" }}
-            right={{ base: "3", sm: "2" }}
+            bottom={{ base: "3", md: "2" }}
+            right={{ base: "3", md: "2" }}
             px="6px"
             py="2.5px"
             rounded="full"
@@ -98,12 +104,12 @@ const ArticleListItem = ({
         </Box>
         <VStack
           w="100%"
-          px={{ base: "6px", sm: "2px" }}
-          spacing={{ base: "10px", sm: "2px" }}
+          px={{ base: "6px", md: "2px" }}
+          spacing={{ base: "10px", md: "2px" }}
           alignItems="flex-start"
         >
           {/* タイトル */}
-          {breakpoint === "sm" && (
+          {breakpoint === "md" && (
             <Heading as="h3" fontSize="md" noOfLines={1}>
               {title}
             </Heading>
@@ -134,14 +140,14 @@ const ArticleListItem = ({
           <Text
             as="p"
             fontSize="xs"
-            fontWeight={{ base: "bold", sm: "normal" }}
-            color={{ base: "brand", sm: "gray.600" }}
-            noOfLines={{ base: 6, sm: 2 }}
+            fontWeight={{ base: "bold", md: "normal" }}
+            color={{ base: "brand", md: "gray.600" }}
+            noOfLines={{ base: 6, md: 2 }}
           >
             {description}
           </Text>
           {/* 日付と作者 */}
-          {breakpoint === "sm" && (
+          {breakpoint === "md" && (
             <HStack
               w="100%"
               mt="4"

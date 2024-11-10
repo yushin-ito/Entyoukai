@@ -18,7 +18,7 @@ type TableOfContentsProps = {
 const TableOfContents = ({ sections }: TableOfContentsProps) => {
   const [activeId, setActiveId] = useState<string>(sections[0].id);
   const [fixed, setFixed] = useState(false);
-  const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
+  const breakpoint = useBreakpointValue({ base: "base", lg: "lg" });
   const { scrolling, scrollToElement } = useScroll();
 
   useEffect(() => {

@@ -23,20 +23,20 @@ const FAQList = ({ faq }: FAQListProps) => {
         <AccordionItem key={index}>
           {/* 質問 */}
           <AccordionButton
-            px={{ base: "6px", sm: "12px" }}
-            py={{ base: "16px", sm: "20px" }}
+            px={{ base: "6px", md: "12px" }}
+            py={{ base: "16px", md: "20px" }}
             alignItems="center"
             justifyContent="space-between"
-            _hover={{ bg: { base: "transparent", sm: "gray.50" } }}
+            _hover={{ bg: { base: "transparent", md: "gray.50" } }}
             _active={{ bg: "gray.50" }}
           >
             <HStack
               alignItems="flex-start"
-              spacing={{ base: "4px", sm: "6px" }}
+              spacing={{ base: "4px", md: "6px" }}
             >
               <Text
                 as="span"
-                fontSize={{ base: "xs", sm: "sm" }}
+                fontSize={{ base: "xs", md: "sm" }}
                 fontWeight="bold"
               >
                 Q.
@@ -44,30 +44,30 @@ const FAQList = ({ faq }: FAQListProps) => {
               <Heading
                 as="h3"
                 textAlign="left"
-                fontSize={{ base: "xs", sm: "sm" }}
+                fontSize={{ base: "xs", md: "sm" }}
               >
                 {item.question}
               </Heading>
             </HStack>
             <AccordionIcon
-              boxSize={{ base: "16px", sm: "24px" }}
+              boxSize={{ base: "16px", md: "24px" }}
               color="brand"
             />
           </AccordionButton>
 
           {/* 回答 */}
           <AccordionPanel
-            px={{ base: "6px", sm: "12px" }}
-            pb={{ base: "4", sm: "6" }}
+            px={{ base: "6px", md: "12px" }}
+            pb={{ base: "4", md: "6" }}
           >
             <VStack alignItems="flex-start" spacing="2">
               <HStack
                 alignItems="flex-start"
-                spacing={{ base: "4px", sm: "6px" }}
+                spacing={{ base: "4px", md: "6px" }}
               >
                 <Text
                   as="span"
-                  fontSize={{ base: "xs", sm: "sm" }}
+                  fontSize={{ base: "xs", md: "sm" }}
                   fontWeight="bold"
                   color="red.500"
                 >
@@ -75,14 +75,14 @@ const FAQList = ({ faq }: FAQListProps) => {
                 </Text>
                 <Text
                   as="p"
-                  fontSize={{ base: "xs", sm: "sm" }}
+                  fontSize={{ base: "xs", md: "sm" }}
                   fontWeight="bold"
                   color="red.500"
                 >
                   {item.answer}
                 </Text>
               </HStack>
-              <Text as="p" fontSize={{ base: "2xs", sm: "xs" }}>
+              <Text as="p" fontSize={{ base: "2xs", md: "xs" }}>
                 {item.info}
               </Text>
             </VStack>

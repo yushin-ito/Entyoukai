@@ -44,7 +44,7 @@ const ShareButtonGroup = () => {
       w="100%"
       alignItems="center"
       justifyContent="center"
-      spacing={{ base: "4", sm: "6" }}
+      spacing={{ base: "4", md: "6" }}
     >
       {/* LINE */}
       <IconButton
@@ -55,7 +55,7 @@ const ShareButtonGroup = () => {
         borderColor="brand"
         rounded="full"
         bg="white"
-        _hover={{ opacity: { base: 1, sm: 0.8 } }}
+        _hover={{ opacity: { base: 1, md: 0.8 } }}
         _active={{
           transform: "scale(0.98)",
           opacity: 0.8
@@ -76,7 +76,7 @@ const ShareButtonGroup = () => {
         borderColor="brand"
         rounded="full"
         bg="white"
-        _hover={{ opacity: { base: 1, sm: 0.8 } }}
+        _hover={{ opacity: { base: 1, md: 0.8 } }}
         _active={{
           transform: "scale(0.98)",
           opacity: 0.8
@@ -97,7 +97,7 @@ const ShareButtonGroup = () => {
         borderColor="brand"
         rounded="full"
         bg="white"
-        _hover={{ opacity: { base: 1, sm: 0.8 } }}
+        _hover={{ opacity: { base: 1, md: 0.8 } }}
         _active={{
           transform: "scale(0.98)",
           opacity: 0.8

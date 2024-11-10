@@ -27,7 +27,7 @@ type NewsListProps = {
 
 const NewsList = ({ news }: NewsListProps) => {
   const [activeId, setActiveId] = useState<string>("all");
-  const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
+  const breakpoint = useBreakpointValue({ base: "base", md: "md" });
 
   const list = useMemo(() => {
     return news.filter((item) => {
@@ -37,11 +37,11 @@ const NewsList = ({ news }: NewsListProps) => {
   }, [news, activeId]);
 
   return (
-    <VStack w="100%" alignItems="start" spacing={{ base: "4", sm: "8" }}>
+    <VStack w="100%" alignItems="start" spacing={{ base: "4", md: "8" }}>
       <HStack
         as="nav"
         w="100%"
-        spacing={{ base: "8px", sm: "12px" }}
+        spacing={{ base: "8px", md: "12px" }}
         overflowX="auto"
         sx={{
           "::-webkit-scrollbar": {
@@ -57,15 +57,15 @@ const NewsList = ({ news }: NewsListProps) => {
         {Object.keys(categories).map((id, index) => (
           <Button
             key={index}
-            h={{ base: "24px", sm: "28px" }}
-            px={{ base: "8px", sm: "12px" }}
+            h={{ base: "24px", md: "28px" }}
+            px={{ base: "8px", md: "12px" }}
             rounded="full"
             bg={activeId === id ? "brand" : "gray.300"}
             _hover={{}}
             _active={{ transform: "scale(0.96)" }}
             onClick={() => setActiveId(id)}
           >
-            <Text fontSize={{ base: "xs", sm: "sm" }} color="white">
+            <Text fontSize={{ base: "xs", md: "sm" }} color="white">
               {categories[id]}
             </Text>
           </Button>
@@ -74,12 +74,12 @@ const NewsList = ({ news }: NewsListProps) => {
       <VStack
         w="100%"
         h="320px"
-        p={{ base: "0", sm: "2" }}
+        p={{ base: "0", md: "2" }}
         overflowY="auto"
         spacing="2"
         sx={{
           "&::-webkit-scrollbar": {
-            display: { base: "none", sm: "block" },
+            display: { base: "none", md: "block" },
             width: "4px"
           },
           "&::-webkit-scrollbar-thumb": {
@@ -109,28 +109,28 @@ const NewsList = ({ news }: NewsListProps) => {
           >
             <Stack
               w="100%"
-              direction={{ base: "column", sm: "row" }}
-              alignItems={{ base: "flex-start", sm: "center" }}
-              px={{ base: "4px", sm: "8px" }}
-              py={{ base: "10px", sm: "20px" }}
-              spacing={{ base: "4", sm: "6" }}
+              direction={{ base: "column", md: "row" }}
+              alignItems={{ base: "flex-start", md: "center" }}
+              px={{ base: "4px", md: "8px" }}
+              py={{ base: "10px", md: "20px" }}
+              spacing={{ base: "4", md: "6" }}
             >
-              <HStack spacing={{ base: "2", sm: "4" }} alignItems="center">
+              <HStack spacing={{ base: "2", md: "4" }} alignItems="center">
                 <Text
                   as="time"
-                  fontSize={{ base: "xs", sm: "sm" }}
+                  fontSize={{ base: "xs", md: "sm" }}
                   color="gray.600"
                 >
                   {format(item.date, "yyyy.MM.dd")}
                 </Text>
                 <Box
                   bg="brand"
-                  px={{ base: "6px", sm: "8px" }}
-                  py={{ base: "2px", sm: "4px" }}
+                  px={{ base: "6px", md: "8px" }}
+                  py={{ base: "2px", md: "4px" }}
                   rounded="full"
                 >
                   <Text
-                    fontSize={{ base: "2xs", sm: "xs" }}
+                    fontSize={{ base: "2xs", md: "xs" }}
                     fontWeight="bold"
                     color="white"
                   >
@@ -140,7 +140,7 @@ const NewsList = ({ news }: NewsListProps) => {
               </HStack>
               <Heading
                 as="h3"
-                fontSize={{ base: "xs", sm: "sm" }}
+                fontSize={{ base: "xs", md: "sm" }}
                 noOfLines={1}
               >
                 {item.title}
