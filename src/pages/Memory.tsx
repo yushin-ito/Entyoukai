@@ -35,7 +35,7 @@ const Memory = () => {
       as="main"
       flex="1"
       alignItems="center"
-      spacing={{ base: "16", sm: "24" }}
+      spacing={{ base: "16", md: "24" }}
       overflowX="hidden"
       pos="relative"
     >
@@ -49,8 +49,8 @@ const Memory = () => {
       <MainVisual />
       <VStack
         as="section"
-        w={{ base: "80%", sm: "55%" }}
-        spacing={{ base: "10", sm: "16" }}
+        w={{ base: "80%", md: "75%", lg: "55%" }}
+        spacing={{ base: "10", md: "16" }}
       >
         <SectionTitle title="おもいで" />
         {events && <Timeline events={events} />}

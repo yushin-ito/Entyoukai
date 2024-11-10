@@ -91,7 +91,7 @@ const Contact = () => {
       as="main"
       flex="1"
       alignItems="center"
-      spacing={{ base: "16", sm: "24" }}
+      spacing={{ base: "16", md: "24" }}
       overflowX="hidden"
       pos="relative"
     >
@@ -101,23 +101,26 @@ const Contact = () => {
       </Helmet>
       <ScrollToTopButton />
       <MainVisual />
-      <VStack w={{ base: "80%", sm: "50%" }} spacing={{ base: "4", sm: "8" }}>
+      <VStack
+        w={{ base: "80%", md: "75%", lg: "55%" }}
+        spacing={{ base: "4", md: "8" }}
+      >
         <SectionTitle title="お問い合わせ" />
         <VStack
           as="form"
           onSubmit={handleSubmit(onSubmit)}
-          w={{ base: "100%", sm: "90%" }}
-          spacing={{ base: "4", sm: "8" }}
+          w={{ base: "100%", md: "90%" }}
+          spacing={{ base: "4", md: "8" }}
         >
           <VStack as="section" w="100%" alignItems="flex-start" spacing="1">
-            <Text as="p" fontSize={{ base: "sm", sm: "md" }} fontWeight="bold">
+            <Text as="p" fontSize={{ base: "sm", md: "md" }} fontWeight="bold">
               お問い合わせ内容をご入力のうえ、以下のフォームから送信してください。
             </Text>
-            <Text as="p" fontSize={{ base: "xs", sm: "sm" }}>
+            <Text as="p" fontSize={{ base: "xs", md: "sm" }}>
               内容を確認次第、ご入力いただいたメールアドレスにご返信いたします。なお、場合によっては返信にお時間をいただくことがございますので、あらかじめご了承ください。
             </Text>
           </VStack>
-          <VStack w="100%" spacing={{ base: "8", sm: "12" }}>
+          <VStack w="100%" spacing={{ base: "8", md: "12" }}>
             {/* お名前 */}
             <FormControl isInvalid={!!errors.name}>
               <FormLabel
@@ -129,7 +132,7 @@ const Contact = () => {
                 お名前 <span style={{ color: "red" }}>*</span>
               </FormLabel>
               <Input
-                size={{ base: "sm", sm: "md" }}
+                size={{ base: "sm", md: "md" }}
                 rounded="md"
                 placeholder="お名前"
                 {...register("name", { required: "お名前を入力してください" })}
@@ -151,7 +154,7 @@ const Contact = () => {
               </FormLabel>
               <Input
                 type="email"
-                size={{ base: "sm", sm: "md" }}
+                size={{ base: "sm", md: "md" }}
                 rounded="md"
                 placeholder="メールアドレス"
                 {...register("email", {
@@ -179,7 +182,7 @@ const Contact = () => {
               </FormLabel>
               <Input
                 type="tel"
-                size={{ base: "sm", sm: "md" }}
+                size={{ base: "sm", md: "md" }}
                 rounded="md"
                 placeholder="電話番号"
                 {...register("phone", {
@@ -206,7 +209,7 @@ const Contact = () => {
                 お問い合わせ内容 <span style={{ color: "red" }}>*</span>
               </FormLabel>
               <Textarea
-                h={{ base: "160px", sm: "180px" }}
+                h={{ base: "160px", md: "180px" }}
                 placeholder="お問い合わせ内容"
                 {...register("message", {
                   required: "お問い合わせ内容を入力してください"
@@ -221,11 +224,11 @@ const Contact = () => {
           {/* 送信ボタン */}
           <Button
             type="submit"
-            w={{ base: "90%", sm: "60%" }}
-            mt={{ base: "6", sm: "12" }}
+            w={{ base: "90%", md: "60%" }}
+            mt={{ base: "6", md: "12" }}
             color="white"
             bg="brand"
-            _hover={{ opacity: { base: 1, sm: 0.8 } }}
+            _hover={{ opacity: { base: 1, md: 0.8 } }}
             _active={{
               transform: "scale(0.98)",
               opacity: 0.8

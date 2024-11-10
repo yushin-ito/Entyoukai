@@ -16,11 +16,11 @@ type TimelineProps = {
 };
 
 const Timeline = ({ events }: TimelineProps) => {
-  const space = { base: 50, sm: 100 };
+  const space = { base: 50, md: 100 };
   const [resize, setResize] = useState(false);
   const [heights, setHeights] = useState<number[]>([]);
 
-  const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
+  const breakpoint = useBreakpointValue({ base: "base", md: "md" });
 
   const positions = useMemo(
     () =>
@@ -30,11 +30,11 @@ const Timeline = ({ events }: TimelineProps) => {
           prev +
             height / 2 +
             (heights[index - 1] || 0) / 2 +
-            (index > 0 ? (breakpoint === "base" ? space.base : space.sm) : 0)
+            (index > 0 ? (breakpoint === "base" ? space.base : space.md) : 0)
         );
         return acc;
       }, []),
-    [heights, breakpoint, space.base, space.sm]
+    [heights, breakpoint, space.base, space.md]
   );
 
   const onMeasure = useCallback((height: number, index: number) => {
@@ -59,21 +59,21 @@ const Timeline = ({ events }: TimelineProps) => {
   return (
     <VStack
       as="section"
-      w={{ base: "100%", sm: "90%" }}
+      w={{ base: "100%", md: "90%" }}
       pos="relative"
-      spacing={{ base: `${space.base}px`, sm: `${space.sm}px` }}
+      spacing={{ base: `${space.base}px`, md: `${space.md}px` }}
     >
       <Box
         pos="absolute"
         left={{
           base: "60px",
-          sm: "120px"
+          md: "120px"
         }}
         top="0"
         bottom="0"
         width={{
           base: "1.8px",
-          sm: "2.5px"
+          md: "2.5px"
         }}
         bg="brand"
         transform="translateX(-50%)"
@@ -94,7 +94,7 @@ const Timeline = ({ events }: TimelineProps) => {
             <Text
               key={index}
               as="span"
-              fontSize={{ base: "xs", sm: "md" }}
+              fontSize={{ base: "xs", md: "md" }}
               fontWeight="bold"
             >
               {breakpoint === "base"
@@ -111,19 +111,19 @@ const Timeline = ({ events }: TimelineProps) => {
           key={index}
           size={{
             base: "12px",
-            sm: "24px"
+            md: "24px"
           }}
           bg="white"
           pos="absolute"
           left={{
             base: "60px",
-            sm: "120px"
+            md: "120px"
           }}
           top={`${position}px`}
           transform="translate(-50%, -50%)"
           borderWidth={{
             base: "2px",
-            sm: "3px"
+            md: "3px"
           }}
           borderColor="brand"
         />

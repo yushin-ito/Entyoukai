@@ -30,7 +30,7 @@ const Sponsor = () => {
       as="main"
       flex="1"
       alignItems="center"
-      spacing={{ base: "16", sm: "24" }}
+      spacing={{ base: "16", md: "24" }}
       overflowX="hidden"
       pos="relative"
     >
@@ -48,15 +48,18 @@ const Sponsor = () => {
           { id: "sponsor_list", title: "協賛一覧" }
         ]}
       />
-      <VStack w={{ base: "80%", sm: "55%" }} spacing={{ base: "16", sm: "24" }}>
+      <VStack
+        w={{ base: "80%", md: "75%", lg: "55%" }}
+        spacing={{ base: "16", md: "24" }}
+      >
         <VStack
           as="section"
           id="sponsor_about"
           w="100%"
-          spacing={{ base: "4", sm: "8" }}
+          spacing={{ base: "4", md: "8" }}
         >
           <SectionTitle title="協賛について" />
-          <Text as="p" fontSize={{ base: "sm", sm: "md" }} fontWeight="bold">
+          <Text as="p" fontSize={{ base: "sm", md: "md" }} fontWeight="bold">
             「二十歳のつどい」は、朝日町で育った若者たちが二十歳を迎え、共に新たな一歩を踏み出す大切な節目のイベントです。この特別な日をより意義深く、そして記憶に残るものにするため、多くの方々のご協力とご支援をいただいております。
             <br />
             <br />
@@ -73,13 +76,13 @@ const Sponsor = () => {
           as="section"
           id="sponsor_list"
           w="100%"
-          spacing={{ base: "4", sm: "8" }}
+          spacing={{ base: "4", md: "8" }}
         >
           <SectionTitle title="協賛一覧（敬称略）" />
           <SimpleGrid
             as="ul"
             w="100%"
-            columns={{ base: 1, sm: 2 }}
+            columns={{ base: 1, md: 2 }}
             spacingY="4"
             listStyleType="none"
           >
@@ -90,7 +93,7 @@ const Sponsor = () => {
                   key={index}
                   href={sponsor.url}
                   isExternal
-                  fontSize={{ base: "sm", sm: "md" }}
+                  fontSize={{ base: "sm", md: "md" }}
                   fontWeight="bold"
                   color="brand"
                 >
@@ -100,7 +103,7 @@ const Sponsor = () => {
                 <Text
                   as="li"
                   key={index}
-                  fontSize={{ base: "sm", sm: "md" }}
+                  fontSize={{ base: "sm", md: "md" }}
                   fontWeight="bold"
                 >
                   {sponsor.name}

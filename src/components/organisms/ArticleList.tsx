@@ -18,7 +18,7 @@ type ArticleListProps = {
 const ArticleList = ({ articles }: ArticleListProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
+  const breakpoint = useBreakpointValue({ base: "base", md: "md", lg: "lg" });
 
   useEffect(() => {
     const current = ref.current;
@@ -105,7 +105,7 @@ const ArticleList = ({ articles }: ArticleListProps) => {
       as="ul"
       w="100%"
       px="4"
-      columns={3}
+      columns={breakpoint === "md" ? 2 : 3}
       spacingX="10"
       spacingY="12"
       listStyleType="none"

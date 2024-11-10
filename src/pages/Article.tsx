@@ -37,7 +37,7 @@ const Article = () => {
       as="main"
       flex="1"
       alignItems="center"
-      spacing={{ base: "16", sm: "24" }}
+      spacing={{ base: "16", md: "24" }}
       overflowX="hidden"
       pos="relative"
     >
@@ -49,35 +49,38 @@ const Article = () => {
       </Helmet>
       <ScrollToTopButton />
       <MainVisual />
-      <VStack w={{ base: "80%", sm: "55%" }} spacing={{ base: "16", sm: "24" }}>
+      <VStack
+        w={{ base: "80%", md: "75%", lg: "55%" }}
+        spacing={{ base: "16", md: "24" }}
+      >
         {article && (
           <VStack
             as="article"
             w="100%"
-            spacing={{ base: "4", sm: "8" }}
-            rounded={{ base: "md", sm: "lg" }}
+            spacing={{ base: "4", md: "8" }}
+            rounded={{ base: "md", md: "lg" }}
           >
             <SectionTitle title={article.title} />
             <VStack
               w="100%"
-              px={{ base: "0", sm: "4" }}
+              px={{ base: "0", md: "4" }}
               spacing="0"
               alignItems="flex-start"
             >
               {/* 日付と作者 */}
               <HStack w="100%" alignItems="center" spacing="4">
-                <Avatar size={{ base: "sm", sm: "md" }} src={article.avatar} />
+                <Avatar size={{ base: "sm", md: "md" }} src={article.avatar} />
                 <VStack alignItems="flex-start" spacing="1px">
                   <Text
                     as="span"
-                    fontSize={{ base: "xs", sm: "md" }}
+                    fontSize={{ base: "xs", md: "md" }}
                     fontWeight="bold"
                   >
                     {article.author}
                   </Text>
                   <Text
                     as="time"
-                    fontSize={{ base: "2xs", sm: "xs" }}
+                    fontSize={{ base: "2xs", md: "xs" }}
                     color="gray.600"
                   >
                     {format(new Date(article.date), "yyyy年MM月dd日")}
@@ -85,8 +88,8 @@ const Article = () => {
                 </VStack>
               </HStack>
               <Divider
-                mt={{ base: "4", sm: "6" }}
-                mb={{ base: "6", sm: "8" }}
+                mt={{ base: "4", md: "6" }}
+                mb={{ base: "6", md: "8" }}
                 borderColor="gray.400"
               />
               {/* カルーセル */}
@@ -95,8 +98,8 @@ const Article = () => {
               {/* 記事内容 */}
               <Text
                 as="p"
-                mt={{ base: "6", sm: "10" }}
-                fontSize={{ base: "sm", sm: "md" }}
+                mt={{ base: "6", md: "10" }}
+                fontSize={{ base: "sm", md: "md" }}
                 fontWeight="bold"
                 whiteSpace="pre-wrap"
               >
@@ -104,8 +107,8 @@ const Article = () => {
               </Text>
 
               <Divider
-                mt={{ base: "6", sm: "8" }}
-                mb={{ base: "4", sm: "6" }}
+                mt={{ base: "6", md: "8" }}
+                mb={{ base: "4", md: "6" }}
                 borderColor="gray.400"
               />
 
@@ -115,15 +118,15 @@ const Article = () => {
               {/* ナビゲーションボタン */}
               <HStack
                 as="nav"
-                mt={{ base: "12", sm: "16" }}
+                mt={{ base: "12", md: "16" }}
                 w="100%"
                 justifyContent="space-between"
               >
                 <Button
-                  size={{ base: "sm", sm: "md" }}
+                  size={{ base: "sm", md: "md" }}
                   color="white"
                   bg="brand"
-                  _hover={{ opacity: { base: 1, sm: 0.8 } }}
+                  _hover={{ opacity: { base: 1, md: 0.8 } }}
                   _active={{
                     transform: "scale(0.98)",
                     opacity: 0.8
@@ -134,7 +137,7 @@ const Article = () => {
                 >
                   <Text
                     as="span"
-                    fontSize={{ base: "xs", sm: "sm" }}
+                    fontSize={{ base: "xs", md: "sm" }}
                     fontWeight="bold"
                     color="white"
                   >
@@ -143,23 +146,23 @@ const Article = () => {
                 </Button>
                 <Button
                   color="brand"
-                  size={{ base: "sm", sm: "md" }}
+                  size={{ base: "sm", md: "md" }}
                   onClick={() => navigate("/activity")}
                   variant="ghost"
                 >
                   <Text
                     as="span"
-                    fontSize={{ base: "xs", sm: "sm" }}
+                    fontSize={{ base: "xs", md: "sm" }}
                     fontWeight="bold"
                   >
                     一覧へ
                   </Text>
                 </Button>
                 <Button
-                  size={{ base: "sm", sm: "md" }}
+                  size={{ base: "sm", md: "md" }}
                   color="white"
                   bg="brand"
-                  _hover={{ opacity: { base: 1, sm: 0.8 } }}
+                  _hover={{ opacity: { base: 1, md: 0.8 } }}
                   _active={{
                     transform: "scale(0.98)",
                     opacity: 0.8
@@ -170,7 +173,7 @@ const Article = () => {
                 >
                   <Text
                     as="span"
-                    fontSize={{ base: "xs", sm: "sm" }}
+                    fontSize={{ base: "xs", md: "sm" }}
                     fontWeight="bold"
                     color="white"
                   >

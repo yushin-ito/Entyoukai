@@ -12,7 +12,7 @@ type ImageCarouselProps = {
 const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
-  const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
+  const breakpoint = useBreakpointValue({ base: "base", md: "md" });
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -26,13 +26,13 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
       isLoaded={isLoaded}
       w="100%"
       h="100%"
-      rounded={{ base: "md", sm: "xl" }}
+      rounded={{ base: "md", md: "xl" }}
     >
       <Box
         pos="relative"
         w="100%"
-        h={{ base: "200px", sm: "420px" }}
-        rounded={{ base: "md", sm: "xl" }}
+        h={{ base: "200px", md: "360px", lg: "420px" }}
+        rounded={{ base: "md", md: "xl" }}
         overflow="hidden"
         bg="gray.200"
       >

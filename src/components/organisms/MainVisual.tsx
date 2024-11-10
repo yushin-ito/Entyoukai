@@ -30,7 +30,7 @@ const MainVisual = () => {
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const ref = useRef<HTMLDivElement>(null);
-  const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
+  const breakpoint = useBreakpointValue({ base: "base", lg: "lg" });
   const progress = useAppStore((state) => state.progress);
 
   const { scrollToElement } = useScroll();
@@ -58,7 +58,7 @@ const MainVisual = () => {
     <Center
       bg="white"
       w="100vw"
-      h={{ base: "calc(100vh * 0.8)", sm: "100vh" }}
+      h={{ base: "calc(100vh * 0.8)", lg: "100vh" }}
       pos="relative"
     >
       {/* 背景画像 */}
@@ -67,7 +67,7 @@ const MainVisual = () => {
         alt="backgroud"
         objectFit="cover"
         w="100vw"
-        h={{ base: "calc(100vh * 0.8)", sm: "100vh" }}
+        h={{ base: "calc(100vh * 0.8)", lg: "100vh" }}
         pos="absolute"
         top="0"
         left="0"
@@ -78,7 +78,7 @@ const MainVisual = () => {
         src="/assets/images/logo.webp"
         alt="logo"
         objectFit="cover"
-        w={{ base: "100px", sm: "120px" }}
+        w={{ base: "100px", lg: "120px" }}
         h="auto"
         pos="absolute"
         top="6"
@@ -97,7 +97,7 @@ const MainVisual = () => {
           right="8"
           color="white"
           bg="brand"
-          _hover={{ opacity: { base: 1, sm: 0.8 } }}
+          _hover={{ opacity: { base: 1, lg: 0.8 } }}
           _active={{
             transform: "scale(0.98)",
             opacity: 0.8
@@ -170,7 +170,11 @@ const MainVisual = () => {
       {/* ドロワー */}
       <Drawer placement="left" isOpen={isOpen} onClose={onClose}>
         <DrawerOverlay />
-        <DrawerContent maxW="60%" bg="brand" opacity="0.8">
+        <DrawerContent
+          maxW={{ base: "60%", sm: "40%" }}
+          bg="brand"
+          opacity="0.8"
+        >
           <DrawerCloseButton mt="2" color="white" size="md" />
           <DrawerBody>
             <VStack mt="20" spacing="10">
@@ -236,21 +240,21 @@ const MainVisual = () => {
 
       {/* メインビジュアル */}
       <VStack
-        px={{ base: "10", sm: "24" }}
-        py={{ base: "12", sm: "16" }}
+        px={{ base: "10", md: "24" }}
+        py={{ base: "12", md: "16" }}
         spacing="4"
-        rounded={{ base: "xl", sm: "lg" }}
+        rounded="xl"
         bg="brand"
         opacity="0.8"
         alignItems="center"
         justifyContent="center"
       >
-        <Heading as="h1" fontSize={{ base: "3xl", sm: "5xl" }} color="white">
+        <Heading as="h1" fontSize={{ base: "3xl", md: "5xl" }} color="white">
           二十歳のつどい
         </Heading>
         <VStack spacing="2">
           <Text
-            fontSize={{ base: "md", sm: "xl" }}
+            fontSize={{ base: "md", md: "xl" }}
             fontWeight="bold"
             color="white"
           >
@@ -260,11 +264,11 @@ const MainVisual = () => {
           <HStack alignItems="center" spacing="1">
             <Icon
               as={IoMdPin}
-              boxSize={{ base: "18px", sm: "24px" }}
+              boxSize={{ base: "18px", md: "24px" }}
               color="white"
             />
             <Text
-              fontSize={{ base: "md", sm: "xl" }}
+              fontSize={{ base: "md", md: "xl" }}
               fontWeight="bold"
               color="white"
             >

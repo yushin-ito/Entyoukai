@@ -41,7 +41,7 @@ const Countdown = () => {
 
   return (
     <VStack ref={ref} spacing="5" rounded="lg">
-      <Heading as="h3" fontSize={{ base: "lg", sm: "2xl" }}>
+      <Heading as="h3" fontSize={{ base: "lg", md: "2xl" }}>
         二十歳のつどいまであと
       </Heading>
       <HStack spacing="0" alignItems="flex-end">
@@ -58,7 +58,7 @@ const Countdown = () => {
                   }
                 : {}
             }
-            w={{ base: "64px", sm: "96px" }}
+            w={{ base: "64px", md: "96px" }}
             bg="white"
             rounded="md"
           >
@@ -66,7 +66,7 @@ const Countdown = () => {
               as="span"
               display="block"
               textAlign="center"
-              fontSize={{ base: "3xl", sm: "5xl" }}
+              fontSize={{ base: "3xl", md: "5xl" }}
               fontWeight="bold"
             >
               {String(value).padStart(2, "0")}
@@ -75,7 +75,7 @@ const Countdown = () => {
               as="span"
               display="block"
               textAlign="center"
-              fontSize={{ base: "lg", sm: "xl" }}
+              fontSize={{ base: "lg", md: "xl" }}
               fontWeight="bold"
             >
               {labels[unit]}

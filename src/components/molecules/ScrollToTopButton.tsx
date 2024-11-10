@@ -7,7 +7,7 @@ import MotionBox from "../atoms/MotionBox";
 
 const ScrollToTopButton = () => {
   const [visible, setVisible] = useState(false);
-  const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
+  const breakpoint = useBreakpointValue({ base: "base", md: "md" });
 
   useEffect(() => {
     const onScroll = () => {
@@ -54,8 +54,8 @@ const ScrollToTopButton = () => {
             transition: { duration: 0.3, ease: "easeOut" }
           }}
           pos="fixed"
-          bottom={{ base: "36px", sm: "52px" }}
-          right={{ base: "24px", sm: "52px" }}
+          bottom={{ base: "36px", md: "52px" }}
+          right={{ base: "24px", lg: "52px" }}
           zIndex={999}
         >
           <IconButton
@@ -66,7 +66,7 @@ const ScrollToTopButton = () => {
             size="lg"
             color="white"
             bg="brand"
-            _hover={{ opacity: { base: 1, sm: 0.8 } }}
+            _hover={{ opacity: { base: 1, md: 0.8 } }}
             _active={{
               transform: "scale(0.98)",
               opacity: 0.8
