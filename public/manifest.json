@@ -1,0 +1,19 @@
+{
+  "name": "二十歳のつどい - 朝日町 | 猿鳥会",
+  "short_name": "二十歳のつどい | 猿鳥会",
+  "start_url": "/",
+  "display": "browser",
+  "theme_color": "#010158",
+  "icons": [
+    {
+      "src": "/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
