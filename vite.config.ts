@@ -1,7 +1,13 @@
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()]
+  plugins: [react()],
+  build: {
+    target: "esnext",
+    minify: "esbuild",
+    chunkSizeWarningLimit: 1000,
+    cssCodeSplit: true,
+    sourcemap: false
+  }
 });

@@ -8,6 +8,12 @@ const theme = extendTheme({
       },
       "*, *::before, &::after": {
         WebkitTapHighlightColor: "transparent"
+      },
+      img: {
+        "-webkit-user-drag": "none",
+        userDrag: "none",
+        pointerEvents: "none",
+        touchAction: "none"
       }
     }
   },

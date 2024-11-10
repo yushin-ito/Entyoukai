@@ -31,7 +31,6 @@ const Image: React.FC<ImageProps> = ({ alt, src, fallbackSrc, ...props }) => {
           w="100%"
           h="100%"
           objectFit="cover"
-          draggable="false"
           shadow={{ base: "xs", sm: "sm" }}
           loading="lazy"
           onLoad={() => setIsLoaded(true)}
