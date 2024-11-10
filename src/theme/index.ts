@@ -10,7 +10,7 @@ const theme = extendTheme({
         WebkitTapHighlightColor: "transparent"
       },
       img: {
-        "-webkit-user-drag": "none",
+        WebkitUserDrag: "none",
         userDrag: "none",
         pointerEvents: "none",
         touchAction: "none"

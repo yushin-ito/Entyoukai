@@ -22,35 +22,34 @@ const TableOfContents = ({ sections }: TableOfContentsProps) => {
   const { scrolling, scrollToElement } = useScroll();
 
   useEffect(() => {
-    const onIntersection = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (
-          entry.isIntersecting &&
-          entry.boundingClientRect.top < window.innerHeight / 2
-        ) {
-          setActiveId(entry.target.id);
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(onIntersection, {
-      threshold: 0.5,
-      rootMargin: "0px 0px -50% 0px"
-    });
-
-    sections.forEach((section) => {
-      const element = document.getElementById(section.id);
-      if (element) observer.observe(element);
-    });
-
     const onScroll = () => {
       setFixed(window.scrollY >= window.innerHeight);
+      let maxRatio = 0;
+      let visibleId = "";
+
+      sections.forEach((section) => {
+        const element = document.getElementById(section.id);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          const height =
+            Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+          const ratio = Math.max(0, height) / rect.height;
+
+          if (ratio > maxRatio) {
+            maxRatio = ratio;
+            visibleId = section.id;
+          }
+        }
+      });
+
+      if (visibleId) {
+        setActiveId(visibleId);
+      }
     };
 
     window.addEventListener("scroll", onScroll);
 
     return () => {
-      observer.disconnect();
       window.removeEventListener("scroll", onScroll);
     };
   }, [sections, scrolling]);
