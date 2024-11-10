@@ -60,6 +60,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
               h="100%"
               objectFit="cover"
               draggable="false"
+              loading="lazy"
               onLoad={() => setIsLoaded(true)}
             />
           </MotionBox>

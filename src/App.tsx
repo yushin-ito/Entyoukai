@@ -34,6 +34,10 @@ const App = () => {
                 height: 3px;
               }
 
+              #nprogress .peg {
+                display: none;
+              }
+
               @media (min-width: 30em) {
                 #nprogress .bar {
                   height: 6px;

@@ -221,7 +221,6 @@ const Contact = () => {
           {/* 送信ボタン */}
           <Button
             type="submit"
-            as="button" // 明確に button タグとしてマーク
             w={{ base: "90%", sm: "60%" }}
             mt={{ base: "6", sm: "12" }}
             color="white"
