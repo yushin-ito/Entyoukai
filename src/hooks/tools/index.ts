@@ -15,7 +15,7 @@ const useScroll = () => {
       const start = window.scrollY;
       const target = element.getBoundingClientRect().top;
 
-      const distance = target - 30;
+      const distance = target - window.innerHeight / 4;
       const duration = speed;
       const startTime = performance.now();
 
