@@ -2,12 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-import useAppStore from "../../stores";
 import { FAQ } from "../../types";
 
 export const useQueryFAQ = () => {
-  const setIsLoading = useAppStore((state) => state.setIsLoading);
-  const setError = useAppStore((state) => state.setError);
   const navigate = useNavigate();
 
   return useQuery<FAQ[]>(
@@ -17,12 +14,8 @@ export const useQueryFAQ = () => {
       return response.data;
     },
     {
-      onSettled: () => setIsLoading(false),
-      onSuccess: () => setError(null),
-      onError: (error) => {
+      onError: () => {
         navigate("/error", { replace: true });
-        setError(error as string);
-        setIsLoading(false);
       }
     }
   );

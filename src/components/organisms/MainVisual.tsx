@@ -17,11 +17,12 @@ import {
   Image,
   Heading
 } from "@chakra-ui/react";
-import { useRef, useCallback, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { FiMenu } from "react-icons/fi";
 import { IoMdPin } from "react-icons/io";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
+import useScroll from "../../hooks/tools";
 import useAppStore from "../../stores";
 
 const MainVisual = () => {
@@ -32,34 +33,22 @@ const MainVisual = () => {
   const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
   const progress = useAppStore((state) => state.progress);
 
-  const scrollToElement = useCallback(
-    (element: HTMLDivElement, duration: number) => {
-      const start = window.scrollY;
-      const target = element.getBoundingClientRect().top;
-      const now = performance.now();
-
-      const scroll = (time: number) => {
-        const elapsed = time - now;
-        const progress = Math.min(elapsed / duration, 1);
-        const easing = 1 - Math.pow(1 - progress, 3);
-
-        window.scrollTo(0, start + target * easing);
-
-        if (progress < 1) {
-          requestAnimationFrame(scroll);
-        }
-      };
-
-      requestAnimationFrame(scroll);
-    },
-    []
-  );
+  const { scrollToElement } = useScroll();
 
   useEffect(() => {
     if (pathname !== "/" && window.scrollY < 200 && progress === 100) {
       setTimeout(() => {
-        if (ref.current) {
-          scrollToElement(ref.current, 500);
+        const hash = window.location.hash;
+        if (hash) {
+          const sectionId = hash.substring(1);
+          const element = document.getElementById(sectionId);
+          if (element) {
+            scrollToElement(element, 500);
+          }
+        } else {
+          if (ref.current) {
+            scrollToElement(ref.current, 500);
+          }
         }
       }, 300);
     }
@@ -77,6 +66,7 @@ const MainVisual = () => {
         src="/assets/images/background.webp"
         alt="backgroud"
         objectFit="cover"
+        draggable="false"
         w="100vw"
         h={{ base: "calc(100vh * 0.8)", sm: "100vh" }}
         pos="absolute"
@@ -89,6 +79,7 @@ const MainVisual = () => {
         src="/assets/images/logo.webp"
         alt="logo"
         objectFit="cover"
+        draggable="false"
         w={{ base: "100px", sm: "120px" }}
         h="auto"
         pos="absolute"

@@ -3,11 +3,12 @@ import {
   Text,
   Button,
   HStack,
-  useBreakpointValue,
-  Box
+  Box,
+  useBreakpointValue
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
+import useScroll from "../../hooks/tools";
 import MotionBox from "../atoms/MotionBox";
 
 type TableOfContentsProps = {
@@ -17,21 +18,24 @@ type TableOfContentsProps = {
 const TableOfContents = ({ sections }: TableOfContentsProps) => {
   const [activeId, setActiveId] = useState<string>(sections[0].id);
   const [fixed, setFixed] = useState(false);
-  const [scrolling, setScrolling] = useState(false);
   const breakpoint = useBreakpointValue({ base: "base", sm: "sm" });
+  const { scrolling, scrollToElement } = useScroll();
 
   useEffect(() => {
     const onIntersection = (entries: IntersectionObserverEntry[]) => {
-      if (scrolling) return;
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+        if (
+          entry.isIntersecting &&
+          entry.boundingClientRect.top < window.innerHeight / 2
+        ) {
           setActiveId(entry.target.id);
         }
       });
     };
 
     const observer = new IntersectionObserver(onIntersection, {
-      threshold: 0.5
+      threshold: 0.5,
+      rootMargin: "0px 0px -50% 0px"
     });
 
     sections.forEach((section) => {
@@ -84,9 +88,7 @@ const TableOfContents = ({ sections }: TableOfContentsProps) => {
 
       {sections.map((section) => (
         <Button
-          as="a"
           key={section.id}
-          href={`#${section.id}`}
           h="42px"
           px="0"
           ml="4"
@@ -94,17 +96,14 @@ const TableOfContents = ({ sections }: TableOfContentsProps) => {
           _hover={{ bg: "transparent" }}
           _active={{ bg: "transparent" }}
           onClick={() => {
-            setScrolling(true);
-            setActiveId(section.id);
+            if (!scrolling) {
+              window.history.pushState(null, "", `#${section.id}`);
 
-            document.getElementById(section.id)?.scrollIntoView({
-              behavior: "smooth",
-              block: "center"
-            });
-
-            setTimeout(() => {
-              setScrolling(false);
-            }, 1000);
+              const element = document.getElementById(section.id);
+              if (element) {
+                scrollToElement(element, 800);
+              }
+            }
           }}
         >
           <HStack spacing="4">

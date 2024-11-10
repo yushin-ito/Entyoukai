@@ -33,6 +33,7 @@ const Image: React.FC<ImageProps> = ({ alt, src, fallbackSrc, ...props }) => {
           objectFit="cover"
           draggable="false"
           shadow={{ base: "xs", sm: "sm" }}
+          loading="lazy"
           onLoad={() => setIsLoaded(true)}
         />
       </MotionBox>
