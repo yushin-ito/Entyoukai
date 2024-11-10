@@ -66,7 +66,6 @@ const MainVisual = () => {
         src="/assets/images/background.webp"
         alt="backgroud"
         objectFit="cover"
-        draggable="false"
         w="100vw"
         h={{ base: "calc(100vh * 0.8)", sm: "100vh" }}
         pos="absolute"
@@ -79,7 +78,6 @@ const MainVisual = () => {
         src="/assets/images/logo.webp"
         alt="logo"
         objectFit="cover"
-        draggable="false"
         w={{ base: "100px", sm: "120px" }}
         h="auto"
         pos="absolute"
