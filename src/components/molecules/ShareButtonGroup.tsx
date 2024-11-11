@@ -1,12 +1,12 @@
 import { HStack, IconButton, useToast } from "@chakra-ui/react";
-import { useCallback } from "react";
+import { memo, useCallback } from "react";
 import { FaLine } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FiLink } from "react-icons/fi";
 
 import Toast from "../atoms/Toast";
 
-const ShareButtonGroup = () => {
+const ShareButtonGroup = memo(() => {
   const url = window.location.href;
   const toast = useToast();
 
@@ -106,6 +106,6 @@ const ShareButtonGroup = () => {
       />
     </HStack>
   );
-};
+});
 
 export default ShareButtonGroup;

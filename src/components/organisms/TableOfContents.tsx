@@ -6,7 +6,7 @@ import {
   Box,
   useBreakpointValue
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 
 import useScroll from "../../hooks/tools";
 import MotionBox from "../atoms/MotionBox";
@@ -15,7 +15,7 @@ type TableOfContentsProps = {
   sections: { id: string; title: string }[];
 };
 
-const TableOfContents = ({ sections }: TableOfContentsProps) => {
+const TableOfContents = memo(({ sections }: TableOfContentsProps) => {
   const [activeId, setActiveId] = useState<string>(sections[0].id);
   const [fixed, setFixed] = useState(false);
   const breakpoint = useBreakpointValue({ base: "base", lg: "lg" });
@@ -118,6 +118,6 @@ const TableOfContents = ({ sections }: TableOfContentsProps) => {
       ))}
     </VStack>
   );
-};
+});
 
 export default TableOfContents;

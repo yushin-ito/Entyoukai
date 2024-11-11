@@ -1,7 +1,8 @@
 import { VStack, Text, HStack, Button } from "@chakra-ui/react";
+import { memo } from "react";
 import { Link } from "react-router-dom";
 
-const Footer = () => {
+const Footer = memo(() => {
   return (
     <VStack
       as="footer"
@@ -50,6 +51,6 @@ const Footer = () => {
       </Text>
     </VStack>
   );
-};
+});
 
 export default Footer;

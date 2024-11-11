@@ -6,7 +6,7 @@ import {
   useBreakpointValue,
   SimpleGrid
 } from "@chakra-ui/react";
-import { useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 
 import type { Article } from "../../types";
 import ArticleListItem from "../molecules/ArticleListItem";
@@ -15,7 +15,7 @@ type ArticleListProps = {
   articles: Article[];
 };
 
-const ArticleList = ({ articles }: ArticleListProps) => {
+const ArticleList = memo(({ articles }: ArticleListProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const breakpoint = useBreakpointValue({ base: "base", md: "md", lg: "lg" });
@@ -125,6 +125,6 @@ const ArticleList = ({ articles }: ArticleListProps) => {
       ))}
     </SimpleGrid>
   );
-};
+});
 
 export default ArticleList;

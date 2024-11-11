@@ -6,7 +6,7 @@ import {
   useBreakpointValue
 } from "@chakra-ui/react";
 import { format } from "date-fns";
-import { useEffect, useState, useMemo, useCallback } from "react";
+import { useEffect, useState, useMemo, useCallback, memo } from "react";
 
 import type { Event } from "../../types";
 import TimelineItem from "../molecules/TimelineItem";
@@ -15,7 +15,7 @@ type TimelineProps = {
   events: Event[];
 };
 
-const Timeline = ({ events }: TimelineProps) => {
+const Timeline = memo(({ events }: TimelineProps) => {
   const space = { base: 50, md: 100 };
   const [resize, setResize] = useState(false);
   const [heights, setHeights] = useState<number[]>([]);
@@ -142,6 +142,6 @@ const Timeline = ({ events }: TimelineProps) => {
       ))}
     </VStack>
   );
-};
+});
 
 export default Timeline;

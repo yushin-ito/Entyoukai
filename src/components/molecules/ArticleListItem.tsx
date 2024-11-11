@@ -9,7 +9,7 @@ import {
 import { format, formatDistanceToNow, parseISO } from "date-fns";
 import { ja } from "date-fns/locale";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { memo, useRef } from "react";
 import { Link } from "react-router-dom";
 
 import Avatar from "../atoms/Avatar";
@@ -27,151 +27,157 @@ type ArticleListItemProps = {
   author: string;
 };
 
-const ArticleListItem = ({
-  id,
-  title,
-  description,
-  date,
-  images,
-  avatar,
-  location,
-  author
-}: ArticleListItemProps) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  const breakpoint = useBreakpointValue({ base: "base", md: "md" });
+const ArticleListItem = memo(
+  ({
+    id,
+    title,
+    description,
+    date,
+    images,
+    avatar,
+    location,
+    author
+  }: ArticleListItemProps) => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true });
+    const breakpoint = useBreakpointValue({ base: "base", md: "md" });
 
-  return (
-    <MotionBox
-      as="li"
-      ref={ref}
-      initial={{ opacity: 0 }}
-      animate={isInView ? { opacity: 1, transition: { duration: 1 } } : {}}
-      w="100%"
-    >
-      <VStack
-        as={Link}
-        to={`/article/${id}`}
+    return (
+      <MotionBox
+        as="li"
+        ref={ref}
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1, transition: { duration: 1 } } : {}}
         w="100%"
-        rounded={{ base: "none", md: "md" }}
-        spacing={{ base: "4", md: "2" }}
-        pb={{ base: "4", md: "0" }}
-        _hover={
-          breakpoint === "base"
-            ? {}
-            : { transform: "scale(1.02)", opacity: 0.8 }
-        }
-        _active={
-          breakpoint === "base"
-            ? { transform: "scale(0.98)", opacity: 0.8 }
-            : { transform: "scale(1.00)" }
-        }
       >
-        <Box w="100%" pos="relative">
-          {/* 画像 */}
-          <Image
-            src={images[0]}
-            alt={location}
-            w="100%"
-            minH="100px"
-            maxH="320px"
-            h={{
-              base: "calc(100vw * 0.8 * 0.7)",
-              md: "calc((100vw * 0.75 - 240px) / 2)",
-              lg: "calc((100vw * 0.55 - 320px) / 3)"
-            }}
-            rounded={{ base: "md", md: "xl" }}
-            fallbackSrc={
-              breakpoint === "base"
-                ? "https://placehold.jp/28/e2e8f0/010158/600x400.png?text=No%20Image"
-                : "https://placehold.jp/32/e2e8f0/010158/540x360.png?text=No%20Image"
-            }
-          />
-          {/* ロケーション */}
-          <Box
-            pos="absolute"
-            bottom={{ base: "3", md: "2" }}
-            right={{ base: "3", md: "2" }}
-            px="6px"
-            py="2.5px"
-            rounded="full"
-            bg="rgba(0, 0, 0, 0.6)"
-          >
-            <Text fontSize="2xs" color="white">
-              {location}
-            </Text>
-          </Box>
-        </Box>
         <VStack
+          as={Link}
+          to={`/article/${id}`}
           w="100%"
-          px={{ base: "6px", md: "2px" }}
-          spacing={{ base: "10px", md: "2px" }}
-          alignItems="flex-start"
+          rounded={{ base: "none", md: "md" }}
+          spacing={{ base: "4", md: "2" }}
+          pb={{ base: "4", md: "0" }}
+          _hover={
+            breakpoint === "base"
+              ? {}
+              : { transform: "scale(1.02)", opacity: 0.8 }
+          }
+          _active={
+            breakpoint === "base"
+              ? { transform: "scale(0.98)", opacity: 0.8 }
+              : { transform: "scale(1.00)" }
+          }
         >
-          {/* タイトル */}
-          {breakpoint === "md" && (
-            <Heading as="h3" fontSize="md" noOfLines={1}>
-              {title}
-            </Heading>
-          )}
-          {/* 日付と作者 */}
-          {breakpoint === "base" && (
-            <HStack w="100%" alignItems="center" justifyContent="space-between">
-              <Box
-                px="6px"
-                py="1px"
-                borderWidth="1.5px"
-                borderColor="brand"
-                rounded="full"
-              >
-                <Text fontSize="2xs" fontWeight="bold">
-                  {format(date, "yyyy.MM.dd")}
-                </Text>
-              </Box>
-              <HStack spacing="2">
-                <Avatar size="xs" src={avatar} />
-                <Text fontSize="2xs" fontWeight="bold">
-                  {author}
-                </Text>
-              </HStack>
-            </HStack>
-          )}
-          {/* 内容 */}
-          <Text
-            as="p"
-            fontSize="xs"
-            fontWeight={{ base: "bold", md: "normal" }}
-            color={{ base: "brand", md: "gray.600" }}
-            noOfLines={{ base: 6, md: 2 }}
-          >
-            {description}
-          </Text>
-          {/* 日付と作者 */}
-          {breakpoint === "md" && (
-            <HStack
+          <Box w="100%" pos="relative">
+            {/* 画像 */}
+            <Image
+              src={images[0]}
+              alt={location}
               w="100%"
-              mt="4"
-              alignItems="center"
-              justifyContent="space-between"
+              minH="100px"
+              maxH="320px"
+              h={{
+                base: "calc(100vw * 0.8 * 0.7)",
+                md: "calc((100vw * 0.75 - 240px) / 2)",
+                lg: "calc((100vw * 0.55 - 320px) / 3)"
+              }}
+              rounded={{ base: "md", md: "xl" }}
+              fallbackSrc={
+                breakpoint === "base"
+                  ? "https://placehold.jp/28/e2e8f0/010158/600x400.png?text=No%20Image"
+                  : "https://placehold.jp/32/e2e8f0/010158/540x360.png?text=No%20Image"
+              }
+            />
+            {/* ロケーション */}
+            <Box
+              pos="absolute"
+              bottom={{ base: "3", md: "2" }}
+              right={{ base: "3", md: "2" }}
+              px="6px"
+              py="2.5px"
+              rounded="full"
+              bg="rgba(0, 0, 0, 0.6)"
             >
-              <HStack spacing="6px">
-                <Avatar size="xs" src={avatar} />
-                <Text fontSize="2xs" fontWeight="bold" color="gray.900">
-                  {author}
+              <Text fontSize="2xs" color="white">
+                {location}
+              </Text>
+            </Box>
+          </Box>
+          <VStack
+            w="100%"
+            px={{ base: "6px", md: "2px" }}
+            spacing={{ base: "10px", md: "2px" }}
+            alignItems="flex-start"
+          >
+            {/* タイトル */}
+            {breakpoint === "md" && (
+              <Heading as="h3" fontSize="md" noOfLines={1}>
+                {title}
+              </Heading>
+            )}
+            {/* 日付と作者 */}
+            {breakpoint === "base" && (
+              <HStack
+                w="100%"
+                alignItems="center"
+                justifyContent="space-between"
+              >
+                <Box
+                  px="6px"
+                  py="1px"
+                  borderWidth="1.5px"
+                  borderColor="brand"
+                  rounded="full"
+                >
+                  <Text fontSize="2xs" fontWeight="bold">
+                    {format(date, "yyyy.MM.dd")}
+                  </Text>
+                </Box>
+                <HStack spacing="2">
+                  <Avatar size="xs" src={avatar} />
+                  <Text fontSize="2xs" fontWeight="bold">
+                    {author}
+                  </Text>
+                </HStack>
+              </HStack>
+            )}
+            {/* 内容 */}
+            <Text
+              as="p"
+              fontSize="xs"
+              fontWeight={{ base: "bold", md: "normal" }}
+              color={{ base: "brand", md: "gray.600" }}
+              noOfLines={{ base: 6, md: 2 }}
+            >
+              {description}
+            </Text>
+            {/* 日付と作者 */}
+            {breakpoint === "md" && (
+              <HStack
+                w="100%"
+                mt="4"
+                alignItems="center"
+                justifyContent="space-between"
+              >
+                <HStack spacing="6px">
+                  <Avatar size="xs" src={avatar} />
+                  <Text fontSize="2xs" fontWeight="bold" color="gray.900">
+                    {author}
+                  </Text>
+                </HStack>
+                <Text fontSize="2xs" color="gray.600">
+                  {formatDistanceToNow(parseISO(date), {
+                    addSuffix: true,
+                    locale: ja
+                  })}
                 </Text>
               </HStack>
-              <Text fontSize="2xs" color="gray.600">
-                {formatDistanceToNow(parseISO(date), {
-                  addSuffix: true,
-                  locale: ja
-                })}
-              </Text>
-            </HStack>
-          )}
+            )}
+          </VStack>
         </VStack>
-      </VStack>
-    </MotionBox>
-  );
-};
+      </MotionBox>
+    );
+  }
+);
 
 export default ArticleListItem;

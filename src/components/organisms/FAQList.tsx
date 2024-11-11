@@ -9,6 +9,7 @@ import {
   HStack,
   Heading
 } from "@chakra-ui/react";
+import { memo } from "react";
 
 import type { FAQ } from "../../types";
 
@@ -16,7 +17,7 @@ type FAQListProps = {
   faq: FAQ[];
 };
 
-const FAQList = ({ faq }: FAQListProps) => {
+const FAQList = memo(({ faq }: FAQListProps) => {
   return (
     <Accordion w="100%" allowToggle>
       {faq.map((item, index) => (
@@ -91,6 +92,6 @@ const FAQList = ({ faq }: FAQListProps) => {
       ))}
     </Accordion>
   );
-};
+});
 
 export default FAQList;

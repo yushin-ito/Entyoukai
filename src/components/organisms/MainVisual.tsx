@@ -17,7 +17,7 @@ import {
   Image,
   Heading
 } from "@chakra-ui/react";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, memo } from "react";
 import { FiMenu } from "react-icons/fi";
 import { IoMdPin } from "react-icons/io";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -25,12 +25,17 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useScroll from "../../hooks/tools";
 import useAppStore from "../../stores";
 
-const MainVisual = () => {
+const MainVisual = memo(() => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const ref = useRef<HTMLDivElement>(null);
-  const breakpoint = useBreakpointValue({ base: "base", lg: "lg" });
+  const breakpoint = useBreakpointValue({ base: "base", md: "md", lg: "lg" });
+  const background = useBreakpointValue({
+    base: "/assets/images/background-mobile.webp",
+    md: "/assets/images/background-tablet.webp",
+    lg: "/assets/images/background-desktop.webp"
+  });
   const progress = useAppStore((state) => state.progress);
 
   const { scrollToElement } = useScroll();
@@ -63,14 +68,15 @@ const MainVisual = () => {
     >
       {/* 背景画像 */}
       <Image
-        src="/assets/images/background.webp"
+        src={background}
         alt="backgroud"
         objectFit="cover"
         w="100vw"
-        h={{ base: "calc(100vh * 0.8)", lg: "100vh" }}
+        h="100%"
         pos="absolute"
         top="0"
         left="0"
+        objectPosition="center center"
       />
 
       {/* ロゴ */}
@@ -88,25 +94,7 @@ const MainVisual = () => {
       />
 
       {/* ナビゲーションバー */}
-      {breakpoint === "base" ? (
-        <IconButton
-          icon={<FiMenu size="20px" />}
-          aria-label="menu"
-          pos="absolute"
-          top="6"
-          right="8"
-          color="white"
-          bg="brand"
-          _hover={{ opacity: { base: 1, lg: 0.8 } }}
-          _active={{
-            transform: "scale(0.98)",
-            opacity: 0.8
-          }}
-          rounded="md"
-          opacity="0.8"
-          onClick={onOpen}
-        />
-      ) : (
+      {breakpoint === "lg" ? (
         <HStack
           as="nav"
           pos="absolute"
@@ -165,6 +153,24 @@ const MainVisual = () => {
             お問い合わせ
           </Button>
         </HStack>
+      ) : (
+        <IconButton
+          icon={<FiMenu size="20px" />}
+          aria-label="menu"
+          pos="absolute"
+          top="6"
+          right="8"
+          color="white"
+          bg="brand"
+          _hover={{ opacity: { base: 1, lg: 0.8 } }}
+          _active={{
+            transform: "scale(0.98)",
+            opacity: 0.8
+          }}
+          rounded="md"
+          opacity="0.8"
+          onClick={onOpen}
+        />
       )}
 
       {/* ドロワー */}
@@ -240,8 +246,8 @@ const MainVisual = () => {
 
       {/* メインビジュアル */}
       <VStack
-        px={{ base: "10", md: "24" }}
-        py={{ base: "12", md: "16" }}
+        px={{ base: "10", md: "16", lg: "24" }}
+        py={{ base: "12", md: "14", lg: "16" }}
         spacing="4"
         rounded="xl"
         bg="brand"
@@ -249,12 +255,12 @@ const MainVisual = () => {
         alignItems="center"
         justifyContent="center"
       >
-        <Heading as="h1" fontSize={{ base: "3xl", md: "5xl" }} color="white">
+        <Heading as="h1" fontSize={{ base: "3xl", lg: "5xl" }} color="white">
           二十歳のつどい
         </Heading>
         <VStack spacing="2">
           <Text
-            fontSize={{ base: "md", md: "xl" }}
+            fontSize={{ base: "md", lg: "xl" }}
             fontWeight="bold"
             color="white"
           >
@@ -264,11 +270,11 @@ const MainVisual = () => {
           <HStack alignItems="center" spacing="1">
             <Icon
               as={IoMdPin}
-              boxSize={{ base: "18px", md: "24px" }}
+              boxSize={{ base: "18px", lg: "24px" }}
               color="white"
             />
             <Text
-              fontSize={{ base: "md", md: "xl" }}
+              fontSize={{ base: "md", lg: "xl" }}
               fontWeight="bold"
               color="white"
             >
@@ -280,6 +286,6 @@ const MainVisual = () => {
       <Box ref={ref} pos="absolute" bottom="20" />
     </Center>
   );
-};
+});
 
 export default MainVisual;
