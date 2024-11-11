@@ -1,8 +1,9 @@
 import { Avatar as CustomAvatar, AvatarProps } from "@chakra-ui/react";
+import { memo } from "react";
 
 import Skeleton from "./Skeleton";
 
-const Avatar = ({ ...props }: AvatarProps) => {
+const Avatar = memo(({ ...props }: AvatarProps) => {
   return (
     <CustomAvatar
       bg="gray.200"
@@ -12,6 +13,6 @@ const Avatar = ({ ...props }: AvatarProps) => {
       {...props}
     />
   );
-};
+});
 
 export default Avatar;

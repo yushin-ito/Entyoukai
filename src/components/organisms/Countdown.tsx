@@ -1,12 +1,12 @@
 import { Text, VStack, HStack, Heading } from "@chakra-ui/react";
 import { useInView } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, memo } from "react";
 
 import MotionBox from "../atoms/MotionBox";
 
 const target = new Date("2025-01-08T00:00:00").getTime();
 
-const Countdown = () => {
+const Countdown = memo(() => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
@@ -85,6 +85,6 @@ const Countdown = () => {
       </HStack>
     </VStack>
   );
-};
+});
 
 export default Countdown;

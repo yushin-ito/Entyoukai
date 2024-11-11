@@ -5,12 +5,13 @@ import {
   useBreakpointValue,
   HStack
 } from "@chakra-ui/react";
+import { memo } from "react";
 
 type SectionTitleProps = {
   title: string;
 };
 
-const SectionTitle = ({ title }: SectionTitleProps) => {
+const SectionTitle = memo(({ title }: SectionTitleProps) => {
   const breakpoint = useBreakpointValue({ base: "base", md: "md" });
 
   return breakpoint === "base" ? (
@@ -28,6 +29,6 @@ const SectionTitle = ({ title }: SectionTitleProps) => {
       <Box w="100%" h="1" bg="brand" />
     </VStack>
   );
-};
+});
 
 export default SectionTitle;

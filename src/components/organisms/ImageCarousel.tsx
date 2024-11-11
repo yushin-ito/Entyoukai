@@ -1,6 +1,6 @@
 import { Box, Image, useBreakpointValue } from "@chakra-ui/react";
 import { AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 
 import MotionBox from "../atoms/MotionBox";
 import Skeleton from "../atoms/Skeleton";
@@ -9,7 +9,7 @@ type ImageCarouselProps = {
   images: string[];
 };
 
-const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
+const ImageCarousel = memo(({ images }: ImageCarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const breakpoint = useBreakpointValue({ base: "base", md: "md" });
@@ -67,6 +67,6 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
       </Box>
     </Skeleton>
   );
-};
+});
 
 export default ImageCarousel;

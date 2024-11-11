@@ -10,7 +10,7 @@ import {
   Heading
 } from "@chakra-ui/react";
 import { format } from "date-fns";
-import { useState, useMemo } from "react";
+import { useState, useMemo, memo } from "react";
 
 import type { News } from "../../types";
 
@@ -25,7 +25,7 @@ type NewsListProps = {
   news: News[];
 };
 
-const NewsList = ({ news }: NewsListProps) => {
+const NewsList = memo(({ news }: NewsListProps) => {
   const [activeId, setActiveId] = useState<string>("all");
   const breakpoint = useBreakpointValue({ base: "base", md: "md" });
 
@@ -152,6 +152,6 @@ const NewsList = ({ news }: NewsListProps) => {
       </VStack>
     </VStack>
   );
-};
+});
 
 export default NewsList;

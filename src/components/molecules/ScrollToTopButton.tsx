@@ -1,11 +1,11 @@
 import { IconButton, useBreakpointValue } from "@chakra-ui/react";
 import { AnimatePresence } from "framer-motion";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, memo } from "react";
 import { FiChevronUp } from "react-icons/fi";
 
 import MotionBox from "../atoms/MotionBox";
 
-const ScrollToTopButton = () => {
+const ScrollToTopButton = memo(() => {
   const [visible, setVisible] = useState(false);
   const breakpoint = useBreakpointValue({ base: "base", md: "md" });
 
@@ -79,6 +79,6 @@ const ScrollToTopButton = () => {
       )}
     </AnimatePresence>
   );
-};
+});
 
 export default ScrollToTopButton;

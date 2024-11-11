@@ -2,10 +2,9 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" sizes="32x32" href="/favicon.ico" />
+    <link rel="icon" sizes="48x48" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
-    <link rel="preload" href="/assets/images/background.webp" as="image" />
     <link rel="preload" href="/assets/images/logo.webp" as="image" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>二十歳のつどい - 朝日町 | 猿鳥会</title>
@@ -39,6 +38,28 @@
       content="猿鳥会が運営する朝日町の「二十歳のつどい」公式Webサイトです。式典やイベントに関する最新の情報をお届けします。"
     />
     <meta name="twitter:image" content="https://entyoukai.com/og.png" />
+
+    <script>
+      window.addEventListener("load", () => {
+        const prefetch = () => {
+          let src = "";
+          if (window.innerWidth <= 768) {
+            src = "/assets/images/background-mobile.webp";
+          } else if (window.innerWidth <= 992) {
+            src = "/assets/images/background-tablet.webp";
+          } else {
+            src = "/assets/images/background-desktop.webp";
+          }
+
+          const element = document.createElement("link");
+          element.rel = "prefetch";
+          element.href = src;
+          document.head.appendChild(element);
+        };
+
+        prefetch();
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>

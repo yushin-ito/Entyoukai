@@ -1,4 +1,5 @@
 import { HStack, Icon, Text } from "@chakra-ui/react";
+import { memo } from "react";
 import { FiAlertCircle, FiCheckCircle, FiInfo, FiX } from "react-icons/fi";
 
 type ToastProps = {
@@ -7,7 +8,7 @@ type ToastProps = {
   onClose: () => void;
 };
 
-const Toast = ({ status, title, onClose }: ToastProps) => {
+const Toast = memo(({ status, title, onClose }: ToastProps) => {
   const config = {
     info: { icon: FiInfo, bg: "info" },
     success: { icon: FiCheckCircle, bg: "success" },
@@ -37,6 +38,6 @@ const Toast = ({ status, title, onClose }: ToastProps) => {
       />
     </HStack>
   );
-};
+});
 
 export default Toast;
