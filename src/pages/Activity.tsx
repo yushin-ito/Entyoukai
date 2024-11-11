@@ -1,4 +1,4 @@
-import { Text, VStack } from "@chakra-ui/react";
+import { Collapse, SlideFade, Text, VStack } from "@chakra-ui/react";
 import { Helmet } from "react-helmet-async";
 
 import ScrollToTopButton from "../components/molecules/ScrollToTopButton";
@@ -63,7 +63,23 @@ const Activity = () => {
           spacing={{ base: "4", md: "8" }}
         >
           <SectionTitle title="活動理由" />
-          <Text as="p" fontSize={{ base: "sm", md: "md" }} fontWeight="bold">
+
+          <Text
+            fontSize={{ base: "sm", md: "xl" }}
+            fontWeight="bold"
+            animation={"slide-fade-in"}
+          >
+            思い出に残る二十歳のつどいに
+            <br />
+            地域で盛り上がる二十歳のつどいに
+          </Text>
+
+          <Text
+            as="p"
+            fontSize={{ base: "sm", md: "md" }}
+            fontWeight="bold"
+            animation=""
+          >
             私たちが「二十歳のつどい」のために活動する理由は、コロナによって失われた同期との思い出をもう一度作り直すためです。
             <br />
             <br />
