@@ -24,8 +24,8 @@ const TableOfContents = memo(({ sections }: TableOfContentsProps) => {
   useEffect(() => {
     const onScroll = () => {
       setFixed(window.scrollY >= window.innerHeight);
-      let maxRatio = 0;
-      let visibleId = "";
+      let id = "";
+      let max = 0;
 
       sections.forEach((section) => {
         const element = document.getElementById(section.id);
@@ -35,15 +35,15 @@ const TableOfContents = memo(({ sections }: TableOfContentsProps) => {
             Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
           const ratio = Math.max(0, height) / rect.height;
 
-          if (ratio > maxRatio) {
-            maxRatio = ratio;
-            visibleId = section.id;
+          if (ratio > max) {
+            max = ratio;
+            id = section.id;
           }
         }
       });
 
-      if (visibleId) {
-        setActiveId(visibleId);
+      if (id) {
+        setActiveId(id);
       }
     };
 

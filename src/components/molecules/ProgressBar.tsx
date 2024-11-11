@@ -1,26 +1,21 @@
 import { useIsFetching } from "@tanstack/react-query";
 import NProgress from "nprogress";
-import { memo, useEffect, useState } from "react";
+import { memo, useEffect, useRef } from "react";
 import "nprogress/nprogress.css";
-
-import useAppStore from "../../stores";
 
 const ProgressBar = memo(() => {
   const isFetching = useIsFetching();
-  const setProgress = useAppStore((state) => state.setProgress);
-  const [isLoading, setIsLoading] = useState(false);
+  const ref = useRef(false);
 
   useEffect(() => {
-    if (isFetching > 0 && !isLoading) {
-      setIsLoading(true);
+    if (isFetching > 0 && !ref.current) {
+      ref.current = true;
       NProgress.start();
-      setProgress(0);
-    } else if (isFetching === 0 && isLoading) {
-      setIsLoading(false);
+    } else if (isFetching === 0 && ref.current) {
+      ref.current = false;
       NProgress.done();
-      setProgress(100);
     }
-  }, [isFetching, isLoading, setProgress]);
+  }, [isFetching]);
 
   return null;
 });
