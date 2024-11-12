@@ -8,20 +8,7 @@ export default defineConfig({
     minify: "esbuild",
     chunkSizeWarningLimit: 1000,
     cssCodeSplit: true,
-    sourcemap: false,
-    rollupOptions: {
-      treeshake: {
-        moduleSideEffects: false,
-        propertyReadSideEffects: false
-      },
-      output: {
-        manualChunks(id) {
-          if (id.includes("node_modules")) {
-            return "vendor";
-          }
-        }
-      }
-    }
+    sourcemap: false
   },
   esbuild: {
     drop: ["console", "debugger"]
