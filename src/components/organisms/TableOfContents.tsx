@@ -58,7 +58,7 @@ const TableOfContents = memo(({ sections }: TableOfContentsProps) => {
     <VStack
       as="nav"
       pos={fixed ? "fixed" : "absolute"}
-      top={fixed ? "96px" : "calc(100vh + 96px)"}
+      top={fixed ? "96px" : "0"}
       left="64px"
       spacing="0"
       alignItems="flex-start"

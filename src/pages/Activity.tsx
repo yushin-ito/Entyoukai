@@ -8,7 +8,6 @@ import ScrollToTopButton from "../components/molecules/ScrollToTopButton";
 import SectionTitle from "../components/molecules/SectionTitle";
 import ArticleList from "../components/organisms/ArticleList";
 import Footer from "../components/organisms/Footer";
-import MainVisual from "../components/organisms/MainVisual";
 import TableOfContents from "../components/organisms/TableOfContents";
 import { useQueryArticles } from "../hooks/article";
 
@@ -35,14 +34,7 @@ const Activity = () => {
   };
 
   return (
-    <VStack
-      as="main"
-      flex="1"
-      alignItems="center"
-      spacing={{ base: "16", md: "24" }}
-      overflowX="hidden"
-      pos="relative"
-    >
+    <VStack flex="1" spacing={{ base: "16", md: "24" }} pos="relative">
       <Helmet>
         <title>活動について | 猿鳥会</title>
         {schema && (
@@ -50,7 +42,6 @@ const Activity = () => {
         )}
       </Helmet>
       <ScrollToTopButton />
-      <MainVisual />
       <TableOfContents
         sections={[
           { id: "activity_reason", title: "活動理由" },
@@ -93,7 +84,6 @@ const Activity = () => {
               地域で盛り上がる二十歳のつどいに
             </Heading>
           </MotionBox>
-
           <Text
             as="p"
             fontSize={{ base: "sm", md: "md" }}

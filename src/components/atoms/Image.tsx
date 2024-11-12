@@ -13,7 +13,12 @@ const Image = memo(({ alt, src, ...props }: ImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
-    <Skeleton isLoaded={isLoaded} rounded={props.rounded}>
+    <Skeleton
+      w={props.w}
+      h={props.h}
+      isLoaded={isLoaded}
+      rounded={props.rounded}
+    >
       <MotionBox
         initial={{ opacity: 0 }}
         animate={{

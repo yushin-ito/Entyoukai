@@ -4,7 +4,6 @@ import { Helmet } from "react-helmet-async";
 import ScrollToTopButton from "../components/molecules/ScrollToTopButton";
 import SectionTitle from "../components/molecules/SectionTitle";
 import Footer from "../components/organisms/Footer";
-import MainVisual from "../components/organisms/MainVisual";
 import Timeline from "../components/organisms/Timeline";
 import { useQueryEvents } from "../hooks/event";
 
@@ -31,14 +30,7 @@ const Memory = () => {
   };
 
   return (
-    <VStack
-      as="main"
-      flex="1"
-      alignItems="center"
-      spacing={{ base: "16", md: "24" }}
-      overflowX="hidden"
-      pos="relative"
-    >
+    <VStack flex="1" spacing={{ base: "16", md: "24" }} pos="relative">
       <Helmet>
         <title>おもいで | 猿鳥会</title>
         {schema && (
@@ -46,7 +38,6 @@ const Memory = () => {
         )}
       </Helmet>
       <ScrollToTopButton />
-      <MainVisual />
       <VStack
         as="section"
         w={{ base: "80%", md: "75%", lg: "55%" }}

@@ -30,7 +30,7 @@ const ImageCarousel = memo(({ images }: ImageCarouselProps) => {
       <Box
         pos="relative"
         w="100%"
-        h={{ base: "200px", md: "360px", lg: "420px" }}
+        aspectRatio={5 / 3}
         rounded={{ base: "md", md: "xl" }}
         overflow="hidden"
         bg="gray.200"

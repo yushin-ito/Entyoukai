@@ -8,7 +8,6 @@ import SectionTitle from "../components/molecules/SectionTitle";
 import ShareButtonGroup from "../components/molecules/ShareButtonGroup";
 import Footer from "../components/organisms/Footer";
 import ImageCarousel from "../components/organisms/ImageCarousel";
-import MainVisual from "../components/organisms/MainVisual";
 import { FIRST_ARTICLE_ID, END_ARTICLE_ID } from "../constants";
 import { formatByDot } from "../functions";
 import { useQueryArticle } from "../hooks/article";
@@ -33,14 +32,7 @@ const Article = () => {
   };
 
   return (
-    <VStack
-      as="main"
-      flex="1"
-      alignItems="center"
-      spacing={{ base: "16", md: "24" }}
-      overflowX="hidden"
-      pos="relative"
-    >
+    <VStack flex="1" spacing={{ base: "16", md: "24" }} pos="relative">
       <Helmet>
         {article && <title>{article.title + " | 猿鳥会"}</title>}
         {schema && (
@@ -48,7 +40,6 @@ const Article = () => {
         )}
       </Helmet>
       <ScrollToTopButton />
-      <MainVisual />
       <VStack
         w={{ base: "80%", md: "75%", lg: "55%" }}
         spacing={{ base: "16", md: "24" }}

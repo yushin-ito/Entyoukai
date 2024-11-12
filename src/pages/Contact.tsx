@@ -16,7 +16,6 @@ import Toast from "../components/atoms/Toast";
 import ScrollToTopButton from "../components/molecules/ScrollToTopButton";
 import SectionTitle from "../components/molecules/SectionTitle";
 import Footer from "../components/organisms/Footer";
-import MainVisual from "../components/organisms/MainVisual";
 import { usePostContact } from "../hooks/contact";
 
 export type FormData = {
@@ -87,20 +86,12 @@ const Contact = () => {
   };
 
   return (
-    <VStack
-      as="main"
-      flex="1"
-      alignItems="center"
-      spacing={{ base: "16", md: "24" }}
-      overflowX="hidden"
-      pos="relative"
-    >
+    <VStack flex="1" spacing={{ base: "16", md: "24" }} pos="relative">
       <Helmet>
         <title>お問い合わせ</title>
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
       <ScrollToTopButton />
-      <MainVisual />
       <VStack
         w={{ base: "80%", md: "75%", lg: "55%" }}
         spacing={{ base: "4", md: "8" }}
