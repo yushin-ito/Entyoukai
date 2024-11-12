@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import NProgress from "nprogress";
 import { HelmetProvider } from "react-helmet-async";
 
-import Router from "./Router";
+import RootRouter from "./Router";
 import theme from "./theme";
 
 const queryClient = new QueryClient({
@@ -45,7 +45,7 @@ const App = () => {
               }
             `}
           />
-          <Router />
+          <RootRouter />
         </QueryClientProvider>
       </ChakraProvider>
     </HelmetProvider>

@@ -9,9 +9,9 @@ import {
   useBreakpointValue,
   Heading
 } from "@chakra-ui/react";
-import { format } from "date-fns";
 import { useState, useMemo, memo } from "react";
 
+import { formatByDot } from "../../functions";
 import type { News } from "../../types";
 
 const categories: Record<string, string> = {
@@ -121,12 +121,12 @@ const NewsList = memo(({ news }: NewsListProps) => {
                   fontSize={{ base: "xs", md: "sm" }}
                   color="gray.600"
                 >
-                  {format(item.date, "yyyy.MM.dd")}
+                  {formatByDot(item.date, "yyyy.MM.dd")}
                 </Text>
                 <Box
                   bg="brand"
                   px={{ base: "6px", md: "8px" }}
-                  py={{ base: "2px", md: "4px" }}
+                  py={{ base: "1.5px", md: "2.5px" }}
                   rounded="full"
                 >
                   <Text

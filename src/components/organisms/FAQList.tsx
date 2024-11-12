@@ -6,8 +6,7 @@ import {
   AccordionIcon,
   VStack,
   Text,
-  HStack,
-  Heading
+  HStack
 } from "@chakra-ui/react";
 import { memo } from "react";
 
@@ -42,13 +41,14 @@ const FAQList = memo(({ faq }: FAQListProps) => {
               >
                 Q.
               </Text>
-              <Heading
-                as="h3"
+              <Text
+                as="p"
                 textAlign="left"
                 fontSize={{ base: "xs", md: "sm" }}
+                fontWeight="bold"
               >
                 {item.question}
-              </Heading>
+              </Text>
             </HStack>
             <AccordionIcon
               boxSize={{ base: "16px", md: "24px" }}

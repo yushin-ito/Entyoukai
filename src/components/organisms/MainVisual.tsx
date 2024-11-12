@@ -4,7 +4,6 @@ import {
   Button,
   HStack,
   Box,
-  Icon,
   Center,
   useBreakpointValue,
   Drawer,
@@ -19,11 +18,10 @@ import {
 } from "@chakra-ui/react";
 import { useIsFetching } from "@tanstack/react-query";
 import { useRef, useEffect, memo } from "react";
-import { FiMenu } from "react-icons/fi";
-import { IoMdPin } from "react-icons/io";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import useScroll from "../../hooks/tools";
+import { Menu, Pin } from "../atoms/Icon";
 
 const MainVisual = memo(() => {
   const { pathname } = useLocation();
@@ -144,7 +142,7 @@ const MainVisual = memo(() => {
         </HStack>
       ) : (
         <IconButton
-          icon={<FiMenu size="20px" />}
+          icon={<Menu w="20px" />}
           aria-label="menu"
           pos="absolute"
           top="6"
@@ -257,11 +255,7 @@ const MainVisual = memo(() => {
           </Text>
 
           <HStack alignItems="center" spacing="1">
-            <Icon
-              as={IoMdPin}
-              boxSize={{ base: "18px", lg: "24px" }}
-              color="white"
-            />
+            <Pin boxSize={{ base: "18px", lg: "20px" }} color="white" />
             <Text
               fontSize={{ base: "md", lg: "xl" }}
               fontWeight="bold"

@@ -1,11 +1,10 @@
 import { Box } from "@chakra-ui/react";
-import { useEffect } from "react";
 import {
-  BrowserRouter,
+  createBrowserRouter,
   Navigate,
-  Route,
-  Routes,
-  useLocation
+  Outlet,
+  RouterProvider,
+  ScrollRestoration
 } from "react-router-dom";
 
 import ProgressBar from "./components/molecules/ProgressBar";
@@ -20,40 +19,37 @@ import SitePolicy from "./pages/SitePolicy";
 import Sponsor from "./pages/Sponsor";
 import Top from "./pages/Top";
 
-const AppRouter = () => {
-  const { pathname } = useLocation();
+const Layout = () => (
+  <Box flex="1" p="0" bg="white">
+    <ProgressBar />
+    <ScrollRestoration />
+    <Outlet />
+  </Box>
+);
 
-  useEffect(() => {
-    window.scrollTo(0, 1);
-  }, [pathname]);
-
-  return (
-    <Routes>
-      <Route path="/" element={<Top />} />
-      <Route path="/top" element={<Top />} />
-      <Route path="/activity" element={<Activity />} />
-      <Route path="/article/:id" element={<Article />} />
-      <Route path="/sponsor" element={<Sponsor />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/memory" element={<Memory />} />
-      <Route path="/privacypolicy" element={<PrivacyPolicy />} />
-      <Route path="/sitepolicy" element={<SitePolicy />} />
-      <Route path="/notfound" element={<NotFound />} />
-      <Route path="/error" element={<Error />} />
-      <Route path="*" element={<Navigate to="/notfound" replace />} />
-    </Routes>
-  );
-};
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      { path: "/", element: <Top /> },
+      { path: "/top", element: <Top /> },
+      { path: "/activity", element: <Activity /> },
+      { path: "/article/:id", element: <Article /> },
+      { path: "/sponsor", element: <Sponsor /> },
+      { path: "/contact", element: <Contact /> },
+      { path: "/memory", element: <Memory /> },
+      { path: "/privacypolicy", element: <PrivacyPolicy /> },
+      { path: "/sitepolicy", element: <SitePolicy /> },
+      { path: "/notfound", element: <NotFound /> },
+      { path: "/error", element: <Error /> },
+      { path: "*", element: <Navigate to="/notfound" replace /> }
+    ]
+  }
+]);
 
 const RootRouter = () => {
-  return (
-    <BrowserRouter>
-      <Box flex="1" p="0" bg="white">
-        <ProgressBar />
-        <AppRouter />
-      </Box>
-    </BrowserRouter>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default RootRouter;
