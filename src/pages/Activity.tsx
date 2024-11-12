@@ -1,5 +1,6 @@
 import { Text, VStack } from "@chakra-ui/react";
 import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
 
 import ScrollToTopButton from "../components/molecules/ScrollToTopButton";
 import SectionTitle from "../components/molecules/SectionTitle";
@@ -63,7 +64,28 @@ const Activity = () => {
           spacing={{ base: "4", md: "8" }}
         >
           <SectionTitle title="活動理由" />
-          <Text as="p" fontSize={{ base: "sm", md: "md" }} fontWeight="bold">
+          <motion.div
+            initial={{ x: 200, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 1, duration: 1 }}
+          >
+            <Text
+              fontSize={{ base: "sm", md: "xl" }}
+              fontWeight="bold"
+              animation={"slide-fade-in"}
+            >
+              思い出に残る二十歳のつどいに
+              <br />
+              地域で盛り上がる二十歳のつどいに
+            </Text>
+          </motion.div>
+
+          <Text
+            as="p"
+            fontSize={{ base: "sm", md: "md" }}
+            fontWeight="bold"
+            animation=""
+          >
             私たちが「二十歳のつどい」のために活動する理由は、コロナによって失われた同期との思い出をもう一度作り直すためです。
             <br />
             <br />
