@@ -1,4 +1,4 @@
-import { Box, Image, useBreakpointValue } from "@chakra-ui/react";
+import { Box, Image } from "@chakra-ui/react";
 import { AnimatePresence } from "framer-motion";
 import { useState, useEffect, memo } from "react";
 
@@ -12,7 +12,6 @@ type ImageCarouselProps = {
 const ImageCarousel = memo(({ images }: ImageCarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
-  const breakpoint = useBreakpointValue({ base: "base", md: "md" });
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -50,12 +49,7 @@ const ImageCarousel = memo(({ images }: ImageCarouselProps) => {
           >
             <Image
               src={images[currentIndex]}
-              alt={(currentIndex + 1).toString()}
-              fallbackSrc={
-                breakpoint === "base"
-                  ? "https://placehold.jp/28/e2e8f0/010158/600x400.png?text=No%20Image"
-                  : "https://placehold.jp/42/e2e8f0/010158/1260x840.png?text=No%20Image"
-              }
+              alt=""
               w="100%"
               h="100%"
               objectFit="cover"
