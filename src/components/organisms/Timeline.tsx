@@ -5,9 +5,9 @@ import {
   Circle,
   useBreakpointValue
 } from "@chakra-ui/react";
-import { format } from "date-fns";
 import { useEffect, useState, useMemo, useCallback, memo } from "react";
 
+import { formatByDot } from "../../functions";
 import type { Event } from "../../types";
 import TimelineItem from "../molecules/TimelineItem";
 
@@ -98,8 +98,8 @@ const Timeline = memo(({ events }: TimelineProps) => {
               fontWeight="bold"
             >
               {breakpoint === "base"
-                ? format(date, "yy.M.d")
-                : format(date, "yyyy.MM.dd")}
+                ? formatByDot(date, "yy.M.d")
+                : formatByDot(date, "yyyy.MM.dd")}
             </Text>
           ))}
         </VStack>

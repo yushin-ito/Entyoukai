@@ -1,5 +1,4 @@
 import { VStack, Text, Button, HStack, Divider } from "@chakra-ui/react";
-import { format } from "date-fns";
 import { Helmet } from "react-helmet-async";
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -11,6 +10,7 @@ import Footer from "../components/organisms/Footer";
 import ImageCarousel from "../components/organisms/ImageCarousel";
 import MainVisual from "../components/organisms/MainVisual";
 import { FIRST_ARTICLE_ID, END_ARTICLE_ID } from "../constants";
+import { formatByDot } from "../functions";
 import { useQueryArticle } from "../hooks/article";
 
 const Article = () => {
@@ -83,7 +83,7 @@ const Article = () => {
                     fontSize={{ base: "2xs", md: "xs" }}
                     color="gray.600"
                   >
-                    {format(new Date(article.date), "yyyy年MM月dd日")}
+                    {formatByDot(article.date, "yyyy年MM月dd日")}
                   </Text>
                 </VStack>
               </HStack>

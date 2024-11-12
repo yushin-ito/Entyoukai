@@ -1,15 +1,14 @@
-import { IconButton, useBreakpointValue } from "@chakra-ui/react";
+import { IconButton } from "@chakra-ui/react";
 import { AnimatePresence } from "framer-motion";
 import { useState, useEffect, memo } from "react";
-import { FiChevronUp } from "react-icons/fi";
 
 import useScroll from "../../hooks/tools";
+import { ChevronUp } from "../atoms/Icon";
 import MotionBox from "../atoms/MotionBox";
 
 const ScrollToTopButton = memo(() => {
   const [visible, setVisible] = useState(false);
   const { scrollToTop } = useScroll();
-  const breakpoint = useBreakpointValue({ base: "base", md: "md" });
 
   useEffect(() => {
     const onScroll = () => {
@@ -42,9 +41,7 @@ const ScrollToTopButton = memo(() => {
         >
           <IconButton
             aria-label="top"
-            icon={
-              <FiChevronUp size={breakpoint === "base" ? "24px" : "28px"} />
-            }
+            icon={<ChevronUp boxSize={{ base: "20px", md: "22px" }} />}
             size="lg"
             color="white"
             bg="brand"

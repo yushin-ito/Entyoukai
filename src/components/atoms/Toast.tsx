@@ -1,6 +1,7 @@
-import { HStack, Icon, Text } from "@chakra-ui/react";
+import { HStack, Text } from "@chakra-ui/react";
 import { memo } from "react";
-import { FiAlertCircle, FiCheckCircle, FiInfo, FiX } from "react-icons/fi";
+
+import { AlertCircle, CheckCircle, Cross, InfoCircle } from "./Icon";
 
 type ToastProps = {
   status: "info" | "success" | "error";
@@ -10,12 +11,12 @@ type ToastProps = {
 
 const Toast = memo(({ status, title, onClose }: ToastProps) => {
   const config = {
-    info: { icon: FiInfo, bg: "info" },
-    success: { icon: FiCheckCircle, bg: "success" },
-    error: { icon: FiAlertCircle, bg: "error" }
+    info: { Icon: InfoCircle, bg: "info" },
+    success: { Icon: CheckCircle, bg: "success" },
+    error: { Icon: AlertCircle, bg: "error" }
   };
 
-  const { icon, bg } = config[status];
+  const { bg, Icon } = config[status];
 
   return (
     <HStack
@@ -23,16 +24,15 @@ const Toast = memo(({ status, title, onClose }: ToastProps) => {
       py={{ base: "10px", md: "12px" }}
       bg={bg}
       rounded="md"
-      spacing={{ base: "8px", md: "12px" }}
+      spacing="1"
       alignItems="center"
     >
-      <Icon as={icon} boxSize={{ base: "18px", md: "22px" }} color="white" />
+      <Icon boxSize={{ base: "16px", md: "20px" }} color="white" />
       <Text fontSize={{ base: "sm", md: "md" }} color="white">
         {title}
       </Text>
-      <Icon
-        as={FiX}
-        boxSize={{ base: "16px", md: "18px" }}
+      <Cross
+        boxSize={{ base: "8px", md: "12px" }}
         color="white"
         onClick={onClose}
       />

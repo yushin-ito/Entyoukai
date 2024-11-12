@@ -6,12 +6,11 @@ import {
   useBreakpointValue,
   Heading
 } from "@chakra-ui/react";
-import { format, formatDistanceToNow, parseISO } from "date-fns";
-import { ja } from "date-fns/locale";
 import { useInView } from "framer-motion";
 import { memo, useRef } from "react";
 import { Link } from "react-router-dom";
 
+import { formatByDistance, formatByDot } from "../../functions";
 import Avatar from "../atoms/Avatar";
 import Image from "../atoms/Image";
 import MotionBox from "../atoms/MotionBox";
@@ -130,7 +129,7 @@ const ArticleListItem = memo(
                   rounded="full"
                 >
                   <Text fontSize="2xs" fontWeight="bold">
-                    {format(date, "yyyy.MM.dd")}
+                    {formatByDot(date, "yyyy.MM.dd")}
                   </Text>
                 </Box>
                 <HStack spacing="2">
@@ -166,10 +165,7 @@ const ArticleListItem = memo(
                   </Text>
                 </HStack>
                 <Text fontSize="2xs" color="gray.600">
-                  {formatDistanceToNow(parseISO(date), {
-                    addSuffix: true,
-                    locale: ja
-                  })}
+                  {formatByDistance(date)}
                 </Text>
               </HStack>
             )}
