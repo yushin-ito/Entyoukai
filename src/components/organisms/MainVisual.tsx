@@ -14,16 +14,16 @@ import {
   DrawerBody,
   useDisclosure,
   IconButton,
-  Image,
-  Heading
+  Heading,
+  Image
 } from "@chakra-ui/react";
+import { useIsFetching } from "@tanstack/react-query";
 import { useRef, useEffect, memo } from "react";
 import { FiMenu } from "react-icons/fi";
 import { IoMdPin } from "react-icons/io";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import useScroll from "../../hooks/tools";
-import useAppStore from "../../stores";
 
 const MainVisual = memo(() => {
   const { pathname } = useLocation();
@@ -36,12 +36,11 @@ const MainVisual = memo(() => {
     md: "/assets/images/background-tablet.webp",
     lg: "/assets/images/background-desktop.webp"
   });
-  const progress = useAppStore((state) => state.progress);
-
+  const isFetching = useIsFetching();
   const { scrollToElement } = useScroll();
 
   useEffect(() => {
-    if (pathname !== "/" && window.scrollY < 200 && progress === 100) {
+    if (pathname !== "/" && window.scrollY < 100 && isFetching === 0) {
       setTimeout(() => {
         const hash = window.location.hash;
         if (hash) {
@@ -57,7 +56,7 @@ const MainVisual = memo(() => {
         }
       }, 300);
     }
-  }, [pathname, progress, scrollToElement]);
+  }, [pathname, isFetching, scrollToElement]);
 
   return (
     <Center
@@ -65,20 +64,10 @@ const MainVisual = memo(() => {
       w="100vw"
       h={{ base: "calc(100vh * 0.8)", lg: "100vh" }}
       pos="relative"
+      bgImage={background}
+      bgSize="cover"
+      bgPos="center center"
     >
-      {/* 背景画像 */}
-      <Image
-        src={background}
-        alt="backgroud"
-        objectFit="cover"
-        w="100vw"
-        h="100%"
-        pos="absolute"
-        top="0"
-        left="0"
-        objectPosition="center center"
-      />
-
       {/* ロゴ */}
       <Image
         src="/assets/images/logo.webp"

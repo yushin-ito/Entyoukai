@@ -37,6 +37,7 @@ const Top = () => {
     >
       <Helmet>
         <title>トップ | 猿鳥会</title>
+        <link rel="canonical" href="https://entyoukai.com/" />
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
       <ScrollToTopButton />

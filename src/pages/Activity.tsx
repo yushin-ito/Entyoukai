@@ -1,6 +1,9 @@
-import { Text, VStack } from "@chakra-ui/react";
+import { Heading, Text, VStack } from "@chakra-ui/react";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 import { Helmet } from "react-helmet-async";
 
+import MotionBox from "../components/atoms/MotionBox";
 import ScrollToTopButton from "../components/molecules/ScrollToTopButton";
 import SectionTitle from "../components/molecules/SectionTitle";
 import ArticleList from "../components/organisms/ArticleList";
@@ -10,6 +13,8 @@ import TableOfContents from "../components/organisms/TableOfContents";
 import { useQueryArticles } from "../hooks/article";
 
 const Activity = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
   const { data: articles } = useQueryArticles();
 
   const schema = articles && {
@@ -63,7 +68,38 @@ const Activity = () => {
           spacing={{ base: "4", md: "8" }}
         >
           <SectionTitle title="活動理由" />
-          <Text as="p" fontSize={{ base: "sm", md: "md" }} fontWeight="bold">
+          <MotionBox
+            ref={ref}
+            initial={{ x: 50, opacity: 0 }}
+            animate={
+              isInView
+                ? {
+                    x: 0,
+                    opacity: 1,
+                    transition: { duration: 0.8 }
+                  }
+                : {}
+            }
+          >
+            <Heading
+              as="h3"
+              my={{ base: "1", md: "2" }}
+              fontSize={{ base: "md", md: "xl" }}
+              textAlign="center"
+              lineHeight="2"
+            >
+              思い出に残る二十歳のつどいに
+              <br />
+              地域で盛り上がる二十歳のつどいに
+            </Heading>
+          </MotionBox>
+
+          <Text
+            as="p"
+            fontSize={{ base: "sm", md: "md" }}
+            fontWeight="bold"
+            animation=""
+          >
             私たちが「二十歳のつどい」のために活動する理由は、コロナによって失われた同期との思い出をもう一度作り直すためです。
             <br />
             <br />
