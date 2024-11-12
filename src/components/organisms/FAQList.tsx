@@ -42,6 +42,7 @@ const FAQList = memo(({ faq }: FAQListProps) => {
                 Q.
               </Text>
               <Text
+                as="p"
                 textAlign="left"
                 fontSize={{ base: "xs", md: "sm" }}
                 fontWeight="bold"
