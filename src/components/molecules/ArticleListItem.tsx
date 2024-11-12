@@ -66,21 +66,17 @@ const ArticleListItem = memo(
               : { transform: "scale(1.00)" }
           }
         >
-          <Box w="100%" pos="relative">
-            {/* 画像 */}
-            <Image
-              src={images[0]}
-              alt={location}
-              w="100%"
-              minH="100px"
-              maxH="320px"
-              h={{
-                base: "calc(100vw * 0.8 * 0.7)",
-                md: "calc((100vw * 0.75 - 240px) / 2)",
-                lg: "calc((100vw * 0.55 - 320px) / 3)"
-              }}
-              rounded={{ base: "md", md: "xl" }}
-            />
+          {/* 画像 */}
+
+          <Image
+            w="100%"
+            display="flex"
+            src={images[0]}
+            alt={location}
+            aspectRatio={4 / 3}
+            rounded={{ base: "md", md: "xl" }}
+            pos="relative"
+          >
             {/* ロケーション */}
             <Box
               pos="absolute"
@@ -95,7 +91,8 @@ const ArticleListItem = memo(
                 {location}
               </Text>
             </Box>
-          </Box>
+          </Image>
+
           <VStack
             w="100%"
             px={{ base: "6px", md: "2px" }}

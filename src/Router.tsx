@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, VStack } from "@chakra-ui/react";
 import { lazy, Suspense, useEffect } from "react";
 import {
   createBrowserRouter,
@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 
 import ProgressBar from "./components/molecules/ProgressBar";
+import MainVisual from "./components/organisms/MainVisual";
 
 const Top = lazy(() => import("./pages/Top"));
 const Activity = lazy(() => import("./pages/Activity"));
@@ -31,14 +32,16 @@ const Layout = () => {
   return (
     <Box flex="1" p="0" bg="white">
       <ProgressBar />
-      <Outlet />
+      <VStack flex="1" spacing={{ base: "16", md: "24" }}>
+        <MainVisual />
+        <Outlet />
+      </VStack>
     </Box>
   );
 };
 
 const router = createBrowserRouter([
   {
-    path: "/",
     element: <Layout />,
     children: [
       {
@@ -112,26 +115,26 @@ const router = createBrowserRouter([
             <SitePolicy />
           </Suspense>
         )
-      },
-      {
-        path: "/notfound",
-        element: (
-          <Suspense>
-            <NotFound />
-          </Suspense>
-        )
-      },
-      {
-        path: "/error",
-        element: (
-          <Suspense>
-            <Error />
-          </Suspense>
-        )
-      },
-      { path: "*", element: <Navigate to="/notfound" replace /> }
+      }
     ]
-  }
+  },
+  {
+    path: "/notfound",
+    element: (
+      <Suspense>
+        <NotFound />
+      </Suspense>
+    )
+  },
+  {
+    path: "/error",
+    element: (
+      <Suspense>
+        <Error />
+      </Suspense>
+    )
+  },
+  { path: "*", element: <Navigate to="/notfound" replace /> }
 ]);
 
 const RootRouter = () => {

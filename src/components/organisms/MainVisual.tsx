@@ -28,12 +28,14 @@ const MainVisual = memo(() => {
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const ref = useRef<HTMLDivElement>(null);
-  const breakpoint = useBreakpointValue({ base: "base", md: "md", lg: "lg" });
-  const background = useBreakpointValue({
-    base: "/assets/images/background-mobile.webp",
-    md: "/assets/images/background-tablet.webp",
-    lg: "/assets/images/background-desktop.webp"
-  });
+  const breakpoint = useBreakpointValue(
+    {
+      base: "base",
+      md: "md",
+      lg: "lg"
+    },
+    { fallback: undefined }
+  );
   const isFetching = useIsFetching();
   const { scrollToElement } = useScroll();
 
@@ -58,13 +60,16 @@ const MainVisual = memo(() => {
 
   return (
     <Center
-      bg="white"
-      w="100vw"
+      w="100%"
       h={{ base: "calc(100vh * 0.8)", lg: "100vh" }}
-      pos="relative"
-      bgImage={background}
+      bgImage={{
+        base: "url(/assets/images/background-mobile.webp)",
+        md: "url(/assets/images/background-tablet.webp)",
+        lg: "url(/assets/images/background-desktop.webp)"
+      }}
       bgSize="cover"
       bgPos="center center"
+      pos="relative"
     >
       {/* ロゴ */}
       <Image
@@ -81,7 +86,7 @@ const MainVisual = memo(() => {
       />
 
       {/* ナビゲーションバー */}
-      {breakpoint === "lg" ? (
+      {(breakpoint === "md" || breakpoint === "lg") && (
         <HStack
           as="nav"
           pos="absolute"
@@ -140,16 +145,18 @@ const MainVisual = memo(() => {
             お問い合わせ
           </Button>
         </HStack>
-      ) : (
+      )}
+
+      {/* ハンバーガーメニュー */}
+      {breakpoint === "base" && (
         <IconButton
-          icon={<Menu w="20px" />}
+          icon={<Menu boxSize="18px" />}
           aria-label="menu"
           pos="absolute"
           top="6"
           right="8"
           color="white"
           bg="brand"
-          _hover={{ opacity: { base: 1, lg: 0.8 } }}
           _active={{
             transform: "scale(0.98)",
             opacity: 0.8
@@ -161,75 +168,77 @@ const MainVisual = memo(() => {
       )}
 
       {/* ドロワー */}
-      <Drawer placement="left" isOpen={isOpen} onClose={onClose}>
-        <DrawerOverlay />
-        <DrawerContent
-          maxW={{ base: "60%", sm: "40%" }}
-          bg="brand"
-          opacity="0.8"
-        >
-          <DrawerCloseButton mt="2" color="white" size="md" />
-          <DrawerBody>
-            <VStack mt="20" spacing="10">
-              <Button
-                as={Link}
-                to="/top"
-                variant="link"
-                color="white"
-                fontSize="lg"
-                _active={{ opacity: 0.6 }}
-                onClick={onClose}
-              >
-                トップ
-              </Button>
-              <Button
-                as={Link}
-                to="/activity"
-                variant="link"
-                color="white"
-                fontSize="lg"
-                _active={{ opacity: 0.6 }}
-                onClick={onClose}
-              >
-                活動について
-              </Button>
-              <Button
-                as={Link}
-                to="/sponsor"
-                variant="link"
-                color="white"
-                fontSize="lg"
-                _active={{ opacity: 0.6 }}
-                onClick={onClose}
-              >
-                協賛について
-              </Button>
-              <Button
-                as={Link}
-                to="/memory"
-                variant="link"
-                color="white"
-                fontSize="lg"
-                _active={{ opacity: 0.6 }}
-                onClick={onClose}
-              >
-                おもいで
-              </Button>
-              <Button
-                as={Link}
-                to="/contact"
-                variant="link"
-                color="white"
-                fontSize="lg"
-                _active={{ opacity: 0.6 }}
-                onClick={onClose}
-              >
-                お問い合わせ
-              </Button>
-            </VStack>
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
+      {breakpoint === "base" && (
+        <Drawer placement="left" isOpen={isOpen} onClose={onClose}>
+          <DrawerOverlay />
+          <DrawerContent
+            maxW={{ base: "60%", sm: "40%" }}
+            bg="brand"
+            opacity="0.8"
+          >
+            <DrawerCloseButton mt="2" color="white" size="md" />
+            <DrawerBody>
+              <VStack mt="20" spacing="10">
+                <Button
+                  as={Link}
+                  to="/top"
+                  variant="link"
+                  color="white"
+                  fontSize="lg"
+                  _active={{ opacity: 0.6 }}
+                  onClick={onClose}
+                >
+                  トップ
+                </Button>
+                <Button
+                  as={Link}
+                  to="/activity"
+                  variant="link"
+                  color="white"
+                  fontSize="lg"
+                  _active={{ opacity: 0.6 }}
+                  onClick={onClose}
+                >
+                  活動について
+                </Button>
+                <Button
+                  as={Link}
+                  to="/sponsor"
+                  variant="link"
+                  color="white"
+                  fontSize="lg"
+                  _active={{ opacity: 0.6 }}
+                  onClick={onClose}
+                >
+                  協賛について
+                </Button>
+                <Button
+                  as={Link}
+                  to="/memory"
+                  variant="link"
+                  color="white"
+                  fontSize="lg"
+                  _active={{ opacity: 0.6 }}
+                  onClick={onClose}
+                >
+                  おもいで
+                </Button>
+                <Button
+                  as={Link}
+                  to="/contact"
+                  variant="link"
+                  color="white"
+                  fontSize="lg"
+                  _active={{ opacity: 0.6 }}
+                  onClick={onClose}
+                >
+                  お問い合わせ
+                </Button>
+              </VStack>
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
+      )}
 
       {/* メインビジュアル */}
       <VStack

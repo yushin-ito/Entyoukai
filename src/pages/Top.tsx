@@ -7,7 +7,6 @@ import Access from "../components/organisms/Access";
 import Countdown from "../components/organisms/Countdown";
 import FAQList from "../components/organisms/FAQList";
 import Footer from "../components/organisms/Footer";
-import MainVisual from "../components/organisms/MainVisual";
 import NewsList from "../components/organisms/NewsList";
 import TableOfContents from "../components/organisms/TableOfContents";
 import { useQueryFAQ } from "../hooks/faq";
@@ -27,21 +26,13 @@ const Top = () => {
   };
 
   return (
-    <VStack
-      as="main"
-      flex="1"
-      alignItems="center"
-      spacing={{ base: "16", md: "24" }}
-      overflowX="hidden"
-      pos="relative"
-    >
+    <VStack flex="1" spacing={{ base: "16", md: "24" }} pos="relative">
       <Helmet>
         <title>トップ | 猿鳥会</title>
         <link rel="canonical" href="https://entyoukai.com/" />
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
       <ScrollToTopButton />
-      <MainVisual />
       <TableOfContents
         sections={[
           { id: "overview", title: "概要" },

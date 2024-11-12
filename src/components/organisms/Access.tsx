@@ -16,11 +16,11 @@ const Access = memo(() => {
         href="https://www.google.com/maps/place/朝日町社会福祉協議会/data=!3m1!4b1!4m5!3m4!1s0x600390039160dda3:0xee33fbe0c1cb0eb3!8m2!3d35.034595!4d136.6616533"
         isExternal
       >
-        <Box
+        <Image
+          alt="保健福祉センター（さわやか村）の地図"
+          src={`https://maps.googleapis.com/maps/api/staticmap?center=朝日町社会福祉協議会&zoom=18&size=600x450&markers=color:red|朝日町社会福祉協議会&key=${GOOGLE_MAPS_API_KEY}`}
           w={{ base: "100%", md: "320px" }}
           aspectRatio={4 / 3}
-          overflow="hidden"
-          shadow="sm"
           pos="relative"
           _hover={{ opacity: { base: 1, md: 0.8 } }}
           _active={{
@@ -28,13 +28,6 @@ const Access = memo(() => {
             opacity: 0.8
           }}
         >
-          <Image
-            alt="保健福祉センター（さわやか村）の地図"
-            src={`https://maps.googleapis.com/maps/api/staticmap?center=朝日町社会福祉協議会&zoom=18&size=600x450&markers=color:red|朝日町社会福祉協議会&key=${GOOGLE_MAPS_API_KEY}`}
-            w="100%"
-            h="100%"
-            objectFit="cover"
-          />
           <Box
             pos="absolute"
             bottom={{ base: "3", md: "2" }}
@@ -47,7 +40,7 @@ const Access = memo(() => {
               クリックで詳細を表示
             </Text>
           </Box>
-        </Box>
+        </Image>
       </Link>
       <VStack spacing={{ base: "4", md: "8" }} alignItems="flex-start">
         <VStack spacing={{ base: "1", md: "2" }} alignItems="flex-start">

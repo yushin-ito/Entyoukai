@@ -101,7 +101,7 @@ const ArticleList = memo(({ articles }: ArticleListProps) => {
   ) : (
     <SimpleGrid
       w="100%"
-      px="4"
+      px="2"
       columns={breakpoint === "md" ? 2 : 3}
       spacingX="10"
       spacingY="12"
