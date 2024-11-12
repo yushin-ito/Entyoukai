@@ -1,7 +1,9 @@
-import { Text, VStack } from "@chakra-ui/react";
+import { Heading, Text, VStack } from "@chakra-ui/react";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 import { Helmet } from "react-helmet-async";
-import { motion } from "framer-motion";
 
+import MotionBox from "../components/atoms/MotionBox";
 import ScrollToTopButton from "../components/molecules/ScrollToTopButton";
 import SectionTitle from "../components/molecules/SectionTitle";
 import ArticleList from "../components/organisms/ArticleList";
@@ -11,6 +13,8 @@ import TableOfContents from "../components/organisms/TableOfContents";
 import { useQueryArticles } from "../hooks/article";
 
 const Activity = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
   const { data: articles } = useQueryArticles();
 
   const schema = articles && {
@@ -64,21 +68,31 @@ const Activity = () => {
           spacing={{ base: "4", md: "8" }}
         >
           <SectionTitle title="活動理由" />
-          <motion.div
-            initial={{ x: 200, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 1, duration: 1 }}
+          <MotionBox
+            ref={ref}
+            initial={{ x: 50, opacity: 0 }}
+            animate={
+              isInView
+                ? {
+                    x: 0,
+                    opacity: 1,
+                    transition: { duration: 0.8 }
+                  }
+                : {}
+            }
           >
-            <Text
-              fontSize={{ base: "sm", md: "xl" }}
-              fontWeight="bold"
-              animation={"slide-fade-in"}
+            <Heading
+              as="h3"
+              my={{ base: "1", md: "2" }}
+              fontSize={{ base: "md", md: "xl" }}
+              textAlign="center"
+              lineHeight="2"
             >
               思い出に残る二十歳のつどいに
               <br />
               地域で盛り上がる二十歳のつどいに
-            </Text>
-          </motion.div>
+            </Heading>
+          </MotionBox>
 
           <Text
             as="p"
