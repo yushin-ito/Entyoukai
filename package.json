@@ -6,7 +6,7 @@
   "homepage": "https://entyoukai.com",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build --mode production",
     "preview": "vite preview",
     "lint": "eslint './src/**/*.{js,ts,tsx}'",
     "lint:fix": "eslint --fix './src/**/*.{js,ts,tsx}'",
