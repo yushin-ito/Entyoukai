@@ -1,4 +1,5 @@
 import { Box } from "@chakra-ui/react";
+import { lazy, Suspense } from "react";
 import {
   createBrowserRouter,
   Navigate,
@@ -8,16 +9,17 @@ import {
 } from "react-router-dom";
 
 import ProgressBar from "./components/molecules/ProgressBar";
-import Activity from "./pages/Activity";
-import Article from "./pages/Article";
-import Contact from "./pages/Contact";
-import Error from "./pages/Error";
-import Memory from "./pages/Memory";
-import NotFound from "./pages/NotFound";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import SitePolicy from "./pages/SitePolicy";
-import Sponsor from "./pages/Sponsor";
-import Top from "./pages/Top";
+
+const Top = lazy(() => import("./pages/Top"));
+const Activity = lazy(() => import("./pages/Activity"));
+const Article = lazy(() => import("./pages/Article"));
+const Sponsor = lazy(() => import("./pages/Sponsor"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Memory = lazy(() => import("./pages/Memory"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const SitePolicy = lazy(() => import("./pages/SitePolicy"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const Error = lazy(() => import("./pages/Error"));
 
 const Layout = () => (
   <Box flex="1" p="0" bg="white">
@@ -32,17 +34,94 @@ const router = createBrowserRouter([
     path: "/",
     element: <Layout />,
     children: [
-      { path: "/", element: <Top /> },
-      { path: "/top", element: <Top /> },
-      { path: "/activity", element: <Activity /> },
-      { path: "/article/:id", element: <Article /> },
-      { path: "/sponsor", element: <Sponsor /> },
-      { path: "/contact", element: <Contact /> },
-      { path: "/memory", element: <Memory /> },
-      { path: "/privacypolicy", element: <PrivacyPolicy /> },
-      { path: "/sitepolicy", element: <SitePolicy /> },
-      { path: "/notfound", element: <NotFound /> },
-      { path: "/error", element: <Error /> },
+      {
+        path: "/",
+        element: (
+          <Suspense>
+            <Top />
+          </Suspense>
+        )
+      },
+      {
+        path: "/top",
+        element: (
+          <Suspense>
+            <Top />
+          </Suspense>
+        )
+      },
+      {
+        path: "/activity",
+        element: (
+          <Suspense>
+            <Activity />
+          </Suspense>
+        )
+      },
+      {
+        path: "/article/:id",
+        element: (
+          <Suspense>
+            <Article />
+          </Suspense>
+        )
+      },
+      {
+        path: "/sponsor",
+        element: (
+          <Suspense>
+            <Sponsor />
+          </Suspense>
+        )
+      },
+      {
+        path: "/contact",
+        element: (
+          <Suspense>
+            <Contact />
+          </Suspense>
+        )
+      },
+      {
+        path: "/memory",
+        element: (
+          <Suspense>
+            <Memory />
+          </Suspense>
+        )
+      },
+      {
+        path: "/privacypolicy",
+        element: (
+          <Suspense>
+            <PrivacyPolicy />
+          </Suspense>
+        )
+      },
+      {
+        path: "/sitepolicy",
+        element: (
+          <Suspense>
+            <SitePolicy />
+          </Suspense>
+        )
+      },
+      {
+        path: "/notfound",
+        element: (
+          <Suspense>
+            <NotFound />
+          </Suspense>
+        )
+      },
+      {
+        path: "/error",
+        element: (
+          <Suspense>
+            <Error />
+          </Suspense>
+        )
+      },
       { path: "*", element: <Navigate to="/notfound" replace /> }
     ]
   }
