@@ -43,7 +43,6 @@ const ArticleListItem = memo(
 
     return (
       <MotionBox
-        as="li"
         ref={ref}
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1, transition: { duration: 1 } } : {}}

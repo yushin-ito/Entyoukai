@@ -80,7 +80,6 @@ const Sponsor = () => {
         >
           <SectionTitle title="協賛一覧（敬称略）" />
           <SimpleGrid
-            as="ul"
             w="100%"
             columns={{ base: 1, md: 2 }}
             spacingY="4"
@@ -89,7 +88,6 @@ const Sponsor = () => {
             {sponsors?.map((sponsor, index) =>
               sponsor.url ? (
                 <Link
-                  as="li"
                   key={index}
                   href={sponsor.url}
                   isExternal
@@ -101,7 +99,6 @@ const Sponsor = () => {
                 </Link>
               ) : (
                 <Text
-                  as="li"
                   key={index}
                   fontSize={{ base: "sm", md: "md" }}
                   fontWeight="bold"

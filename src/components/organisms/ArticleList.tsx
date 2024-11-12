@@ -63,7 +63,6 @@ const ArticleList = memo(({ articles }: ArticleListProps) => {
           w={`calc(${articles.length * 100}vw * 0.8 + ${24 * articles.length}px )`}
           spacing="0"
           alignItems="flex-start"
-          as="ul"
         >
           {articles.map((article, index) => (
             <Box
@@ -72,7 +71,6 @@ const ArticleList = memo(({ articles }: ArticleListProps) => {
               mr="24px"
               scrollSnapAlign="start"
               overflow="clip"
-              listStyleType="none"
             >
               <ArticleListItem
                 id={article.id}
@@ -102,7 +100,6 @@ const ArticleList = memo(({ articles }: ArticleListProps) => {
     </VStack>
   ) : (
     <SimpleGrid
-      as="ul"
       w="100%"
       px="4"
       columns={breakpoint === "md" ? 2 : 3}
