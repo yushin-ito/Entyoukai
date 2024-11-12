@@ -1,11 +1,11 @@
 import { Box } from "@chakra-ui/react";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import {
   createBrowserRouter,
   Navigate,
   Outlet,
   RouterProvider,
-  ScrollRestoration
+  useLocation
 } from "react-router-dom";
 
 import ProgressBar from "./components/molecules/ProgressBar";
@@ -21,13 +21,20 @@ const SitePolicy = lazy(() => import("./pages/SitePolicy"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Error = lazy(() => import("./pages/Error"));
 
-const Layout = () => (
-  <Box flex="1" p="0" bg="white">
-    <ProgressBar />
-    <ScrollRestoration />
-    <Outlet />
-  </Box>
-);
+const Layout = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return (
+    <Box flex="1" p="0" bg="white">
+      <ProgressBar />
+      <Outlet />
+    </Box>
+  );
+};
 
 const router = createBrowserRouter([
   {
