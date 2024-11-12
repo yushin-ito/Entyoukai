@@ -126,7 +126,7 @@ const NewsList = memo(({ news }: NewsListProps) => {
                 <Box
                   bg="brand"
                   px={{ base: "6px", md: "8px" }}
-                  py={{ base: "2px", md: "4px" }}
+                  py={{ base: "1.5px", md: "2.5px" }}
                   rounded="full"
                 >
                   <Text
