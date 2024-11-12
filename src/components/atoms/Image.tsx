@@ -7,10 +7,9 @@ import Skeleton from "./Skeleton";
 type ImageProps = BoxProps & {
   alt: string;
   src: string;
-  fallbackSrc: string;
 };
 
-const Image = memo(({ alt, src, fallbackSrc, ...props }: ImageProps) => {
+const Image = memo(({ alt, src, ...props }: ImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
@@ -22,12 +21,12 @@ const Image = memo(({ alt, src, fallbackSrc, ...props }: ImageProps) => {
           transition: { duration: 0.8, ease: "easeOut" }
         }}
         overflow="hidden"
+        bg="gray.200"
         {...props}
       >
         <ChakraImage
           src={src}
           alt={alt}
-          fallbackSrc={fallbackSrc}
           w="100%"
           h="100%"
           objectFit="cover"

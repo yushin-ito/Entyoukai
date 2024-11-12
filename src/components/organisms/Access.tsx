@@ -1,5 +1,9 @@
-import { VStack, Text, Stack, Heading, Box } from "@chakra-ui/react";
+import { VStack, Text, Stack, Heading, Box, Link } from "@chakra-ui/react";
 import { memo } from "react";
+
+import Image from "../atoms/Image";
+
+const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
 const Access = memo(() => {
   return (
@@ -8,16 +12,43 @@ const Access = memo(() => {
       direction={{ base: "column", md: "row" }}
       spacing={{ base: "4", md: "6" }}
     >
-      <Box w={{ base: "100%", md: "320px" }} h={{ base: "240px", md: "210px" }}>
-        <iframe
-          title="保健福祉センター"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6533.770941781844!2d136.66164791053401!3d35.0345949726894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x400390039160dda3%3A0xee33fbe0c1cb0eb3!2z5pyd5pel55S656S-5Lya56aP56WJ5Y2U6K2w5Lya!5e0!3m2!1sja!2sjp!4v1729970214415!5m2!1sja!2sjp"
-          width="100%"
-          height="100%"
-          loading="lazy"
-          style={{ border: 0 }}
-        />
-      </Box>
+      <Link
+        href="https://www.google.com/maps/place/朝日町社会福祉協議会/data=!3m1!4b1!4m5!3m4!1s0x600390039160dda3:0xee33fbe0c1cb0eb3!8m2!3d35.034595!4d136.6616533"
+        isExternal
+      >
+        <Box
+          w={{ base: "100%", md: "320px" }}
+          aspectRatio={4 / 3}
+          overflow="hidden"
+          shadow="sm"
+          pos="relative"
+          _hover={{ opacity: { base: 1, md: 0.8 } }}
+          _active={{
+            transform: "scale(0.98)",
+            opacity: 0.8
+          }}
+        >
+          <Image
+            alt="保健福祉センター（さわやか村）の地図"
+            src={`https://maps.googleapis.com/maps/api/staticmap?center=朝日町社会福祉協議会&zoom=18&size=600x450&markers=color:red|朝日町社会福祉協議会&key=${GOOGLE_MAPS_API_KEY}`}
+            w="100%"
+            h="100%"
+            objectFit="cover"
+          />
+          <Box
+            pos="absolute"
+            bottom={{ base: "3", md: "2" }}
+            right={{ base: "3", md: "2" }}
+            px="6px"
+            py="2.5px"
+            bg="rgba(0, 0, 0, 0.6)"
+          >
+            <Text fontSize="xs" color="white">
+              クリックで詳細を表示
+            </Text>
+          </Box>
+        </Box>
+      </Link>
       <VStack spacing={{ base: "4", md: "8" }} alignItems="flex-start">
         <VStack spacing={{ base: "1", md: "2" }} alignItems="flex-start">
           <Heading as="h3" fontSize={{ base: "sm", md: "md" }}>
