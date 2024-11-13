@@ -24,10 +24,12 @@ const TableOfContents = memo(({ sections }: TableOfContentsProps) => {
   useEffect(() => {
     const onScroll = () => {
       setFixed(window.scrollY >= window.innerHeight);
+
       let id = "";
       let max = 0;
 
-      sections.forEach((section) => {
+      for (let i = 0; i < sections.length; i++) {
+        const section = sections[i];
         const element = document.getElementById(section.id);
         if (element) {
           const rect = element.getBoundingClientRect();
@@ -40,7 +42,7 @@ const TableOfContents = memo(({ sections }: TableOfContentsProps) => {
             id = section.id;
           }
         }
-      });
+      }
 
       if (id) {
         setActiveId(id);
