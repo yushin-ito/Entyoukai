@@ -180,7 +180,7 @@ const MainVisual = memo(() => {
           </HStack>
         </VStack>
       </VStack>
-      <Box id="target" pos="absolute" bottom="20" />
+      <Box id="target" pos="absolute" bottom="0" />
     </Center>
   );
 });
