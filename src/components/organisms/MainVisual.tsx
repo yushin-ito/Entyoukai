@@ -16,18 +16,14 @@ import {
   Heading,
   Image
 } from "@chakra-ui/react";
-import { useIsFetching } from "@tanstack/react-query";
-import { useRef, useEffect, memo } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { memo } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-import useScroll from "../../hooks/tools";
 import { Menu, Pin } from "../atoms/Icon";
 
 const MainVisual = memo(() => {
-  const { pathname } = useLocation();
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const ref = useRef<HTMLDivElement>(null);
   const breakpoint = useBreakpointValue(
     {
       base: "base",
@@ -36,27 +32,6 @@ const MainVisual = memo(() => {
     },
     { fallback: undefined }
   );
-  const isFetching = useIsFetching();
-  const { scrollToElement } = useScroll();
-
-  useEffect(() => {
-    if (pathname !== "/" && window.scrollY < 100 && isFetching === 0) {
-      setTimeout(() => {
-        const hash = window.location.hash;
-        if (hash) {
-          const sectionId = hash.substring(1);
-          const element = document.getElementById(sectionId);
-          if (element) {
-            scrollToElement(element, 500);
-          }
-        } else {
-          if (ref.current) {
-            scrollToElement(ref.current, 500);
-          }
-        }
-      }, 300);
-    }
-  }, [pathname, isFetching, scrollToElement]);
 
   return (
     <Center
@@ -274,7 +249,7 @@ const MainVisual = memo(() => {
           </HStack>
         </VStack>
       </VStack>
-      <Box ref={ref} pos="absolute" bottom="20" />
+      <Box id="target" pos="absolute" bottom="20" />
     </Center>
   );
 });

@@ -1,4 +1,4 @@
-import { Box, VStack } from "@chakra-ui/react";
+import { VStack } from "@chakra-ui/react";
 import { lazy, Suspense, useEffect } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import {
@@ -13,6 +13,8 @@ import {
 import ProgressBar from "./components/molecules/ProgressBar";
 import Footer from "./components/organisms/Footer";
 import MainVisual from "./components/organisms/MainVisual";
+import { useLoading } from "./contexts";
+import useScroll from "./hooks/tools";
 
 const Top = lazy(() => import("./pages/Top"));
 const Activity = lazy(() => import("./pages/Activity"));
@@ -38,20 +40,41 @@ const Fallback = () => {
 const Layout = () => {
   const { pathname } = useLocation();
 
+  const { scrollToElement } = useScroll();
+  const { isLoading } = useLoading();
+
   useEffect(() => {
     window.scrollTo(0, 1);
   }, [pathname]);
 
+  useEffect(() => {
+    if (pathname !== "/" && !isLoading && window.scrollY === 1) {
+      setTimeout(() => {
+        const hash = window.location.hash;
+        if (hash) {
+          const sectionId = hash.substring(1);
+          const element = document.getElementById(sectionId);
+          if (element) {
+            scrollToElement(element, 500);
+          }
+        } else {
+          const targetId = "target";
+          const element = document.getElementById(targetId);
+          if (element) {
+            scrollToElement(element, 500);
+          }
+        }
+      }, 300);
+    }
+  }, [pathname, isLoading, scrollToElement]);
+
   return (
     <ErrorBoundary fallback={<Fallback />}>
-      <Box flex="1" p="0" bg="white">
-        <ProgressBar />
-        <VStack flex="1" spacing={{ base: "16", md: "24" }}>
-          <MainVisual />
-          <Outlet />
-          <Footer />
-        </VStack>
-      </Box>
+      <VStack flex="1" p="0" spacing={{ base: "16", md: "24" }} bg="white">
+        <MainVisual />
+        <Outlet />
+        <Footer />
+      </VStack>
     </ErrorBoundary>
   );
 };
@@ -63,7 +86,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: (
-          <Suspense>
+          <Suspense fallback={<ProgressBar />}>
             <Top />
           </Suspense>
         )
@@ -71,7 +94,7 @@ const router = createBrowserRouter([
       {
         path: "/top",
         element: (
-          <Suspense>
+          <Suspense fallback={<ProgressBar />}>
             <Top />
           </Suspense>
         )
@@ -79,7 +102,7 @@ const router = createBrowserRouter([
       {
         path: "/activity",
         element: (
-          <Suspense>
+          <Suspense fallback={<ProgressBar />}>
             <Activity />
           </Suspense>
         )
@@ -87,7 +110,7 @@ const router = createBrowserRouter([
       {
         path: "/article/:id",
         element: (
-          <Suspense>
+          <Suspense fallback={<ProgressBar />}>
             <Article />
           </Suspense>
         )
@@ -95,7 +118,7 @@ const router = createBrowserRouter([
       {
         path: "/sponsor",
         element: (
-          <Suspense>
+          <Suspense fallback={<ProgressBar />}>
             <Sponsor />
           </Suspense>
         )
@@ -103,7 +126,7 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: (
-          <Suspense>
+          <Suspense fallback={<ProgressBar />}>
             <Contact />
           </Suspense>
         )
@@ -111,7 +134,7 @@ const router = createBrowserRouter([
       {
         path: "/memory",
         element: (
-          <Suspense>
+          <Suspense fallback={<ProgressBar />}>
             <Memory />
           </Suspense>
         )
@@ -119,7 +142,7 @@ const router = createBrowserRouter([
       {
         path: "/privacypolicy",
         element: (
-          <Suspense>
+          <Suspense fallback={<ProgressBar />}>
             <PrivacyPolicy />
           </Suspense>
         )
@@ -127,7 +150,7 @@ const router = createBrowserRouter([
       {
         path: "/sitepolicy",
         element: (
-          <Suspense>
+          <Suspense fallback={<ProgressBar />}>
             <SitePolicy />
           </Suspense>
         )
@@ -137,7 +160,7 @@ const router = createBrowserRouter([
   {
     path: "/notfound",
     element: (
-      <Suspense>
+      <Suspense fallback={<ProgressBar />}>
         <NotFound />
       </Suspense>
     )
@@ -145,7 +168,7 @@ const router = createBrowserRouter([
   {
     path: "/error",
     element: (
-      <Suspense>
+      <Suspense fallback={<ProgressBar />}>
         <Error />
       </Suspense>
     )
