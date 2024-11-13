@@ -1,11 +1,13 @@
 import { Box, VStack } from "@chakra-ui/react";
 import { lazy, Suspense, useEffect } from "react";
+import { ErrorBoundary } from "react-error-boundary";
 import {
   createBrowserRouter,
   Navigate,
   Outlet,
   RouterProvider,
-  useLocation
+  useLocation,
+  useNavigate
 } from "react-router-dom";
 
 import ProgressBar from "./components/molecules/ProgressBar";
@@ -22,6 +24,16 @@ const SitePolicy = lazy(() => import("./pages/SitePolicy"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Error = lazy(() => import("./pages/Error"));
 
+const Fallback = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate("/error");
+  }, [navigate]);
+
+  return null;
+};
+
 const Layout = () => {
   const { pathname } = useLocation();
 
@@ -30,13 +42,15 @@ const Layout = () => {
   }, [pathname]);
 
   return (
-    <Box flex="1" p="0" bg="white">
-      <ProgressBar />
-      <VStack flex="1" spacing={{ base: "16", md: "24" }}>
-        <MainVisual />
-        <Outlet />
-      </VStack>
-    </Box>
+    <ErrorBoundary fallback={<Fallback />}>
+      <Box flex="1" p="0" bg="white">
+        <ProgressBar />
+        <VStack flex="1" spacing={{ base: "16", md: "24" }}>
+          <MainVisual />
+          <Outlet />
+        </VStack>
+      </Box>
+    </ErrorBoundary>
   );
 };
 
