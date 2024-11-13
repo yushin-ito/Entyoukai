@@ -39,6 +39,7 @@ const Image = memo(({ alt, src, ...props }: ImageProps) => {
           loading="lazy"
           onLoad={() => setIsLoaded(true)}
         />
+        {props.children}
       </MotionBox>
     </Skeleton>
   );
