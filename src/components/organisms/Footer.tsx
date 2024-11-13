@@ -7,6 +7,7 @@ const Footer = memo(() => {
     <VStack
       as="footer"
       w="100%"
+      mt="12"
       py={{ base: "6", md: "8" }}
       spacing={{ base: "6", md: "8" }}
       bg="brand"
@@ -17,7 +18,7 @@ const Footer = memo(() => {
           to="/sitepolicy"
           variant="link"
           fontSize={{ base: "2xs", md: "sm" }}
-          fontWeight="extrabold"
+          fontWeight="bold"
           color="white"
         >
           サイトポリシー
@@ -27,7 +28,7 @@ const Footer = memo(() => {
           to="/privacypolicy"
           variant="link"
           fontSize={{ base: "2xs", md: "sm" }}
-          fontWeight="extrabold"
+          fontWeight="bold"
           color="white"
         >
           プライバシーポリシー
@@ -37,7 +38,7 @@ const Footer = memo(() => {
           to="/contact"
           variant="link"
           fontSize={{ base: "2xs", md: "sm" }}
-          fontWeight="extrabold"
+          fontWeight="bold"
           color="white"
         >
           お問い合わせ

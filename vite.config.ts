@@ -9,8 +9,5 @@ export default defineConfig({
     chunkSizeWarningLimit: 1000,
     cssCodeSplit: true,
     sourcemap: false
-  },
-  esbuild: {
-    drop: ["console", "debugger"]
   }
 });

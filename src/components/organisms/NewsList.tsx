@@ -57,7 +57,7 @@ const NewsList = memo(({ news }: NewsListProps) => {
         {Object.keys(categories).map((id, index) => (
           <Button
             key={index}
-            h={{ base: "24px", md: "28px" }}
+            h={{ base: "24px", md: "30px" }}
             px={{ base: "8px", md: "12px" }}
             rounded="full"
             bg={activeId === id ? "brand" : "gray.300"}

@@ -6,28 +6,21 @@ import {
   Box,
   Center,
   useBreakpointValue,
-  Drawer,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  DrawerBody,
   useDisclosure,
   IconButton,
   Heading,
   Image
 } from "@chakra-ui/react";
-import { useIsFetching } from "@tanstack/react-query";
-import { useRef, useEffect, memo } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { memo, Suspense, lazy } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-import useScroll from "../../hooks/tools";
 import { Menu, Pin } from "../atoms/Icon";
 
+const NavigationDrawer = lazy(() => import("../molecules/NavigationDrawer"));
+
 const MainVisual = memo(() => {
-  const { pathname } = useLocation();
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const ref = useRef<HTMLDivElement>(null);
   const breakpoint = useBreakpointValue(
     {
       base: "base",
@@ -36,27 +29,6 @@ const MainVisual = memo(() => {
     },
     { fallback: undefined }
   );
-  const isFetching = useIsFetching();
-  const { scrollToElement } = useScroll();
-
-  useEffect(() => {
-    if (pathname !== "/" && window.scrollY < 100 && isFetching === 0) {
-      setTimeout(() => {
-        const hash = window.location.hash;
-        if (hash) {
-          const sectionId = hash.substring(1);
-          const element = document.getElementById(sectionId);
-          if (element) {
-            scrollToElement(element, 500);
-          }
-        } else {
-          if (ref.current) {
-            scrollToElement(ref.current, 500);
-          }
-        }
-      }, 300);
-    }
-  }, [pathname, isFetching, scrollToElement]);
 
   return (
     <Center
@@ -163,77 +135,11 @@ const MainVisual = memo(() => {
       )}
 
       {/* ドロワー */}
-      {(breakpoint === "base" || breakpoint === "md") && (
-        <Drawer placement="left" isOpen={isOpen} onClose={onClose}>
-          <DrawerOverlay />
-          <DrawerContent
-            maxW={{ base: "60%", sm: "40%" }}
-            bg="brand"
-            opacity="0.8"
-          >
-            <DrawerCloseButton mt="2" color="white" size="md" />
-            <DrawerBody>
-              <VStack mt="20" spacing="10">
-                <Button
-                  as={Link}
-                  to="/top"
-                  variant="link"
-                  color="white"
-                  fontSize="lg"
-                  _active={{ opacity: 0.6 }}
-                  onClick={onClose}
-                >
-                  トップ
-                </Button>
-                <Button
-                  as={Link}
-                  to="/activity"
-                  variant="link"
-                  color="white"
-                  fontSize="lg"
-                  _active={{ opacity: 0.6 }}
-                  onClick={onClose}
-                >
-                  活動について
-                </Button>
-                <Button
-                  as={Link}
-                  to="/sponsor"
-                  variant="link"
-                  color="white"
-                  fontSize="lg"
-                  _active={{ opacity: 0.6 }}
-                  onClick={onClose}
-                >
-                  協賛について
-                </Button>
-                <Button
-                  as={Link}
-                  to="/memory"
-                  variant="link"
-                  color="white"
-                  fontSize="lg"
-                  _active={{ opacity: 0.6 }}
-                  onClick={onClose}
-                >
-                  おもいで
-                </Button>
-                <Button
-                  as={Link}
-                  to="/contact"
-                  variant="link"
-                  color="white"
-                  fontSize="lg"
-                  _active={{ opacity: 0.6 }}
-                  onClick={onClose}
-                >
-                  お問い合わせ
-                </Button>
-              </VStack>
-            </DrawerBody>
-          </DrawerContent>
-        </Drawer>
-      )}
+      <Suspense>
+        {(breakpoint === "base" || breakpoint === "md") && (
+          <NavigationDrawer isOpen={isOpen} onClose={onClose} />
+        )}
+      </Suspense>
 
       {/* メインビジュアル */}
       <VStack
@@ -274,7 +180,7 @@ const MainVisual = memo(() => {
           </HStack>
         </VStack>
       </VStack>
-      <Box ref={ref} pos="absolute" bottom="20" />
+      <Box id="target" pos="absolute" bottom="20" />
     </Center>
   );
 });
