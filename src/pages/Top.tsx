@@ -6,7 +6,6 @@ import SectionTitle from "../components/molecules/SectionTitle";
 import Access from "../components/organisms/Access";
 import Countdown from "../components/organisms/Countdown";
 import FAQList from "../components/organisms/FAQList";
-import Footer from "../components/organisms/Footer";
 import NewsList from "../components/organisms/NewsList";
 import TableOfContents from "../components/organisms/TableOfContents";
 import { useQueryFAQ } from "../hooks/faq";
@@ -86,7 +85,6 @@ const Top = () => {
           {faq && <FAQList faq={faq} />}
         </VStack>
       </VStack>
-      <Footer />
     </VStack>
   );
 };

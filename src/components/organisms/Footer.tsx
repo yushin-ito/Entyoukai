@@ -7,11 +7,8 @@ const Footer = memo(() => {
     <VStack
       as="footer"
       w="100%"
-      mt="12"
-      pt="8"
-      pb="6"
-      spacing="8"
-      alignItems="center"
+      py={{ base: "6", md: "8" }}
+      spacing={{ base: "6", md: "8" }}
       bg="brand"
     >
       <HStack spacing={{ base: "4", md: "8" }}>

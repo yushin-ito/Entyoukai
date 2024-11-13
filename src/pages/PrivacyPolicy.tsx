@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet-async";
 
 import ScrollToTopButton from "../components/molecules/ScrollToTopButton";
 import SectionTitle from "../components/molecules/SectionTitle";
-import Footer from "../components/organisms/Footer";
 import { useQueryPrivacyPolicy } from "../hooks/policy";
 
 const PrivacyPolicy = () => {
@@ -66,7 +65,6 @@ const PrivacyPolicy = () => {
           </VStack>
         </VStack>
       </VStack>
-      <Footer />
     </VStack>
   );
 };

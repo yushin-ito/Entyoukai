@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 
 import ProgressBar from "./components/molecules/ProgressBar";
+import Footer from "./components/organisms/Footer";
 import MainVisual from "./components/organisms/MainVisual";
 
 const Top = lazy(() => import("./pages/Top"));
@@ -48,6 +49,7 @@ const Layout = () => {
         <VStack flex="1" spacing={{ base: "16", md: "24" }}>
           <MainVisual />
           <Outlet />
+          <Footer />
         </VStack>
       </Box>
     </ErrorBoundary>

@@ -6,7 +6,6 @@ import Avatar from "../components/atoms/Avatar";
 import ScrollToTopButton from "../components/molecules/ScrollToTopButton";
 import SectionTitle from "../components/molecules/SectionTitle";
 import ShareButtonGroup from "../components/molecules/ShareButtonGroup";
-import Footer from "../components/organisms/Footer";
 import ImageCarousel from "../components/organisms/ImageCarousel";
 import { FIRST_ARTICLE_ID, END_ARTICLE_ID } from "../constants";
 import { formatByDot } from "../functions";
@@ -176,7 +175,6 @@ const Article = () => {
           </VStack>
         )}
       </VStack>
-      <Footer />
     </VStack>
   );
 };

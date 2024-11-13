@@ -38,13 +38,6 @@ const Error = () => {
           py="6"
           fontSize="sm"
           rounded="full"
-          color="white"
-          bg="brand"
-          _hover={{ opacity: { base: 1, md: 0.8 } }}
-          _active={{
-            transform: "scale(0.98)",
-            opacity: 0.8
-          }}
           shadow="sm"
           onClick={() => navigate("/", { replace: true })}
         >

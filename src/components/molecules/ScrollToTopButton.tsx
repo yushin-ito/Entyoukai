@@ -43,16 +43,9 @@ const ScrollToTopButton = memo(() => {
             aria-label="top"
             icon={<ChevronUp boxSize={{ base: "20px", md: "22px" }} />}
             size="lg"
-            color="white"
-            bg="brand"
-            _hover={{ opacity: { base: 1, md: 0.8 } }}
-            _active={{
-              transform: "scale(0.98)",
-              opacity: 0.8
-            }}
-            onClick={() => scrollToTop(500)}
-            shadow="lg"
             rounded="full"
+            shadow="lg"
+            onClick={() => scrollToTop(500)}
           />
         </MotionBox>
       )}

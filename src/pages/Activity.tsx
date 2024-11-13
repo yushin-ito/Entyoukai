@@ -7,7 +7,6 @@ import MotionBox from "../components/atoms/MotionBox";
 import ScrollToTopButton from "../components/molecules/ScrollToTopButton";
 import SectionTitle from "../components/molecules/SectionTitle";
 import ArticleList from "../components/organisms/ArticleList";
-import Footer from "../components/organisms/Footer";
 import TableOfContents from "../components/organisms/TableOfContents";
 import { useQueryArticles } from "../hooks/article";
 
@@ -122,7 +121,6 @@ const Activity = () => {
           {articles && <ArticleList articles={articles} />}
         </VStack>
       </VStack>
-      <Footer />
     </VStack>
   );
 };

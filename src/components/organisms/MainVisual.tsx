@@ -86,7 +86,7 @@ const MainVisual = memo(() => {
       />
 
       {/* ナビゲーションバー */}
-      {(breakpoint === "md" || breakpoint === "lg") && (
+      {breakpoint === "lg" && (
         <HStack
           as="nav"
           pos="absolute"
@@ -148,7 +148,7 @@ const MainVisual = memo(() => {
       )}
 
       {/* ハンバーガーメニュー */}
-      {breakpoint === "base" && (
+      {(breakpoint === "base" || breakpoint === "md") && (
         <IconButton
           icon={<Menu boxSize="18px" />}
           aria-label="menu"
@@ -156,11 +156,6 @@ const MainVisual = memo(() => {
           top="6"
           right="8"
           color="white"
-          bg="brand"
-          _active={{
-            transform: "scale(0.98)",
-            opacity: 0.8
-          }}
           rounded="md"
           opacity="0.8"
           onClick={onOpen}
@@ -168,7 +163,7 @@ const MainVisual = memo(() => {
       )}
 
       {/* ドロワー */}
-      {breakpoint === "base" && (
+      {(breakpoint === "base" || breakpoint === "md") && (
         <Drawer placement="left" isOpen={isOpen} onClose={onClose}>
           <DrawerOverlay />
           <DrawerContent
@@ -242,8 +237,8 @@ const MainVisual = memo(() => {
 
       {/* メインビジュアル */}
       <VStack
-        px={{ base: "10", md: "16", lg: "24" }}
-        py={{ base: "12", md: "14", lg: "16" }}
+        px={{ base: "10", md: "20", lg: "24" }}
+        py={{ base: "12", md: "16", lg: "16" }}
         spacing="4"
         rounded="xl"
         bg="brand"
@@ -251,12 +246,16 @@ const MainVisual = memo(() => {
         alignItems="center"
         justifyContent="center"
       >
-        <Heading as="h1" fontSize={{ base: "3xl", lg: "5xl" }} color="white">
+        <Heading
+          as="h1"
+          fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
+          color="white"
+        >
           二十歳のつどい
         </Heading>
         <VStack spacing="2">
           <Text
-            fontSize={{ base: "md", lg: "xl" }}
+            fontSize={{ base: "md", md: "lg", lg: "xl" }}
             fontWeight="bold"
             color="white"
           >
@@ -264,9 +263,9 @@ const MainVisual = memo(() => {
           </Text>
 
           <HStack alignItems="center" spacing="1">
-            <Pin boxSize={{ base: "18px", lg: "20px" }} color="white" />
+            <Pin boxSize={{ base: "18px", md: "20px" }} color="white" />
             <Text
-              fontSize={{ base: "md", lg: "xl" }}
+              fontSize={{ base: "md", md: "lg", lg: "xl" }}
               fontWeight="bold"
               color="white"
             >

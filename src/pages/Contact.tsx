@@ -5,17 +5,16 @@ import {
   FormLabel,
   VStack,
   useToast,
-  Text
+  Text,
+  Input,
+  Textarea
 } from "@chakra-ui/react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 
-import Input from "../components/atoms/Input";
-import Textarea from "../components/atoms/Textarea";
 import Toast from "../components/atoms/Toast";
 import ScrollToTopButton from "../components/molecules/ScrollToTopButton";
 import SectionTitle from "../components/molecules/SectionTitle";
-import Footer from "../components/organisms/Footer";
 import { usePostContact } from "../hooks/contact";
 
 export type FormData = {
@@ -217,20 +216,12 @@ const Contact = () => {
             type="submit"
             w={{ base: "90%", md: "60%" }}
             mt={{ base: "6", md: "12" }}
-            color="white"
-            bg="brand"
-            _hover={{ opacity: { base: 1, md: 0.8 } }}
-            _active={{
-              transform: "scale(0.98)",
-              opacity: 0.8
-            }}
             isLoading={isSubmitting}
           >
             送信する
           </Button>
         </VStack>
       </VStack>
-      <Footer />
     </VStack>
   );
 };

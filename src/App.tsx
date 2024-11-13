@@ -43,6 +43,11 @@ const App = () => {
                   height: 6px;
                 }
               }
+
+              @media (hover: none) {
+                .chakra-button:hover,
+                .chakra-icon-button:hover
+              }
             `}
           />
           <RootRouter />
