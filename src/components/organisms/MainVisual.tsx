@@ -33,7 +33,7 @@ const MainVisual = memo(() => {
   return (
     <Center
       w="100%"
-      h={{ base: "calc(100vh * 0.8)", lg: "100vh" }}
+      h={{ base: "calc(100vh * 0.9)", lg: "100vh" }}
       bgImage={{
         base: "url(/assets/images/background-mobile.webp)",
         md: "url(/assets/images/background-tablet.webp)",
@@ -180,7 +180,7 @@ const MainVisual = memo(() => {
           </HStack>
         </VStack>
       </VStack>
-      <Box id="target" pos="absolute" bottom="20" />
+      <Box id="target" pos="absolute" bottom="0" />
     </Center>
   );
 });

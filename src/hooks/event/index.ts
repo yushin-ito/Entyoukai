@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import { Event } from "../../types";
@@ -10,8 +9,12 @@ export const useQueryEvents = () => {
   return useQuery<Event[]>(
     ["events"],
     async () => {
-      const response = await axios.get("/assets/contents/events.json");
-      return response.data;
+      const response = await fetch("/assets/contents/events.json");
+      if (!response.ok) {
+        throw new Error();
+      }
+
+      return response.json();
     },
     {
       onError: () => {

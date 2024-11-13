@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import { Sponsor } from "../../types";
@@ -10,8 +9,12 @@ export const useQuerySponsors = () => {
   return useQuery<Sponsor[]>(
     ["sponsors"],
     async () => {
-      const response = await axios.get("/assets/contents/sponsors.json");
-      return response.data;
+      const response = await fetch("/assets/contents/sponsors.json");
+      if (!response.ok) {
+        throw new Error();
+      }
+
+      return response.json();
     },
     {
       onError: () => {
