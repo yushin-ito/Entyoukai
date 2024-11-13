@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import { News } from "../../types";
@@ -10,8 +9,12 @@ export const useQueryNews = () => {
   return useQuery<News[]>(
     ["news"],
     async () => {
-      const response = await axios.get("/assets/contents/news.json");
-      return response.data;
+      const response = await fetch("/assets/contents/news.json");
+      if (!response.ok) {
+        throw new Error();
+      }
+
+      return response.json();
     },
     {
       onError: () => {

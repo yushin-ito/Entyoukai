@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import type { Article } from "../../types";
@@ -15,8 +14,12 @@ export const useQueryArticle = (id: string | undefined) => {
         return;
       }
 
-      const response = await axios.get("/assets/contents/articles.json");
-      const articles: Article[] = response.data;
+      const response = await fetch("/assets/contents/articles.json");
+      if (!response.ok) {
+        throw new Error();
+      }
+
+      const articles: Article[] = await response.json();
       const article = articles.find((article) => article.id === Number(id));
 
       if (!article) {
@@ -40,8 +43,12 @@ export const useQueryArticles = () => {
   return useQuery<Article[]>(
     ["articles"],
     async () => {
-      const response = await axios.get("/assets/contents/articles.json");
-      return response.data;
+      const response = await fetch("/assets/contents/articles.json");
+      if (!response.ok) {
+        throw new Error();
+      }
+
+      return response.json();
     },
     {
       onError: () => {
