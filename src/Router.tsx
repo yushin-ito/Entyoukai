@@ -1,4 +1,4 @@
-import { VStack } from "@chakra-ui/react";
+import { Box, VStack } from "@chakra-ui/react";
 import { lazy, Suspense, useEffect } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import {
@@ -72,6 +72,7 @@ const Layout = () => {
     <ErrorBoundary fallback={<Fallback />}>
       <VStack flex="1" p="0" spacing={{ base: "16", md: "24" }} bg="white">
         <MainVisual />
+        {isLoading && <Box w="100%" h="calc(100vh * 0.2)" />}
         <Outlet />
         <Footer />
       </VStack>
