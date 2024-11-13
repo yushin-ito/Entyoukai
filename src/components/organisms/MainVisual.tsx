@@ -6,20 +6,17 @@ import {
   Box,
   Center,
   useBreakpointValue,
-  Drawer,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  DrawerBody,
   useDisclosure,
   IconButton,
   Heading,
   Image
 } from "@chakra-ui/react";
-import { memo } from "react";
+import { memo, Suspense, lazy } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { Menu, Pin } from "../atoms/Icon";
+
+const NavigationDrawer = lazy(() => import("../molecules/NavigationDrawer"));
 
 const MainVisual = memo(() => {
   const navigate = useNavigate();
@@ -138,77 +135,11 @@ const MainVisual = memo(() => {
       )}
 
       {/* ドロワー */}
-      {(breakpoint === "base" || breakpoint === "md") && (
-        <Drawer placement="left" isOpen={isOpen} onClose={onClose}>
-          <DrawerOverlay />
-          <DrawerContent
-            maxW={{ base: "60%", sm: "40%" }}
-            bg="brand"
-            opacity="0.8"
-          >
-            <DrawerCloseButton mt="2" color="white" size="md" />
-            <DrawerBody>
-              <VStack mt="20" spacing="10">
-                <Button
-                  as={Link}
-                  to="/top"
-                  variant="link"
-                  color="white"
-                  fontSize="lg"
-                  _active={{ opacity: 0.6 }}
-                  onClick={onClose}
-                >
-                  トップ
-                </Button>
-                <Button
-                  as={Link}
-                  to="/activity"
-                  variant="link"
-                  color="white"
-                  fontSize="lg"
-                  _active={{ opacity: 0.6 }}
-                  onClick={onClose}
-                >
-                  活動について
-                </Button>
-                <Button
-                  as={Link}
-                  to="/sponsor"
-                  variant="link"
-                  color="white"
-                  fontSize="lg"
-                  _active={{ opacity: 0.6 }}
-                  onClick={onClose}
-                >
-                  協賛について
-                </Button>
-                <Button
-                  as={Link}
-                  to="/memory"
-                  variant="link"
-                  color="white"
-                  fontSize="lg"
-                  _active={{ opacity: 0.6 }}
-                  onClick={onClose}
-                >
-                  おもいで
-                </Button>
-                <Button
-                  as={Link}
-                  to="/contact"
-                  variant="link"
-                  color="white"
-                  fontSize="lg"
-                  _active={{ opacity: 0.6 }}
-                  onClick={onClose}
-                >
-                  お問い合わせ
-                </Button>
-              </VStack>
-            </DrawerBody>
-          </DrawerContent>
-        </Drawer>
-      )}
+      <Suspense>
+        {(breakpoint === "base" || breakpoint === "md") && (
+          <NavigationDrawer isOpen={isOpen} onClose={onClose} />
+        )}
+      </Suspense>
 
       {/* メインビジュアル */}
       <VStack
