@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet-async";
 
 import ScrollToTopButton from "../components/molecules/ScrollToTopButton";
 import SectionTitle from "../components/molecules/SectionTitle";
-import Footer from "../components/organisms/Footer";
 import Timeline from "../components/organisms/Timeline";
 import { useQueryEvents } from "../hooks/event";
 
@@ -46,7 +45,6 @@ const Memory = () => {
         <SectionTitle title="おもいで" />
         {events && <Timeline events={events} />}
       </VStack>
-      <Footer />
     </VStack>
   );
 };

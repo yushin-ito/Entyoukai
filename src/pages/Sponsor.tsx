@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet-async";
 
 import ScrollToTopButton from "../components/molecules/ScrollToTopButton";
 import SectionTitle from "../components/molecules/SectionTitle";
-import Footer from "../components/organisms/Footer";
 import TableOfContents from "../components/organisms/TableOfContents";
 import { useQuerySponsors } from "../hooks/sponsor";
 
@@ -101,7 +100,6 @@ const Sponsor = () => {
           </SimpleGrid>
         </VStack>
       </VStack>
-      <Footer />
     </VStack>
   );
 };

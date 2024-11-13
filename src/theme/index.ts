@@ -3,8 +3,10 @@ import { extendTheme } from "@chakra-ui/react";
 const theme = extendTheme({
   styles: {
     global: {
+      "html, body": {
+        overscrollBehavior: "none"
+      },
       body: {
-        overscrollBehavior: "none",
         overflowY: "scroll"
       },
       "*, *::before, &::after": {
@@ -37,13 +39,73 @@ const theme = extendTheme({
       }
     },
     Button: {
-      baseStyle: {
-        color: "brand"
+      variants: {
+        fill: {
+          bg: "brand",
+          color: "white",
+          _hover: {
+            bg: "brand",
+            opacity: 0.8
+          },
+          _active: {
+            transform: "scale(0.98)",
+            opacity: 0.8
+          }
+        },
+        outline: {
+          bg: "white",
+          color: "brand",
+          borderWidth: "1px",
+          borderColor: "brand",
+          _hover: {
+            opacity: 0.8
+          },
+          _active: {
+            transform: "scale(0.98)",
+            opacity: 0.8
+          }
+        }
+      },
+      defaultProps: {
+        variant: "fill"
       }
     },
     Input: {
-      baseStyle: {
-        color: "brand"
+      variants: {
+        outline: {
+          field: {
+            color: "brand",
+            borderWidth: { base: "1.2px", md: "1.5px" },
+            borderColor: "gray.400",
+            _focus: {
+              borderColor: "brand",
+              borderWidth: { base: "1.8px", md: "2px" },
+              boxShadow: "none"
+            },
+            _placeholder: { color: "gray.400" }
+          }
+        }
+      },
+      defaultProps: {
+        variant: "outline"
+      }
+    },
+    Textarea: {
+      variants: {
+        outline: {
+          color: "brand",
+          borderWidth: { base: "1.2px", md: "1.5px" },
+          borderColor: "gray.400",
+          _focus: {
+            borderColor: "brand",
+            borderWidth: { base: "1.8px", md: "2px" },
+            boxShadow: "none"
+          },
+          _placeholder: { color: "gray.400" }
+        }
+      },
+      defaultProps: {
+        variant: "outline"
       }
     }
   }
