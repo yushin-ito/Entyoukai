@@ -114,13 +114,6 @@ const Article = () => {
               >
                 <Button
                   size={{ base: "sm", md: "md" }}
-                  color="white"
-                  bg="brand"
-                  _hover={{ opacity: { base: 1, md: 0.8 } }}
-                  _active={{
-                    transform: "scale(0.98)",
-                    opacity: 0.8
-                  }}
                   _disabled={{ opacity: 0.6 }}
                   onClick={() => navigate("/article/" + (article.id + 1))}
                   isDisabled={END_ARTICLE_ID === article.id}
@@ -135,10 +128,10 @@ const Article = () => {
                   </Text>
                 </Button>
                 <Button
+                  variant="ghost"
                   color="brand"
                   size={{ base: "sm", md: "md" }}
                   onClick={() => navigate("/activity")}
-                  variant="ghost"
                 >
                   <Text
                     as="span"
@@ -150,13 +143,6 @@ const Article = () => {
                 </Button>
                 <Button
                   size={{ base: "sm", md: "md" }}
-                  color="white"
-                  bg="brand"
-                  _hover={{ opacity: { base: 1, md: 0.8 } }}
-                  _active={{
-                    transform: "scale(0.98)",
-                    opacity: 0.8
-                  }}
                   _disabled={{ opacity: 0.6 }}
                   onClick={() => navigate("/article/" + (article.id - 1))}
                   isDisabled={FIRST_ARTICLE_ID === article.id}

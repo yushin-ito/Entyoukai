@@ -20,13 +20,13 @@ const NotFound = () => {
         <title>ページが見つかりません | 猿鳥会</title>
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
-      <VStack w="100%" spacing={{ base: "12", md: "20" }}>
-        <VStack
-          as="section"
-          w={{ base: "80%", md: "40%" }}
-          spacing={{ base: "1", md: "4" }}
-        >
-          <Text as="h1" fontSize={{ base: "lg", md: "3xl" }} fontWeight="bold">
+      <VStack w="100%" spacing={{ base: "12", md: "16", lg: "20" }}>
+        <VStack as="section" w="100%" spacing={{ base: "1", md: "2", lg: "4" }}>
+          <Text
+            as="h1"
+            fontSize={{ base: "lg", md: "2xl", lg: "3xl" }}
+            fontWeight="bold"
+          >
             ご指定のページが見つかりません。
           </Text>
           <Text as="p" fontSize={{ base: "xs", md: "sm" }} color="gray.600">
@@ -34,9 +34,9 @@ const NotFound = () => {
           </Text>
         </VStack>
         <Button
-          w={{ base: "60%", md: "20%" }}
-          py="6"
-          fontSize="sm"
+          px={{ base: "8", md: "12" }}
+          py={{ base: "4", md: "6" }}
+          fontSize={{ base: "xs", md: "sm" }}
           rounded="full"
           shadow="sm"
           onClick={() => navigate("/", { replace: true })}
