@@ -7,6 +7,7 @@ const Footer = memo(() => {
     <VStack
       as="footer"
       w="100%"
+      mt="12"
       py={{ base: "6", md: "8" }}
       spacing={{ base: "6", md: "8" }}
       bg="brand"
