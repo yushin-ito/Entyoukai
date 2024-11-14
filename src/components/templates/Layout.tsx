@@ -1,5 +1,5 @@
 import { VStack } from "@chakra-ui/react";
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 import { useLocation, Outlet } from "react-router-dom";
 
 import { useLoading } from "../../contexts";
@@ -7,7 +7,7 @@ import useScroll from "../../hooks/tools";
 import Footer from "../organisms/Footer";
 import MainVisual from "../organisms/MainVisual";
 
-const Layout = () => {
+const Layout = memo(() => {
   const { pathname } = useLocation();
 
   const { isLoading } = useLoading();
@@ -45,6 +45,6 @@ const Layout = () => {
       <Footer />
     </VStack>
   );
-};
+});
 
 export default Layout;

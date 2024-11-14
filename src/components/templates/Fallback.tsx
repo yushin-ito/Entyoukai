@@ -1,8 +1,9 @@
 import { Text, Center, VStack, Button } from "@chakra-ui/react";
 import { useQueryClient } from "@tanstack/react-query";
+import { memo } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Fallback = () => {
+const Fallback = memo(() => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
@@ -37,6 +38,6 @@ const Fallback = () => {
       </VStack>
     </Center>
   );
-};
+});
 
 export default Fallback;
