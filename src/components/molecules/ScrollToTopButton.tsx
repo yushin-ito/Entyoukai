@@ -2,7 +2,7 @@ import { IconButton } from "@chakra-ui/react";
 import { AnimatePresence } from "framer-motion";
 import { useState, useEffect, memo } from "react";
 
-import useScroll from "../../hooks/tools";
+import useScroll from "../../hooks/tools/useScroll";
 import { ChevronUp } from "../atoms/Icon";
 import MotionBox from "../atoms/MotionBox";
 

@@ -60,7 +60,7 @@ const NewsList = memo(({ news }: NewsListProps) => {
             h={{ base: "24px", md: "30px" }}
             px={{ base: "8px", md: "12px" }}
             rounded="full"
-            bg={activeId === id ? "brand" : "gray.300"}
+            bg={activeId === id ? "brand.500" : "gray.300"}
             _hover={{}}
             _active={{ transform: "scale(0.96)" }}
             onClick={() => setActiveId(id)}
@@ -124,7 +124,7 @@ const NewsList = memo(({ news }: NewsListProps) => {
                   {formatByDot(item.date, "yyyy.MM.dd")}
                 </Text>
                 <Box
-                  bg="brand"
+                  bg="brand.500"
                   px={{ base: "6px", md: "8px" }}
                   py={{ base: "1.5px", md: "2.5px" }}
                   rounded="full"

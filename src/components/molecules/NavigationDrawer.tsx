@@ -19,7 +19,11 @@ const NavigationDrawer = memo(({ isOpen, onClose }: NavigationDrawerProps) => {
   return (
     <Drawer placement="left" isOpen={isOpen} onClose={onClose}>
       <DrawerOverlay />
-      <DrawerContent maxW={{ base: "60%", sm: "40%" }} bg="brand" opacity="0.8">
+      <DrawerContent
+        maxW={{ base: "60%", sm: "40%" }}
+        bg="brand.500"
+        opacity="0.8"
+      >
         <DrawerCloseButton mt="2" color="white" size="md" />
         <DrawerBody>
           <VStack mt="20" spacing="10">

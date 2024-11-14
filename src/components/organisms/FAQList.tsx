@@ -52,7 +52,7 @@ const FAQList = memo(({ faq }: FAQListProps) => {
             </HStack>
             <AccordionIcon
               boxSize={{ base: "16px", md: "24px" }}
-              color="brand"
+              color="brand.500"
             />
           </AccordionButton>
 

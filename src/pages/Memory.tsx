@@ -29,7 +29,12 @@ const Memory = () => {
   };
 
   return (
-    <VStack flex="1" spacing={{ base: "16", md: "24" }} pos="relative">
+    <VStack
+      as="main"
+      w="100%"
+      spacing={{ base: "16", md: "24" }}
+      pos="relative"
+    >
       <Helmet>
         <title>おもいで | 猿鳥会</title>
         {schema && (

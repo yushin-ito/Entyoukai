@@ -10,7 +10,7 @@ const Footer = memo(() => {
       mt="12"
       py={{ base: "6", md: "8" }}
       spacing={{ base: "6", md: "8" }}
-      bg="brand"
+      bg="brand.500"
     >
       <HStack spacing={{ base: "4", md: "8" }}>
         <Button

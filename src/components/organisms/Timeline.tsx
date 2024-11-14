@@ -5,9 +5,10 @@ import {
   Circle,
   useBreakpointValue
 } from "@chakra-ui/react";
-import { useEffect, useState, useMemo, useCallback, memo } from "react";
+import { useState, memo, useEffect } from "react";
 
 import { formatByDot } from "../../functions";
+import useResize from "../../hooks/tools/useResize";
 import type { Event } from "../../types";
 import TimelineItem from "../molecules/TimelineItem";
 
@@ -16,52 +17,41 @@ type TimelineProps = {
 };
 
 const Timeline = memo(({ events }: TimelineProps) => {
-  const space = { base: 50, md: 100 };
-  const [resize, setResize] = useState(false);
-  const [heights, setHeights] = useState<number[]>([]);
-
+  const [circles, setCircles] = useState<number[]>([]);
   const breakpoint = useBreakpointValue({ base: "base", md: "md" });
-
-  const positions = useMemo(
-    () =>
-      heights.reduce<number[]>((acc, height, index) => {
-        const prev = acc[index - 1] || 0;
-        acc.push(
-          prev +
-            height / 2 +
-            (heights[index - 1] || 0) / 2 +
-            (index > 0 ? (breakpoint === "base" ? space.base : space.md) : 0)
-        );
-        return acc;
-      }, []),
-    [heights, breakpoint, space.base, space.md]
+  const space = useBreakpointValue(
+    { base: 50, md: 100 },
+    { fallback: undefined }
   );
 
-  const onMeasure = useCallback((height: number, index: number) => {
-    setHeights((prev) => {
-      const heights = [...prev];
-      heights[index] = height;
-      return heights;
-    });
-  }, []);
+  const { resize } = useResize();
 
   useEffect(() => {
-    const onEvent = () => {
-      setResize(!resize);
-    };
-    window.addEventListener("resize", onEvent);
+    const circles: number[] = [];
 
-    return () => {
-      window.removeEventListener("resize", onEvent);
-    };
-  }, [resize]);
+    let sum = 0;
+
+    for (let i = 0; i < events.length; i++) {
+      const element = document.getElementById(`item${i}`);
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        const height = rect.height;
+        const position = sum + height / 2 + (i > 0 ? space || 0 : 0);
+
+        circles.push(position);
+        sum += height + (i > 0 ? space || 0 : 0);
+      }
+    }
+
+    setCircles(circles);
+  }, [events, events.length, space, resize]);
 
   return (
     <VStack
       as="section"
       w={{ base: "100%", md: "90%" }}
       pos="relative"
-      spacing={{ base: `${space.base}px`, md: `${space.md}px` }}
+      spacing={space}
     >
       <Box
         pos="absolute"
@@ -75,7 +65,7 @@ const Timeline = memo(({ events }: TimelineProps) => {
           base: "1.8px",
           md: "2.5px"
         }}
-        bg="brand"
+        bg="brand.500"
         transform="translateX(-50%)"
       />
 
@@ -87,7 +77,7 @@ const Timeline = memo(({ events }: TimelineProps) => {
           dateTime={event.dates[0]}
           pos="absolute"
           left="0"
-          top={`${positions[index]}px`}
+          top={`${circles[index]}px`}
           transform="translateY(-50%)"
         >
           {event.dates.map((date, index) => (
@@ -106,7 +96,7 @@ const Timeline = memo(({ events }: TimelineProps) => {
       ))}
 
       {/* 円 */}
-      {positions.map((position, index) => (
+      {circles.map((pos, index) => (
         <Circle
           key={index}
           size={{
@@ -119,13 +109,13 @@ const Timeline = memo(({ events }: TimelineProps) => {
             base: "60px",
             md: "120px"
           }}
-          top={`${position}px`}
+          top={`${pos}px`}
           transform="translate(-50%, -50%)"
           borderWidth={{
             base: "2px",
             md: "3px"
           }}
-          borderColor="brand"
+          borderColor="brand.500"
         />
       ))}
 
@@ -133,11 +123,9 @@ const Timeline = memo(({ events }: TimelineProps) => {
       {events.map((event, index) => (
         <TimelineItem
           key={index}
+          id={`item${index}`}
           title={event.title}
           description={event.description}
-          onMeasure={onMeasure}
-          index={index}
-          resize={resize}
         />
       ))}
     </VStack>

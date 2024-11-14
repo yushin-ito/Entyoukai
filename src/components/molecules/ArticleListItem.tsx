@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 
 import { formatByDistance, formatByDot } from "../../functions";
 import Avatar from "../atoms/Avatar";
+import { Photo } from "../atoms/Icon";
 import Image from "../atoms/Image";
 import MotionBox from "../atoms/MotionBox";
 
@@ -39,7 +40,10 @@ const ArticleListItem = memo(
   }: ArticleListItemProps) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
-    const breakpoint = useBreakpointValue({ base: "base", md: "md" });
+    const breakpoint = useBreakpointValue(
+      { base: "base", md: "md" },
+      { fallback: undefined }
+    );
 
     return (
       <MotionBox
@@ -67,13 +71,14 @@ const ArticleListItem = memo(
           }
         >
           {/* 画像 */}
-
           <Image
             w="100%"
-            display="flex"
             src={images[0]}
             alt={location}
-            aspectRatio={4 / 3}
+            fallback={
+              <Photo boxSize={{ base: "64px", md: "32px" }} color="brand.500" />
+            }
+            aspectRatio={{ base: 3 / 2, md: 4 / 3 }}
             rounded={{ base: "md", md: "xl" }}
             pos="relative"
           >
@@ -116,7 +121,7 @@ const ArticleListItem = memo(
                   px="6px"
                   py="1px"
                   borderWidth="1.5px"
-                  borderColor="brand"
+                  borderColor="brand.500"
                   rounded="full"
                 >
                   <Text fontSize="2xs" fontWeight="bold">
@@ -136,7 +141,7 @@ const ArticleListItem = memo(
               as="p"
               fontSize="xs"
               fontWeight={{ base: "bold", md: "normal" }}
-              color={{ base: "brand", md: "gray.600" }}
+              color={{ base: "brand.500", md: "gray.600" }}
               noOfLines={{ base: 6, md: 2 }}
             >
               {description}

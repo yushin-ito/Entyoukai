@@ -13,7 +13,7 @@ const NavigationBar = memo(() => {
       py="3"
       spacing="8"
       rounded="full"
-      bg="brand"
+      bg="brand.500"
       opacity="0.8"
     >
       <Button

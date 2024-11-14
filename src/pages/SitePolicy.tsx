@@ -18,7 +18,12 @@ const SitePolicy = () => {
   };
 
   return (
-    <VStack flex="1" spacing={{ base: "16", md: "24" }} pos="relative">
+    <VStack
+      as="main"
+      w="100%"
+      spacing={{ base: "16", md: "24" }}
+      pos="relative"
+    >
       <Helmet>
         <title>サイトポリシー | 猿鳥会</title>
         <script type="application/ld+json">{JSON.stringify(schema)}</script>

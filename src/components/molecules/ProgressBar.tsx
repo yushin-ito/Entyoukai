@@ -3,7 +3,7 @@ import { memo, useEffect } from "react";
 import "nprogress/nprogress.css";
 
 import { useLoading } from "../../contexts";
-import useScroll from "../../hooks/tools";
+import useScroll from "../../hooks/tools/useScroll";
 
 const ProgressBar = memo(() => {
   const { scrollToElement } = useScroll();

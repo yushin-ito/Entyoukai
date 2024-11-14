@@ -16,7 +16,7 @@ const SectionTitle = memo(({ title }: SectionTitleProps) => {
 
   return breakpoint === "base" ? (
     <HStack w="100%" spacing="2" alignItems="center">
-      <Box w="3px" h="8" bg="brand" />
+      <Box w="3px" h="8" bg="brand.500" />
       <Heading as="h2" fontSize="xl">
         {title}
       </Heading>
@@ -26,7 +26,7 @@ const SectionTitle = memo(({ title }: SectionTitleProps) => {
       <Heading as="h2" fontSize="2xl">
         {title}
       </Heading>
-      <Box w="100%" h="1" bg="brand" />
+      <Box w="100%" h="1" bg="brand.500" />
     </VStack>
   );
 });

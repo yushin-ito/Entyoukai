@@ -31,7 +31,12 @@ const Article = () => {
   };
 
   return (
-    <VStack flex="1" spacing={{ base: "16", md: "24" }} pos="relative">
+    <VStack
+      as="main"
+      w="100%"
+      spacing={{ base: "16", md: "24" }}
+      pos="relative"
+    >
       <Helmet>
         {article && <title>{article.title + " | 猿鳥会"}</title>}
         {schema && (
@@ -129,7 +134,7 @@ const Article = () => {
                 </Button>
                 <Button
                   variant="ghost"
-                  color="brand"
+                  color="brand.500"
                   size={{ base: "sm", md: "md" }}
                   onClick={() => navigate("/activity")}
                 >
