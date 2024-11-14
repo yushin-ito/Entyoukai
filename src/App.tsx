@@ -12,7 +12,8 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       retry: 2,
-      suspense: true
+      suspense: true,
+      useErrorBoundary: true
     }
   }
 });

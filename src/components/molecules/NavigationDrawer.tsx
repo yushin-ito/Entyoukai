@@ -7,6 +7,7 @@ import {
   VStack,
   Button
 } from "@chakra-ui/react";
+import { memo } from "react";
 import { Link } from "react-router-dom";
 
 type NavigationDrawerProps = {
@@ -14,7 +15,7 @@ type NavigationDrawerProps = {
   onClose: () => void;
 };
 
-const NavigationDrawer = ({ isOpen, onClose }: NavigationDrawerProps) => {
+const NavigationDrawer = memo(({ isOpen, onClose }: NavigationDrawerProps) => {
   return (
     <Drawer placement="left" isOpen={isOpen} onClose={onClose}>
       <DrawerOverlay />
@@ -82,6 +83,6 @@ const NavigationDrawer = ({ isOpen, onClose }: NavigationDrawerProps) => {
       </DrawerContent>
     </Drawer>
   );
-};
+});
 
 export default NavigationDrawer;

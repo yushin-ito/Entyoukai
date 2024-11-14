@@ -1,4 +1,5 @@
 import { VStack } from "@chakra-ui/react";
+import { QueryErrorResetBoundary } from "@tanstack/react-query";
 import { lazy, Suspense, useEffect } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import {
@@ -6,8 +7,7 @@ import {
   Navigate,
   Outlet,
   RouterProvider,
-  useLocation,
-  useNavigate
+  useLocation
 } from "react-router-dom";
 
 import ProgressBar from "./components/molecules/ProgressBar";
@@ -26,16 +26,6 @@ const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const SitePolicy = lazy(() => import("./pages/SitePolicy"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Error = lazy(() => import("./pages/Error"));
-
-const Fallback = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    navigate("/error");
-  }, [navigate]);
-
-  return null;
-};
 
 const Layout = () => {
   const { pathname } = useLocation();
@@ -69,13 +59,22 @@ const Layout = () => {
   }, [pathname, isLoading, scrollToElement]);
 
   return (
-    <ErrorBoundary fallback={<Fallback />}>
-      <VStack flex="1" p="0" spacing={{ base: "16", md: "24" }} bg="white">
-        <MainVisual />
-        <Outlet />
-        <Footer />
-      </VStack>
-    </ErrorBoundary>
+    <QueryErrorResetBoundary>
+      {({ reset }) => (
+        <ErrorBoundary
+          onReset={reset}
+          fallbackRender={({ resetErrorBoundary }) => (
+            <Error resetErrorBoundary={resetErrorBoundary} />
+          )}
+        >
+          <VStack flex="1" p="0" spacing={{ base: "16", md: "24" }} bg="white">
+            <MainVisual />
+            <Outlet />
+            <Footer />
+          </VStack>
+        </ErrorBoundary>
+      )}
+    </QueryErrorResetBoundary>
   );
 };
 
@@ -162,14 +161,6 @@ const router = createBrowserRouter([
     element: (
       <Suspense fallback={<ProgressBar />}>
         <NotFound />
-      </Suspense>
-    )
-  },
-  {
-    path: "/error",
-    element: (
-      <Suspense fallback={<ProgressBar />}>
-        <Error />
       </Suspense>
     )
   },
