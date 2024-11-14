@@ -8,7 +8,6 @@ export const useQuerySponsors = () =>
     if (!response.ok) {
       throw new Error();
     }
-    throw new Error();
 
     return response.json();
   });
