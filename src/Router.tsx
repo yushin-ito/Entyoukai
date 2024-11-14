@@ -48,7 +48,7 @@ const Layout = () => {
   }, [pathname]);
 
   useEffect(() => {
-    if (pathname !== "/" && !isLoading && window.scrollY === 1) {
+    if (pathname !== "/" && !isLoading && window.scrollY <= 1) {
       setTimeout(() => {
         const hash = window.location.hash;
         if (hash) {

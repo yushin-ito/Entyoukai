@@ -10,10 +10,18 @@ const ProgressBar = memo(() => {
   const { setIsLoading } = useLoading();
 
   useEffect(() => {
+    document.body.style.position = "fixed";
+    document.body.style.top = "0";
+    document.body.style.width = "100%";
+
     setIsLoading(true);
     NProgress.start();
 
     return () => {
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+
       setIsLoading(false);
       NProgress.done();
     };
