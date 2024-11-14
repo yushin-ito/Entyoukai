@@ -1,9 +1,11 @@
 import { Text, Center, VStack, Button } from "@chakra-ui/react";
+import { useQueryClient } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 
 const Error = () => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
   const schema = {
     "@context": "https://schema.org",
@@ -15,7 +17,7 @@ const Error = () => {
   };
 
   return (
-    <Center as="main" w="100vw" h="100vh">
+    <Center as="main" w="100%" h="100vh">
       <Helmet>
         <title>エラーが発生しました | 猿鳥会</title>
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
@@ -39,7 +41,10 @@ const Error = () => {
           fontSize={{ base: "xs", md: "sm" }}
           rounded="full"
           shadow="sm"
-          onClick={() => navigate("/", { replace: true })}
+          onClick={() => {
+            queryClient.resetQueries();
+            navigate("/", { replace: true });
+          }}
         >
           トップページに戻る
         </Button>

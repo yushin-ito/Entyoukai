@@ -1,13 +1,11 @@
 import { VStack } from "@chakra-ui/react";
 import { lazy, Suspense, useEffect } from "react";
-import { ErrorBoundary } from "react-error-boundary";
 import {
   createBrowserRouter,
   Navigate,
   Outlet,
   RouterProvider,
-  useLocation,
-  useNavigate
+  useLocation
 } from "react-router-dom";
 
 import ProgressBar from "./components/molecules/ProgressBar";
@@ -27,16 +25,6 @@ const SitePolicy = lazy(() => import("./pages/SitePolicy"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Error = lazy(() => import("./pages/Error"));
 
-const Fallback = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    navigate("/error");
-  }, [navigate]);
-
-  return null;
-};
-
 const Layout = () => {
   const { pathname } = useLocation();
 
@@ -48,7 +36,7 @@ const Layout = () => {
   }, [pathname]);
 
   useEffect(() => {
-    if (pathname !== "/" && !isLoading && window.scrollY === 1) {
+    if (pathname !== "/" && !isLoading && window.scrollY <= 1) {
       setTimeout(() => {
         const hash = window.location.hash;
         if (hash) {
@@ -69,22 +57,21 @@ const Layout = () => {
   }, [pathname, isLoading, scrollToElement]);
 
   return (
-    <ErrorBoundary fallback={<Fallback />}>
-      <VStack flex="1" p="0" spacing={{ base: "16", md: "24" }} bg="white">
-        <MainVisual />
-        <Outlet />
-        <Footer />
-      </VStack>
-    </ErrorBoundary>
+    <VStack flex="1" p="0" spacing={{ base: "16", md: "24" }} bg="white">
+      <MainVisual />
+      <Outlet />
+      <Footer />
+    </VStack>
   );
 };
 
 const router = createBrowserRouter([
   {
     element: <Layout />,
+    errorElement: <Error />,
     children: [
       {
-        path: "/",
+        index: true,
         element: (
           <Suspense fallback={<ProgressBar />}>
             <Top />
@@ -162,14 +149,6 @@ const router = createBrowserRouter([
     element: (
       <Suspense fallback={<ProgressBar />}>
         <NotFound />
-      </Suspense>
-    )
-  },
-  {
-    path: "/error",
-    element: (
-      <Suspense fallback={<ProgressBar />}>
-        <Error />
       </Suspense>
     )
   },
