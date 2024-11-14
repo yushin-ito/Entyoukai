@@ -3,7 +3,7 @@ import { memo, useEffect } from "react";
 import { useLocation, Outlet } from "react-router-dom";
 
 import { useLoading } from "../../contexts";
-import useScroll from "../../hooks/tools";
+import useScroll from "../../hooks/tools/useScroll";
 import Footer from "../organisms/Footer";
 import MainVisual from "../organisms/MainVisual";
 
@@ -14,7 +14,7 @@ const Layout = memo(() => {
   const { scrollToElement } = useScroll();
 
   useEffect(() => {
-    window.scrollTo(0, 1);
+    window.scrollTo(0, 0.5);
   }, [pathname]);
 
   useEffect(() => {

@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { memo, useEffect, useState } from "react";
 
-import useScroll from "../../hooks/tools";
+import useScroll from "../../hooks/tools/useScroll";
 import MotionBox from "../atoms/MotionBox";
 
 type TableOfContentsProps = {

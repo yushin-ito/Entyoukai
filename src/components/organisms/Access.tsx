@@ -1,6 +1,7 @@
 import { VStack, Text, Stack, Heading, Box, Link } from "@chakra-ui/react";
 import { memo } from "react";
 
+import { Photo } from "../atoms/Icon";
 import Image from "../atoms/Image";
 
 const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
@@ -19,6 +20,9 @@ const Access = memo(() => {
         <Image
           alt="保健福祉センター（さわやか村）の地図"
           src={`https://maps.googleapis.com/maps/api/staticmap?center=朝日町社会福祉協議会&zoom=18&size=600x450&markers=color:red|朝日町社会福祉協議会&key=${GOOGLE_MAPS_API_KEY}`}
+          fallback={
+            <Photo boxSize={{ base: "42px", md: "32px" }} color="brand.500" />
+          }
           w={{ base: "100%", md: "320px" }}
           aspectRatio={4 / 3}
           pos="relative"

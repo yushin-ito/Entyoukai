@@ -1,9 +1,10 @@
-import { Box, Image } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { AnimatePresence } from "framer-motion";
 import { useState, useEffect, memo } from "react";
 
+import { Photo } from "../atoms/Icon";
+import Image from "../atoms/Image";
 import MotionBox from "../atoms/MotionBox";
-import Skeleton from "../atoms/Skeleton";
 
 type ImageCarouselProps = {
   images: string[];
@@ -11,7 +12,6 @@ type ImageCarouselProps = {
 
 const ImageCarousel = memo(({ images }: ImageCarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -21,46 +21,30 @@ const ImageCarousel = memo(({ images }: ImageCarouselProps) => {
   }, [images.length]);
 
   return (
-    <Skeleton
-      isLoaded={isLoaded}
-      w="100%"
-      h="100%"
-      rounded={{ base: "md", md: "xl" }}
-    >
-      <Box
-        pos="relative"
-        w="100%"
-        aspectRatio={5 / 3}
-        rounded={{ base: "md", md: "xl" }}
-        overflow="hidden"
-        bg="gray.200"
-      >
-        <AnimatePresence initial={false}>
-          <MotionBox
-            key={currentIndex}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1, transition: { duration: 0.8 } }}
-            exit={{ opacity: 0, transition: { duration: 0.8 } }}
-            pos="absolute"
-            top="0"
-            left="0"
+    <Box w="100%" aspectRatio={5 / 3} pos="relative">
+      <AnimatePresence initial={false}>
+        <MotionBox
+          key={currentIndex}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { duration: 1 } }}
+          exit={{ opacity: 0, transition: { duration: 1 } }}
+          w="100%"
+          pos="absolute"
+          top="0"
+        >
+          <Image
+            src={images[currentIndex]}
+            alt={`photo${currentIndex}`}
+            fallback={
+              <Photo boxSize={{ base: "42px", md: "84px" }} color="brand.500" />
+            }
             w="100%"
-            h="100%"
-          >
-            <Image
-              src={images[currentIndex]}
-              alt=""
-              w="100%"
-              h="100%"
-              objectFit="cover"
-              draggable={false}
-              loading="lazy"
-              onLoad={() => setIsLoaded(true)}
-            />
-          </MotionBox>
-        </AnimatePresence>
-      </Box>
-    </Skeleton>
+            aspectRatio={5 / 3}
+            rounded={{ base: "md", md: "xl" }}
+          />
+        </MotionBox>
+      </AnimatePresence>
+    </Box>
   );
 });
 
