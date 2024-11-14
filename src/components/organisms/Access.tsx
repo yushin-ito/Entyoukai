@@ -22,7 +22,6 @@ const Access = memo(() => {
           w={{ base: "100%", md: "320px" }}
           aspectRatio={4 / 3}
           pos="relative"
-          _hover={{ opacity: { base: 1, md: 0.8 } }}
         >
           <Box
             pos="absolute"
