@@ -1,11 +1,12 @@
 import { Text, Center, VStack, Button } from "@chakra-ui/react";
+import { useQueryClient } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
 
-const Error = ({
-  resetErrorBoundary
-}: {
-  resetErrorBoundary?: (...args: any[]) => void;
-}) => {
+const Error = () => {
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -22,7 +23,7 @@ const Error = ({
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
       <VStack w="100%" spacing={{ base: "12", md: "16", lg: "20" }}>
-        <VStack as="section" w="100%" spacing={{ base: "1", md: "2" }}>
+        <VStack as="section" w="100%" spacing={{ base: "1", md: "2", lg: "4" }}>
           <Text
             as="h1"
             fontSize={{ base: "lg", md: "2xl", lg: "3xl" }}
@@ -34,28 +35,19 @@ const Error = ({
             もう一度お試しいただくか、時間をおいてアクセスしてください。
           </Text>
         </VStack>
-        <VStack w="100%" spacing={{ base: "4", md: "6" }}>
-          <Button
-            px={{ base: "8", md: "12", lg: "16" }}
-            py={{ base: "4", md: "6" }}
-            fontSize={{ base: "xs", md: "sm" }}
-            rounded="full"
-            shadow="sm"
-            onClick={() => window.location.replace("/")}
-          >
-            トップページに戻る
-          </Button>
-          <Button
-            variant="link"
-            color="brand"
-            fontSize={{ base: "xs", md: "sm" }}
-            fontWeight="normal"
-            _active={{ opacity: 0.6 }}
-            onClick={resetErrorBoundary}
-          >
-            再読み込み
-          </Button>
-        </VStack>
+        <Button
+          px={{ base: "8", md: "12" }}
+          py={{ base: "4", md: "6" }}
+          fontSize={{ base: "xs", md: "sm" }}
+          rounded="full"
+          shadow="sm"
+          onClick={() => {
+            queryClient.resetQueries();
+            navigate("/", { replace: true });
+          }}
+        >
+          トップページに戻る
+        </Button>
       </VStack>
     </Center>
   );

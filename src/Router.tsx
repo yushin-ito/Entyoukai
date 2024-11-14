@@ -1,7 +1,5 @@
 import { VStack } from "@chakra-ui/react";
-import { QueryErrorResetBoundary } from "@tanstack/react-query";
 import { lazy, Suspense, useEffect } from "react";
-import { ErrorBoundary } from "react-error-boundary";
 import {
   createBrowserRouter,
   Navigate,
@@ -59,31 +57,21 @@ const Layout = () => {
   }, [pathname, isLoading, scrollToElement]);
 
   return (
-    <QueryErrorResetBoundary>
-      {({ reset }) => (
-        <ErrorBoundary
-          onReset={reset}
-          fallbackRender={({ resetErrorBoundary }) => (
-            <Error resetErrorBoundary={resetErrorBoundary} />
-          )}
-        >
-          <VStack flex="1" p="0" spacing={{ base: "16", md: "24" }} bg="white">
-            <MainVisual />
-            <Outlet />
-            <Footer />
-          </VStack>
-        </ErrorBoundary>
-      )}
-    </QueryErrorResetBoundary>
+    <VStack flex="1" p="0" spacing={{ base: "16", md: "24" }} bg="white">
+      <MainVisual />
+      <Outlet />
+      <Footer />
+    </VStack>
   );
 };
 
 const router = createBrowserRouter([
   {
     element: <Layout />,
+    errorElement: <Error />,
     children: [
       {
-        path: "/",
+        index: true,
         element: (
           <Suspense fallback={<ProgressBar />}>
             <Top />

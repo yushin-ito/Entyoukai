@@ -15,7 +15,7 @@ const NotFound = () => {
   };
 
   return (
-    <Center as="main" w="100vw" h="100vh">
+    <Center as="main" w="100%" h="100vh">
       <Helmet>
         <title>ページが見つかりません | 猿鳥会</title>
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
