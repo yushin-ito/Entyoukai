@@ -10,7 +10,7 @@ const theme = extendTheme({
         overflowY: "scroll"
       },
       "*, *::before, *::after": {
-        WebkitTapHighlightColor: "rgba(1, 1, 88, 0.1)"
+        WebkitTapHighlightColor: "rgba(1, 1, 88, 0.05)"
       },
       "#nprogress .bar": {
         background: "#010158",
