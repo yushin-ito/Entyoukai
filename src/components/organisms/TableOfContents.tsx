@@ -80,7 +80,7 @@ const TableOfContents = memo(({ sections }: TableOfContentsProps) => {
         width="3px"
         height="42px"
         rounded="2px"
-        bg="brand"
+        bg="brand.500"
         animate={{
           y: sections.findIndex((section) => section.id === activeId) * 42,
           transition: { duration: 0.3, ease: "easeInOut" }
@@ -110,7 +110,7 @@ const TableOfContents = memo(({ sections }: TableOfContentsProps) => {
           <HStack spacing="4">
             <Text
               as="span"
-              color={activeId === section.id ? "brand" : "gray.400"}
+              color={activeId === section.id ? "brand.500" : "gray.400"}
               fontWeight="bold"
             >
               {section.title}

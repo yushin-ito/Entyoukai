@@ -24,7 +24,12 @@ const Sponsor = () => {
   };
 
   return (
-    <VStack flex="1" spacing={{ base: "16", md: "24" }} pos="relative">
+    <VStack
+      as="main"
+      w="100%"
+      spacing={{ base: "16", md: "24" }}
+      pos="relative"
+    >
       <Helmet>
         <title>協賛について | 猿鳥会</title>
         {schema && (
@@ -83,7 +88,7 @@ const Sponsor = () => {
                   isExternal
                   fontSize={{ base: "sm", md: "md" }}
                   fontWeight="bold"
-                  color="brand"
+                  color="brand.500"
                 >
                   {sponsor.name}
                 </Link>

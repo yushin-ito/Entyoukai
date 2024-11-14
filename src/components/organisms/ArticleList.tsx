@@ -92,7 +92,7 @@ const ArticleList = memo(({ articles }: ArticleListProps) => {
           <Circle
             key={index}
             size="6px"
-            bg={index === currentIndex ? "brand" : "gray.300"}
+            bg={index === currentIndex ? "brand.500" : "gray.300"}
             transition="background-color 0.3s"
           />
         ))}

@@ -1,27 +1,13 @@
 import { Text, Center, VStack, Button } from "@chakra-ui/react";
 import { useQueryClient } from "@tanstack/react-query";
-import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 
-const Error = () => {
+const Fallback = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: "エラーが発生しました | 猿鳥会",
-    description:
-      "予期せぬエラーが発生しました。もう一度お試しいただくか、時間をおいてアクセスしてください。",
-    url: "https://entyoukai.com/error"
-  };
-
   return (
-    <Center as="main" w="100%" h="100vh">
-      <Helmet>
-        <title>エラーが発生しました | 猿鳥会</title>
-        <script type="application/ld+json">{JSON.stringify(schema)}</script>
-      </Helmet>
+    <Center w="100%" h="100vh">
       <VStack w="100%" spacing={{ base: "12", md: "16", lg: "20" }}>
         <VStack as="section" w="100%" spacing={{ base: "1", md: "2", lg: "4" }}>
           <Text
@@ -53,4 +39,4 @@ const Error = () => {
   );
 };
 
-export default Error;
+export default Fallback;

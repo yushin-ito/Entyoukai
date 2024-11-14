@@ -75,7 +75,7 @@ const Timeline = memo(({ events }: TimelineProps) => {
           base: "1.8px",
           md: "2.5px"
         }}
-        bg="brand"
+        bg="brand.500"
         transform="translateX(-50%)"
       />
 
@@ -125,7 +125,7 @@ const Timeline = memo(({ events }: TimelineProps) => {
             base: "2px",
             md: "3px"
           }}
-          borderColor="brand"
+          borderColor="brand.500"
         />
       ))}
 

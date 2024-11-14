@@ -116,7 +116,7 @@ const ArticleListItem = memo(
                   px="6px"
                   py="1px"
                   borderWidth="1.5px"
-                  borderColor="brand"
+                  borderColor="brand.500"
                   rounded="full"
                 >
                   <Text fontSize="2xs" fontWeight="bold">
@@ -136,7 +136,7 @@ const ArticleListItem = memo(
               as="p"
               fontSize="xs"
               fontWeight={{ base: "bold", md: "normal" }}
-              color={{ base: "brand", md: "gray.600" }}
+              color={{ base: "brand.500", md: "gray.600" }}
               noOfLines={{ base: 6, md: 2 }}
             >
               {description}

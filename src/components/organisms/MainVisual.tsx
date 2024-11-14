@@ -88,7 +88,7 @@ const MainVisual = memo(() => {
         py={{ base: "12", md: "16", lg: "16" }}
         spacing="4"
         rounded="xl"
-        bg="brand"
+        bg="brand.500"
         opacity="0.8"
         alignItems="center"
         justifyContent="center"

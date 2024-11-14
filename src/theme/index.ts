@@ -9,19 +9,31 @@ const theme = extendTheme({
       body: {
         overflowY: "scroll"
       },
-      "*, *::before, &::after": {
-        WebkitTapHighlightColor: "transparent"
+      "*, *::before, *::after": {
+        WebkitTapHighlightColor: "rgba(1, 1, 88, 0.1)"
       },
-      img: {
-        WebkitUserDrag: "none",
-        userDrag: "none",
-        pointerEvents: "none",
-        touchAction: "none"
+      "#nprogress .bar": {
+        background: "#010158",
+        height: { base: "3px", md: "6px" }
+      },
+      "#nprogress .peg": {
+        display: "none"
       }
     }
   },
   colors: {
-    brand: "#010158",
+    brand: {
+      50: "#e6e6f2",
+      100: "#b3b3d1",
+      200: "#8080b0",
+      300: "#4d4d8f",
+      400: "#1a1a6e",
+      500: "#010158",
+      600: "#01014d",
+      700: "#010142",
+      800: "#000037",
+      900: "#00002d"
+    },
     info: "#3182ce",
     success: "#38a169",
     error: "#e53e3e"
@@ -29,56 +41,56 @@ const theme = extendTheme({
   components: {
     Text: {
       baseStyle: {
-        color: "brand",
+        color: "brand.500",
         lineHeight: { base: "1.5", sm: "1.8" }
       }
     },
     Heading: {
       baseStyle: {
-        color: "brand"
+        color: "brand.500"
       }
     },
     Button: {
       variants: {
-        fill: {
-          bg: "brand",
-          color: "white",
-          _hover: {
-            bg: "brand",
-            opacity: 0.8
-          },
+        solid: {
           _active: {
-            transform: "scale(0.98)",
-            opacity: 0.8
+            transform: "scale(0.96)"
           }
         },
         outline: {
-          bg: "white",
-          color: "brand",
-          borderWidth: "1px",
-          borderColor: "brand",
-          _hover: {
-            opacity: 0.8
-          },
+          _hover: { bg: "gray.100" },
           _active: {
-            transform: "scale(0.98)",
-            opacity: 0.8
+            bg: "gray.200",
+            transform: "scale(0.96)"
+          },
+          "@media(hover: none)": {
+            _hover: { bg: "transparent" }
+          }
+        },
+        ghost: {
+          _hover: { bg: "gray.100" },
+          _active: {
+            bg: "gray.200",
+            transform: "scale(0.96)"
+          },
+          "@media(hover: none)": {
+            _hover: { bg: "transparent" }
           }
         }
       },
       defaultProps: {
-        variant: "fill"
+        colorScheme: "brand"
       }
     },
     Input: {
       variants: {
         outline: {
           field: {
-            color: "brand",
+            color: "brand.500",
             borderWidth: { base: "1.2px", md: "1.5px" },
             borderColor: "gray.400",
             _focus: {
-              borderColor: "brand",
+              borderColor: "brand.500",
               borderWidth: { base: "1.8px", md: "2px" },
               boxShadow: "none"
             },
@@ -93,11 +105,11 @@ const theme = extendTheme({
     Textarea: {
       variants: {
         outline: {
-          color: "brand",
+          color: "brand.500",
           borderWidth: { base: "1.2px", md: "1.5px" },
           borderColor: "gray.400",
           _focus: {
-            borderColor: "brand",
+            borderColor: "brand.500",
             borderWidth: { base: "1.8px", md: "2px" },
             boxShadow: "none"
           },
@@ -106,6 +118,14 @@ const theme = extendTheme({
       },
       defaultProps: {
         variant: "outline"
+      }
+    },
+    Image: {
+      baseStyle: {
+        pointerEvents: "none",
+        sx: {
+          touchAction: "none"
+        }
       }
     }
   }

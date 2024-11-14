@@ -53,6 +53,7 @@ const ImageCarousel = memo(({ images }: ImageCarouselProps) => {
               w="100%"
               h="100%"
               objectFit="cover"
+              draggable={false}
               loading="lazy"
               onLoad={() => setIsLoaded(true)}
             />

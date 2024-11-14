@@ -85,22 +85,27 @@ const Contact = () => {
   };
 
   return (
-    <VStack flex="1" spacing={{ base: "16", md: "24" }} pos="relative">
+    <VStack
+      as="main"
+      w="100%"
+      spacing={{ base: "16", md: "24" }}
+      pos="relative"
+    >
       <Helmet>
         <title>お問い合わせ</title>
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
       <ScrollToTopButton />
       <VStack
-        w={{ base: "80%", md: "75%", lg: "55%" }}
+        w={{ base: "80%", md: "70%", lg: "50%" }}
         spacing={{ base: "4", md: "8" }}
       >
         <SectionTitle title="お問い合わせ" />
         <VStack
           as="form"
+          w="100%"
+          spacing={{ base: "8", md: "12" }}
           onSubmit={handleSubmit(onSubmit)}
-          w={{ base: "100%", md: "90%" }}
-          spacing={{ base: "4", md: "8" }}
         >
           <VStack as="section" w="100%" alignItems="flex-start" spacing="1">
             <Text as="p" fontSize={{ base: "sm", md: "md" }} fontWeight="bold">
@@ -110,14 +115,17 @@ const Contact = () => {
               内容を確認次第、ご入力いただいたメールアドレスにご返信いたします。なお、場合によっては返信にお時間をいただくことがございますので、あらかじめご了承ください。
             </Text>
           </VStack>
-          <VStack w="100%" spacing={{ base: "8", md: "12" }}>
+          <VStack
+            w={{ base: "100%", md: "90%" }}
+            spacing={{ base: "8", md: "12" }}
+          >
             {/* お名前 */}
             <FormControl isInvalid={!!errors.name}>
               <FormLabel
                 as="label"
                 fontSize="sm"
                 fontWeight="bold"
-                color="brand"
+                color="brand.500"
               >
                 お名前 <span style={{ color: "red" }}>*</span>
               </FormLabel>
@@ -138,7 +146,7 @@ const Contact = () => {
                 as="label"
                 fontSize="sm"
                 fontWeight="bold"
-                color="brand"
+                color="brand.500"
               >
                 メールアドレス <span style={{ color: "red" }}>*</span>
               </FormLabel>
@@ -166,7 +174,7 @@ const Contact = () => {
                 as="label"
                 fontSize="sm"
                 fontWeight="bold"
-                color="brand"
+                color="brand.500"
               >
                 電話番号 <span style={{ color: "red" }}>*</span>
               </FormLabel>
@@ -194,7 +202,7 @@ const Contact = () => {
                 as="label"
                 fontSize="sm"
                 fontWeight="bold"
-                color="brand"
+                color="brand.500"
               >
                 お問い合わせ内容 <span style={{ color: "red" }}>*</span>
               </FormLabel>
@@ -214,8 +222,9 @@ const Contact = () => {
           {/* 送信ボタン */}
           <Button
             type="submit"
-            w={{ base: "90%", md: "60%" }}
-            mt={{ base: "6", md: "12" }}
+            w={{ base: "80%", md: "50%" }}
+            mt={{ base: "4", md: "8" }}
+            fontSize="sm"
             isLoading={isSubmitting}
           >
             送信する

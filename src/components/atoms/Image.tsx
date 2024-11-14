@@ -36,6 +36,7 @@ const Image = memo(({ alt, src, ...props }: ImageProps) => {
           h="100%"
           objectFit="cover"
           shadow={{ base: "xs", md: "sm" }}
+          draggable={false}
           loading="lazy"
           onLoad={() => setIsLoaded(true)}
         />
