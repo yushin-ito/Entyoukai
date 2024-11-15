@@ -103,7 +103,7 @@ const MainVisual = memo(() => {
         <VStack spacing="2">
           <Text
             fontSize={{ base: "md", md: "lg", lg: "xl" }}
-            fontWeight="bold"
+            fontWeight="semibold"
             color="white"
           >
             2025年1月12日（日）13時30分
@@ -113,7 +113,7 @@ const MainVisual = memo(() => {
             <Pin boxSize={{ base: "18px", md: "20px" }} color="white" />
             <Text
               fontSize={{ base: "md", md: "lg", lg: "xl" }}
-              fontWeight="bold"
+              fontWeight="semibold"
               color="white"
             >
               保健福祉センター 1階ホール

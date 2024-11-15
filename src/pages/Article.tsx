@@ -66,11 +66,7 @@ const Article = () => {
               <HStack w="100%" alignItems="center" spacing="4">
                 <Avatar size={{ base: "sm", md: "md" }} src={article.avatar} />
                 <VStack alignItems="flex-start" spacing="1px">
-                  <Text
-                    as="span"
-                    fontSize={{ base: "xs", md: "md" }}
-                    fontWeight="bold"
-                  >
+                  <Text as="span" fontSize={{ base: "xs", md: "md" }}>
                     {article.author}
                   </Text>
                   <Text
@@ -95,7 +91,6 @@ const Article = () => {
                 as="p"
                 mt={{ base: "6", md: "10" }}
                 fontSize={{ base: "sm", md: "md" }}
-                fontWeight="bold"
                 whiteSpace="pre-wrap"
               >
                 {article.description}
@@ -126,7 +121,6 @@ const Article = () => {
                   <Text
                     as="span"
                     fontSize={{ base: "xs", md: "sm" }}
-                    fontWeight="bold"
                     color="white"
                   >
                     前へ
@@ -138,11 +132,7 @@ const Article = () => {
                   size={{ base: "sm", md: "md" }}
                   onClick={() => navigate("/activity")}
                 >
-                  <Text
-                    as="span"
-                    fontSize={{ base: "xs", md: "sm" }}
-                    fontWeight="bold"
-                  >
+                  <Text as="span" fontSize={{ base: "xs", md: "sm" }}>
                     一覧へ
                   </Text>
                 </Button>
@@ -155,7 +145,6 @@ const Article = () => {
                   <Text
                     as="span"
                     fontSize={{ base: "xs", md: "sm" }}
-                    fontWeight="bold"
                     color="white"
                   >
                     次へ

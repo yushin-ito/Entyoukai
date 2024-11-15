@@ -57,7 +57,7 @@ const Top = () => {
           spacing={{ base: "4", md: "8" }}
         >
           <SectionTitle title="概要" />
-          <Text as="p" fontSize={{ base: "sm", md: "md" }} fontWeight="bold">
+          <Text as="p" fontSize={{ base: "sm", md: "md" }}>
             このページをご覧いただきありがとうございます。こちらは、令和7年1月12日（日）に保健福祉センター（さわやか村）で開催される「二十歳のつどい」公式ページです。「二十歳のつどい」の概要やアクセス情報、最新のお知らせなどをご案内しています。
             <br />
             <br />

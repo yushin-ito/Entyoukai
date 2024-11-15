@@ -67,7 +67,7 @@ const Countdown = memo(() => {
               display="block"
               textAlign="center"
               fontSize={{ base: "3xl", md: "5xl" }}
-              fontWeight="bold"
+              fontWeight="semibold"
             >
               {String(value).padStart(2, "0")}
             </Text>

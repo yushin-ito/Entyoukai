@@ -1,5 +1,12 @@
 import { extendTheme } from "@chakra-ui/react";
 
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/inter/700.css";
+import "@fontsource/noto-sans-jp/500.css";
+import "@fontsource/noto-sans-jp/600.css";
+import "@fontsource/noto-sans-jp/700.css";
+
 const theme = extendTheme({
   styles: {
     global: {
@@ -10,7 +17,7 @@ const theme = extendTheme({
         overflowY: "scroll"
       },
       "*, *::before, *::after": {
-        WebkitTapHighlightColor: "rgba(1, 1, 88, 0.05)"
+        WebkitTapHighlightColor: "rgba(1, 1, 88, 0.1)"
       },
       "#nprogress .bar": {
         background: "#010158",
@@ -21,6 +28,11 @@ const theme = extendTheme({
       }
     }
   },
+  fonts: {
+    body: "Inter, Noto Sans JP, sans-serif",
+    heading: "Inter, Noto Sans JP, sans-serif"
+  },
+
   colors: {
     brand: {
       50: "#e6e6f2",
@@ -38,16 +50,23 @@ const theme = extendTheme({
     success: "#38a169",
     error: "#e53e3e"
   },
+  fontWeights: {
+    medium: 500,
+    semibold: 600,
+    bold: 700
+  },
   components: {
     Text: {
       baseStyle: {
         color: "brand.500",
-        lineHeight: { base: "1.5", sm: "1.8" }
+        fontWeight: "500",
+        lineHeight: { base: "1.5", sm: "1.75" }
       }
     },
     Heading: {
       baseStyle: {
-        color: "brand.500"
+        color: "brand.500",
+        fontWeight: "700"
       }
     },
     Button: {

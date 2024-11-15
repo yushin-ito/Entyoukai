@@ -27,11 +27,11 @@ const TimelineItem = memo(({ id, title, description }: TimelineItemProps) => {
         ml={{ base: "90px", md: "180px" }}
         rounded="md"
       >
-        <VStack w="100%" alignItems="flex-start" spacing="6px">
+        <VStack w="100%" alignItems="flex-start" spacing="8px">
           <Heading as="h3" fontSize={{ base: "sm", md: "xl" }}>
             {title}
           </Heading>
-          <Text as="p" fontSize={{ base: "xs", md: "lg" }}>
+          <Text as="p" fontSize={{ base: "xs", md: "md" }}>
             {description}
           </Text>
         </VStack>

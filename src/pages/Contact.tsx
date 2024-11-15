@@ -98,7 +98,7 @@ const Contact = () => {
       <ScrollToTopButton />
       <VStack
         w={{ base: "80%", md: "70%", lg: "50%" }}
-        spacing={{ base: "4", md: "8" }}
+        spacing={{ base: "4", md: "6" }}
       >
         <SectionTitle title="お問い合わせ" />
         <VStack
@@ -108,7 +108,11 @@ const Contact = () => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <VStack as="section" w="100%" alignItems="flex-start" spacing="1">
-            <Text as="p" fontSize={{ base: "sm", md: "md" }} fontWeight="bold">
+            <Text
+              as="p"
+              fontSize={{ base: "sm", md: "md" }}
+              fontWeight="semibold"
+            >
               お問い合わせ内容をご入力のうえ、以下のフォームから送信してください。
             </Text>
             <Text as="p" fontSize={{ base: "xs", md: "sm" }}>
@@ -121,12 +125,7 @@ const Contact = () => {
           >
             {/* お名前 */}
             <FormControl isInvalid={!!errors.name}>
-              <FormLabel
-                as="label"
-                fontSize="sm"
-                fontWeight="bold"
-                color="brand.500"
-              >
+              <FormLabel as="label" fontSize="sm" color="brand.500">
                 お名前 <span style={{ color: "red" }}>*</span>
               </FormLabel>
               <Input
@@ -142,12 +141,7 @@ const Contact = () => {
 
             {/* メールアドレス */}
             <FormControl isInvalid={!!errors.email}>
-              <FormLabel
-                as="label"
-                fontSize="sm"
-                fontWeight="bold"
-                color="brand.500"
-              >
+              <FormLabel as="label" fontSize="sm" color="brand.500">
                 メールアドレス <span style={{ color: "red" }}>*</span>
               </FormLabel>
               <Input
@@ -170,12 +164,7 @@ const Contact = () => {
 
             {/* 電話番号 */}
             <FormControl isInvalid={!!errors.phone}>
-              <FormLabel
-                as="label"
-                fontSize="sm"
-                fontWeight="bold"
-                color="brand.500"
-              >
+              <FormLabel as="label" fontSize="sm" color="brand.500">
                 電話番号 <span style={{ color: "red" }}>*</span>
               </FormLabel>
               <Input
@@ -198,12 +187,7 @@ const Contact = () => {
 
             {/* お問い合わせ内容 */}
             <FormControl isInvalid={!!errors.message}>
-              <FormLabel
-                as="label"
-                fontSize="sm"
-                fontWeight="bold"
-                color="brand.500"
-              >
+              <FormLabel as="label" fontSize="sm" color="brand.500">
                 お問い合わせ内容 <span style={{ color: "red" }}>*</span>
               </FormLabel>
               <Textarea

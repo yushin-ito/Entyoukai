@@ -34,19 +34,10 @@ const FAQList = memo(({ faq }: FAQListProps) => {
               alignItems="flex-start"
               spacing={{ base: "4px", md: "6px" }}
             >
-              <Text
-                as="span"
-                fontSize={{ base: "xs", md: "sm" }}
-                fontWeight="bold"
-              >
+              <Text as="span" fontSize={{ base: "xs", md: "sm" }}>
                 Q.
               </Text>
-              <Text
-                as="p"
-                textAlign="left"
-                fontSize={{ base: "xs", md: "sm" }}
-                fontWeight="bold"
-              >
+              <Text as="p" textAlign="left" fontSize={{ base: "xs", md: "sm" }}>
                 {item.question}
               </Text>
             </HStack>
@@ -69,7 +60,6 @@ const FAQList = memo(({ faq }: FAQListProps) => {
                 <Text
                   as="span"
                   fontSize={{ base: "xs", md: "sm" }}
-                  fontWeight="bold"
                   color="red.500"
                 >
                   A.
@@ -77,7 +67,6 @@ const FAQList = memo(({ faq }: FAQListProps) => {
                 <Text
                   as="p"
                   fontSize={{ base: "xs", md: "sm" }}
-                  fontWeight="bold"
                   color="red.500"
                 >
                   {item.answer}

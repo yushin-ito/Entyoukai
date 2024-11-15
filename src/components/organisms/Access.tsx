@@ -1,4 +1,4 @@
-import { VStack, Text, Stack, Heading, Box, Link } from "@chakra-ui/react";
+import { VStack, Text, Stack, Box, Link } from "@chakra-ui/react";
 import { memo } from "react";
 
 import { Photo } from "../atoms/Icon";
@@ -43,23 +43,22 @@ const Access = memo(() => {
       </Link>
       <VStack spacing={{ base: "4", md: "8" }} alignItems="flex-start">
         <VStack spacing={{ base: "1", md: "2" }} alignItems="flex-start">
-          <Heading as="h3" fontSize={{ base: "sm", md: "md" }}>
+          <Text as="p" fontSize={{ base: "sm", md: "md" }}>
             保健福祉センター（さわやか村）
-          </Heading>
+          </Text>
           <Text
             as="address"
             fontSize={{ base: "sm", md: "md" }}
-            fontWeight="bold"
             fontStyle="normal"
           >
             〒510-8102 三重県三重郡朝日町大字小向891-5
           </Text>
         </VStack>
         <VStack spacing={{ base: "1", md: "2" }} alignItems="flex-start">
-          <Text as="p" fontSize={{ base: "sm", md: "md" }} fontWeight="bold">
+          <Text as="p" fontSize={{ base: "sm", md: "md" }}>
             ・近鉄伊勢朝日駅から徒歩8分
           </Text>
-          <Text as="p" fontSize={{ base: "sm", md: "md" }} fontWeight="bold">
+          <Text as="p" fontSize={{ base: "sm", md: "md" }}>
             ・JR朝日駅から徒歩17分
           </Text>
         </VStack>

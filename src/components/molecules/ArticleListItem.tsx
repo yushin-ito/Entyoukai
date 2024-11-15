@@ -124,15 +124,11 @@ const ArticleListItem = memo(
                   borderColor="brand.500"
                   rounded="full"
                 >
-                  <Text fontSize="2xs" fontWeight="bold">
-                    {formatByDot(date, "yyyy.MM.dd")}
-                  </Text>
+                  <Text fontSize="2xs">{formatByDot(date, "yyyy.MM.dd")}</Text>
                 </Box>
                 <HStack spacing="2">
                   <Avatar size="xs" src={avatar} />
-                  <Text fontSize="2xs" fontWeight="bold">
-                    {author}
-                  </Text>
+                  <Text fontSize="2xs">{author}</Text>
                 </HStack>
               </HStack>
             )}
@@ -140,7 +136,7 @@ const ArticleListItem = memo(
             <Text
               as="p"
               fontSize="xs"
-              fontWeight={{ base: "bold", md: "normal" }}
+              fontWeight={{ base: "semibold", md: "normal" }}
               color={{ base: "brand.500", md: "gray.600" }}
               noOfLines={{ base: 6, md: 2 }}
             >
@@ -156,7 +152,7 @@ const ArticleListItem = memo(
               >
                 <HStack spacing="6px">
                   <Avatar size="xs" src={avatar} />
-                  <Text fontSize="2xs" fontWeight="bold" color="gray.900">
+                  <Text fontSize="2xs" color="gray.900">
                     {author}
                   </Text>
                 </HStack>

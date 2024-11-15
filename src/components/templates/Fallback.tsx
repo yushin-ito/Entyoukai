@@ -11,11 +11,7 @@ const Fallback = memo(() => {
     <Center w="100%" h="100vh">
       <VStack w="100%" spacing={{ base: "12", md: "16", lg: "20" }}>
         <VStack as="section" w="100%" spacing={{ base: "1", md: "2", lg: "4" }}>
-          <Text
-            as="h1"
-            fontSize={{ base: "lg", md: "2xl", lg: "3xl" }}
-            fontWeight="bold"
-          >
+          <Text as="h1" fontSize={{ base: "lg", md: "2xl", lg: "3xl" }}>
             予期せぬエラーが発生しました。
           </Text>
           <Text as="p" fontSize={{ base: "xs", md: "sm" }} color="gray.600">

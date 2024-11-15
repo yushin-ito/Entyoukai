@@ -81,12 +81,7 @@ const Timeline = memo(({ events }: TimelineProps) => {
           transform="translateY(-50%)"
         >
           {event.dates.map((date, index) => (
-            <Text
-              key={index}
-              as="span"
-              fontSize={{ base: "xs", md: "md" }}
-              fontWeight="bold"
-            >
+            <Text key={index} as="span" fontSize={{ base: "xs", md: "md" }}>
               {breakpoint === "base"
                 ? formatByDot(date, "yy.M.d")
                 : formatByDot(date, "yyyy.MM.dd")}
