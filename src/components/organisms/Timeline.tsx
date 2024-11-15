@@ -14,7 +14,7 @@ const Timeline = memo(({ events }: TimelineProps) => {
       as="section"
       w={{ base: "100%", md: "90%" }}
       pos="relative"
-      spacing={{ base: "80px", md: "100px" }}
+      spacing={{ base: "60px", md: "80px", lg: "100px" }}
     >
       {/* 縦線 */}
       <Box
@@ -22,7 +22,7 @@ const Timeline = memo(({ events }: TimelineProps) => {
         top="0"
         bottom="0"
         left={{
-          base: "60px",
+          base: "65px",
           md: "120px"
         }}
         width={{

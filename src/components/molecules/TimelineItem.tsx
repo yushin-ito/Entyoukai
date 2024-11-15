@@ -39,7 +39,12 @@ const TimelineItem = memo(
           alignItems="flex-start"
         >
           {dates.map((date, index) => (
-            <Text key={index} as="span" fontSize={{ base: "xs", md: "md" }}>
+            <Text
+              key={index}
+              as="span"
+              fontSize={{ base: "xs", md: "md" }}
+              fontWeight="semibold"
+            >
               {breakpoint === "base"
                 ? formatByDot(date, "yy.MM.dd")
                 : formatByDot(date, "yyyy.MM.dd")}
@@ -57,7 +62,7 @@ const TimelineItem = memo(
           pos="absolute"
           top="50%"
           left={{
-            base: "60px",
+            base: "65px",
             md: "120px"
           }}
           borderWidth={{
