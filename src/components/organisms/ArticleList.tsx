@@ -8,7 +8,6 @@ import {
 } from "@chakra-ui/react";
 import { memo, useEffect, useRef, useState } from "react";
 
-import useResize from "../../hooks/tools/useResize";
 import type { Article } from "../../types";
 import ArticleListItem from "../molecules/ArticleListItem";
 
@@ -19,30 +18,16 @@ type ArticleListProps = {
 const ArticleList = memo(({ articles }: ArticleListProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [width, setWidth] = useState(0);
-  const breakpoint = useBreakpointValue(
-    {
-      base: "base",
-      md: "md",
-      lg: "lg"
-    },
-    { fallback: undefined }
-  );
-
-  const { resize } = useResize();
-
-  useEffect(() => {
-    if (ref.current) {
-      setWidth(ref.current.getBoundingClientRect().width);
-    }
-  }, [resize]);
+  const breakpoint = useBreakpointValue({ base: "base", md: "md", lg: "lg" });
 
   useEffect(() => {
     const current = ref.current;
 
     const onScroll = () => {
-      if (current && width > 0) {
-        const index = Math.round(current.scrollLeft / width);
+      if (current) {
+        const index = Math.round(
+          current.scrollLeft / (window.innerWidth * 0.8 + 24)
+        );
         setCurrentIndex(index);
       }
     };
@@ -52,7 +37,7 @@ const ArticleList = memo(({ articles }: ArticleListProps) => {
     return () => {
       current?.removeEventListener("scroll", onScroll);
     };
-  }, [width]);
+  }, [ref]);
 
   if (breakpoint === "base") {
     return (
@@ -75,14 +60,14 @@ const ArticleList = memo(({ articles }: ArticleListProps) => {
           }}
         >
           <HStack
-            w={`${(width + 24) * articles.length}px`}
+            w={`calc((100% + 24px) * ${articles.length})`}
             alignItems="flex-start"
             spacing="0"
           >
             {articles.map((article, index) => (
               <Box
                 key={index}
-                w={width}
+                w={`calc(100% / ${articles.length} - 24px)`}
                 mr="24px"
                 scrollSnapAlign="start"
                 overflow="clip"
