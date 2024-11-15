@@ -111,7 +111,7 @@ const TableOfContents = memo(({ sections }: TableOfContentsProps) => {
             <Text
               as="span"
               color={activeId === section.id ? "brand.500" : "gray.400"}
-              fontWeight="bold"
+              fontWeight="semibold"
             >
               {section.title}
             </Text>

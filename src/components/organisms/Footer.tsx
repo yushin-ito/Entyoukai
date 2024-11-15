@@ -18,7 +18,6 @@ const Footer = memo(() => {
           to="/sitepolicy"
           variant="link"
           fontSize={{ base: "2xs", md: "sm" }}
-          fontWeight="bold"
           color="white"
         >
           サイトポリシー
@@ -28,7 +27,6 @@ const Footer = memo(() => {
           to="/privacypolicy"
           variant="link"
           fontSize={{ base: "2xs", md: "sm" }}
-          fontWeight="bold"
           color="white"
         >
           プライバシーポリシー
@@ -38,7 +36,6 @@ const Footer = memo(() => {
           to="/contact"
           variant="link"
           fontSize={{ base: "2xs", md: "sm" }}
-          fontWeight="bold"
           color="white"
         >
           お問い合わせ

@@ -54,7 +54,7 @@ const Sponsor = () => {
           spacing={{ base: "4", md: "8" }}
         >
           <SectionTitle title="協賛について" />
-          <Text as="p" fontSize={{ base: "sm", md: "md" }} fontWeight="bold">
+          <Text as="p" fontSize={{ base: "sm", md: "md" }}>
             「二十歳のつどい」は、朝日町で育った若者たちが二十歳を迎え、共に新たな一歩を踏み出す大切な節目のイベントです。この特別な日をより意義深く、そして記憶に残るものにするため、多くの方々のご協力とご支援をいただいております。
             <br />
             <br />
@@ -87,17 +87,12 @@ const Sponsor = () => {
                   href={sponsor.url}
                   isExternal
                   fontSize={{ base: "sm", md: "md" }}
-                  fontWeight="bold"
                   color="brand.500"
                 >
                   {sponsor.name}
                 </Link>
               ) : (
-                <Text
-                  key={index}
-                  fontSize={{ base: "sm", md: "md" }}
-                  fontWeight="bold"
-                >
+                <Text key={index} fontSize={{ base: "sm", md: "md" }}>
                   {sponsor.name}
                 </Text>
               )

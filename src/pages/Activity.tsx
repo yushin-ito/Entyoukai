@@ -88,12 +88,7 @@ const Activity = () => {
               地域で盛り上がる二十歳のつどいに
             </Heading>
           </MotionBox>
-          <Text
-            as="p"
-            fontSize={{ base: "sm", md: "md" }}
-            fontWeight="bold"
-            animation=""
-          >
+          <Text as="p" fontSize={{ base: "sm", md: "md" }}>
             私たちが「二十歳のつどい」のために活動する理由は、コロナによって失われた同期との思い出をもう一度作り直すためです。
             <br />
             <br />

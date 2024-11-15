@@ -6,8 +6,7 @@ import {
   Button,
   Box,
   Stack,
-  useBreakpointValue,
-  Heading
+  useBreakpointValue
 } from "@chakra-ui/react";
 import { useState, useMemo, memo } from "react";
 
@@ -129,22 +128,14 @@ const NewsList = memo(({ news }: NewsListProps) => {
                   py={{ base: "1.5px", md: "2.5px" }}
                   rounded="full"
                 >
-                  <Text
-                    fontSize={{ base: "2xs", md: "xs" }}
-                    fontWeight="bold"
-                    color="white"
-                  >
+                  <Text fontSize={{ base: "2xs", md: "xs" }} color="white">
                     {categories[item.category]}
                   </Text>
                 </Box>
               </HStack>
-              <Heading
-                as="h3"
-                fontSize={{ base: "xs", md: "sm" }}
-                noOfLines={1}
-              >
+              <Text as="p" fontSize={{ base: "xs", md: "sm" }} noOfLines={1}>
                 {item.title}
-              </Heading>
+              </Text>
             </Stack>
             {index < list.length - 1 && <Divider borderColor="gray.200" />}
           </VStack>
