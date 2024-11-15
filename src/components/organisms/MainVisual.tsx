@@ -48,7 +48,7 @@ const MainVisual = memo(() => {
         src="/assets/images/logo.webp"
         alt="logo"
         objectFit="cover"
-        w={{ base: "100px", lg: "120px" }}
+        w={{ base: "100px", lg: "110px" }}
         h="auto"
         pos="absolute"
         top="6"
@@ -84,9 +84,10 @@ const MainVisual = memo(() => {
 
       {/* メインビジュアル */}
       <VStack
+        mt="20"
         px={{ base: "10", md: "20", lg: "24" }}
         py={{ base: "12", md: "16", lg: "16" }}
-        spacing="4"
+        spacing={{ base: "4", md: "6" }}
         rounded="xl"
         bg="brand.500"
         opacity="0.8"
