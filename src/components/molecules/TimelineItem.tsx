@@ -23,10 +23,7 @@ const TimelineItem = memo(
   ({ title, description, dates }: TimelineItemProps) => {
     const ref = useRef<HTMLDivElement>(null);
     const isInView = useInView(ref, { once: true });
-    const breakpoint = useBreakpointValue(
-      { base: "base", md: "md" },
-      { fallback: undefined }
-    );
+    const breakpoint = useBreakpointValue({ base: "base", md: "md" });
 
     return (
       <HStack w="100%" spacing="4" pos="relative">
@@ -38,11 +35,14 @@ const TimelineItem = memo(
           top="50%"
           left="0"
           transform="translateY(-50%)"
+          spacing="0"
+          alignItems="flex-start"
         >
           {dates.map((date, index) => (
             <Text key={index} as="span" fontSize={{ base: "xs", md: "md" }}>
-              {breakpoint === "base" && formatByDot(date, "yy.M.d")}
-              {breakpoint === "md" && formatByDot(date, "yyyy.MM.dd")}
+              {breakpoint === "base"
+                ? formatByDot(date, "yy.MM.dd")
+                : formatByDot(date, "yyyy.MM.dd")}
             </Text>
           ))}
         </VStack>
@@ -81,7 +81,11 @@ const TimelineItem = memo(
             ml={{ base: "90px", md: "180px" }}
             rounded="md"
           >
-            <VStack w="100%" alignItems="flex-start" spacing="12px">
+            <VStack
+              w="100%"
+              alignItems="flex-start"
+              spacing={{ base: "8px", md: "12px" }}
+            >
               <Heading as="h3" fontSize={{ base: "sm", md: "xl" }}>
                 {title}
               </Heading>
