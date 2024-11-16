@@ -106,6 +106,7 @@ const theme = extendTheme({
         outline: {
           field: {
             color: "brand.500",
+            fontSize: { base: "xs", md: "sm" },
             borderWidth: { base: "1.2px", md: "1.5px" },
             borderColor: "gray.400",
             _hover: { borderColor: "gray.400" },
@@ -129,6 +130,7 @@ const theme = extendTheme({
       variants: {
         outline: {
           color: "brand.500",
+          fontSize: { base: "xs", md: "sm" },
           borderWidth: { base: "1.2px", md: "1.5px" },
           borderColor: "gray.400",
           _hover: { borderColor: "gray.400" },
