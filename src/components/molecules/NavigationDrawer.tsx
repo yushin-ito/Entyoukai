@@ -23,6 +23,7 @@ const NavigationDrawer = memo(({ isOpen, onClose }: NavigationDrawerProps) => {
         maxW={{ base: "60%", sm: "40%" }}
         bg="brand.500"
         opacity="0.8"
+        visibility={isOpen ? "visible" : "hidden"}
       >
         <DrawerCloseButton mt="2" color="white" size="md" />
         <DrawerBody>
