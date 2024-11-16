@@ -4,7 +4,18 @@ import { defineConfig } from "vite";
 import fontSubsetter from "./plugins";
 
 export default defineConfig({
-  plugins: [react(), fontSubsetter({ verbose: true })],
+  plugins: [
+    react(),
+    fontSubsetter({
+      verbose: true,
+      basedOn: [
+        {
+          dir: "public/contents",
+          ext: "json"
+        }
+      ]
+    })
+  ],
   build: {
     target: "esnext",
     minify: "esbuild",
