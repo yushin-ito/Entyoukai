@@ -32,7 +32,6 @@ const theme = extendTheme({
     body: "Inter, Noto Sans JP, sans-serif",
     heading: "Inter, Noto Sans JP, sans-serif"
   },
-
   colors: {
     brand: {
       50: "#e6e6f2",
@@ -106,7 +105,6 @@ const theme = extendTheme({
         outline: {
           field: {
             color: "brand.500",
-            fontSize: { base: "xs", md: "sm" },
             borderWidth: { base: "1.2px", md: "1.5px" },
             borderColor: "gray.400",
             _hover: { borderColor: "gray.400" },
@@ -116,32 +114,8 @@ const theme = extendTheme({
               boxShadow: "none"
             },
             _placeholder: {
-              color: "gray.400",
-              fontSize: { base: "xs", md: "sm" }
+              color: "gray.400"
             }
-          }
-        }
-      },
-      defaultProps: {
-        variant: "outline"
-      }
-    },
-    Textarea: {
-      variants: {
-        outline: {
-          color: "brand.500",
-          fontSize: { base: "xs", md: "sm" },
-          borderWidth: { base: "1.2px", md: "1.5px" },
-          borderColor: "gray.400",
-          _hover: { borderColor: "gray.400" },
-          _focus: {
-            borderColor: "brand.500",
-            borderWidth: { base: "1.8px", md: "2px" },
-            boxShadow: "none"
-          },
-          _placeholder: {
-            color: "gray.400",
-            fontSize: { base: "xs", md: "sm" }
           }
         }
       },

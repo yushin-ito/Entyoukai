@@ -6,8 +6,7 @@ import {
   VStack,
   useToast,
   Text,
-  Input,
-  Textarea
+  Input
 } from "@chakra-ui/react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
@@ -125,7 +124,11 @@ const Contact = () => {
           >
             {/* お名前 */}
             <FormControl isInvalid={!!errors.name}>
-              <FormLabel as="label" fontSize="sm" color="brand.500">
+              <FormLabel
+                as="label"
+                color="brand.500"
+                fontSize={{ base: "xs", md: "sm" }}
+              >
                 お名前 <span style={{ color: "red" }}>*</span>
               </FormLabel>
               <Input
@@ -141,7 +144,11 @@ const Contact = () => {
 
             {/* メールアドレス */}
             <FormControl isInvalid={!!errors.email}>
-              <FormLabel as="label" fontSize="sm" color="brand.500">
+              <FormLabel
+                as="label"
+                color="brand.500"
+                fontSize={{ base: "xs", md: "sm" }}
+              >
                 メールアドレス <span style={{ color: "red" }}>*</span>
               </FormLabel>
               <Input
@@ -164,7 +171,11 @@ const Contact = () => {
 
             {/* 電話番号 */}
             <FormControl isInvalid={!!errors.phone}>
-              <FormLabel as="label" fontSize="sm" color="brand.500">
+              <FormLabel
+                as="label"
+                color="brand.500"
+                fontSize={{ base: "xs", md: "sm" }}
+              >
                 電話番号 <span style={{ color: "red" }}>*</span>
               </FormLabel>
               <Input
@@ -187,14 +198,23 @@ const Contact = () => {
 
             {/* お問い合わせ内容 */}
             <FormControl isInvalid={!!errors.message}>
-              <FormLabel as="label" fontSize="sm" color="brand.500">
+              <FormLabel
+                as="label"
+                color="brand.500"
+                fontSize={{ base: "xs", md: "sm" }}
+              >
                 お問い合わせ内容 <span style={{ color: "red" }}>*</span>
               </FormLabel>
-              <Textarea
-                h={{ base: "160px", md: "180px" }}
-                placeholder="お問い合わせ内容"
+              <Input
+                as="textarea"
+                h={{ base: "180px", md: "240px" }}
+                py="3"
                 {...register("message", {
-                  required: "お問い合わせ内容を入力してください"
+                  required: "お問い合わせ内容を入力してください",
+                  maxLength: {
+                    value: 500,
+                    message: "500文字以内で入力してください"
+                  }
                 })}
               />
               <FormErrorMessage as="span">
@@ -208,7 +228,7 @@ const Contact = () => {
             type="submit"
             w={{ base: "80%", md: "50%" }}
             mt={{ base: "4", md: "8" }}
-            fontSize="sm"
+            fontSize={{ base: "xs", md: "sm" }}
             isLoading={isSubmitting}
           >
             送信する
