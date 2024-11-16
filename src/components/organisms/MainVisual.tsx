@@ -84,7 +84,7 @@ const MainVisual = memo(() => {
 
       {/* メインビジュアル */}
       <VStack
-        mt="20"
+        mt={{ base: "8", md: "20" }}
         px={{ base: "10", md: "20", lg: "24" }}
         py={{ base: "12", md: "16", lg: "16" }}
         spacing={{ base: "4", md: "6" }}
