@@ -1,15 +1,23 @@
 import fs from "fs";
 import path from "path";
 
-import type { OutputOptions, Plugin } from "rollup";
+import type { Plugin } from "rollup";
 import subsetFont from "subset-font";
 
 export type PluginOptions = {
   verbose?: boolean;
+  fontDir?: string;
+  outputDir?: string;
+  basedOn?: {
+    dir: string;
+    ext: string;
+  }[];
 };
 
 const defaultPluginOptions: PluginOptions = {
-  verbose: false
+  verbose: false,
+  fontDir: "public/fonts",
+  outputDir: "dist/fonts"
 };
 
 const getFiles = (dir: string, ext: string): string[] =>
@@ -18,47 +26,52 @@ const getFiles = (dir: string, ext: string): string[] =>
     : [];
 
 const generateBundle = async (
-  _options: OutputOptions,
   bundle: Record<string, any>,
   pluginOptions: PluginOptions
 ) => {
-  const { verbose } = pluginOptions;
+  const { verbose, fontDir, basedOn, outputDir } = pluginOptions;
 
-  const fontFiles = getFiles("public/fonts", ".woff2").map((file) =>
-    path.join("public/fonts", file)
+  if (!fontDir || !basedOn || !outputDir) return;
+
+  const fontFiles = getFiles(fontDir, ".woff2").map((file) =>
+    path.join(fontDir, file)
   );
 
-  const contentFiles = getFiles("public/contents", ".json").map((file) =>
-    path.join("public/contents", file)
+  const baseFiles = basedOn.flatMap(({ dir, ext }) =>
+    getFiles(dir, `.${ext}`).map((file) => path.join(dir, file))
   );
 
   if (verbose) {
-    console.log("Subsetting fonts...");
-    console.log("Font files:", fontFiles);
-    console.log("Content files:", contentFiles);
+    console.log(`\nsubsetting fonts(${fontFiles.length})...`);
+    fontFiles.forEach((file) => {
+      console.log(`- ${file}`);
+    });
+
+    console.log(`\nbased on files(${baseFiles.length})...`);
+    baseFiles.forEach((file) => {
+      console.log(`- ${file}`);
+    });
   }
 
-  const glyphSetByAssets = Object.values(bundle)
+  const bundleGlyphSet = Object.values(bundle)
     .filter((info) => /\.(js|css|html?)$/.test(info.fileName))
-    .flatMap((info) => [
-      ...new Set(
-        info.type === "chunk"
-          ? info.code
-          : typeof info.source === "string"
-            ? info.source
-            : ""
-      )
-    ]);
+    .flatMap((info) =>
+      info.type === "chunk"
+        ? [...new Set(info.code)]
+        : [...new Set(info.source)]
+    );
 
-  const glyphSetByContents = contentFiles.flatMap((file) => [
+  const baseGlyphSet = baseFiles.flatMap((file) => [
     ...new Set(Object.values(fs.readFileSync(file, "utf-8")).join(""))
   ]);
 
-  const glyphSet = new Set([...glyphSetByAssets, ...glyphSetByContents]);
+  const glyphSet = new Set([...bundleGlyphSet, ...baseGlyphSet]);
 
-  if (!fs.existsSync("dist/fonts")) {
-    fs.mkdirSync("dist/fonts", { recursive: true });
+  if (!fs.existsSync(fontDir)) {
+    fs.mkdirSync(fontDir, { recursive: true });
   }
+
+  const table = [];
 
   for (const fontPath of fontFiles) {
     const fontBuffer = fs.readFileSync(fontPath);
@@ -66,21 +79,37 @@ const generateBundle = async (
       targetFormat: "woff2"
     });
 
-    const subsetPath = path.join("dist/fonts", path.basename(fontPath));
+    const subsetPath = path.join(outputDir, path.basename(fontPath));
     fs.writeFileSync(subsetPath, Buffer.from(subset));
 
     if (verbose) {
-      console.log(`Font processed: ${path.basename(fontPath)}`);
-      console.log(`Subset saved at: ${subsetPath}`);
+      const fontSize = (fontBuffer.length / 1024).toFixed(2);
+      const subsetSize = (subset.length / 1024).toFixed(2);
+      const reduction = (
+        ((fontBuffer.length - subset.length) / fontBuffer.length) *
+        100
+      ).toFixed(2);
+
+      table.push({
+        Font: path.basename(fontPath),
+        "Original (KB)": Number(fontSize),
+        "Subset (KB)": Number(subsetSize),
+        "Reduction (%)": Number(reduction)
+      });
     }
   }
+
+  if (verbose) {
+    console.table(table);
+  }
 };
+
 const fontSubsetter = (options?: PluginOptions): Plugin => {
   const pluginOptions = { ...defaultPluginOptions, ...options };
   return {
     name: "font-subsetter",
     generateBundle: async (_options, bundle) =>
-      await generateBundle(_options, bundle, pluginOptions)
+      await generateBundle(bundle, pluginOptions)
   };
 };
 
