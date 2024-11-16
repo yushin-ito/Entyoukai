@@ -14,7 +14,7 @@ const Layout = memo(() => {
   const { scrollToElement } = useScroll();
 
   useEffect(() => {
-    window.scrollTo(0, 0.5);
+    window.scrollTo(0, 1);
   }, [pathname]);
 
   useEffect(() => {
