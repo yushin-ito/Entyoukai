@@ -29,8 +29,7 @@ const TableOfContents = memo(({ sections }: TableOfContentsProps) => {
       let max = 0;
 
       for (let i = 0; i < sections.length; i++) {
-        const section = sections[i];
-        const element = document.getElementById(section.id);
+        const element = document.getElementById(sections[i].id);
         if (element) {
           const rect = element.getBoundingClientRect();
           const height =
@@ -39,7 +38,7 @@ const TableOfContents = memo(({ sections }: TableOfContentsProps) => {
 
           if (ratio > max) {
             max = ratio;
-            id = section.id;
+            id = sections[i].id;
           }
         }
       }
@@ -56,70 +55,74 @@ const TableOfContents = memo(({ sections }: TableOfContentsProps) => {
     };
   }, [sections, scrolling]);
 
-  return breakpoint === "base" ? null : (
-    <VStack
-      as="nav"
-      pos={fixed ? "fixed" : "absolute"}
-      top={fixed ? "96px" : "0"}
-      left="64px"
-      spacing="0"
-      alignItems="flex-start"
-      zIndex={999}
-    >
-      <Box
-        pos="absolute"
-        left="0"
-        width="3px"
-        height={`${sections.length * 42}px`}
-        rounded="2px"
-        bg="gray.400"
-      />
-      <MotionBox
-        pos="absolute"
-        left="0"
-        width="3px"
-        height="42px"
-        rounded="2px"
-        bg="brand.500"
-        animate={{
-          y: sections.findIndex((section) => section.id === activeId) * 42,
-          transition: { duration: 0.3, ease: "easeInOut" }
-        }}
-      />
-
-      {sections.map((section) => (
-        <Button
-          key={section.id}
-          h="42px"
-          px="0"
-          ml="4"
-          bg="transparent"
-          _hover={{ bg: "transparent" }}
-          _active={{ bg: "transparent" }}
-          onClick={() => {
-            if (!scrolling) {
-              window.history.pushState(null, "", `#${section.id}`);
-
-              const element = document.getElementById(section.id);
-              if (element) {
-                scrollToElement(element, 800);
-              }
-            }
+  if (breakpoint === "lg") {
+    return (
+      <VStack
+        as="nav"
+        pos={fixed ? "fixed" : "absolute"}
+        top={fixed ? "96px" : "0"}
+        left="64px"
+        spacing="0"
+        alignItems="flex-start"
+        zIndex={999}
+      >
+        <Box
+          pos="absolute"
+          left="0"
+          width="3px"
+          height={`${sections.length * 42}px`}
+          rounded="2px"
+          bg="gray.400"
+        />
+        <MotionBox
+          pos="absolute"
+          left="0"
+          width="3px"
+          height="42px"
+          rounded="2px"
+          bg="brand.500"
+          animate={{
+            y: sections.findIndex((section) => section.id === activeId) * 42,
+            transition: { duration: 0.3, ease: "easeInOut" }
           }}
-        >
-          <HStack spacing="4">
-            <Text
-              as="span"
-              color={activeId === section.id ? "brand.500" : "gray.400"}
-              fontWeight="semibold"
-            >
-              {section.title}
-            </Text>
-          </HStack>
-        </Button>
-      ))}
-    </VStack>
-  );
+        />
+
+        {sections.map((section) => (
+          <Button
+            key={section.id}
+            h="42px"
+            px="0"
+            ml="4"
+            bg="transparent"
+            _hover={{ bg: "transparent" }}
+            _active={{ bg: "transparent" }}
+            onClick={() => {
+              if (!scrolling) {
+                window.history.pushState(null, "", `#${section.id}`);
+
+                const element = document.getElementById(section.id);
+                if (element) {
+                  scrollToElement(element, 800);
+                }
+              }
+            }}
+          >
+            <HStack spacing="4">
+              <Text
+                as="span"
+                color={activeId === section.id ? "brand.500" : "gray.400"}
+                fontWeight="semibold"
+              >
+                {section.title}
+              </Text>
+            </HStack>
+          </Button>
+        ))}
+      </VStack>
+    );
+  }
+
+  return null;
 });
 
 export default TableOfContents;
