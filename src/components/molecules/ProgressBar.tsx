@@ -5,6 +5,10 @@ import "nprogress/nprogress.css";
 import { useLoading } from "../../contexts";
 import useScroll from "../../hooks/tools/useScroll";
 
+NProgress.configure({
+  showSpinner: false
+});
+
 const ProgressBar = memo(() => {
   const { scrollToElement } = useScroll();
   const { setIsLoading } = useLoading();

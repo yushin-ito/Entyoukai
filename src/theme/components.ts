@@ -9,7 +9,7 @@ const components = {
   Heading: {
     baseStyle: {
       color: "brand.500",
-      fontWeight: "bold"
+      fontWeight: "semibold"
     }
   },
   Button: {

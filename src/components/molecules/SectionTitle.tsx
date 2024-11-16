@@ -21,7 +21,7 @@ const SectionTitle = memo(({ title }: SectionTitleProps) => {
     return (
       <HStack w="100%" spacing="2" alignItems="center">
         <Box w="3px" h="6" bg="brand.500" />
-        <Heading as="h2" fontSize="xl" fontWeight="semibold">
+        <Heading as="h2" fontSize="xl">
           {title}
         </Heading>
       </HStack>
@@ -31,7 +31,7 @@ const SectionTitle = memo(({ title }: SectionTitleProps) => {
   if (breakpoint === "md") {
     return (
       <VStack w="100%" spacing="2" alignItems="flex-start">
-        <Heading as="h2" fontSize="2xl" fontWeight="semibold">
+        <Heading as="h2" fontSize="2xl">
           {title}
         </Heading>
         <Box w="100%" h="3.5px" bg="brand.500" />

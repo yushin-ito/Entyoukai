@@ -39,7 +39,7 @@ const PrivacyPolicy = () => {
           w="100%"
           px={{ base: "0", md: "2" }}
           alignItems="flex-start"
-          spacing={{ base: "4", md: "6" }}
+          spacing={{ base: "4", md: "8" }}
         >
           <Text as="p" fontSize={{ base: "sm", md: "md" }}>
             このプライバシーポリシー（以下「本ポリシー」といいます。）は、二十歳のつどい実行委員会（以下「当委員会」といいます。）が運営する二十歳のつどい公式Webサイト（以下「本サイト」といいます。）における、個人情報の取り扱いについて定めるものです。
@@ -49,12 +49,12 @@ const PrivacyPolicy = () => {
             as="section"
             w="100%"
             alignItems="flex-start"
-            spacing={{ base: "8", md: "10" }}
+            spacing={{ base: "8", md: "12" }}
           >
             {policy?.map((item, index) => (
               <VStack
-                as="article"
                 key={index}
+                as="section"
                 w="100%"
                 alignItems="flex-start"
                 spacing={{ base: "1", md: "2" }}
