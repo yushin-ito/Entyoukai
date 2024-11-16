@@ -80,7 +80,6 @@ const Activity = () => {
               as="h3"
               my={{ base: "8px", md: "12px" }}
               fontSize={{ base: "md", md: "xl" }}
-              fontWeight="semibold"
               textAlign="center"
               lineHeight="2"
             >

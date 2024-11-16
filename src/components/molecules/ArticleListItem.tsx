@@ -106,12 +106,7 @@ const ArticleListItem = memo(
           >
             {/* タイトル */}
             {breakpoint === "md" && (
-              <Heading
-                as="h3"
-                fontSize="md"
-                fontWeight="semibold"
-                noOfLines={1}
-              >
+              <Heading as="h3" fontSize="md" noOfLines={1}>
                 {title}
               </Heading>
             )}
