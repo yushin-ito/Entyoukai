@@ -109,7 +109,6 @@ const MainVisual = memo(() => {
           >
             2025年1月12日（日）13時30分
           </Text>
-
           <HStack alignItems="center" spacing="1">
             <Pin boxSize={{ base: "18px", md: "20px" }} color="white" />
             <Text
