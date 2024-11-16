@@ -35,9 +35,9 @@ const MainVisual = memo(() => {
       w="100%"
       h={{ base: "calc(100vh * 0.9)", lg: "100vh" }}
       bgImage={{
-        base: "url(/assets/images/background-mobile.webp)",
-        md: "url(/assets/images/background-tablet.webp)",
-        lg: "url(/assets/images/background-desktop.webp)"
+        base: "url(/images/background-mobile.webp)",
+        md: "url(/images/background-tablet.webp)",
+        lg: "url(/images/background-desktop.webp)"
       }}
       bgSize="cover"
       bgPos="center center"
@@ -45,7 +45,7 @@ const MainVisual = memo(() => {
     >
       {/* ロゴ */}
       <Image
-        src="/assets/images/logo.webp"
+        src="/images/logo.webp"
         alt="logo"
         objectFit="cover"
         w={{ base: "100px", lg: "110px" }}

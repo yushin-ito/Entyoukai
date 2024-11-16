@@ -12,7 +12,7 @@ export const useQueryArticle = (id: string | undefined) => {
       return;
     }
 
-    const response = await fetch("/assets/contents/articles.json");
+    const response = await fetch("/contents/articles.json");
     if (!response.ok) {
       throw new Error();
     }
@@ -25,7 +25,7 @@ export const useQueryArticle = (id: string | undefined) => {
 
 export const useQueryArticles = () =>
   useQuery<Article[]>(["articles"], async () => {
-    const response = await fetch("/assets/contents/articles.json");
+    const response = await fetch("/contents/articles.json");
     if (!response.ok) {
       throw new Error();
     }
