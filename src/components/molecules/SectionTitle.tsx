@@ -12,23 +12,34 @@ type SectionTitleProps = {
 };
 
 const SectionTitle = memo(({ title }: SectionTitleProps) => {
-  const breakpoint = useBreakpointValue({ base: "base", md: "md" });
-
-  return breakpoint === "base" ? (
-    <HStack w="100%" spacing="2" alignItems="center">
-      <Box w="3px" h="8" bg="brand.500" />
-      <Heading as="h2" fontSize="xl" fontWeight="semibold">
-        {title}
-      </Heading>
-    </HStack>
-  ) : (
-    <VStack w="100%" spacing="2" alignItems="flex-start">
-      <Heading as="h2" fontSize="2xl" fontWeight="semibold">
-        {title}
-      </Heading>
-      <Box w="100%" h="1" bg="brand.500" />
-    </VStack>
+  const breakpoint = useBreakpointValue(
+    { base: "base", md: "md" },
+    { fallback: undefined }
   );
+
+  if (breakpoint === "base") {
+    return (
+      <HStack w="100%" spacing="2" alignItems="center">
+        <Box w="3px" h="6" bg="brand.500" />
+        <Heading as="h2" fontSize="xl" fontWeight="semibold">
+          {title}
+        </Heading>
+      </HStack>
+    );
+  }
+
+  if (breakpoint === "md") {
+    return (
+      <VStack w="100%" spacing="2" alignItems="flex-start">
+        <Heading as="h2" fontSize="2xl" fontWeight="semibold">
+          {title}
+        </Heading>
+        <Box w="100%" h="3.5px" bg="brand.500" />
+      </VStack>
+    );
+  }
+
+  return null;
 });
 
 export default SectionTitle;

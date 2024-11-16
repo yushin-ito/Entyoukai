@@ -1,17 +1,8 @@
-import {
-  VStack,
-  HStack,
-  Text,
-  Divider,
-  Button,
-  Box,
-  Stack,
-  useBreakpointValue
-} from "@chakra-ui/react";
+import { VStack, HStack, Text, Divider, Button } from "@chakra-ui/react";
 import { useState, useMemo, memo } from "react";
 
-import { formatByDot } from "../../functions";
 import type { News } from "../../types";
+import NewsListItem from "../molecules/NewsItem";
 
 const categories: Record<string, string> = {
   all: "すべて",
@@ -26,7 +17,6 @@ type NewsListProps = {
 
 const NewsList = memo(({ news }: NewsListProps) => {
   const [activeId, setActiveId] = useState<string>("all");
-  const breakpoint = useBreakpointValue({ base: "base", md: "md" });
 
   const list = useMemo(() => {
     return news.filter((item) => {
@@ -77,25 +67,14 @@ const NewsList = memo(({ news }: NewsListProps) => {
         overflowY="auto"
         spacing="2"
         sx={{
-          "&::-webkit-scrollbar": {
-            display: { base: "none", md: "block" },
-            width: "4px"
-          },
-          "&::-webkit-scrollbar-thumb": {
-            backgroundColor: "#888",
-            borderRadius: "2px"
-          },
-          "&::-webkit-scrollbar-thumb:hover": {
-            backgroundColor: "#555"
-          },
-          "&::-webkit-scrollbar-track": {
-            backgroundColor: "#f1f1f1"
+          "::-webkit-scrollbar": {
+            display: "none"
           }
         }}
         css={{
-          scrollbarWidth: breakpoint === "base" ? "none" : "auto",
-          scrollbarHeight: breakpoint === "base" ? "none" : "auto",
-          msOverflowStyle: breakpoint === "base" ? "none" : "auto"
+          scrollbarWidth: "none",
+          scrollbarHeight: "none",
+          msOverflowStyle: "none"
         }}
       >
         {list.map((item, index) => (
@@ -106,37 +85,11 @@ const NewsList = memo(({ news }: NewsListProps) => {
             alignItems="start"
             spacing="2"
           >
-            <Stack
-              w="100%"
-              direction={{ base: "column", md: "row" }}
-              alignItems={{ base: "flex-start", md: "center" }}
-              px={{ base: "4px", md: "8px" }}
-              py={{ base: "10px", md: "20px" }}
-              spacing={{ base: "4", md: "6" }}
-            >
-              <HStack spacing={{ base: "2", md: "4" }} alignItems="center">
-                <Text
-                  as="time"
-                  fontSize={{ base: "xs", md: "sm" }}
-                  color="gray.600"
-                >
-                  {formatByDot(item.date, "yyyy.MM.dd")}
-                </Text>
-                <Box
-                  bg="brand.500"
-                  px={{ base: "6px", md: "8px" }}
-                  py={{ base: "1.5px", md: "2.5px" }}
-                  rounded="full"
-                >
-                  <Text fontSize={{ base: "2xs", md: "xs" }} color="white">
-                    {categories[item.category]}
-                  </Text>
-                </Box>
-              </HStack>
-              <Text as="p" fontSize={{ base: "xs", md: "sm" }} noOfLines={1}>
-                {item.title}
-              </Text>
-            </Stack>
+            <NewsListItem
+              title={item.title}
+              date={item.date}
+              category={categories[item.category]}
+            />
             {index < list.length - 1 && <Divider borderColor="gray.200" />}
           </VStack>
         ))}

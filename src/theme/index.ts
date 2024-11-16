@@ -60,7 +60,7 @@ const theme = extendTheme({
       baseStyle: {
         color: "brand.500",
         fontWeight: "500",
-        lineHeight: { base: "1.5", sm: "1.75" }
+        lineHeight: { base: "1.5", md: "1.75" }
       }
     },
     Heading: {
@@ -108,12 +108,16 @@ const theme = extendTheme({
             color: "brand.500",
             borderWidth: { base: "1.2px", md: "1.5px" },
             borderColor: "gray.400",
+            _hover: { borderColor: "gray.400" },
             _focus: {
               borderColor: "brand.500",
               borderWidth: { base: "1.8px", md: "2px" },
               boxShadow: "none"
             },
-            _placeholder: { color: "gray.400" }
+            _placeholder: {
+              color: "gray.400",
+              fontSize: { base: "xs", md: "sm" }
+            }
           }
         }
       },
@@ -127,12 +131,16 @@ const theme = extendTheme({
           color: "brand.500",
           borderWidth: { base: "1.2px", md: "1.5px" },
           borderColor: "gray.400",
+          _hover: { borderColor: "gray.400" },
           _focus: {
             borderColor: "brand.500",
             borderWidth: { base: "1.8px", md: "2px" },
             boxShadow: "none"
           },
-          _placeholder: { color: "gray.400" }
+          _placeholder: {
+            color: "gray.400",
+            fontSize: { base: "xs", md: "sm" }
+          }
         }
       },
       defaultProps: {
