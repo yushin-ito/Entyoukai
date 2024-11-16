@@ -78,8 +78,9 @@ const Activity = () => {
           >
             <Heading
               as="h3"
-              my={{ base: "1", md: "2" }}
+              my={{ base: "8px", md: "12px" }}
               fontSize={{ base: "md", md: "xl" }}
+              fontWeight="semibold"
               textAlign="center"
               lineHeight="2"
             >

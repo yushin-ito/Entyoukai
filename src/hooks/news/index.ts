@@ -4,7 +4,7 @@ import { News } from "../../types";
 
 export const useQueryNews = () =>
   useQuery<News[]>(["news"], async () => {
-    const response = await fetch("/assets/contents/news.json");
+    const response = await fetch("/contents/news.json");
     if (!response.ok) {
       throw new Error();
     }

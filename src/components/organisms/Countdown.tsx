@@ -1,6 +1,6 @@
-import { Text, VStack, HStack, Heading } from "@chakra-ui/react";
+import { Text, VStack, HStack } from "@chakra-ui/react";
 import { useInView } from "framer-motion";
-import { useState, useEffect, useRef, memo } from "react";
+import { useState, useEffect, useRef, memo, useCallback } from "react";
 
 import MotionBox from "../atoms/MotionBox";
 
@@ -10,7 +10,7 @@ const Countdown = memo(() => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
-  const clac = () => {
+  const clac = useCallback(() => {
     const now = Date.now();
     const diff = Math.max(target - now, 0);
 
@@ -20,7 +20,7 @@ const Countdown = memo(() => {
       minutes: Math.floor((diff / (1000 * 60)) % 60),
       seconds: Math.floor((diff / 1000) % 60)
     };
-  };
+  }, []);
 
   const [timer, setTimer] = useState(clac);
 
@@ -30,7 +30,7 @@ const Countdown = memo(() => {
     }, 1000);
 
     return () => clearInterval(id);
-  }, []);
+  }, [clac]);
 
   const labels: Record<string, string> = {
     days: "日",
@@ -40,11 +40,11 @@ const Countdown = memo(() => {
   };
 
   return (
-    <VStack ref={ref} spacing="5" rounded="lg">
-      <Heading as="h3" fontSize={{ base: "lg", md: "2xl" }}>
+    <VStack ref={ref} rounded="lg">
+      <Text fontSize={{ base: "lg", md: "2xl" }} fontWeight="semibold">
         二十歳のつどいまであと
-      </Heading>
-      <HStack spacing="0" alignItems="flex-end">
+      </Text>
+      <HStack>
         {Object.entries(timer).map(([unit, value]) => (
           <MotionBox
             key={unit}
@@ -59,27 +59,19 @@ const Countdown = memo(() => {
                 : {}
             }
             w={{ base: "64px", md: "96px" }}
-            bg="white"
-            rounded="md"
           >
-            <Text
-              as="span"
-              display="block"
-              textAlign="center"
-              fontSize={{ base: "3xl", md: "5xl" }}
-              fontWeight="semibold"
-            >
-              {String(value).padStart(2, "0")}
-            </Text>
-            <Text
-              as="span"
-              display="block"
-              textAlign="center"
-              fontSize={{ base: "lg", md: "xl" }}
-              fontWeight="bold"
-            >
-              {labels[unit]}
-            </Text>
+            <VStack spacing="0">
+              <Text
+                fontSize={{ base: "3xl", md: "5xl" }}
+                fontWeight="semibold"
+                lineHeight={{ base: "1.5", md: "1.75" }}
+              >
+                {String(value).padStart(2, "0")}
+              </Text>
+              <Text fontSize={{ base: "lg", md: "xl" }} fontWeight="semibold">
+                {labels[unit]}
+              </Text>
+            </VStack>
           </MotionBox>
         ))}
       </HStack>

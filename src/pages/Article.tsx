@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { useParams, useNavigate } from "react-router-dom";
 
 import Avatar from "../components/atoms/Avatar";
+import LinkedText from "../components/atoms/LinkedText";
 import ScrollToTopButton from "../components/molecules/ScrollToTopButton";
 import SectionTitle from "../components/molecules/SectionTitle";
 import ShareButtonGroup from "../components/molecules/ShareButtonGroup";
@@ -87,14 +88,15 @@ const Article = () => {
               <ImageCarousel images={article.images} />
 
               {/* 記事内容 */}
-              <Text
+              <LinkedText
                 as="p"
                 mt={{ base: "6", md: "10" }}
                 fontSize={{ base: "sm", md: "md" }}
                 whiteSpace="pre-wrap"
+                links={article.links}
               >
                 {article.description}
-              </Text>
+              </LinkedText>
 
               <Divider
                 mt={{ base: "6", md: "8" }}

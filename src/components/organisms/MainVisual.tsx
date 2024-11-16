@@ -35,9 +35,9 @@ const MainVisual = memo(() => {
       w="100%"
       h={{ base: "calc(100vh * 0.9)", lg: "100vh" }}
       bgImage={{
-        base: "url(/assets/images/background-mobile.webp)",
-        md: "url(/assets/images/background-tablet.webp)",
-        lg: "url(/assets/images/background-desktop.webp)"
+        base: "url(/images/background-mobile.webp)",
+        md: "url(/images/background-tablet.webp)",
+        lg: "url(/images/background-desktop.webp)"
       }}
       bgSize="cover"
       bgPos="center center"
@@ -45,10 +45,10 @@ const MainVisual = memo(() => {
     >
       {/* ロゴ */}
       <Image
-        src="/assets/images/logo.webp"
+        src="/images/logo.webp"
         alt="logo"
         objectFit="cover"
-        w={{ base: "100px", lg: "120px" }}
+        w={{ base: "100px", lg: "110px" }}
         h="auto"
         pos="absolute"
         top="6"
@@ -84,9 +84,10 @@ const MainVisual = memo(() => {
 
       {/* メインビジュアル */}
       <VStack
+        mt="20"
         px={{ base: "10", md: "20", lg: "24" }}
         py={{ base: "12", md: "16", lg: "16" }}
-        spacing="4"
+        spacing={{ base: "4", md: "6" }}
         rounded="xl"
         bg="brand.500"
         opacity="0.8"

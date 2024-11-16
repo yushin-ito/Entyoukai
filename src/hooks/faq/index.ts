@@ -4,7 +4,7 @@ import { FAQ } from "../../types";
 
 export const useQueryFAQ = () =>
   useQuery<FAQ[]>(["faq"], async () => {
-    const response = await fetch("/assets/contents/faq.json");
+    const response = await fetch("/contents/faq.json");
     if (!response.ok) {
       throw new Error();
     }

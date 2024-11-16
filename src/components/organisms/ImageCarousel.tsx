@@ -40,7 +40,7 @@ const ImageCarousel = memo(({ images }: ImageCarouselProps) => {
             }
             w="100%"
             aspectRatio={5 / 3}
-            rounded={{ base: "md", md: "xl" }}
+            rounded={{ base: "lg", md: "xl" }}
           />
         </MotionBox>
       </AnimatePresence>

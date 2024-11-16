@@ -16,6 +16,10 @@ export type Article = {
   avatar: string;
   location: string;
   author: string;
+  links: {
+    word: string;
+    url: string;
+  }[];
 };
 
 export type Event = {
@@ -28,6 +32,10 @@ export type News = {
   title: string;
   date: string;
   category: "news" | "release" | "system";
+  links: {
+    word: string;
+    url: string;
+  }[];
 };
 
 export type FAQ = {
