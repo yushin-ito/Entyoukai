@@ -2,14 +2,14 @@ const components = {
   Text: {
     baseStyle: {
       color: "brand.500",
-      fontWeight: "500",
+      fontWeight: "medium",
       lineHeight: { base: "1.5", md: "1.75" }
     }
   },
   Heading: {
     baseStyle: {
       color: "brand.500",
-      fontWeight: "700"
+      fontWeight: "bold"
     }
   },
   Button: {

@@ -2,46 +2,90 @@
   {
     "title": "活動報告#7を公開しました。",
     "date": "2024-11-09",
-    "category": "news"
+    "category": "news",
+    "links": [
+      {
+        "word": "活動報告#7",
+        "url": "/article/7"
+      }
+    ]
   },
   {
     "title": "ロゴを追加しました。",
     "date": "2024-11-09",
-    "category": "news"
+    "category": "news",
+    "links": []
   },
   {
     "title": "活動報告#6を公開しました。",
     "date": "2024-11-08",
-    "category": "news"
+    "category": "news",
+    "links": [
+      {
+        "word": "活動報告#6",
+        "url": "/article/6"
+      }
+    ]
   },
   {
     "title": "活動報告#5を公開しました。",
     "date": "2024-11-08",
-    "category": "news"
+    "category": "news",
+    "links": [
+      {
+        "word": "活動報告#5",
+        "url": "/article/5"
+      }
+    ]
   },
   {
     "title": "活動報告#4を公開しました。",
     "date": "2024-11-08",
-    "category": "news"
+    "category": "news",
+    "links": [
+      {
+        "word": "活動報告#4",
+        "url": "/article/4"
+      }
+    ]
   },
   {
     "title": "活動報告#3を公開しました。",
     "date": "2024-11-08",
-    "category": "news"
+    "category": "news",
+    "links": [
+      {
+        "word": "活動報告#3",
+        "url": "/article/3"
+      }
+    ]
   },
   {
     "title": "活動報告#2を公開しました。",
     "date": "2024-11-08",
-    "category": "news"
+    "category": "news",
+    "links": [
+      {
+        "word": "活動報告#2",
+        "url": "/article/2"
+      }
+    ]
   },
   {
     "title": "活動報告#1を公開しました。",
     "date": "2024-11-08",
-    "category": "news"
+    "category": "news",
+    "links": [
+      {
+        "word": "活動報告#1",
+        "url": "/article/1"
+      }
+    ]
   },
   {
     "title": "サイトをリリースしました。",
     "date": "2024-11-08",
-    "category": "release"
+    "category": "release",
+    "links": []
   }
 ]

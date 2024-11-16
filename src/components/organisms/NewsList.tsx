@@ -89,6 +89,7 @@ const NewsList = memo(({ news }: NewsListProps) => {
               title={item.title}
               date={item.date}
               category={categories[item.category]}
+              links={item.links}
             />
             {index < list.length - 1 && <Divider borderColor="gray.200" />}
           </VStack>

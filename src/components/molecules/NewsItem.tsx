@@ -1,14 +1,16 @@
 import { Stack, HStack, Box, Text } from "@chakra-ui/react";
 
 import { formatByDot } from "../../functions";
+import LinkedText from "../atoms/LinkedText";
 
 type NewsListItemProps = {
   title: string;
   date: string;
   category: string;
+  links: { word: string; url: string }[];
 };
 
-const NewsListItem = ({ title, date, category }: NewsListItemProps) => {
+const NewsListItem = ({ title, date, category, links }: NewsListItemProps) => {
   return (
     <Stack
       w="100%"
@@ -33,9 +35,14 @@ const NewsListItem = ({ title, date, category }: NewsListItemProps) => {
           </Text>
         </Box>
       </HStack>
-      <Text as="p" fontSize={{ base: "xs", md: "sm" }} noOfLines={1}>
+      <LinkedText
+        as="p"
+        fontSize={{ base: "xs", md: "sm" }}
+        noOfLines={1}
+        links={links}
+      >
         {title}
-      </Text>
+      </LinkedText>
     </Stack>
   );
 };
