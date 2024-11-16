@@ -137,7 +137,7 @@ const Contact = () => {
                 placeholder="お名前"
                 {...register("name", { required: "お名前を入力してください" })}
               />
-              <FormErrorMessage as="span">
+              <FormErrorMessage as="span" fontSize={{ base: "xs", md: "sm" }}>
                 {errors.name && errors.name.message}
               </FormErrorMessage>
             </FormControl>
@@ -164,7 +164,7 @@ const Contact = () => {
                   }
                 })}
               />
-              <FormErrorMessage as="span">
+              <FormErrorMessage as="span" fontSize={{ base: "xs", md: "sm" }}>
                 {errors.email && errors.email.message}
               </FormErrorMessage>
             </FormControl>
@@ -191,7 +191,7 @@ const Contact = () => {
                   }
                 })}
               />
-              <FormErrorMessage as="span">
+              <FormErrorMessage as="span" fontSize={{ base: "xs", md: "sm" }}>
                 {errors.phone && errors.phone.message}
               </FormErrorMessage>
             </FormControl>
@@ -217,7 +217,7 @@ const Contact = () => {
                   }
                 })}
               />
-              <FormErrorMessage as="span">
+              <FormErrorMessage as="span" fontSize={{ base: "xs", md: "sm" }}>
                 {errors.message && errors.message.message}
               </FormErrorMessage>
             </FormControl>
