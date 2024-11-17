@@ -42,15 +42,19 @@ const generateBundle = async (
   );
 
   if (verbose) {
-    console.log(`\nsubsetting fonts(${fontFiles.length})...`);
+    console.log("\n");
+
+    console.log(`font files(${fontFiles.length})`);
     fontFiles.forEach((file) => {
       console.log(`- ${file}`);
     });
 
-    console.log(`\nbased on files(${baseFiles.length})...`);
+    console.log(`base files(${baseFiles.length})`);
     baseFiles.forEach((file) => {
       console.log(`- ${file}`);
     });
+
+    console.log("subsetting fonts...\n");
   }
 
   const bundleGlyphSet = Object.values(bundle)
@@ -71,8 +75,6 @@ const generateBundle = async (
     fs.mkdirSync(fontDir, { recursive: true });
   }
 
-  const table = [];
-
   for (const fontPath of fontFiles) {
     const fontBuffer = fs.readFileSync(fontPath);
     const subset = await subsetFont(fontBuffer, [...glyphSet].join(""), {
@@ -90,17 +92,12 @@ const generateBundle = async (
         100
       ).toFixed(2);
 
-      table.push({
-        Font: path.basename(fontPath),
-        "Original (KB)": Number(fontSize),
-        "Subset (KB)": Number(subsetSize),
-        "Reduction (%)": Number(reduction)
-      });
+      if (verbose) {
+        console.log(
+          `${path.basename(fontPath)}: ${fontSize}KB -> ${subsetSize}KB (${reduction}%)\n`
+        );
+      }
     }
-  }
-
-  if (verbose) {
-    console.table(table);
   }
 };
 
