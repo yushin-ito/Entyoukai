@@ -68,6 +68,7 @@ const FAQList = memo(({ faq }: FAQListProps) => {
                   as="p"
                   fontSize={{ base: "xs", md: "sm" }}
                   color="red.500"
+                  whiteSpace="pre-wrap"
                 >
                   {item.answer}
                 </Text>
