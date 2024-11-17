@@ -8,16 +8,20 @@ export type PluginOptions = {
   verbose?: boolean;
   fontDir?: string;
   outputDir?: string;
+  outputFormat?: "woff2" | "woff";
   basedOn?: {
     dir: string;
     ext: string;
   }[];
+  defaultGlyphs?: string;
+  excludeGlyphs?: string;
 };
 
 const defaultPluginOptions: PluginOptions = {
   verbose: false,
   fontDir: "public/fonts",
-  outputDir: "dist/fonts"
+  outputDir: "dist/fonts",
+  outputFormat: "woff2"
 };
 
 const getFiles = (dir: string, ext: string): string[] =>
@@ -29,9 +33,17 @@ const generateBundle = async (
   bundle: Record<string, any>,
   pluginOptions: PluginOptions
 ) => {
-  const { verbose, fontDir, basedOn, outputDir } = pluginOptions;
+  const {
+    verbose,
+    fontDir,
+    outputDir,
+    outputFormat,
+    basedOn,
+    defaultGlyphs,
+    excludeGlyphs
+  } = pluginOptions;
 
-  if (!fontDir || !basedOn || !outputDir) return;
+  if (!fontDir || !outputDir || !basedOn) return;
 
   const fontFiles = getFiles(fontDir, ".woff2").map((file) =>
     path.join(fontDir, file)
@@ -42,15 +54,17 @@ const generateBundle = async (
   );
 
   if (verbose) {
-    console.log(`\nsubsetting fonts(${fontFiles.length})...`);
+    console.log(`\nfont files(${fontFiles.length})`);
     fontFiles.forEach((file) => {
       console.log(`- ${file}`);
     });
 
-    console.log(`\nbased on files(${baseFiles.length})...`);
+    console.log(`\nbase files(${baseFiles.length})`);
     baseFiles.forEach((file) => {
       console.log(`- ${file}`);
     });
+
+    console.log("\nsubsetting fonts...\n");
   }
 
   const bundleGlyphSet = Object.values(bundle)
@@ -65,18 +79,24 @@ const generateBundle = async (
     ...new Set(Object.values(fs.readFileSync(file, "utf-8")).join(""))
   ]);
 
-  const glyphSet = new Set([...bundleGlyphSet, ...baseGlyphSet]);
+  const glyphSet = new Set([
+    ...bundleGlyphSet,
+    ...baseGlyphSet,
+    ...(defaultGlyphs || "").split("")
+  ]);
+
+  if (excludeGlyphs) {
+    excludeGlyphs.split("").forEach((glyph) => glyphSet.delete(glyph));
+  }
 
   if (!fs.existsSync(fontDir)) {
     fs.mkdirSync(fontDir, { recursive: true });
   }
 
-  const table = [];
-
   for (const fontPath of fontFiles) {
     const fontBuffer = fs.readFileSync(fontPath);
     const subset = await subsetFont(fontBuffer, [...glyphSet].join(""), {
-      targetFormat: "woff2"
+      targetFormat: outputFormat
     });
 
     const subsetPath = path.join(outputDir, path.basename(fontPath));
@@ -90,17 +110,16 @@ const generateBundle = async (
         100
       ).toFixed(2);
 
-      table.push({
-        Font: path.basename(fontPath),
-        "Original (KB)": Number(fontSize),
-        "Subset (KB)": Number(subsetSize),
-        "Reduction (%)": Number(reduction)
-      });
+      if (verbose) {
+        console.log(
+          `${path.basename(fontPath)}: ${fontSize}KB -> ${subsetSize}KB (${reduction}%)`
+        );
+      }
     }
   }
 
   if (verbose) {
-    console.table(table);
+    console.log("\nsubsetting fonts completed.\n");
   }
 };
 
