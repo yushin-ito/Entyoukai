@@ -29,29 +29,29 @@ const App = () => {
                   font-family: 'Inter';
                   font-style: normal;
                   font-weight: 500;
+                  font-display: swap;
                   src: url('/fonts/inter-medium.woff2') format('woff2');
-                  display: swap;
                 }
                 @font-face {
                   font-family: 'Inter';
                   font-style: normal;
                   font-weight: 600;
+                  font-display: swap;
                   src: url('/fonts/inter-semibold.woff2') format('woff2');
-                  display: swap;
                 }
                 @font-face {
                   font-family: 'Noto Sans JP';
                   font-style: normal;
                   font-weight: 500;
+                  font-display: swap;
                   src: url('/fonts/noto-sans-jp-medium.woff2') format('woff2');
-                  display: swap;
                 }
                 @font-face {
                   font-family: 'Noto Sans JP';
                   font-style: normal;
                   font-weight: 600;
+                  font-display: swap;
                   src: url('/fonts/noto-sans-jp-semibold.woff2') format('woff2');
-                  display: swap;
                 }
               `}
             />
