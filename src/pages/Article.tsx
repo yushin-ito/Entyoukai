@@ -117,8 +117,8 @@ const Article = () => {
                 <Button
                   size={{ base: "sm", md: "md" }}
                   _disabled={{ opacity: 0.6 }}
-                  onClick={() => navigate("/article/" + (article.id + 1))}
-                  isDisabled={END_ARTICLE_ID === article.id}
+                  onClick={() => navigate("/article/" + (article.id - 1))}
+                  isDisabled={FIRST_ARTICLE_ID === article.id}
                 >
                   <Text
                     as="span"
@@ -141,8 +141,8 @@ const Article = () => {
                 <Button
                   size={{ base: "sm", md: "md" }}
                   _disabled={{ opacity: 0.6 }}
-                  onClick={() => navigate("/article/" + (article.id - 1))}
-                  isDisabled={FIRST_ARTICLE_ID === article.id}
+                  onClick={() => navigate("/article/" + (article.id + 1))}
+                  isDisabled={END_ARTICLE_ID === article.id}
                 >
                   <Text
                     as="span"
