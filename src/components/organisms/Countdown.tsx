@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, memo, useCallback } from "react";
 
 import MotionBox from "../atoms/MotionBox";
 
-const target = new Date("2025-01-08T00:00:00").getTime();
+const target = new Date("2025-01-12T13:30:00").getTime();
 
 const Countdown = memo(() => {
   const ref = useRef(null);
