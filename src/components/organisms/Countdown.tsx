@@ -39,6 +39,31 @@ const Countdown = memo(() => {
     seconds: "秒"
   };
 
+  if (
+    timer.days === 0 &&
+    timer.hours === 0 &&
+    timer.minutes === 0 &&
+    timer.seconds === 0
+  ) {
+    return (
+      <VStack ref={ref} rounded="lg">
+        <Text fontSize={{ base: "lg", md: "xl" }} fontWeight="semibold">
+          二十歳のつどいは終了いたしました。
+        </Text>
+        <Text
+          fontSize={{ base: "lg", md: "xl" }}
+          textAlign="center"
+          fontWeight="semibold"
+        >
+          新たな門出を迎えられたこと心より感謝申し上げます。
+        </Text>
+        <Text fontSize={{ base: "xl", md: "3xl" }} fontWeight="semibold">
+          ありがとうございました。
+        </Text>
+      </VStack>
+    );
+  }
+
   return (
     <VStack ref={ref} rounded="lg">
       <Text fontSize={{ base: "lg", md: "2xl" }} fontWeight="semibold">
